@@ -1925,9 +1925,7 @@ export class SymbolRenderer {
     return true;
   }
 
-  private static renderTerminals(ctx: CanvasRenderingContext2D, comp: CircuitComponent, isSim: boolean) {
-    if (isSim) return; // Hide snap points in simulation mode for clean schematic look
-
+  private static renderTerminals(ctx: CanvasRenderingContext2D, comp: CircuitComponent, _isSim: boolean) {
     for (const t of comp.terminals) {
       ctx.fillStyle = '#94a3b8';
       ctx.beginPath();

@@ -3,12 +3,8 @@
   <!-- Línea de vinculación mecánica (Capa inferior, gris) -->
   <line x1="3.5" y1="31" x2="-4.5" y2="31" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2 2" stroke-linecap="round" />
   
-  <!-- Parte fija y bornes en negro -->
+  <!-- Parte fija y conductores en negro -->
   <g stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <!-- Puntos de bornes -->
-    <circle cx="0" cy="0" r="2.5" fill="#1e293b" stroke="none" />
-    <circle cx="0" cy="60" r="2.5" fill="#1e293b" stroke="none" />
-    
     <!-- Conductores verticales y tope fijo -->
     <line x1="0" y1="0" x2="0" y2="20" />
     <line x1="0" y1="20" x2="10" y2="20" />
