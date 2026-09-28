@@ -115,13 +115,35 @@ export class SymbolRenderer {
         this.renderSurgeArrester(ctx, comp, isSimulation);
         break;
 
-      case 'thermal_contact_nc':
-        this.renderSwitchNC(ctx, comp, isSimulation);
+      case 'thermal_contact_nc': {
+        const isTripped = comp.state.closed === false || comp.state.pressed || comp.state.energized;
+        const stateIdx = isTripped ? 1 : 0;
+        const svgPath = `/symbols/thermal_contact_nc/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: -20, minY: 0, width: 40, height: 60 },
+          () => this.renderSwitchNC(ctx, comp, isSimulation)
+        );
         break;
+      }
 
-      case 'thermal_contact_no':
-        this.renderSwitchNO(ctx, comp, isSimulation);
+      case 'thermal_contact_no': {
+        const isTripped = Boolean(comp.state.pressed || comp.state.closed || comp.state.energized);
+        const stateIdx = isTripped ? 1 : 0;
+        const svgPath = `/symbols/thermal_contact_no/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: -20, minY: 0, width: 40, height: 60 },
+          () => this.renderSwitchNO(ctx, comp, isSimulation)
+        );
         break;
+      }
 
       case 'thermal_contact_no_nc':
         this.renderContactNONC(ctx, comp, isSimulation);
@@ -1850,6 +1872,57 @@ export class SymbolRenderer {
     ctx.restore();
 
     ctx.restore();
+  }
+
+  private static renderSvgWithFallback(
+    ctx: CanvasRenderingContext2D,
+    comp: CircuitComponent,
+    _isSim: boolean,
+    svgPath: string,
+    viewBox: { minX: number; minY: number; width: number; height: number },
+    canvasFallback: () => void
+  ): boolean {
+    let img = this.svgImageCache.get(svgPath);
+
+    if (img === undefined) {
+      // First attempt to load
+      img = new Image();
+      img.src = svgPath;
+      img.onload = () => {
+        if (this.onRedrawNeeded) this.onRedrawNeeded();
+      };
+      img.onerror = () => {
+        // Mark as null so we do not retry loading missing SVG repeatedly
+        (img as any)._failed = true;
+        if (this.onRedrawNeeded) this.onRedrawNeeded();
+      };
+      this.svgImageCache.set(svgPath, img);
+    }
+
+    if (img && !img.complete) {
+      // Still loading -> use canvas fallback temporarily
+      canvasFallback();
+      return true;
+    }
+
+    if (!img || (img as any)._failed || img.naturalWidth === 0) {
+      // Failed to load SVG file -> use canvas fallback permanently
+      canvasFallback();
+      return false;
+    }
+
+    // SVG loaded successfully -> Draw image mapped to viewBox coordinates
+    ctx.drawImage(img, viewBox.minX, viewBox.minY, viewBox.width, viewBox.height);
+
+    // Draw Tag and Terminal numbers automatically on top
+    const isThermal = comp.type.startsWith('thermal_contact_');
+    if (isThermal) {
+      const numTop = comp.terminals[0]?.name ?? (comp.type === 'thermal_contact_no' ? '97' : '95');
+      const numBot = comp.terminals[1]?.name ?? (comp.type === 'thermal_contact_no' ? '98' : '96');
+      this.renderTagAndNumbers(ctx, comp, numTop, numBot);
+    }
+
+    return true;
   }
 
   private static renderTerminals(ctx: CanvasRenderingContext2D, comp: CircuitComponent, isSim: boolean) {
