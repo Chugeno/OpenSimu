@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.0 -5.0 20.0 10.0" width="20.0" height="10.0">
+  <title>Tránsito de energía a las barras</title>
+  <line x1="-3" y1="0" x2="3" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="3" y1="0" x2="10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-3" y1="-2" x2="-3" y2="2" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

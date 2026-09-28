@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -17.0 30.0 20.0" width="30.0" height="20.0">
+  <title>Devanado trifásico, V (60°)</title>
+  <line x1="-20" y1="-15" x2="-10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10" y1="0" x2="0" y2="-15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

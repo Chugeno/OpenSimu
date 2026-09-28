@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.0 -45.0 50.0 50.0" width="50.0" height="50.0">
+  <title>Rectificador</title>
+  <line x1="-40" y1="0" x2="0" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-40" y="-40" width="40" height="40" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-20" y1="-8" x2="-4" y2="-8" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-4" x2="-14" y2="-4" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10" y1="-4" x2="-4" y2="-4" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -25.00 -30.00 A 5.00 2.50 0 0 0 -35.00 -30.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -25.00 -30.00 A 5.00 2.50 0 0 0 -15.00 -30.00" stroke="black" stroke-width="1" fill="none"/>
+</svg>

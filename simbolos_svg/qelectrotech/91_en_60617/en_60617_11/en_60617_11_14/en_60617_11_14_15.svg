@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.0 -55.0 50.0 60.0" width="50.0" height="60.0">
+  <title>Interruptor accionado por llave</title>
+  <ellipse cx="-20.0" cy="-35.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-40" y="-50" width="40" height="50" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="-26,-27 -30,-10 -10,-10 -14,-27" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

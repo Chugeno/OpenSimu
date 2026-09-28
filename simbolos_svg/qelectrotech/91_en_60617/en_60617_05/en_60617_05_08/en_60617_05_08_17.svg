@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-35.0 -5.0 80.0 20.0" width="80.0" height="20.0">
+  <title>Electrodo de almacenamiento fotoconductor</title>
+  <line x1="40" y1="10" x2="-30" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="30" y="0" width="10" height="10" stroke="black" stroke-width="1" fill="#000000"/>
+  <rect x="0" y="0" width="30" height="10" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="0,10 0,0 10,5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -10.0 60.0 20.0" width="60.0" height="20.0">
+  <title>Elemento flexible</title>
+  <line x1="6" y1="0" x2="20" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="0" x2="-10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -4.50 -0.00 A 2.50 2.50 0 0 0 0.50 0.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 5.50 0.00 A 2.50 2.50 0 0 0 0.50 -0.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -4.50 0.00 A 2.50 2.50 0 0 0 -9.50 -0.00" stroke="black" stroke-width="1" fill="none"/>
+</svg>

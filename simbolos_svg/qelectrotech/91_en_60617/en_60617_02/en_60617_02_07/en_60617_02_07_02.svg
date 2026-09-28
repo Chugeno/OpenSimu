@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -15.0 50.0 30.0" width="50.0" height="30.0">
+  <title>Materia sólida</title>
+  <rect x="-20" y="-10" width="40" height="20" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-4" y1="10" x2="4" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="20" y1="-6" x2="13" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-13" y1="-10" x2="-20" y2="6" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

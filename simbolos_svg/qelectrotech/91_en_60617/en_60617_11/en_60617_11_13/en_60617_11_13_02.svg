@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-48.0 -53.0 60.0 60.0" width="60.0" height="60.0">
+  <title>Base de toma de corriente múltiple (fuerza)</title>
+  <path d="M 0.00 0.00 A 10.00 10.00 0 0 0 -20.00 -0.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-10" y1="-30" x2="-10" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-40" y1="-30" x2="-10" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10" y1="-5" x2="0" y2="-15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

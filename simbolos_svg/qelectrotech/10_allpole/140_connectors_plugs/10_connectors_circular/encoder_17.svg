@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.0 -45.0 90.0 90.0" width="90.0" height="90.0">
+  <title>Conector para codificador de 17 pines</title>
+  <ellipse cx="0.0" cy="31.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -2.09 -39.95 A 40.00 40.00 0 1 0 2.09 -39.95" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="11.0" cy="10.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-14.0" cy="28.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="30.0" cy="0.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-25.0" cy="-15.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="25.0" cy="-15.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="13.0" cy="-7.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-30.0" cy="0.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="27.0" cy="15.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-12.0" cy="-7.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="0.0" cy="-15.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-26.0" cy="15.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="-2,-39.5 -2,-35.5 2,-35.5 2,-39.5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-15.0" cy="-27.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-11.0" cy="10.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="15.0" cy="28.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="15.0" cy="-27.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="0.0" cy="-30.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+</svg>

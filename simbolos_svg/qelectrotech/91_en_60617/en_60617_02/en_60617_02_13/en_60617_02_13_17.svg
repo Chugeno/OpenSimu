@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-11.0 -10.0 30.0 20.0" width="30.0" height="20.0">
+  <title>Accionado por perfil de leva</title>
+  <ellipse cx="0.0" cy="0.0" rx="6.0" ry="6.0" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="10.0" cy="0.0" rx="4.0" ry="4.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="4" y1="7" x2="3" y2="6" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="5" y1="4" x2="6" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="6" y1="5" x2="4" y2="7" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 5.00 -6.00 A 5.00 1.50 0 0 0 -5.00 -6.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-5" y1="-6" x2="-4" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="5" y1="-6" x2="4" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

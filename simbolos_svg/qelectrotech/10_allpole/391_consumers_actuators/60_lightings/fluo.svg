@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-9.0 -90.0 20.0 180.0" width="20.0" height="180.0">
+  <title>Tubo fluorescente</title>
+  <path d="M -4.00 63.50 A 4.50 2.50 0 0 0 5.00 63.50" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-5" y="-70" width="11" height="140" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="0" y1="-67" x2="0" y2="-80" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="67" x2="0" y2="80" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 5.00 -64.00 A 4.50 2.00 0 0 0 -4.00 -64.00" stroke="black" stroke-width="1" fill="none"/>
+</svg>

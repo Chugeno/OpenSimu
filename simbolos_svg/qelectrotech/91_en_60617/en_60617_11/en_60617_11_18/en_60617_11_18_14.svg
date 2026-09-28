@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-42.0 -45.0 70.0 50.0" width="70.0" height="50.0">
+  <title>Luz aeronáutica de superficie, haz unidireccional blanco intermitente, a nivel del suelo</title>
+  <ellipse cx="-20.0" cy="-20.0" rx="20.0" ry="20.0" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="10,-30 15,-30 15,-40 20,-40 20,-30 25,-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-8" y1="-36" x2="-40" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-40" y1="-20" x2="-8" y2="-4" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

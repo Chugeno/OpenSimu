@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-65.0 -155.0 70.0 160.0" width="70.0" height="160.0">
+  <title>Relé de sobrepotencia para potencia reactiva</title>
+  <rect x="-60" y="-150" width="60" height="150" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-50" y1="-115" x2="-10" y2="-115" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-50" y1="-120" x2="-50" y2="-110" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-30" y1="-120" x2="-35" y2="-115" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-35" y1="-115" x2="-30" y2="-110" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-50" y1="-50" x2="-50" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-50" y1="-45" x2="-10" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10" y1="-50" x2="-10" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-45" y1="-35" x2="-20" y2="-60" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-23" y1="-63" x2="-17" y2="-57" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

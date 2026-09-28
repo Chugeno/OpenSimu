@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20.0 -51.0 40.0 60.0" width="40.0" height="60.0">
+  <title>Termopar</title>
+  <ellipse cx="0.0" cy="0.0" rx="2.0" ry="2.0" stroke="black" stroke-width="1" fill="#000000"/>
+  <polyline points="-10,-40 -10,-15 0,0 10,-15 10,-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10" y1="-15" x2="0" y2="0" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

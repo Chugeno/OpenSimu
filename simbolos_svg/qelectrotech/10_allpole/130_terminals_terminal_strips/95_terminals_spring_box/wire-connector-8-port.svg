@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50.0 -26.0 90.0 50.0" width="90.0" height="50.0">
+  <title>Conector de cable 8 puertos</title>
+  <rect x="-45.5" y="-22.5" width="81.2" height="42" stroke="gray" stroke-width="1" fill="none"/>
+  <rect x="-34" y="-10" width="8" height="30" stroke="white" stroke-width="0.5" fill="none"/>
+  <rect x="26" y="-10" width="8" height="30" stroke="white" stroke-width="0.5" fill="none"/>
+  <rect x="-44" y="-10" width="8" height="30" stroke="white" stroke-width="0.5" fill="none"/>
+  <line x1="-40" y1="5" x2="-40" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-30.0" cy="-5.0" rx="1.0" ry="1.0" stroke="black" stroke-width="0.5" fill="#000000"/>
+  <line x1="-30" y1="5" x2="-30" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-14" y="-10" width="8" height="30" stroke="white" stroke-width="0.5" fill="none"/>
+  <rect x="-4" y="-10" width="8" height="30" stroke="white" stroke-width="0.5" fill="none"/>
+  <rect x="6" y="-10" width="8" height="30" stroke="white" stroke-width="0.5" fill="none"/>
+  <rect x="-24" y="-10" width="8" height="30" stroke="white" stroke-width="0.5" fill="none"/>
+  <line x1="-10" y1="5" x2="-10" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="5" x2="-20" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="5" x2="0" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-10.0" cy="-5.0" rx="1.0" ry="1.0" stroke="black" stroke-width="0.5" fill="#000000"/>
+  <line x1="10" y1="-5" x2="10" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="0.0" cy="-5.0" rx="1.0" ry="1.0" stroke="black" stroke-width="0.5" fill="#000000"/>
+  <rect x="16" y="-10" width="8" height="30" stroke="white" stroke-width="0.5" fill="none"/>
+  <line x1="30" y1="-5" x2="-40" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="10.0" cy="-5.0" rx="1.0" ry="1.0" stroke="black" stroke-width="0.5" fill="#000000"/>
+  <line x1="20" y1="-5" x2="20" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-20.0" cy="-5.0" rx="1.0" ry="1.0" stroke="black" stroke-width="0.5" fill="#000000"/>
+  <line x1="30" y1="-5" x2="30" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="20.0" cy="-5.0" rx="1.0" ry="1.0" stroke="black" stroke-width="0.5" fill="#000000"/>
+  <rect x="-9" y="-17" width="8" height="3" stroke="white" stroke-width="0.5" fill="none"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-33.0 -40.0 50.0 60.0" width="50.0" height="60.0">
+  <title>Sensor inductivo NA</title>
+  <polyline points="5,-20 10,0 10,10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-2.69" y1="-12" x2="9.31" y2="-12" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="-30" x2="10" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-18.69,-12 -12.69,-18 -6.69,-12 -12.69,-6" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-11.69" y1="-16" x2="-11.69" y2="-8" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-13.69" y1="-16" x2="-13.69" y2="-8" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

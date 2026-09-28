@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40.0 -10.0 60.0 20.0" width="60.0" height="20.0">
+  <title>Enlace de conexión, cerrado</title>
+  <ellipse cx="0.0" cy="0.0" rx="3.0" ry="3.0" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-20.0" cy="0.0" rx="3.0" ry="3.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-20" y1="-3" x2="0" y2="-3" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="3" x2="0" y2="3" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="3" y1="0" x2="10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-23" y1="0" x2="-30" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

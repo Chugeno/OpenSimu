@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-85.0 -30.0 110.0 60.0" width="110.0" height="60.0">
+  <title>Dispositivo de accionamiento; bobina de relé (representación separada)</title>
+  <rect x="-80" y="-10" width="40" height="20" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-60" y1="-20" x2="-60" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-20" y="-10" width="40" height="20" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-60" y1="10" x2="-60" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-20" x2="0" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="10" x2="0" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

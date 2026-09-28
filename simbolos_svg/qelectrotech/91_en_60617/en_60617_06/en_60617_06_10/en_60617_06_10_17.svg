@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-86.0 -172.0 110.0 190.0" width="110.0" height="190.0">
+  <title>Transformador trifásico, conexión estrella-estrella-triángulo</title>
+  <ellipse cx="-9.0" cy="-50.0" rx="30.0" ry="30.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-9" y1="-20" x2="-9" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-30.0" cy="-90.0" rx="30.0" ry="30.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-30" y1="-150" x2="-30" y2="-120" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-19" y1="0" x2="1" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-19" y1="5" x2="1" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-50.0" cy="-50.0" rx="30.0" ry="30.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-50" y1="-20" x2="-50" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-40" y1="-130" x2="-20" y2="-140" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-40" y1="-135" x2="-20" y2="-145" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-60" y1="0" x2="-40" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-60" y1="5" x2="-40" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-40" y1="-125" x2="-20" y2="-135" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-60" y1="-5" x2="-40" y2="-15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-5" x2="0" y2="-15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-10,-35 10,-35 0,-55" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-55" y1="-30" x2="-55" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-55" y1="-40" x2="-45" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-55" y1="-40" x2="-65" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-30" y1="-80" x2="-30" y2="-90" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-30" y1="-90" x2="-20" y2="-95" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-30" y1="-90" x2="-40" y2="-95" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

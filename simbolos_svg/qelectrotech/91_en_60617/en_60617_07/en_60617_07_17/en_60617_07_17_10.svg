@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-65.0 -65.0 70.0 70.0" width="70.0" height="70.0">
+  <title>Relé detector de cortocircuitos entre devanados</title>
+  <rect x="-60" y="-60" width="60" height="60" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -35.00 -10.00 A 5.00 5.00 0 0 0 -45.00 -10.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -25.00 -10.00 A 5.00 5.00 0 0 0 -35.00 -10.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -15.00 -10.00 A 5.00 5.00 0 0 0 -25.00 -10.00" stroke="black" stroke-width="1" fill="none"/>
+</svg>

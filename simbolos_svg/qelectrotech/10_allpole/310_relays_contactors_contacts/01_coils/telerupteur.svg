@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20.0 -32.0 40.0 60.0" width="40.0" height="60.0">
+  <title>Interruptor a control remoto 1P1T</title>
+  <rect x="-14" y="-8" width="28" height="16" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="0" y1="-20" x2="0" y2="-8" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="8" x2="0" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-9,4 0,4 0,-4 10,-4" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

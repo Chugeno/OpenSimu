@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -27.0 110.0 50.0" width="110.0" height="50.0">
+  <title>Freno electromagnético</title>
+  <ellipse cx="50.0" cy="-20.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="70.0" cy="-20.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="60" y1="0" x2="60" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-10.0" cy="-20.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="30.0" cy="-20.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="67" y1="-20" x2="53" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="47" y1="-20" x2="33" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="7" y1="-20" x2="-7" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="80" y1="-20" x2="73" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="27" y1="-20" x2="13" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="80" y1="20" x2="80" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="80" y1="20" x2="-20" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-13" y1="-20" x2="-20" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-20" x2="-20" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="10.0" cy="-20.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="46" y1="5" x2="40" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="60" y1="5" x2="63" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="46,0 60,5 46,10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

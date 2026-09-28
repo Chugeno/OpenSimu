@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-35.0 -55.0 90.0 70.0" width="90.0" height="70.0">
+  <title>Detector de proximidad</title>
+  <polyline points="0,-40 -10,-30 0,-20 10,-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-4" y1="-36" x2="-4" y2="-24" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="4" y1="-36" x2="4" y2="-24" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-30" y="-50" width="60" height="60" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="30" y1="-20" x2="50" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

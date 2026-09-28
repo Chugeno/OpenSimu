@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenSimu - Simulador Electrotécnico Libre</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- TOPBAR: Brand, Language, Mobile & Main Controls -->
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-icon">⚡</span>
+          <span class="brand-title">OpenSimu</span>
+          <span class="brand-badge">Fase 0 Core</span>
+        </div>
+
+        <div class="sim-controls">
+          <button id="btn-edit" class="btn btn-mode active" data-i18n="btn.edit" data-i18n-title="btn.edit.title" title="Modo Edición (Diseño)">
+            ✏️ Edición
+          </button>
+          <button id="btn-simulate" class="btn btn-play" data-i18n="btn.simulate" data-i18n-title="btn.simulate.title" title="Iniciar Simulación Eléctrica">
+            ▶️ Simular
+          </button>
+          <button id="btn-stop" class="btn btn-stop" data-i18n="btn.stop" data-i18n-title="btn.stop.title" title="Detener Simulación">
+            ⏹ Detener
+          </button>
+        </div>
+
+        <div class="quick-tools">
+          <button id="btn-select" class="btn btn-tool active" data-i18n="btn.select" data-i18n-title="btn.select.title" title="Herramienta de Selección (V)">
+            👆 Seleccionar
+          </button>
+          <button id="btn-delete" class="btn btn-tool" data-i18n="btn.delete" data-i18n-title="btn.delete.title" title="Herramienta Borrar elemento">
+            🗑️ Borrar
+          </button>
+          <div class="divider"></div>
+          <button id="btn-undo" class="btn btn-secondary" data-i18n="btn.undo" data-i18n-title="btn.undo.title" title="Deshacer (Ctrl+Z)" disabled>
+            ↩️ Deshacer
+          </button>
+          <button id="btn-redo" class="btn btn-secondary" data-i18n="btn.redo" data-i18n-title="btn.redo.title" title="Rehacer (Ctrl+Y)" disabled>
+            ↪️ Rehacer
+          </button>
+          <div class="divider"></div>
+          <button id="btn-showroom" class="btn btn-secondary" title="Muestrario Comparativo de Símbolos IEC (OpenSimu vs Radica vs QElectroTech)">
+            🏛️ Muestrario IEC
+          </button>
+          <button id="btn-demo" class="btn btn-secondary" data-i18n="btn.demo" data-i18n-title="btn.demo.title" title="Cargar Circuito Demo de Marcha y Paro">
+            ⚡ Marcha / Paro
+          </button>
+          <button id="btn-clear" class="btn btn-secondary" data-i18n="btn.clear" data-i18n-title="btn.clear.title" title="Limpiar Lienzo">
+            🧹 Limpiar
+          </button>
+          <div class="divider"></div>
+          <button id="btn-save" class="btn btn-secondary" data-i18n="btn.save" data-i18n-title="btn.save.title" title="Guardar circuito como JSON">
+            💾 Guardar JSON
+          </button>
+          <button id="btn-export-cad" class="btn btn-secondary" data-i18n="btn.export_cad" data-i18n-title="btn.export_cad.title" title="Exportar circuito en formato .CAD para CADe_SIMU">
+            📄 Exportar .CAD
+          </button>
+          <button id="btn-load" class="btn btn-secondary" data-i18n="btn.load" data-i18n-title="btn.load.title" title="Cargar circuito (.json o .cad de CADe_SIMU)">
+            📂 Abrir
+          </button>
+          <input type="file" id="file-input" accept=".json,.cad" style="display: none" />
+          <button id="btn-reset-zoom" class="btn btn-secondary" data-i18n="btn.zoom_reset" data-i18n-title="btn.zoom_reset.title" title="Centrar / Zoom 100%">
+            🔍 1:1
+          </button>
+          <div class="divider"></div>
+
+          <!-- Language Selector -->
+          <div class="lang-selector-container">
+            <select id="lang-select" class="lang-dropdown" title="Seleccionar idioma / dialecto técnico">
+              <option value="es-AR" selected>🇦🇷 AR (Termomagnética)</option>
+              <option value="es-ES">🇪🇸 ES (Magnetotérmico)</option>
+              <option value="en">🇬🇧 EN (Circuit Breaker)</option>
+            </select>
+          </div>
+        </div>
+      </header>
+
+      <!-- CATEGORY TABS (CADe_SIMU style) -->
+      <nav class="category-bar">
+        <button class="cat-tab active" data-cat="power" data-i18n="cat.power" data-i18n-title="cat.power.title" title="Alimentaciones CA y CC">⚡ Alimentación</button>
+        <button class="cat-tab" data-cat="protections" data-i18n="cat.protections" data-i18n-title="cat.protections.title" title="Termomagnéticas, Guardamotores y Diferenciales">🛡️ Protecciones</button>
+        <button class="cat-tab" data-cat="control" data-i18n="cat.control" data-i18n-title="cat.control.title" title="Pulsadores e Interruptores de Mando">🔘 Accionamientos</button>
+        <button class="cat-tab" data-cat="contactors" data-i18n="cat.contactors" data-i18n-title="cat.contactors.title" title="Contactores de Potencia / Fuerza (1P - 4P)">⚡ Contactores</button>
+        <button class="cat-tab" data-cat="motors" data-i18n="cat.motors" data-i18n-title="cat.motors.title" title="Motores Eléctricos (Trifásicos y Monofásicos)">⚙️ Motores</button>
+        <button class="cat-tab" data-cat="coils" data-i18n="cat.coils" data-i18n-title="cat.coils.title" title="Bobinas de Contactores y Relés">🧲 Bobinas</button>
+        <button class="cat-tab" data-cat="contacts" data-i18n="cat.contacts" data-i18n-title="cat.contacts.title" title="Contactos Auxiliares (NA, NC, Dobles, Conmutados)">🔌 Contactos Aux</button>
+        <button class="cat-tab" data-cat="signaling" data-i18n="cat.signaling" data-i18n-title="cat.signaling.title" title="Pilotos de Señalización">💡 Señalización</button>
+        <button class="cat-tab" data-cat="cables" data-i18n="cat.cables" data-i18n-title="cat.cables.title" title="Cables y Bornas de Conexión">〰️ Cables</button>
+      </nav>
+
+      <!-- PALETTE / COMPONENT TOOLBAR -->
+      <div id="component-palette" class="palette-bar">
+        <!-- Injected dynamically by main.ts -->
+      </div>
+
+      <!-- MAIN WORKSPACE -->
+      <main class="canvas-container">
+        <canvas id="circuit-canvas"></canvas>
+      </main>
+
+      <!-- STATUS BAR -->
+      <footer class="statusbar">
+        <div class="status-section">
+          <span id="status-mode" class="badge badge-normal">Modo Edición</span>
+          <span id="status-hint">Tip: Haz clic en un cable o componente para colocarlo en la cuadrícula.</span>
+        </div>
+        <div class="status-section">
+          <span id="device-badge" class="badge badge-secondary" title="Detección de dispositivo para interfaz móvil / escritorio">💻 Desktop</span>
+          <span class="sep">|</span>
+          <span id="status-coords">X: 0, Y: 0</span>
+          <span class="sep">|</span>
+          <span id="status-zoom">Zoom: 100%</span>
+        </div>
+      </footer>
+
+      <!-- COMPONENT PROPERTIES MODAL -->
+      <div id="tag-modal" class="modal-backdrop" style="display: none">
+        <div class="modal modal-properties">
+          <div class="modal-header">
+            <h3 id="modal-comp-title" data-i18n="modal.tag.title">Propiedades del Componente</h3>
+            <span id="modal-comp-type" class="badge badge-normal"></span>
+          </div>
+          <div class="modal-field-group">
+            <label for="tag-input" class="modal-label" data-i18n="modal.tag.name">Nombre / Identificador (Tag):</label>
+            <input type="text" id="tag-input" class="text-input" autofocus />
+            <p class="modal-hint" data-i18n="modal.tag.desc">Los elementos con el mismo nombre se accionan sincronizados (diferencia mayúsculas y minúsculas).</p>
+          </div>
+          <div id="terminals-section" class="modal-terminals-section">
+            <h4 class="modal-subtitle" data-i18n="modal.terminals.title">Numeración de Bornes de Conexión</h4>
+            <div id="terminals-container" class="terminals-grid">
+              <!-- Inputs generados dinámicamente -->
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button id="modal-cancel" class="btn btn-secondary" data-i18n="modal.tag.cancel">Cancelar</button>
+            <button id="modal-save" class="btn btn-primary" data-i18n="modal.tag.accept">Aceptar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SHORT CIRCUIT ALERT MODAL -->
+      <div id="short-circuit-modal" class="modal-backdrop" style="display: none">
+        <div class="modal modal-alert">
+          <div class="modal-header-alert">
+            <span class="alert-icon">💥</span>
+            <h3 data-i18n="modal.short.title">¡Cortocircuito Detectado!</h3>
+          </div>
+          <p id="short-circuit-msg" class="short-circuit-msg">Se ha producido una unión indebida de potenciales.</p>
+          <div id="short-circuit-coords" class="short-circuit-coords">📍 Ubicación del corto: X: 0, Y: 0</div>
+          <div class="modal-actions">
+            <button id="btn-short-circuit-dismiss" class="btn btn-alert" data-i18n="modal.short.dismiss">Aceptar y Corregir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

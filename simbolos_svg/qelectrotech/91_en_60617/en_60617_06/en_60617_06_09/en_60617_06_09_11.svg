@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-86.0 -102.0 90.0 110.0" width="90.0" height="110.0">
+  <title>Transformador de corriente, símbolo general</title>
+  <line x1="-30" y1="-60" x2="-30" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -30.00 -30.00 A 5.00 5.00 0 0 0 -30.00 -20.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -30.00 -40.00 A 5.00 5.00 0 0 0 -30.00 -30.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-30" y1="-20" x2="-10" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-30" y1="-40" x2="-10" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

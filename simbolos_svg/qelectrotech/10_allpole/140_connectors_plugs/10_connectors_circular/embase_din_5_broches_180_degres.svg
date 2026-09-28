@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-35.0 -22.0 70.0 60.0" width="70.0" height="60.0">
+  <title>Socket de 5 pines a 180 grados</title>
+  <path d="M -2.09 -19.89 A 20.00 20.00 0 1 0 2.09 -19.89" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="0" y1="30" x2="0" y2="18" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="25" y1="10" x2="13" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-25" y1="10" x2="-13" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-18" y1="0" x2="-25" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="0.0" cy="15.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="-2,-20 -2,-16 2,-16 2,-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="25" y1="0" x2="18" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-15.0" cy="0.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="15.0" cy="0.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="10.0" cy="10.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-10.0" cy="10.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+</svg>

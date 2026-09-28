@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-11.0 -50.0 20.0 80.0" width="20.0" height="80.0">
+  <title>Contactor; contacto principal de cierre de un contactor</title>
+  <line x1="0" y1="-20" x2="0" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="0" x2="0" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="0" x2="-8" y2="-23" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 0.00 -24.50 A 2.50 2.50 0 0 0 -0.00 -19.50" stroke="black" stroke-width="1" fill="none"/>
+</svg>

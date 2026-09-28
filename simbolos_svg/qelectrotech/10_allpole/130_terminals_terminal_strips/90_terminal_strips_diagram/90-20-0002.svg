@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-26.0 -15.0 40.0 90.0" width="40.0" height="90.0">
+  <title>Dispositivo (conexión por encima)</title>
+  <rect x="-10" y="0" width="20" height="60" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="0" y1="-4" x2="0" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

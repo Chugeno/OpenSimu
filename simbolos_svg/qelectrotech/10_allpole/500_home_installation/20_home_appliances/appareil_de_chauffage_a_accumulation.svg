@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-35.0 -21.0 70.0 40.0" width="70.0" height="40.0">
+  <title>Calentador con acumulación</title>
+  <line x1="10" y1="-8" x2="10" y2="-11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-33" y="-7" width="66" height="23" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-10" y1="-7" x2="-10" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-30" y="-4" width="15" height="17" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="15" y="-4" width="15" height="17" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="0" y="-4" width="15" height="17" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-15" y="-4" width="15" height="17" stroke="black" stroke-width="1" fill="none"/>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -60.0 50.0 120.0" width="50.0" height="120.0">
+  <title>Clema de doble nivel (Introducción atravesada)</title>
+  <ellipse cx="20.0" cy="30.0" rx="3.0" ry="3.0" stroke="black" stroke-width="0.5" fill="none"/>
+  <rect x="12" y="-12" width="16" height="24" stroke="black" stroke-width="0.5" fill="none"/>
+  <rect x="-8" y="-12" width="16" height="24" stroke="black" stroke-width="0.5" fill="none"/>
+  <ellipse cx="0.0" cy="20.0" rx="3.0" ry="3.0" stroke="black" stroke-width="0.5" fill="none"/>
+  <line x1="10" y1="-40" x2="10" y2="40" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10" y1="-40" x2="10" y2="-40" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="-40" x2="10" y2="-50" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="-50" x2="30" y2="-50" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10" y1="-40" x2="-10" y2="40" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10" y1="40" x2="10" y2="40" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="40" x2="10" y2="50" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="50" x2="30" y2="50" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="30" y1="50" x2="30" y2="-50" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

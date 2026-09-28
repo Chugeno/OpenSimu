@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -12.0 60.0 40.0" width="60.0" height="40.0">
+  <title>Vatímetro horizontal</title>
+  <polyline points="7.5,7.5 10,15 10,20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-7.5,7.5 -10,15 -10,20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-5,-6 -2.5,6 0,0 2.5,6 5,-6" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="0" x2="20" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="0" x2="-10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="0.0" cy="0.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" fill="none"/>
+</svg>

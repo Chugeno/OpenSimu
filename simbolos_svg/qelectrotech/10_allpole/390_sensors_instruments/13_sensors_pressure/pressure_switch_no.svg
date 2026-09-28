@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -31.0 70.0 60.0" width="70.0" height="60.0">
+  <title>Presóstato NA</title>
+  <ellipse cx="20.0" cy="-20.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="40.0" cy="-20.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="6" y="8" width="10" height="10" stroke="black" stroke-width="0.5" fill="none"/>
+  <ellipse cx="0.0" cy="-20.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="30" y1="4" x2="30" y2="16" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="30,10 40,10 40,-6" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="0,-6 0,0 3,0" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="20,-6 20,0 18,0 4,4" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="11" y1="8" x2="11" y2="2" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-3,-20 -10,-20 -10,25 50,25 50,-20 43,-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="3" y1="-20" x2="17" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="23" y1="-20" x2="37" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

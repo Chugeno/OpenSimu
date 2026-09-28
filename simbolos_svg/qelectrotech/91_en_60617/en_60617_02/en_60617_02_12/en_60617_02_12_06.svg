@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -15.0 40.0 30.0" width="40.0" height="30.0">
+  <title>Accionamiento retartado en sentido contrario</title>
+  <line x1="-10" y1="-2" x2="10" y2="-2" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="2" x2="-10" y2="2" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 20.00 -10.00 A 10.00 10.00 0 0 0 20.00 10.00" stroke="black" stroke-width="1" fill="none"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-33.0 -25.0 50.0 50.0" width="50.0" height="50.0">
+  <title>Medidor de flujo de pulsos</title>
+  <ellipse cx="0.0" cy="0.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-13" y1="-2" x2="-13" y2="2" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-13" y1="0" x2="-2" y2="0" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-3" y1="-6" x2="0" y2="6" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="6" x2="0" y2="15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-15" x2="0" y2="-6" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

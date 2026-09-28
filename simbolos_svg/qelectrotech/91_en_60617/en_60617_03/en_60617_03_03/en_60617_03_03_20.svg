@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -10.0 80.0 20.0" width="80.0" height="20.0">
+  <title>Conector tipo enchufe y toma, macho-macho</title>
+  <rect x="0" y="-3" width="20" height="6" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="25" y1="0" x2="40" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-5" y1="0" x2="-20" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 0.00 -5.00 A 5.00 5.00 0 0 0 -0.00 5.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 20.00 5.00 A 5.00 5.00 0 0 0 20.00 -5.00" stroke="black" stroke-width="1" fill="none"/>
+</svg>

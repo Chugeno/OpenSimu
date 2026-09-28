@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-67.0 -91.0 130.0 190.0" width="130.0" height="190.0">
+  <title>Suelo radiante</title>
+  <line x1="10" y1="-61.69" x2="10" y2="-80" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-60" y="5" width="120" height="85" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 20.70 -43.54 A 6.96 4.54 0 0 0 20.71 -52.61" stroke="black" stroke-width="0.5" fill="none"/>
+  <line x1="-60" y1="75" x2="60" y2="75" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 22.45 -40.52 A 8.70 7.56 0 0 0 22.46 -55.64" stroke="black" stroke-width="0.5" fill="none"/>
+  <path d="M -17.66 -40.53 A 6.96 4.55 0 0 0 -17.53 -31.43" stroke="black" stroke-width="0.5" fill="none"/>
+  <line x1="-18" y1="-31.45" x2="24.18" y2="-31.45" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-21" y1="-55.64" x2="23.49" y2="-55.64" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-60" y1="45" x2="60" y2="45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-21" y1="-52.62" x2="20.71" y2="-52.62" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-60" y1="25" x2="60" y2="25" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-43.55" x2="20.71" y2="-43.55" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-19" y1="-40.52" x2="23.49" y2="-40.52" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-28.43" x2="24.18" y2="-28.43" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -19.46 -43.55 A 8.70 7.56 0 0 0 -19.30 -28.43" stroke="black" stroke-width="0.5" fill="none"/>
+  <line x1="-14.07" y1="-61.69" x2="-14.07" y2="-22.38" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-62.09" x2="0" y2="-22" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="13.75" y1="-62.09" x2="13.75" y2="-22" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-21" y1="-52.62" x2="-21" y2="-55.64" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10" y1="-61.69" x2="-10" y2="-80" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

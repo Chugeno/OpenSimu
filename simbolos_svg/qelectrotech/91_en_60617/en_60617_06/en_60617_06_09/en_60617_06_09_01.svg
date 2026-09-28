@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-86.0 -162.0 90.0 170.0" width="90.0" height="170.0">
+  <title>Transformador con dos devanados, símbolo general</title>
+  <ellipse cx="-30.0" cy="-90.0" rx="30.0" ry="30.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-30" y1="-140" x2="-30" y2="-120" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-30.0" cy="-50.0" rx="30.0" ry="30.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-30" y1="-20" x2="-30" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

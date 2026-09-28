@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-150.0 -29.0 160.0 40.0" width="160.0" height="40.0">
+  <title>Alimentación de corriente alterna en líneas de telecomunicación</title>
+  <line x1="0" y1="0" x2="-140" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -125.00 -10.00 A 5.00 2.50 0 0 0 -135.00 -10.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -125.00 -10.00 A 5.00 2.50 0 0 0 -115.00 -10.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-135" y1="-20" x2="-110" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-110,-16 -110,-23 -100,-20" stroke="black" stroke-width="1" fill="#000000" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

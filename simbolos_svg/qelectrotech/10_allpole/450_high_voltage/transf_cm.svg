@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-21.0 -30.0 40.0 130.0" width="40.0" height="130.0">
+  <title>Transformador de potencial CM</title>
+  <polyline points="3,24 3,45" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="8" y1="41" x2="13" y2="41" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="38" x2="10" y2="41" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="9.995" cy="30.995" rx="3.605" ry="3.605" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="7" y="9" width="6" height="14" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="7" y="60" width="6" height="14" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="9.995" cy="33.995" rx="3.605" ry="3.605" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="3,18 3,-1 7,-1" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="10,90 10,55 2,44" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="0,18 0,25 6,22" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="1.7,-8 10,6 10,28" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10.8" y1="-5" x2="-10.8" y2="-1" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-12.8" y1="-3" x2="-11.8" y2="-3" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-13.8" y1="-7" x2="-13.8" y2="1" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-17.8" y1="-3" x2="-17.8" y2="-2" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-15.8" y1="-5" x2="-15.8" y2="-1" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="7.7" y1="-10" x2="11.7" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="9.7" y1="-20" x2="9.7" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

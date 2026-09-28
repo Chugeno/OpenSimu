@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20.0 -10.0 40.0 20.0" width="40.0" height="20.0">
+  <title>Impresión y perforación simultáneas en la misma cinta</title>
+  <line x1="-10" y1="0" x2="-5" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="5" y1="0" x2="10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="0.0" cy="0.0" rx="2.0" ry="2.0" stroke="black" stroke-width="1" fill="#000000"/>
+</svg>

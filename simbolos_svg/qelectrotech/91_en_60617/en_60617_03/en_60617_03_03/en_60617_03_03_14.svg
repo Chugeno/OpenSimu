@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-53.0 -25.0 60.0 30.0" width="60.0" height="30.0">
+  <title>Toma de ruptura tipo telefónico, toma de aislamiento tipo telefónico</title>
+  <ellipse cx="0.0" cy="0.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="0.0" cy="-20.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="-3,-20 -30,-20 -50,0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-3,0 -30,0 -50,-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

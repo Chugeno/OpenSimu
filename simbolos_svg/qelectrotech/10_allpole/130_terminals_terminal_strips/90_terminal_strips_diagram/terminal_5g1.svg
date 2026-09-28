@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20.0 -32.0 140.0 520.0" width="140.0" height="520.0">
+  <title>Clema 5G1</title>
+  <ellipse cx="112.0" cy="153.5" rx="4.0" ry="2.5" stroke="black" stroke-width="1" fill="#000000"/>
+  <rect x="20" y="-20.58" width="83.18" height="90.82" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="52.08" y1="70.75" x2="52.08" y2="181.76" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="61.83" y1="-20.58" x2="61.83" y2="70.25" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="93.87" y1="70.75" x2="93.87" y2="181.76" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="73" y1="70.75" x2="73" y2="181.76" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="83" y1="-20.58" x2="83" y2="70.25" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-16" y="-26.85" width="36" height="102.28" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="40.94" y1="-20.58" x2="40.94" y2="70.25" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="31.19" y1="70.75" x2="31.19" y2="181.76" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="30" y1="181.76" x2="92.6" y2="181.76" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="65.17" y="323.75" width="18.77" height="85.76" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="72.69" y1="323.36" x2="72.69" y2="182.2" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="74" y1="409.81" x2="74" y2="481.8" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="111.9,153 111.9,181.76 92.93,181.76" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

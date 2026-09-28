@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-22.0 -40.0 40.0 70.0" width="40.0" height="70.0">
+  <title>Contador de energía reactiva</title>
+  <rect x="-15" y="-14" width="30" height="26" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-15" y="-22" width="30" height="8" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-10" y1="-30" x2="-10" y2="-22" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="-30" x2="10" y2="-22" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10" y1="12" x2="-10" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="13" x2="10" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

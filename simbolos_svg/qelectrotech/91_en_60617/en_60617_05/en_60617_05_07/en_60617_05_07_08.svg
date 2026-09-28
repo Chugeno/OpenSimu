@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.0 -75.0 50.0 80.0" width="50.0" height="80.0">
+  <title>Cátodo fotoeléctrico</title>
+  <path d="M -40.00 -70.00 A 20.00 20.00 0 0 0 0.00 -70.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-20" y1="-50" x2="-20" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

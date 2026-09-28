@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10.0 -27.0 40.0 60.0" width="40.0" height="60.0">
+  <title>Ánodo de tubo de rayos X</title>
+  <line x1="-5" y1="30" x2="25" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="-25" x2="10" y2="19" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

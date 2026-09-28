@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 60.0 60.0" width="60.0" height="60.0">
+  <title>Seccionador con fusible</title>
+  <polyline points="-25,-10 -20,10 -20,20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="15,-10 20,10 20,20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-5,-10 0,10 0,20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="14.31,-4.51 16.81,5.49 20.69,4.51 18.19,-5.49" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-5.69,-4.51 -3.19,5.49 0.69,4.51 -1.81,-5.49" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="18" y1="-10" x2="22" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-2" y1="-10" x2="2" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="20" y1="-20" x2="20" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-20" x2="0" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-25.69,-4.51 -23.19,5.49 -19.31,4.51 -21.81,-5.49" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-20" x2="-20" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-18" y1="-10" x2="-22" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="0" x2="-5" y2="0" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="0" x2="15" y2="0" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

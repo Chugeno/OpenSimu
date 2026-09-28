@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8.0 -13.0 30.0 30.0" width="30.0" height="30.0">
+  <title>Radiación coherente, no ionizante, p. Ej. Luz coherente</title>
+  <line x1="5" y1="-5" x2="14" y2="4" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="0" x2="9" y2="9" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="6,8 8,6 10,10" stroke="black" stroke-width="1" fill="#000000" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="11,3 13,1 15,5" stroke="black" stroke-width="1" fill="#000000" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-2" y1="2" x2="7" y2="-7" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-65.0 -35.0 130.0 40.0" width="130.0" height="40.0">
+  <title>Bornier</title>
+  <rect x="-40" y="-30" width="20" height="30" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-20" y="-30" width="20" height="30" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-60" y="-30" width="20" height="30" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="0" y="-30" width="20" height="30" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="20" y="-30" width="20" height="30" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="40" y="-30" width="20" height="30" stroke="black" stroke-width="1" fill="none"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -50.0 40.0 80.0" width="40.0" height="80.0">
+  <title>Contacto de cierre, cierre retardado</title>
+  <line x1="0" y1="-20" x2="0" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="0" x2="0" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="0" x2="-8" y2="-23" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -15.00 -20.00 A 10.00 10.00 0 0 0 -15.00 0.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-24" y1="-11" x2="-4" y2="-11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-24" y1="-9" x2="-4" y2="-9" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

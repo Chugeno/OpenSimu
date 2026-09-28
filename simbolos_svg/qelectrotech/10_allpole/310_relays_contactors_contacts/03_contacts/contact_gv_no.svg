@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-42.0 -44.0 50.0 60.0" width="50.0" height="60.0">
+  <title>Contacto NA disyuntor GV termico magnético</title>
+  <polyline points="-27,-16 -27,-20 -22,-20 -22,-26 -27,-26 -27,-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-37" y="-30" width="20" height="28" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-37" y1="-16" x2="-17" y2="-16" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-25" x2="0" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-15" y1="-15" x2="-7" y2="-15" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-10,-25 0,-5 0,10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

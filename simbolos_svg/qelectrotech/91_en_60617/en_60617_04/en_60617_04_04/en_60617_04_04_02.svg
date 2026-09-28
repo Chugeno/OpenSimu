@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-34.0 -35.0 60.0 50.0" width="60.0" height="50.0">
+  <title>Indicador de dirección de flujo/corriente</title>
+  <line x1="-20" y1="-20" x2="-10" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="-30" x2="20" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

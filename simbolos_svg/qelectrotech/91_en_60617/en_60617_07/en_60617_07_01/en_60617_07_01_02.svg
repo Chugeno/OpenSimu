@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10.0 -10.0 20.0 20.0" width="20.0" height="20.0">
+  <title>Función disyuntor</title>
+  <line x1="5" y1="-5" x2="-5" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="5" y1="5" x2="-5" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-86.0 -84.0 90.0 100.0" width="90.0" height="100.0">
+  <title>Transformador de tensión</title>
+  <line x1="-40" y1="-50" x2="-40" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -40.00 -30.00 A 5.00 5.00 0 0 0 -30.00 -30.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -30.00 -30.00 A 5.00 5.00 0 0 0 -20.00 -30.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -30.00 -16.00 A 5.00 5.00 0 0 0 -40.00 -16.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -20.00 -16.00 A 5.00 5.00 0 0 0 -30.00 -16.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-20" y1="-50" x2="-20" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-40" y1="-15" x2="-40" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-15" x2="-20" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

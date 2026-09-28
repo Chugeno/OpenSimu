@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.0 -85.0 50.0 90.0" width="50.0" height="90.0">
+  <title>Base no emisora para estructura de onda lenta abierta</title>
+  <line x1="0" y1="0" x2="-40" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="0" x2="0" y2="-80" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

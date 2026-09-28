@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-85.0 -90.0 110.0 100.0" width="110.0" height="100.0">
+  <title>Envolvente con pantalla externa (blindaje)</title>
+  <ellipse cx="-40.0" cy="-40.0" rx="40.0" ry="40.0" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -40.00 5.00 A 45.00 45.00 0 0 0 -40.00 -85.00" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+  <line x1="20" y1="-40" x2="5" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

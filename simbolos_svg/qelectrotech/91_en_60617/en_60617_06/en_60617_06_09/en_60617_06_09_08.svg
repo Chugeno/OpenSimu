@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-86.0 -104.0 90.0 130.0" width="90.0" height="130.0">
+  <title>Bobina de choque; Reactancia, símbolo general</title>
+  <line x1="-30" y1="0" x2="-30" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -30.00 0.00 A 30.00 30.00 0 1 0 -60.00 -30.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-30" y1="-80" x2="-30" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-60" y1="-30" x2="-30" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

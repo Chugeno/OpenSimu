@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -15.0 60.0 40.0" width="60.0" height="40.0">
+  <title>Voltímetro horizontal</title>
+  <line x1="-20" y1="0" x2="20" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="0.0" cy="0.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+</svg>

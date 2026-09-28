@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -25.0 60.0 40.0" width="60.0" height="40.0">
+  <title>Alterna monofásica > Continua</title>
+  <line x1="-15" y1="-10" x2="-20" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-15,-20 15,-20 15,10 -15,10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -7.49 -14.78 A 2.50 2.50 0 0 0 -2.50 -15.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="20" y1="0" x2="15" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="15" y1="-10" x2="20" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="0" x2="-15" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="11" y1="4" x2="12.5" y2="4" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="8" y1="4" x2="9.5" y2="4" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="5" y1="4" x2="6.5" y2="4" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="5" y1="6" x2="12.5" y2="6" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -7.51 -15.22 A 2.50 2.50 0 0 0 -12.50 -15.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="14.5" y1="-19.5" x2="-14.5" y2="9.5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

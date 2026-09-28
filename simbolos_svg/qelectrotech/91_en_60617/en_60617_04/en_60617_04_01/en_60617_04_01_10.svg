@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -30.0 70.0 40.0" width="70.0" height="40.0">
+  <title>Resistencia con bornes de corriente y tensión separados</title>
+  <line x1="-20" y1="0" x2="-10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-10" y="-5" width="30" height="10" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="20" y1="0" x2="30" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10" y1="-20" x2="-10" y2="-6" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="20" y1="-20" x2="20" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

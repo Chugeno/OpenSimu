@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-85.0 -95.0 150.0 240.0" width="150.0" height="240.0">
+  <title>Pentodo</title>
+  <line x1="-80" y1="20" x2="-30" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-30" y1="20" x2="20" y2="20" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-90" x2="0" y2="-50" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-50" x2="20" y2="-50" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-80" y1="0" x2="-30" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-30" y1="0" x2="20" y2="0" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 20.00 120.00 A 20.00 20.00 0 0 0 -20.00 120.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-20" y1="120" x2="-20" y2="140" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="20" y1="120" x2="20" y2="140" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-60" y1="-10" x2="-60" y2="60" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="60" y1="-10" x2="60" y2="60" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 60.00 -10.00 A 60.00 60.00 0 0 0 -60.00 -10.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -60.00 60.00 A 60.00 60.00 0 0 0 60.00 60.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 28.28 91.72 A 40.00 40.00 0 0 0 -40.00 120.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-40" y1="120" x2="-40" y2="140" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="40" y1="80" x2="29" y2="91" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="40" y1="80" x2="40" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="40" y1="-20" x2="-20" y2="-20" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

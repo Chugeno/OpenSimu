@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.0 -45.0 50.0 50.0" width="50.0" height="50.0">
+  <title>Central solar, en servicio o sin especificar</title>
+  <rect x="-40" y="-40" width="40" height="40" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-25" y1="-40" x2="-15" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-30" y1="-35" x2="-20" y2="-25" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-19,-32 -17,-34 -14,-29" stroke="black" stroke-width="1" fill="#000000" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-22,-29 -19,-24 -24,-27" stroke="black" stroke-width="1" fill="#000000" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-40" y="-20" width="40" height="20" stroke="black" stroke-width="1" fill="none"/>
+</svg>

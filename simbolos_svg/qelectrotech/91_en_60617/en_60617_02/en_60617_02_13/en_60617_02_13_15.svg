@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-31.0 -15.0 40.0 30.0" width="40.0" height="30.0">
+  <title>Accionado por rodillo</title>
+  <line x1="-20" y1="0" x2="6" y2="0" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-20.0" cy="0.0" rx="9.0" ry="9.0" stroke="black" stroke-width="1" fill="none"/>
+</svg>

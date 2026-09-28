@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -40.0 50.0 80.0" width="50.0" height="80.0">
+  <title>Excitación separada del motor DC</title>
+  <rect x="-3" y="-17" width="6" height="2" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -20.00 8.00 A 3.50 2.50 0 0 0 -20.00 13.00" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="0.0" cy="0.0" rx="15.0" ry="15.0" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -20.00 -12.00 A 3.50 2.50 0 0 0 -20.00 -7.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="0" y1="17" x2="0" y2="30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -20.00 -2.00 A 3.50 2.50 0 0 0 -20.00 3.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -20.00 3.00 A 3.50 2.50 0 0 0 -20.00 8.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -20.00 -7.00 A 3.50 2.50 0 0 0 -20.00 -2.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="0" y1="-30" x2="0" y2="-17" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-30" x2="-20" y2="-12" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="30" x2="-20" y2="13" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-6" y1="8" x2="6" y2="8" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-3" y="15" width="6" height="2" stroke="black" stroke-width="1" fill="none"/>
+</svg>

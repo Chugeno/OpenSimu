@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -25.0 30.0 30.0" width="30.0" height="30.0">
+  <title>Caja de conexión; Caja de derivación</title>
+  <ellipse cx="-10.0" cy="-10.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-10.0" cy="-10.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#000000"/>
+</svg>

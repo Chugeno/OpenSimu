@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-19.0 -31.0 40.0 60.0" width="40.0" height="60.0">
+  <title>Protección contra descargas 2</title>
+  <line x1="8" y1="24" x2="14" y2="24" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="6" y1="22" x2="16" y2="22" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="4" y1="20" x2="18" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-11" y1="-10" x2="-11" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-15" y="-10" width="30" height="20" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="11" y1="20" x2="11" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="-10" x2="10" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

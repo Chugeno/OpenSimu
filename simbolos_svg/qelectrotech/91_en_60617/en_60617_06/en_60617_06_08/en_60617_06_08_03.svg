@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-75.0 -110.0 90.0 140.0" width="90.0" height="140.0">
+  <title>Motor de inducción, trifásico, con rotor bobinado</title>
+  <ellipse cx="-30.0" cy="-40.0" rx="30.0" ry="30.0" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -25.00 -30.00 A 5.00 2.50 0 0 0 -35.00 -30.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -25.00 -30.00 A 5.00 2.50 0 0 0 -15.00 -30.00" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-30.0" cy="-40.0" rx="40.0" ry="40.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-30" y1="-100" x2="-30" y2="-80" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-50" y1="-100" x2="-50" y2="-75" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10" y1="-100" x2="-10" y2="-75" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-30" y1="20" x2="-30" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-50" y1="20" x2="-50" y2="-17" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10" y1="20" x2="-10" y2="-17" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

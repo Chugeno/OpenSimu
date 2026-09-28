@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-105.0 -45.0 110.0 80.0" width="110.0" height="80.0">
+  <title>Punto de inyección de alimentación</title>
+  <line x1="-100" y1="-20" x2="0" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-70" y="-40" width="40" height="40" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-50" y1="0" x2="-50" y2="30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-150.0 -59.0 160.0 70.0" width="160.0" height="70.0">
+  <title>Línea en canaleta de seis vías</title>
+  <line x1="0" y1="0" x2="-140" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-70.0" cy="-20.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-65" y1="-25" x2="-60" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

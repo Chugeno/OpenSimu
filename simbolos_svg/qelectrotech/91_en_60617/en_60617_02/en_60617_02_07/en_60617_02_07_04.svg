@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -15.0 50.0 30.0" width="50.0" height="30.0">
+  <title>Material gaseosa</title>
+  <rect x="-20" y="-10" width="40" height="20" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="14.0" cy="4.0" rx="4.0" ry="4.0" stroke="black" stroke-width="1" fill="#000000"/>
+</svg>

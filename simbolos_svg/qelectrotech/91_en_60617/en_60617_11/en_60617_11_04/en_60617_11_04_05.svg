@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-110.0 -30.0 120.0 40.0" width="120.0" height="40.0">
+  <title>Concentrador de línea en poste</title>
+  <ellipse cx="-50.0" cy="-15.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-50" y1="-20" x2="-50" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-50" y1="-15" x2="-43" y2="-15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-50" y1="-19" x2="-56" y2="-19" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-50" y1="-11" x2="-56" y2="-11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-50.0" cy="0.0" rx="5.0" ry="5.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="0" y1="0" x2="-100" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-21.0 -13.0 40.0 30.0" width="40.0" height="30.0">
+  <title>Bateria 1 elemento, terminales cortos</title>
+  <line x1="10" y1="0" x2="3" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-3" y1="0" x2="-10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-3" y1="-9" x2="-3" y2="9" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="0" y="-6" width="3" height="12" stroke="black" stroke-width="1" fill="#000000"/>
+</svg>

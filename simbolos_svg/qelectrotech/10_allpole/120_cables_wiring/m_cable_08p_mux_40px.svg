@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-144.0 -24.0 290.0 30.0" width="290.0" height="30.0">
+  <title>Cable multifilar 8 polos Mux 40px</title>
+  <line x1="-60" y1="-10" x2="-60" y2="-19" stroke="red" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="20" y1="-10" x2="20" y2="-19" stroke="red" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="140" y1="-10" x2="140" y2="-19" stroke="red" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="100" y1="-10" x2="100" y2="-19" stroke="red" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="60" y1="-10" x2="60" y2="-19" stroke="red" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-10" x2="-20" y2="-19" stroke="red" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-100" y1="-10" x2="-100" y2="-19" stroke="red" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-10" x2="0" y2="0" stroke="red" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-140" y1="-10" x2="-140" y2="-19" stroke="red" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="140" y1="-10" x2="-140" y2="-10" stroke="red" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

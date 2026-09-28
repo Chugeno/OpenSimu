@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-80.0 -87.0 100.0 90.0" width="100.0" height="90.0">
+  <title>Motor serie, monofásico</title>
+  <ellipse cx="-30.0" cy="-30.0" rx="30.0" ry="30.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-70" y1="-80" x2="-70" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-70" y1="-30" x2="-60" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-30" x2="10" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="-30" x2="10" y2="-50" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 10.00 -60.00 A 5.00 5.00 0 0 0 10.00 -50.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 10.00 -70.00 A 5.00 5.00 0 0 0 10.00 -60.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 10.00 -80.00 A 5.00 5.00 0 0 0 10.00 -70.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -25.00 -20.00 A 5.00 2.50 0 0 0 -35.00 -20.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -25.00 -20.00 A 5.00 2.50 0 0 0 -15.00 -20.00" stroke="black" stroke-width="1" fill="none"/>
+</svg>

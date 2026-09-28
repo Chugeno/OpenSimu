@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.0 -65.0 50.0 70.0" width="50.0" height="70.0">
+  <title>Cátodo caliente, calentamiento indirecto</title>
+  <line x1="-40" y1="-50" x2="-40" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-40,-50 -40,-60 0,-60 0,-50" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20.0 -25.0 30.0 30.0" width="30.0" height="30.0">
+  <title>Devanado hexafásico, estrella</title>
+  <line x1="-5" y1="-20" x2="-5" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-15" y1="-15" x2="5" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-15" y1="-5" x2="5" y2="-15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-5.0" cy="-10.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#000000"/>
+</svg>

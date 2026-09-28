@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-56.0 -62.0 120.0 110.0" width="120.0" height="110.0">
+  <title>Transformador de impulsos o de corriente con tres conductores primarios roscados</title>
+  <ellipse cx="0.0" cy="1.0" rx="20.0" ry="20.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="0" y1="-40" x2="0" y2="40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-5" y1="5" x2="5" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="20" y1="0" x2="60" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="35" y1="10" x2="45" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="40" y1="10" x2="50" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

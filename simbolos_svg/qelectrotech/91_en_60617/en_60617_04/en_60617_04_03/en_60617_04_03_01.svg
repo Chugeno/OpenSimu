@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -2.0 50.0 10.0" width="50.0" height="10.0">
+  <title>Bobina, símbolo general; Devanado, símbolo general</title>
+  <path d="M 20.00 5.00 A 5.00 5.00 0 0 0 10.00 5.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 0.00 5.00 A 5.00 5.00 0 0 0 -10.00 5.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 30.00 5.00 A 5.00 5.00 0 0 0 20.00 5.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 10.00 5.00 A 5.00 5.00 0 0 0 0.00 5.00" stroke="black" stroke-width="1" fill="none"/>
+</svg>

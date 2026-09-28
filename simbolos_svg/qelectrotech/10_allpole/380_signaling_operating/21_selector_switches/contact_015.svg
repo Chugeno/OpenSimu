@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-12.0 -30.0 50.0 60.0" width="50.0" height="60.0">
+  <title>Pulsador giratorio luminoso de dos posiciones</title>
+  <line x1="-2" y1="0" x2="11" y2="0" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-8" y1="2" x2="-4" y2="-2" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-8" y1="-2" x2="-4" y2="2" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-6.0" cy="0.0" rx="3.75" ry="3.75" stroke="black" stroke-width="0.5" fill="none"/>
+  <line x1="13" y1="3" x2="17" y2="-3" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="15,0 18,0 20,3 22,0 27,0" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="13" y1="3" x2="9" y2="-3" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-3,4 0,4 0,-4 3,-4" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="30,20 30,10 24,-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="30" y1="-20" x2="30" y2="-9" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

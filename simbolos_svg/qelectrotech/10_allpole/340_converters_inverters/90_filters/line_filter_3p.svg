@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40.0 -35.0 90.0 70.0" width="90.0" height="70.0">
+  <title>Filtro de linea 3P</title>
+  <rect x="-35" y="-25" width="75" height="50" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="3" y1="-5" x2="-3" y2="5" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -4.00 -3.00 A 5.00 4.00 0 0 0 -9.00 1.00" stroke="black" stroke-width="0.5" fill="none"/>
+  <path d="M 0.00 0.00 A 4.00 3.00 0 0 0 -4.00 -3.00" stroke="black" stroke-width="0.5" fill="none"/>
+  <path d="M 0.00 -0.00 A 4.00 3.00 0 0 0 4.00 3.00" stroke="black" stroke-width="0.5" fill="none"/>
+  <path d="M 4.00 3.00 A 5.00 4.00 0 0 0 9.00 -1.00" stroke="black" stroke-width="0.5" fill="none"/>
+  <ellipse cx="0.0" cy="-25.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#ffffff"/>
+  <ellipse cx="20.0" cy="-25.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#ffffff"/>
+  <ellipse cx="-20.0" cy="-25.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#ffffff"/>
+  <ellipse cx="40.0" cy="5.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#ffffff"/>
+  <ellipse cx="-20.0" cy="25.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#ffffff"/>
+  <ellipse cx="0.0" cy="25.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#ffffff"/>
+  <ellipse cx="20.0" cy="25.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#ffffff"/>
+</svg>

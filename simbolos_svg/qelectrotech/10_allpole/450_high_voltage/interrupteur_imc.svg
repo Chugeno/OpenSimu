@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-21.0 -50.0 40.0 130.0" width="40.0" height="130.0">
+  <title>Interruptor IMC</title>
+  <ellipse cx="9.995000000000001" cy="20.995" rx="5.655" ry="5.655" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="1.7,-28 9.7,-14 9.7,69" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10.8" y1="-25" x2="-10.8" y2="-21" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-12.8" y1="-23" x2="-11.8" y2="-23" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-13.8" y1="-27" x2="-13.8" y2="-19" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-17.8" y1="-23" x2="-17.8" y2="-22" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-15.8" y1="-25" x2="-15.8" y2="-21" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="9.7" cy="-29.0" rx="1.0" ry="1.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="7.7" y1="-30" x2="11.7" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="9.7" y1="57" x2="4.7" y2="57" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="4.7" y1="52" x2="4.7" y2="62" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="2.95" y1="52" x2="2.95" y2="62" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-0.3" y1="57" x2="2.7" y2="57" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -5.30 62.00 A 5.00 5.00 0 0 0 -5.30 52.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="9.7" y1="-40" x2="9.7" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

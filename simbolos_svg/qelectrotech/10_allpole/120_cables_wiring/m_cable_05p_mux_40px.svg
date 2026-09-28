@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-84.0 -24.0 170.0 30.0" width="170.0" height="30.0">
+  <title>Cable multifilar 5 polos Mux 40px</title>
+  <line x1="0" y1="-10" x2="0" y2="-19" stroke="red" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="80" y1="-10" x2="80" y2="-19" stroke="red" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="40" y1="-10" x2="40" y2="-19" stroke="red" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-40" y1="-10" x2="-40" y2="-19" stroke="red" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-10" x2="0" y2="0" stroke="red" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-80" y1="-10" x2="-80" y2="-19" stroke="red" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="80" y1="-10" x2="-80" y2="-10" stroke="red" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

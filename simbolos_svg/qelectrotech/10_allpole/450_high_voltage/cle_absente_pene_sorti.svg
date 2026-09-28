@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -15.0 60.0 30.0" width="60.0" height="30.0">
+  <title>Llave ausente, maniobra de salida bloqueada</title>
+  <rect x="-10" y="-10" width="20" height="20" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="18" y="-4" width="22" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <ellipse cx="0.0" cy="0.0" rx="7.07" ry="7.07" stroke="black" stroke-width="1" fill="none"/>
+</svg>

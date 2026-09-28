@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-71.0 -32.0 80.0 50.0" width="80.0" height="50.0">
+  <title>Conmutador multiposición, con diagrama de posiciones</title>
+  <line x1="-29.25" y1="0.8" x2="-39.25" y2="-19.2" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-29.25" y1="0.8" x2="-19.25" y2="-19.2" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-29.25" y1="0.8" x2="0.75" y2="-19.2" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-29.25" y1="0.8" x2="-59.25" y2="-19.2" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-29.0" cy="0.0" rx="15.0" ry="15.0" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="-16,-4 -13,-4 -14,1" stroke="black" stroke-width="1" fill="#000000" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -20.67 -17.08 A 19.00 19.00 0 0 0 -44.93 -10.35" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="-42,-12 -44,-14 -45,-10" stroke="black" stroke-width="1" fill="#000000" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

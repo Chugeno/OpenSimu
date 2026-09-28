@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-86.0 -102.0 100.0 110.0" width="100.0" height="110.0">
+  <title>Transformador de corriente, símbolo general</title>
+  <line x1="-30" y1="-60" x2="-30" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-30" x2="10" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-30.0" cy="-30.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-10" y1="-20" x2="0" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-5" y1="-20" x2="5" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-14.0 -171.0 140.0 180.0" width="140.0" height="180.0">
+  <title>Antena</title>
+  <ellipse cx="60.0" cy="-138.5" rx="12.0" ry="21.5" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="0" y="-85" width="120" height="85" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="0" y1="-15" x2="120" y2="-15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-45" x2="120" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-65" x2="120" y2="-65" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="60.0" cy="-138.0" rx="10.0" ry="20.0" stroke="black" stroke-width="0.5" fill="none"/>
+  <line x1="60" y1="-118" x2="86" y2="-128" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="82" y="-132" width="4" height="3" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="80" y="-133" width="2" height="5" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="60" y1="-110" x2="60" y2="-116" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="50" y1="-160" x2="50" y2="-150" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="70" y1="-160" x2="70" y2="-150" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

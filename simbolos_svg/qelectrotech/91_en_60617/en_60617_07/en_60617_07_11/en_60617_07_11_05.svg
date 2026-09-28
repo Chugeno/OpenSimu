@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-65.0 -65.0 70.0 70.0" width="70.0" height="70.0">
+  <title>Conmutador multiposición, máximo cuatro posiciones</title>
+  <line x1="0" y1="-40" x2="0" y2="-60" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-40" x2="-20" y2="-60" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-40" y1="-40" x2="-40" y2="-60" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-60" y1="-40" x2="-60" y2="-60" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-40,0 -40,-20 -60,-35" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

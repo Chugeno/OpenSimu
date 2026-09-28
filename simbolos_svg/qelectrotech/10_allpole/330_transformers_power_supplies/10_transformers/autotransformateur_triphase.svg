@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-28.0 -45.0 60.0 90.0" width="60.0" height="90.0">
+  <title>Autotransformador trifásico</title>
+  <path d="M 18.55 -18.49 A 25.00 25.00 0 0 0 -15.00 5.00" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="0.0" cy="5.0" rx="15.0" ry="15.0" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="11,16 17,30 17,35" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-11,16 -17,30 -17,35" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-11,-9 -17,-30 -17,-35" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="11,-20 17,-30 17,-35" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="20" x2="0" y2="35" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-35" x2="0" y2="-18" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

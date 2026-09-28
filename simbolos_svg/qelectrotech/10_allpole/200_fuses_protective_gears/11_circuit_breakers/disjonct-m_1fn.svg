@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20.0 -40.0 40.0 70.0" width="40.0" height="70.0">
+  <title>Disyuntor termico magnetico en polo P+N</title>
+  <line x1="10" y1="15.5" x2="10" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="8" y1="-20" x2="12" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-12" y1="-10" x2="7" y2="-10" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 10.00 15.50 A 4.00 2.50 0 0 0 10.00 10.50" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="-10,20 -10,0 -15,-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="10,10.5 10,8 15,8 15,3 10,3 10,0 5,-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="-30" x2="10" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="12" y1="-26" x2="8" y2="-22" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="8" y1="-26" x2="12" y2="-22" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10" y1="-30" x2="-10" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-12" y1="-20" x2="-8" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

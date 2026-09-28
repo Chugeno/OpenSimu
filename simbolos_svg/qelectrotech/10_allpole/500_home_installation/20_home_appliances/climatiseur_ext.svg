@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-14.0 -171.0 140.0 180.0" width="140.0" height="180.0">
+  <title>Climatización, unidad exterior</title>
+  <rect x="0" y="-85" width="120" height="85" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="0" y1="-15" x2="120" y2="-15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-45" x2="120" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-65" x2="120" y2="-65" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="25" y="-150" width="70" height="50" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 48.00 -140.00 A 15.00 15.00 0 0 1 48.00 -140.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="41" y1="-138" x2="55" y2="-138" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="38" y1="-136" x2="58" y2="-136" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="36" y1="-134" x2="59" y2="-134" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="35" y1="-132" x2="61" y2="-132" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="34" y1="-130" x2="62" y2="-130" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="33" y1="-128" x2="62" y2="-128" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="33" y1="-126" x2="62" y2="-126" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="33" y1="-124" x2="63" y2="-124" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="33" y1="-122" x2="62" y2="-122" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="34" y1="-120" x2="62" y2="-120" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="35" y1="-118" x2="61" y2="-118" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="36" y1="-116" x2="60" y2="-116" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="38" y1="-114" x2="58" y2="-114" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="41" y1="-112" x2="55" y2="-112" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="34" y="-99" width="2" height="1" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="84" y="-99" width="2" height="1" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="50" y1="-160" x2="50" y2="-150" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="70" y1="-160" x2="70" y2="-150" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-67.0 -20.0 100.0 40.0" width="100.0" height="40.0">
+  <title>Cable 2 fases+tierra</title>
+  <line x1="17.95" y1="7.95" x2="21.95" y2="11.95" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-2.05" y1="7.95" x2="1.95" y2="11.95" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-30.25" y1="10" x2="27.27" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-22" y1="8" x2="-18" y2="12" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

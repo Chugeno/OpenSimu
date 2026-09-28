@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -24.0 30.0 50.0" width="30.0" height="50.0">
+  <title>Toma corriente 3P</title>
+  <line x1="0" y1="7" x2="0" y2="16" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="0.0" cy="0.0" rx="10.05" ry="10.05" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-6" y1="-8" x2="-6" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-4.0" cy="-4.0" rx="2.0" ry="2.0" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="0.0" cy="5.0" rx="2.0" ry="2.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="6" y1="-8" x2="6" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="4.0" cy="-4.0" rx="2.0" ry="2.0" stroke="black" stroke-width="1" fill="none"/>
+</svg>

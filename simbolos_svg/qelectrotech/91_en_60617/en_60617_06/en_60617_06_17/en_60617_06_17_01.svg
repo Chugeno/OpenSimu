@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-55.0 -45.0 70.0 50.0" width="70.0" height="50.0">
+  <title>Fuente de calor, símbolo general</title>
+  <rect x="-40" y="-40" width="40" height="40" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-45" y="-40" width="5" height="40" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-50" y="-40" width="5" height="40" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="0" y="-40" width="5" height="40" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="5" y="-40" width="5" height="40" stroke="black" stroke-width="1" fill="none"/>
+</svg>

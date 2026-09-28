@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.0 -85.0 50.0 90.0" width="50.0" height="90.0">
+  <title>Luz aeronáutica de superficie, haz omnidireccional blanco en la parte superior, y haz blanco/blanco</title>
+  <rect x="-40" y="-40" width="40" height="40" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-40" y="-80" width="40" height="40" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-20.0" cy="-60.0" rx="15.0" ry="15.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-20" y1="-40" x2="-20" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -40.0 100.0 80.0" width="100.0" height="80.0">
+  <title>Alimentación 24V DC monofásica</title>
+  <rect x="-25" y="-30" width="90" height="60" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="50.0" cy="-30.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#ffffff"/>
+  <ellipse cx="30.0" cy="-30.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#ffffff"/>
+  <ellipse cx="-10.0" cy="30.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#ffffff"/>
+  <ellipse cx="50.0" cy="30.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#ffffff"/>
+  <ellipse cx="10.0" cy="30.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#ffffff"/>
+  <ellipse cx="30.0" cy="30.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#ffffff"/>
+  <rect x="-10" y="-15" width="60" height="30" stroke="black" stroke-width="0.5" fill="none"/>
+  <line x1="50" y1="-15" x2="-10" y2="15" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-10.0" cy="-30.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#ffffff"/>
+</svg>

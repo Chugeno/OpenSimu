@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-35.0 -37.0 50.0 40.0" width="50.0" height="40.0">
+  <title>Toma de corriente (potencia) con obturador</title>
+  <path d="M 0.00 0.00 A 10.00 10.00 0 0 0 -20.00 -0.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-10" y1="-30" x2="-10" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="0" x2="-30" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="0" x2="10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

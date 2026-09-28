@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20.0 -90.0 40.0 100.0" width="40.0" height="100.0">
+  <title>Termopar con elemento térmico aislado</title>
+  <ellipse cx="0.0" cy="-40.0" rx="2.0" ry="2.0" stroke="black" stroke-width="1" fill="#000000"/>
+  <polyline points="-10,-80 -10,-55 0,-40 10,-55 10,-80" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 10.00 -20.00 A 10.00 10.00 0 0 0 -10.00 -20.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-10" y1="-20" x2="-10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="-20" x2="10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

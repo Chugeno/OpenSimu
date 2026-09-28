@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-65.0 -65.0 100.0 70.0" width="100.0" height="70.0">
+  <title>Generador manual (magneto de llamada)</title>
+  <ellipse cx="-30.0" cy="-30.0" rx="30.0" ry="30.0" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="0" y="-32" width="10" height="4" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="10,-28 10,-20 30,-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

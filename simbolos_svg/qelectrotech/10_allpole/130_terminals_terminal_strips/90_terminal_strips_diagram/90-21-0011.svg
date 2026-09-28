@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-26.0 -15.0 40.0 90.0" width="40.0" height="90.0">
+  <title>Dispositivo (conexión por encima) iniciando</title>
+  <line x1="0" y1="-4" x2="0" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="10,0 -10,0 -10,60 10,60" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

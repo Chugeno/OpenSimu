@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-22.0 -35.0 30.0 50.0" width="30.0" height="50.0">
+  <title>Pulsador protegido contra accionamiento involuntario</title>
+  <ellipse cx="-10.0" cy="-10.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-10.0" cy="-10.0" rx="5.0" ry="5.0" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="-5,-30 -5,-25 5,-25 5,5 -5,5 -5,10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

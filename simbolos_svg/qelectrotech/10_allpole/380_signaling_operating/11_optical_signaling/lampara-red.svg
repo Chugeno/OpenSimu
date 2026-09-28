@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -30.0 30.0 60.0" width="30.0" height="60.0">
+  <title>Lámpara roja</title>
+  <line x1="0" y1="-20" x2="0" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="0.0" cy="0.0" rx="8.5" ry="8.5" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="6.22" y1="-5.33" x2="-6.14" y2="5.12" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-6.14" y1="-5.33" x2="6.22" y2="5.12" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

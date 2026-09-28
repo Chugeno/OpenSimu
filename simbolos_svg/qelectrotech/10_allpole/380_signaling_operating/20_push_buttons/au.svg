@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-17.0 -30.0 30.0 60.0" width="30.0" height="60.0">
+  <title>Paro de emergencia (NC)</title>
+  <polyline points="5,-10 0,10 0,20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-4" y1="-2" x2="-1" y2="0" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -7.00 -5.00 A 4.00 5.00 0 0 0 -7.00 5.00" stroke="black" stroke-width="0.5" fill="none"/>
+  <line x1="-4" y1="-2" x2="-4" y2="0" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-9" x2="6" y2="-9" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-20" x2="0" y2="-9" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-7" y1="-5" x2="-7" y2="5" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-7" y1="0" x2="3" y2="0" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

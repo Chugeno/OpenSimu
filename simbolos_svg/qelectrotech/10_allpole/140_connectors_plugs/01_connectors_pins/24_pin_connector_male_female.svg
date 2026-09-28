@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-265.0 -65.0 550.0 70.0" width="550.0" height="70.0">
+  <title>Conector 24 pines hembra+macho</title>
+  <line x1="-240" y1="-36" x2="-240" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-36" x2="-20" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-160" y1="-25" x2="-160" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-200" y1="-25" x2="-200" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-36" x2="0" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-25" x2="0" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-80" y1="-25" x2="-80" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-240" y1="-25" x2="-240" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="260" y1="-36" x2="260" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="160" y1="-25" x2="160" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-120" y1="-25" x2="-120" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-40" y1="-36" x2="-40" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 3.00 -32.00 A 3.00 3.00 0 0 0 -3.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-40" y1="-25" x2="-40" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-161" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <rect x="-201" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="260" y1="-25" x2="260" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -237.00 -32.00 A 3.00 3.00 0 0 0 -243.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="240" y1="-25" x2="240" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-241" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <path d="M 263.00 -32.00 A 3.00 3.00 0 0 0 257.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-41" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="-60" y1="-36" x2="-60" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-180" y1="-25" x2="-180" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="240" y1="-36" x2="240" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-121" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <rect x="-1" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <rect x="-81" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <rect x="259" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="40" y1="-25" x2="40" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-181" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="-80" y1="-36" x2="-80" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="220" y1="-36" x2="220" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-100" y1="-36" x2="-100" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="270" y1="-37" x2="270" y2="-32" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-25" x2="-20" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-100" y1="-25" x2="-100" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-21" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <path d="M -17.00 -32.00 A 3.00 3.00 0 0 0 -23.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="266" y1="-32" x2="274" y2="-32" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="80" y1="-25" x2="80" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-101" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="268" y1="-30" x2="272" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="79" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="-140" y1="-25" x2="-140" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-60" y1="-25" x2="-60" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -37.00 -32.00 A 3.00 3.00 0 0 0 -43.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-61" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <path d="M -57.00 -32.00 A 3.00 3.00 0 0 0 -63.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-141" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="269" y1="-28" x2="271" y2="-28" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 243.00 -32.00 A 3.00 3.00 0 0 0 237.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -77.00 -32.00 A 3.00 3.00 0 0 0 -83.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="120" y1="-25" x2="120" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="200" y1="-36" x2="200" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -97.00 -32.00 A 3.00 3.00 0 0 0 -103.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="200" y1="-25" x2="200" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="39" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="60" y1="-25" x2="60" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="180" y1="-36" x2="180" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="119" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="-220" y1="-25" x2="-220" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-120" y1="-36" x2="-120" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="199" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="-140" y1="-36" x2="-140" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="160" y1="-36" x2="160" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-160" y1="-36" x2="-160" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="59" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="-180" y1="-36" x2="-180" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="159" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <rect x="239" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="-200" y1="-36" x2="-200" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="140" y1="-36" x2="140" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-220" y1="-36" x2="-220" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="220" y1="-25" x2="220" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="140" y1="-25" x2="140" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 223.00 -32.00 A 3.00 3.00 0 0 0 217.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="139" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <rect x="219" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="100" y1="-25" x2="100" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="180" y1="-25" x2="180" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -117.00 -32.00 A 3.00 3.00 0 0 0 -123.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 203.00 -32.00 A 3.00 3.00 0 0 0 197.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -137.00 -32.00 A 3.00 3.00 0 0 0 -143.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -157.00 -32.00 A 3.00 3.00 0 0 0 -163.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="99" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <rect x="179" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <path d="M -177.00 -32.00 A 3.00 3.00 0 0 0 -183.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 183.00 -32.00 A 3.00 3.00 0 0 0 177.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -197.00 -32.00 A 3.00 3.00 0 0 0 -203.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -217.00 -32.00 A 3.00 3.00 0 0 0 -223.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 163.00 -32.00 A 3.00 3.00 0 0 0 157.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-221" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <path d="M 143.00 -32.00 A 3.00 3.00 0 0 0 137.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="20" y1="-25" x2="20" y2="-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="120" y1="-36" x2="120" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="100" y1="-36" x2="100" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="80" y1="-36" x2="80" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="60" y1="-36" x2="60" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="40" y1="-36" x2="40" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="20" y1="-36" x2="20" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 123.00 -32.00 A 3.00 3.00 0 0 0 117.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 103.00 -32.00 A 3.00 3.00 0 0 0 97.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 83.00 -32.00 A 3.00 3.00 0 0 0 77.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 63.00 -32.00 A 3.00 3.00 0 0 0 57.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 43.00 -32.00 A 3.00 3.00 0 0 0 37.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 23.00 -32.00 A 3.00 3.00 0 0 0 17.00 -32.00" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="19" y="-32" width="2" height="7" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="-250" y1="-37" x2="-250" y2="-32" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-254" y1="-32" x2="-246" y2="-32" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-252" y1="-30" x2="-248" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-251" y1="-28" x2="-249" y2="-28" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-250" y1="-60" x2="270" y2="-60" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="270" y1="-60" x2="280" y2="-50" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="280" y1="-50" x2="280" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="280" y1="-10" x2="270" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="270" y1="0" x2="-250" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-250" y1="0" x2="-260" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-260" y1="-10" x2="-260" y2="-50" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-260" y1="-50" x2="-250" y2="-60" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

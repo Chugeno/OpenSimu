@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -15.0 60.0 30.0" width="60.0" height="30.0">
+  <title>Óhmetro horizontal</title>
+  <line x1="-5" y1="5" x2="-3.25" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="3.25" y1="5" x2="5" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-3.25" y1="5" x2="-3.25" y2="3" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 3.54 2.54 A 5.00 5.00 0 1 0 -3.54 2.54" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="3.25" y1="3" x2="3.25" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="0" x2="20" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="0" x2="-10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="0.0" cy="0.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" fill="none"/>
+</svg>

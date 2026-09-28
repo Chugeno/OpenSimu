@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-16.0 -30.0 30.0 50.0" width="30.0" height="50.0">
+  <title>Masa</title>
+  <line x1="0" y1="-20" x2="0" y2="13" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-13.65" y1="14" x2="12.62" y2="14" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -13.0 60.0 20.0" width="60.0" height="20.0">
+  <title>Conexión 5 pines</title>
+  <line x1="-25" y1="-5" x2="-15" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-25" y1="5" x2="-15" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-25" y="-5" width="10" height="10" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="15" y1="-5" x2="25" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-5" y1="-5" x2="5" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-15" y1="-5" x2="-5" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="15" y1="5" x2="25" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-5" y1="5" x2="5" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-15" y1="5" x2="-5" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="15" y="-5" width="10" height="10" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-5" y="-5" width="10" height="10" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-15" y="-5" width="10" height="10" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="5" y1="-5" x2="15" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="5" y1="5" x2="15" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="5" y="-5" width="10" height="10" stroke="black" stroke-width="1" fill="none"/>
+</svg>

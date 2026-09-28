@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -5.0 30.0 10.0" width="30.0" height="10.0">
+  <title>Emision</title>
+  <line x1="-10" y1="0" x2="3" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-3" y1="0" x2="10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-3.0" cy="0.0" rx="1.5" ry="1.5" stroke="black" stroke-width="1" fill="#000000"/>
+</svg>

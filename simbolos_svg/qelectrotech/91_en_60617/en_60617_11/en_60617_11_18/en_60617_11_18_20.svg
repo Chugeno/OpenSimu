@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-125.0 -45.0 130.0 50.0" width="130.0" height="50.0">
+  <title>Señal de advertencia, símbolo general; Señal de guía, símbolo general</title>
+  <rect x="-40" y="-40" width="40" height="40" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-80" y="-40" width="40" height="40" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+  <rect x="-120" y="-40" width="40" height="40" stroke="black" stroke-width="1" fill="none"/>
+</svg>

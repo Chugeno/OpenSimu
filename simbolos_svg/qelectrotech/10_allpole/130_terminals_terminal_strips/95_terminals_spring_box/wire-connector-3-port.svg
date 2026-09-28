@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20.0 -26.0 40.0 50.0" width="40.0" height="50.0">
+  <title>Conector de cable 3 puertos</title>
+  <rect x="-17.7" y="-22.5" width="35.4" height="42" stroke="gray" stroke-width="1" fill="none"/>
+  <rect x="-4" y="-17" width="8" height="3" stroke="white" stroke-width="0.5" fill="none"/>
+  <rect x="-14" y="-10" width="8" height="30" stroke="white" stroke-width="0.5" fill="none"/>
+  <rect x="-4" y="-10" width="8" height="30" stroke="white" stroke-width="0.5" fill="none"/>
+  <rect x="6" y="-10" width="8" height="30" stroke="white" stroke-width="0.5" fill="none"/>
+  <line x1="-10" y1="5" x2="-10" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="5" x2="0" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="-5" x2="-10" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="-5" x2="10" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="0.0" cy="-5.0" rx="1.0" ry="1.0" stroke="black" stroke-width="0.5" fill="#000000"/>
+</svg>

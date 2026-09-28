@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -45.0 50.0 50.0" width="50.0" height="50.0">
+  <title>Sincronoscopio</title>
+  <ellipse cx="0.0" cy="-20.0" rx="20.0" ry="20.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="0" y1="-5" x2="0" y2="-35" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 12.37 -30.37 A 17.50 17.50 0 0 0 -12.37 -30.37" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="-13,-30 -11,-33 -10,-31" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="11,-33 13,-30 10,-31" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

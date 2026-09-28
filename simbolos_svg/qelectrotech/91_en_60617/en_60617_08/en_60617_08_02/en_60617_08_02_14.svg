@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -45.0 50.0 50.0" width="50.0" height="50.0">
+  <title>Termómetro, pirómetro</title>
+  <ellipse cx="0.0" cy="-20.0" rx="20.0" ry="20.0" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="0.0" cy="-20.0" rx="6.0" ry="11.0" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 0.00 -20.00 A 3.00 3.00 0 0 0 -6.00 -20.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 0.00 -20.00 A 3.00 3.00 0 0 0 6.00 -20.00" stroke="black" stroke-width="1" fill="none"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -62.0 40.0 80.0" width="40.0" height="80.0">
+  <title>Silbato accionado eléctricamente</title>
+  <line x1="-10" y1="-10" x2="-10" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-10" x2="0" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-20,-10 -20,-60 10,-60 10,-40 0,-20 10,-20 10,-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

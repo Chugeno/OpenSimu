@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.0 -7.0 20.0 20.0" width="20.0" height="20.0">
+  <title>Operado cuando la cantidad característica es aproximadamente igual a cero</title>
+  <path d="M 0.00 2.00 A 2.00 1.50 0 0 0 -4.00 2.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 0.00 2.00 A 2.00 1.50 0 0 0 4.00 2.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 0.00 -2.00 A 2.00 1.50 0 0 0 -4.00 -2.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 0.00 -2.00 A 2.00 1.50 0 0 0 4.00 -2.00" stroke="black" stroke-width="1" fill="none"/>
+</svg>

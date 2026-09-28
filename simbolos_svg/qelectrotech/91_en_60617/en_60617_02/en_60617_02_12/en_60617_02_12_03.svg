@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -15.0 50.0 30.0" width="50.0" height="30.0">
+  <title>Enlace de accionamiento mecánico rotatorio</title>
+  <line x1="-20" y1="0" x2="20" y2="0" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -6.00 10.00 A 6.00 10.00 0 0 0 -5.48 -9.96" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="-3,-10 -6,-10 -4,-8" stroke="black" stroke-width="1" fill="#000000" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

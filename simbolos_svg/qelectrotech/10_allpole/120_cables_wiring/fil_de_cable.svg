@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -15.0 30.0 30.0" width="30.0" height="30.0">
+  <title>Alambre del cable</title>
+  <line x1="-9.76" y1="0" x2="9.83" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-4.1" x2="0" y2="4.11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

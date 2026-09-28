@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-37.0 -57.0 60.0 80.0" width="60.0" height="80.0">
+  <title>Freno magnetico</title>
+  <line x1="-30" y1="0" x2="-14" y2="0" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-30,6 -30,-6 -35,-10 -35,10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-20" y="-54" width="10" height="38" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-15.0" cy="-41.0" rx="3.0" ry="3.0" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-15.0" cy="-30.0" rx="3.0" ry="3.0" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-15.0" cy="-20.0" rx="3.0" ry="3.0" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="-15.0" cy="-50.0" rx="3.0" ry="3.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-17" y1="-48" x2="-13" y2="-52" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-17" y1="-39" x2="-13" y2="-43" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-17" y1="-28" x2="-13" y2="-32" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-17" y1="-18" x2="-13" y2="-22" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-50" x2="-25" y2="-50" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-20" y1="-20" x2="-25" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-14" y="-8" width="28" height="16" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="-10,-40 20,-40 20,20 0,20 0,8" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-10,-30 0,-30 0,-8" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-34.0 -5.0 80.0 10.0" width="80.0" height="10.0">
+  <title>Electrodo cuantizador; Electrodo de muestreo</title>
+  <line x1="8" y1="0" x2="-30" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="40.0" cy="0.0" rx="2.0" ry="2.0" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="30.0" cy="0.0" rx="2.0" ry="2.0" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="20.0" cy="0.0" rx="2.0" ry="2.0" stroke="black" stroke-width="1" fill="none"/>
+  <ellipse cx="10.0" cy="0.0" rx="2.0" ry="2.0" stroke="black" stroke-width="1" fill="none"/>
+</svg>

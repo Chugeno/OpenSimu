@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -25.0 30.0 30.0" width="30.0" height="30.0">
+  <title>Devanado hexafásico, doble triángulo</title>
+  <polyline points="-5,0 -5,-20 10,-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="5,0 5,-20 -10,-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

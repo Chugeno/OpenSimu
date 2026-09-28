@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-21.0 -34.0 40.0 60.0" width="40.0" height="60.0">
+  <title>Contador de amperios-hora</title>
+  <rect x="-15" y="-11" width="30" height="22" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-15" y="-19" width="30" height="8" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-10" y1="-23" x2="-10" y2="-19" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="-23" x2="10" y2="-19" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="11" x2="10" y2="15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-10" y1="11" x2="-10" y2="15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

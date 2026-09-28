@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-47.0 -33.0 80.0 70.0" width="80.0" height="70.0">
+  <title>Switch with LED</title>
+  <ellipse cx="20.0" cy="5.0" rx="7.0" ry="7.0" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="-15,-5 0,15 0,25" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-8,5 -27,5 -29,10 -31,5 -41,5" stroke="black" stroke-width="1" stroke-dasharray="1,2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-15" x2="0" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-20,-20 -20,-3 -12,-3" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="20" y1="-15" x2="20" y2="-2" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="20" y1="12" x2="20" y2="25" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -22.50 -20.00 A 2.50 2.50 0 0 0 -17.50 -20.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="15" y1="0" x2="25" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 22.50 30.00 A 2.50 2.50 0 0 0 17.50 30.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="15" y1="10" x2="25" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 17.50 -20.00 A 2.50 2.50 0 0 0 22.50 -20.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 2.50 30.00 A 2.50 2.50 0 0 0 -2.50 30.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -2.50 -20.00 A 2.50 2.50 0 0 0 2.50 -20.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-41" y1="0" x2="-41" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -41.00 0.00 A 4.00 5.00 0 0 0 -41.00 10.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-33" y1="30" x2="-33" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="30" y1="-20" x2="30" y2="30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-33" y1="-20" x2="-23" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-17" y1="-20" x2="-3" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="3" y1="-20" x2="17" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="23" y1="-20" x2="30" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="23" y1="30" x2="30" y2="30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="17" y1="30" x2="3" y2="30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-33" y1="30" x2="-3" y2="30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

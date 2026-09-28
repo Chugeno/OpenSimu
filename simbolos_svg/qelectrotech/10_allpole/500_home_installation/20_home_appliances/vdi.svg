@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-14.0 -171.0 140.0 180.0" width="140.0" height="180.0">
+  <title>V.D.I.</title>
+  <rect x="0" y="-85" width="120" height="85" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="0" y1="-15" x2="120" y2="-15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-45" x2="120" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-65" x2="120" y2="-65" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="40" y="-150" width="40" height="30" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="42" y="-148" width="36" height="26" stroke="black" stroke-width="0.5" fill="none"/>
+  <rect x="30" y="-110" width="60" height="20" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="80" y="-105" width="7" height="13" stroke="black" stroke-width="0.5" fill="none"/>
+  <rect x="73" y="-105" width="5" height="8" stroke="black" stroke-width="0.5" fill="none"/>
+  <rect x="34" y="-105" width="36" height="13" stroke="black" stroke-width="0.5" fill="none"/>
+  <rect x="34" y="-108" width="44" height="1" stroke="black" stroke-width="0.5" fill="none"/>
+  <rect x="75" y="-95" width="1" height="1" stroke="black" stroke-width="0.5" fill="none"/>
+  <rect x="73" y="-93" width="1" height="1" stroke="black" stroke-width="0.5" fill="none"/>
+  <rect x="75" y="-93" width="1" height="1" stroke="black" stroke-width="0.5" fill="none"/>
+  <rect x="77" y="-93" width="1" height="1" stroke="black" stroke-width="0.5" fill="none"/>
+  <line x1="50" y1="-160" x2="50" y2="-150" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="70" y1="-160" x2="70" y2="-150" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

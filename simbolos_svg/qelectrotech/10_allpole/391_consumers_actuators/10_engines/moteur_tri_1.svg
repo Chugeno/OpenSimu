@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -31.0 70.0 70.0" width="70.0" height="70.0">
+  <title>Motor trifásico</title>
+  <ellipse cx="0.0" cy="8.0" rx="15.0" ry="15.0" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 9.50 22.36 A 16.00 16.00 0 0 0 16.54 3.03" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="0" y1="-20" x2="0" y2="-7" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-20,-20 -20,-12 -11,-3" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="20,-20 20,-12 11,-3" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="16,16 20,20 30,20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

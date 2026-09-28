@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-14.0 -181.0 140.0 190.0" width="140.0" height="190.0">
+  <title>riego automático</title>
+  <ellipse cx="70.0" cy="-170.0" rx="2.0" ry="2.0" stroke="black" stroke-width="1" fill="#000000"/>
+  <path d="M 81.00 -111.00 A 10.00 10.00 0 0 0 61.00 -111.00" stroke="blue" stroke-width="1" stroke-dasharray="1,2" fill="none"/>
+  <path d="M 91.00 -112.00 A 15.00 15.00 0 0 0 61.00 -112.00" stroke="blue" stroke-width="1" stroke-dasharray="1,2" fill="none"/>
+  <path d="M 59.50 -121.00 A 17.50 15.00 0 0 0 24.50 -121.00" stroke="blue" stroke-width="1" stroke-dasharray="1,2" fill="none"/>
+  <path d="M 59.00 -112.00 A 15.00 15.00 0 0 0 29.00 -112.00" stroke="blue" stroke-width="1" stroke-dasharray="1,2" fill="none"/>
+  <path d="M 95.50 -121.00 A 17.50 15.00 0 0 0 60.50 -121.00" stroke="blue" stroke-width="1" stroke-dasharray="1,2" fill="none"/>
+  <rect x="0" y="-85" width="120" height="85" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="0" y1="-15" x2="120" y2="-15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-45" x2="120" y2="-45" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-65" x2="120" y2="-65" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-170" x2="120" y2="-170" stroke="green" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="58" y="-110" width="4" height="10" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 59.00 -111.00 A 10.00 10.00 0 0 0 39.00 -111.00" stroke="blue" stroke-width="1" stroke-dasharray="1,2" fill="none"/>
+  <line x1="60" y1="-112" x2="60" y2="-120" stroke="black" stroke-width="1" stroke-dasharray="1,2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="50.0" cy="-170.0" rx="2.0" ry="2.0" stroke="black" stroke-width="1" fill="#000000"/>
+</svg>

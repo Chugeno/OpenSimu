@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10.0 -40.0 70.0 50.0" width="70.0" height="50.0">
+  <title>Conector multipolar</title>
+  <line x1="0" y1="-24" x2="49" y2="-24" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="2" y1="-12" x2="48" y2="-12" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="49" y1="-18" x2="49" y2="-11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="39" y1="-18" x2="39" y2="-11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="29" y1="-18" x2="29" y2="-11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="19" y1="-18" x2="19" y2="-11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="9" y1="-18" x2="9" y2="-11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-1" y1="-18" x2="-1" y2="-11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="50" y1="-18" x2="50" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="40" y1="-18" x2="40" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="30" y1="-18" x2="30" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="20" y1="-18" x2="20" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="-18" x2="10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-18" x2="0" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="50" y1="-21" x2="50" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="40" y1="-21" x2="40" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="30" y1="-21" x2="30" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="20" y1="-21" x2="20" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="-21" x2="10" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-21" x2="0" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="51" y1="-18" x2="51" y2="-11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="41" y1="-18" x2="41" y2="-11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="31" y1="-18" x2="31" y2="-11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="21" y1="-18" x2="21" y2="-11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="11" y1="-18" x2="11" y2="-11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="1" y1="-18" x2="1" y2="-11" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 53.00 -17.00 A 3.00 3.00 0 0 0 47.00 -17.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 43.00 -17.00 A 3.00 3.00 0 0 0 37.00 -17.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 33.00 -17.00 A 3.00 3.00 0 0 0 27.00 -17.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 23.00 -17.00 A 3.00 3.00 0 0 0 17.00 -17.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 13.00 -17.00 A 3.00 3.00 0 0 0 7.00 -17.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 3.00 -17.00 A 3.00 3.00 0 0 0 -3.00 -17.00" stroke="black" stroke-width="1" fill="none"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-38.0 -32.0 60.0 60.0" width="60.0" height="60.0">
+  <title>Relé de trabajo y reposo retardado</title>
+  <rect x="-32" y="-10" width="47" height="20" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-22" y1="10" x2="-15" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-22" y1="-10" x2="-15" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-32" y="-10" width="7" height="20" stroke="black" stroke-width="1" fill="#000000"/>
+  <rect x="-22" y="-10" width="7" height="20" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="0" y1="20" x2="0" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-20" x2="0" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

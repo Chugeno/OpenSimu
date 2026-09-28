@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-31.0 -40.0 50.0 60.0" width="50.0" height="60.0">
+  <title>Interruptor 3 posiciones incluso neutro</title>
+  <line x1="-16" y1="-15" x2="-16" y2="-11" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-1,-8 -5,-8 -6,-6 -7,-8 -10,-8 -11,-6 -12,-8 -15,-8 -16,-6 -17,-8 -21,-8 -25,-8" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-6" y1="-15" x2="-6" y2="-11" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-11" y1="-15" x2="-11" y2="-11" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-28,-3 -25,-3 -25,-13 -22,-13" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-13" x2="0" y2="1" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="0.0" cy="-15.0" rx="1.0" ry="1.0" stroke="black" stroke-width="1" fill="#000000"/>
+  <line x1="-10" y1="0" x2="-10" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10" y1="0" x2="10" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-17" x2="0" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

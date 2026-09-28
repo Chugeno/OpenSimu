@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-21.0 -30.0 30.0 60.0" width="30.0" height="60.0">
+  <title>Contacto centrífugo NC</title>
+  <ellipse cx="-13.005" cy="-12.005" rx="2.235" ry="2.235" stroke="black" stroke-width="0.5" fill="none"/>
+  <polyline points="5,-10 0,10 0,20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-14,-10 -19,-2 -14,5" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-9" x2="6" y2="-9" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-13.005" cy="6.994999999999999" rx="2.235" ry="2.235" stroke="black" stroke-width="0.5" fill="none"/>
+  <line x1="0" y1="-20" x2="0" y2="-9" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-19" y1="-2" x2="3" y2="-2" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

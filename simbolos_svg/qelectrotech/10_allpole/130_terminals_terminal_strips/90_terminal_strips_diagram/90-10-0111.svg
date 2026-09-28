@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -50.0 30.0 100.0" width="30.0" height="100.0">
+  <title>Clema (introducción atravesada)</title>
+  <rect x="-10" y="-40" width="20" height="80" stroke="black" stroke-width="2" fill="none"/>
+  <rect x="-8" y="-12" width="16" height="24" stroke="black" stroke-width="0.5" fill="none"/>
+  <ellipse cx="0.0" cy="20.0" rx="3.0" ry="3.0" stroke="black" stroke-width="0.5" fill="none"/>
+</svg>

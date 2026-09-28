@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-29.0 -40.0 50.0 80.0" width="50.0" height="80.0">
+  <title>Motor de corriente continua</title>
+  <ellipse cx="0.0" cy="0.0" rx="15.0" ry="15.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="5" y1="18" x2="5" y2="14.5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="18" x2="0" y2="30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-30" x2="0" y2="-18" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-5" y1="18" x2="5" y2="18" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="5" y1="-18" x2="5" y2="-14.5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-5" y1="-14.5" x2="-5" y2="-18" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-5" y1="-18" x2="5" y2="-18" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-5" y1="14.5" x2="-5" y2="18" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

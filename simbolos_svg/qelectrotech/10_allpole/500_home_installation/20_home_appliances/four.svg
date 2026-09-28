@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -22.0 30.0 50.0" width="30.0" height="50.0">
+  <title>Horno eléctrico</title>
+  <ellipse cx="0.0" cy="16.0" rx="3.16" ry="3.16" stroke="black" stroke-width="1" fill="#000000"/>
+  <rect x="-12" y="-1" width="24" height="6" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="-12,-1 -12,23 12,23 12,-1" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0" y1="-13" x2="0" y2="-1" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

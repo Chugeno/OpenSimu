@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-88.0 -172.0 110.0 190.0" width="110.0" height="190.0">
+  <title>Transformador con acoplamiento variable</title>
+  <ellipse cx="-30.0" cy="-90.0" rx="30.0" ry="30.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-30" y1="-150" x2="-30" y2="-120" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="-30.0" cy="-50.0" rx="30.0" ry="30.0" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-30" y1="-20" x2="-30" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-40" y1="-130" x2="-20" y2="-140" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-40" y1="-135" x2="-20" y2="-145" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-40" y1="0" x2="-20" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-40" y1="5" x2="-20" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-70" y1="-50" x2="10" y2="-100" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="10,-96 6,-102 16,-104" stroke="black" stroke-width="1" fill="#000000" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

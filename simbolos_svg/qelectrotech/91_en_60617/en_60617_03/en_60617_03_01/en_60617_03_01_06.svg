@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50.0 -10.0 100.0 20.0" width="100.0" height="20.0">
+  <title>Conexión flexible</title>
+  <path d="M -5.00 -0.00 A 5.00 5.00 0 0 0 5.00 0.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M 15.00 0.00 A 5.00 5.00 0 0 0 5.00 -0.00" stroke="black" stroke-width="1" fill="none"/>
+  <path d="M -5.00 0.00 A 5.00 5.00 0 0 0 -15.00 -0.00" stroke="black" stroke-width="1" fill="none"/>
+  <line x1="-15" y1="0" x2="-40" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="15" y1="0" x2="40" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

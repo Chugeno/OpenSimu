@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-150.0 -12.0 160.0 30.0" width="160.0" height="30.0">
+  <title>Línea con derivación de bloqueo de gas o aceite</title>
+  <line x1="0" y1="0" x2="-140" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="-70" y1="-10" x2="-70" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M -85.00 -0.00 A 15.00 15.00 0 0 0 -55.00 0.00" stroke="black" stroke-width="1" fill="none"/>
+</svg>

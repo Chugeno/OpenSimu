@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-55.0 -45.0 70.0 50.0" width="70.0" height="50.0">
+  <title>Fuente de calor de radioisótopos</title>
+  <rect x="-40" y="-40" width="40" height="40" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="-15,-20 -17,-18 -19,-18 -20,-17 -20,-13 -21,-12 -25,-12 -26,-11 -26,-9" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="-45" y="-40" width="5" height="40" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="-50" y="-40" width="5" height="40" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="0" y="-40" width="5" height="40" stroke="black" stroke-width="1" fill="none"/>
+  <rect x="5" y="-40" width="5" height="40" stroke="black" stroke-width="1" fill="none"/>
+  <polyline points="-18,-23 -22,-27 -16,-29" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-17,-22 -13,-18 -11,-24" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="-20,-25 -22,-23 -24,-23 -25,-22 -25,-18 -26,-17 -30,-17 -31,-16 -31,-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
