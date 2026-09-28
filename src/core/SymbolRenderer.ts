@@ -2057,7 +2057,7 @@ export class SymbolRenderer {
 
     // Draw Tag dynamically aligned to the left edge of the SVG artboard (lienzo)
     if (comp.tag) {
-      const tagMargin = 6;
+      const tagMargin = 1;
       const tagX = drawOffsetX - tagMargin;
       const tagY = drawOffsetY + vb.height / 2 + 2;
 
