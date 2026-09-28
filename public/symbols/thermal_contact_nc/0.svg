@@ -1,19 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 40 60" width="40" height="60">
-  <!-- Bornes superior (0,0) e inferior (0,60) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 60" width="40" height="60">
+  <!-- Bornes identificadores para OpenSimu (mesa 40x60, bornes en X=20) -->
+  <circle id="terminal_95" cx="20" cy="0" r="2.5" fill="#1e293b" />
+  <circle id="terminal_96" cx="20" cy="60" r="2.5" fill="#1e293b" />
+
   <!-- Línea de vinculación mecánica (Capa inferior, gris) -->
-  <line x1="3.5" y1="31" x2="-4.5" y2="31" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2 2" stroke-linecap="round" />
-  
-  <!-- Parte fija y conductores en negro -->
+  <line x1="23.5" y1="31" x2="15.5" y2="31" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2 2" stroke-linecap="round" />
+
+  <!-- Parte fija y cuchilla en negro -->
   <g stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
     <!-- Conductores verticales y tope fijo -->
-    <line x1="0" y1="0" x2="0" y2="20" />
-    <line x1="0" y1="20" x2="10" y2="20" />
-    <line x1="0" y1="42" x2="0" y2="60" />
-    
-    <!-- Cuchilla cerrada (reposo NC: de (0,42) a (8,16) cruzando el tope) -->
-    <line x1="0" y1="42" x2="8" y2="16" />
-    
+    <line x1="20" y1="0" x2="20" y2="20" />
+    <line x1="20" y1="20" x2="30" y2="20" />
+    <line x1="20" y1="42" x2="20" y2="60" />
+
+    <!-- Cuchilla cerrada (reposo NC: de (20,42) a (28,16) cruzando el tope) -->
+    <line x1="20" y1="42" x2="28" y2="16" />
+
     <!-- Omega cuadrada de relé térmico (_П_ lados iguales L=6) -->
-    <path d="M-4.5,31 L-4.5,25 L-10.5,25 L-10.5,31 L-14.5,31" stroke="#0f172a" stroke-width="1.5" />
+    <path d="M15.5,31 L15.5,25 L9.5,25 L9.5,31 L5.5,31" stroke="#0f172a" stroke-width="1.5" />
   </g>
 </svg>

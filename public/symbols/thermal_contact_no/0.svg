@@ -1,45 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 40 60">
-  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
-  <defs>
-    <style>
-      .st0 {
-        stroke: #1e293b;
-        stroke-width: 1.8px;
-      }
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 60" width="40" height="60">
+  <!-- Bornes identificadores para OpenSimu (mesa 40x60, bornes en X=20) -->
+  <circle id="terminal_97" cx="20" cy="0" r="2.5" fill="#1e293b" />
+  <circle id="terminal_98" cx="20" cy="60" r="2.5" fill="#1e293b" />
 
-      .st0, .st1, .st2 {
-        fill: none;
-        stroke-linecap: round;
-      }
+  <!-- Línea de vinculación mecánica (Capa inferior, gris) -->
+  <line x1="15" y1="32" x2="7" y2="32" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2 2" stroke-linecap="round" />
 
-      .st0, .st2 {
-        stroke-linejoin: round;
-      }
+  <!-- Parte fija y cuchilla en negro -->
+  <g stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Conductores verticales -->
+    <line x1="20" y1="0" x2="20" y2="20" />
+    <line x1="20" y1="42" x2="20" y2="60" />
 
-      .st1 {
-        stroke: #94a3b8;
-        stroke-dasharray: 2 2;
-        stroke-width: 1.2px;
-      }
+    <!-- Cuchilla abierta (reposo NA: de (20,42) a (10,22)) -->
+    <line x1="20" y1="42" x2="10" y2="22" />
 
-      .st2 {
-        stroke: #0f172a;
-        stroke-width: 1.5px;
-      }
-
-      .st3 {
-        fill: #1e293b;
-      }
-    </style>
-  </defs>
-  <line class="st1" x1="12.5" y1="32" x2="4.5" y2="32"/>
-  <g>
-    <circle class="st3" cx="20" r="2.5"/>
-    <circle class="st3" cx="20" cy="60" r="2.5"/>
-    <line class="st0" x1="20" x2="20" y2="20"/>
-    <line class="st0" x1="20" y1="42" x2="20" y2="60"/>
-    <line class="st0" x1="20" y1="42" x2="10" y2="22"/>
+    <!-- Omega cuadrada de relé térmico (_П_ lados iguales L=6) -->
+    <path d="M7,32 L7,26 L1,26 L1,32 L-3,32" stroke="#0f172a" stroke-width="1.5" />
   </g>
-  <path class="st2" d="M36.5,32h-4v-6h-6v6h-4"/>
 </svg>

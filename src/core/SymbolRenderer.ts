@@ -145,13 +145,35 @@ export class SymbolRenderer {
         break;
       }
 
-      case 'thermal_contact_no_nc':
-        this.renderContactNONC(ctx, comp, isSimulation);
+      case 'thermal_contact_no_nc': {
+        const isTripped = Boolean(comp.state.pressed || comp.state.closed || comp.state.energized);
+        const stateIdx = isTripped ? 1 : 0;
+        const svgPath = `/symbols/thermal_contact_no_nc/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 80, height: 60 },
+          () => this.renderContactNONC(ctx, comp, isSimulation)
+        );
         break;
+      }
 
-      case 'thermal_contact_changeover':
-        this.renderContactChangeover(ctx, comp, isSimulation);
+      case 'thermal_contact_changeover': {
+        const isTripped = Boolean(comp.state.pressed || comp.state.closed || comp.state.energized);
+        const stateIdx = isTripped ? 1 : 0;
+        const svgPath = `/symbols/thermal_contact_changeover/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 80, height: 60 },
+          () => this.renderContactChangeover(ctx, comp, isSimulation)
+        );
         break;
+      }
 
       case 'motor_3p':
       case 'motor_3p_star_delta':
@@ -1874,45 +1896,164 @@ export class SymbolRenderer {
     ctx.restore();
   }
 
+  private static svgMetadataCache: Map<string, {
+    terminals: Map<string, { x: number; y: number }>;
+    viewBox: { minX: number; minY: number; width: number; height: number };
+    refTerminal?: { x: number; y: number };
+  }> = new Map();
+
+  private static parseSvgMetadata(svgPath: string) {
+    if (this.svgMetadataCache.has(svgPath)) return;
+    
+    // Asynchronously fetch and parse SVG XML to discover terminal IDs
+    fetch(svgPath)
+      .then((res) => (res.ok ? res.text() : Promise.reject('Failed to load SVG')))
+      .then((xmlText) => {
+        try {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(xmlText, 'image/svg+xml');
+          const svgEl = doc.querySelector('svg');
+          if (!svgEl) return;
+
+          let minX = 0, minY = 0, width = 40, height = 60;
+          const vbAttr = svgEl.getAttribute('viewBox');
+          if (vbAttr) {
+            const parts = vbAttr.split(/[\s,]+/).map(parseFloat);
+            if (parts.length === 4) {
+              [minX, minY, width, height] = parts;
+            }
+          }
+
+          const termMap = new Map<string, { x: number; y: number }>();
+          // Find all elements whose id contains 'terminal_' or 't_'
+          const allElements = doc.querySelectorAll('[id]');
+          allElements.forEach((el) => {
+            const rawId = el.getAttribute('id') || '';
+            const match = rawId.match(/^(?:terminal_|t_)(.+)$/i);
+            if (!match) return;
+            const termName = match[1].toLowerCase();
+
+            let x = 0;
+            let y = 0;
+            if (el.tagName.toLowerCase() === 'circle') {
+              x = parseFloat(el.getAttribute('cx') || '0');
+              y = parseFloat(el.getAttribute('cy') || '0');
+            } else if (el.tagName.toLowerCase() === 'rect') {
+              x = parseFloat(el.getAttribute('x') || '0') + parseFloat(el.getAttribute('width') || '0') / 2;
+              y = parseFloat(el.getAttribute('y') || '0') + parseFloat(el.getAttribute('height') || '0') / 2;
+            } else if (el.tagName.toLowerCase() === 'line') {
+              x = parseFloat(el.getAttribute('x1') || '0');
+              y = parseFloat(el.getAttribute('y1') || '0');
+            } else {
+              // Generic element fallback
+              const bbox = (el as any).getBBox ? (el as any).getBBox() : null;
+              if (bbox) {
+                x = bbox.x + bbox.width / 2;
+                y = bbox.y + bbox.height / 2;
+              }
+            }
+
+            termMap.set(termName, { x, y });
+          });
+
+          // Primary reference terminal for aligning component origin (0, 0)
+          let refTerminal: { x: number; y: number } | undefined;
+          if (termMap.size > 0) {
+            // Find the top-most or first terminal (e.g. 95, 97, 11, 13, 1, etc.)
+            let minTermY = Infinity;
+            let minTermX = Infinity;
+            termMap.forEach((pt) => {
+              if (pt.y < minTermY || (pt.y === minTermY && pt.x < minTermX)) {
+                minTermY = pt.y;
+                minTermX = pt.x;
+                refTerminal = pt;
+              }
+            });
+          }
+
+          this.svgMetadataCache.set(svgPath, {
+            terminals: termMap,
+            viewBox: { minX, minY, width, height },
+            refTerminal,
+          });
+
+          if (this.onRedrawNeeded) this.onRedrawNeeded();
+        } catch {
+          // Ignore parsing error
+        }
+      })
+      .catch(() => {
+        // Mark as empty so we don't refetch
+        this.svgMetadataCache.set(svgPath, {
+          terminals: new Map(),
+          viewBox: { minX: 0, minY: 0, width: 40, height: 60 },
+        });
+      });
+  }
+
   private static renderSvgWithFallback(
     ctx: CanvasRenderingContext2D,
     comp: CircuitComponent,
     _isSim: boolean,
     svgPath: string,
-    viewBox: { minX: number; minY: number; width: number; height: number },
+    defaultViewBox: { minX: number; minY: number; width: number; height: number },
     canvasFallback: () => void
   ): boolean {
     let img = this.svgImageCache.get(svgPath);
 
     if (img === undefined) {
-      // First attempt to load
+      // First attempt to load image & metadata
       img = new Image();
       img.src = svgPath;
       img.onload = () => {
         if (this.onRedrawNeeded) this.onRedrawNeeded();
       };
       img.onerror = () => {
-        // Mark as null so we do not retry loading missing SVG repeatedly
         (img as any)._failed = true;
         if (this.onRedrawNeeded) this.onRedrawNeeded();
       };
       this.svgImageCache.set(svgPath, img);
+      this.parseSvgMetadata(svgPath);
     }
 
     if (img && !img.complete) {
-      // Still loading -> use canvas fallback temporarily
       canvasFallback();
       return true;
     }
 
     if (!img || (img as any)._failed || img.naturalWidth === 0) {
-      // Failed to load SVG file -> use canvas fallback permanently
       canvasFallback();
       return false;
     }
 
-    // SVG loaded successfully -> Draw image mapped to viewBox coordinates
-    ctx.drawImage(img, viewBox.minX, viewBox.minY, viewBox.width, viewBox.height);
+    // Check if SVG has parsed terminal metadata
+    const meta = this.svgMetadataCache.get(svgPath);
+    const vb = meta?.viewBox || defaultViewBox;
+
+    // Calculate alignment offset so that the primary terminal (e.g. terminal_95) aligns at (0, 0)
+    // or use the SVG coordinates directly
+    let drawOffsetX = vb.minX;
+    let drawOffsetY = vb.minY;
+
+    if (meta?.refTerminal) {
+      // Offset SVG so that the reference terminal aligns at (0, 0) in component space
+      drawOffsetX = -meta.refTerminal.x;
+      drawOffsetY = -meta.refTerminal.y;
+
+      // Dynamically sync component terminal positions according to the SVG IDs
+      meta.terminals.forEach((pt, termKey) => {
+        const compTerm = comp.terminals.find(
+          (t) => t.id.toLowerCase() === termKey || t.name.toLowerCase() === termKey
+        );
+        if (compTerm) {
+          compTerm.relX = Math.round(pt.x - meta.refTerminal!.x);
+          compTerm.relY = Math.round(pt.y - meta.refTerminal!.y);
+        }
+      });
+    }
+
+    // SVG loaded successfully -> Draw image mapped to calibrated coordinates
+    ctx.drawImage(img, drawOffsetX, drawOffsetY, vb.width, vb.height);
 
     // Draw Tag and Terminal numbers automatically on top
     const isThermal = comp.type.startsWith('thermal_contact_');
