@@ -1,52 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60" width="120" height="60">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 120 60" width="120" height="60">
   
-  <circle id="terminal_1" cx="20" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_2" cx="20" cy="60" r="2.5" fill="#1e293b" />
-  <circle id="terminal_3" cx="60" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_4" cx="60" cy="60" r="2.5" fill="#1e293b" />
-  <circle id="terminal_5" cx="100" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_6" cx="100" cy="60" r="2.5" fill="#1e293b" />
-  <line x1="20" y1="33" x2="100" y2="33" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3 2" stroke-linecap="round" />
+  <circle id="terminal_1" cx="0" cy="0" r="2.5" fill="#1e293b" />
+  <circle id="terminal_2" cx="0" cy="60" r="2.5" fill="#1e293b" />
+  <circle id="terminal_3" cx="40" cy="0" r="2.5" fill="#1e293b" />
+  <circle id="terminal_4" cx="40" cy="60" r="2.5" fill="#1e293b" />
+  <circle id="terminal_5" cx="80" cy="0" r="2.5" fill="#1e293b" />
+  <circle id="terminal_6" cx="80" cy="60" r="2.5" fill="#1e293b" />
+  <line x1="0" y1="33" x2="80" y2="33" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3 2" stroke-linecap="round" />
   <g stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
     
-    <!-- Polo 1 -->
-    <line x1="20" y1="0" x2="20" y2="22" />
-    <line x1="20" y1="44" x2="20" y2="60" />
-    <!-- Seccionador fijo -->
-    <line x1="16.5" y1="22" x2="23.5" y2="22" />
+    <!-- Polo 1 (Fase) -->
+    <line x1="0" y1="0" x2="0" y2="22" />
+    <line x1="0" y1="44" x2="0" y2="60" />
+    <!-- Línea horizontal de seccionador -->
+    <line x1="-3.5" y1="22" x2="3.5" y2="22" />
     <!-- Cuchilla móvil -->
-    <line x1="20" y1="44" x2="20" y2="22" />
-    <line x1="17.5" y1="13.5" x2="22.5" y2="18.5" />
-    <line x1="22.5" y1="13.5" x2="17.5" y2="18.5" />
-    <!-- Bimetálico escalonado -->
-    <path d="M20,31.8 L16.7,32.7 L16.7,35.3 L20,36.2" stroke-width="1.4" />
-    <!-- Disparo magnético (flecha) -->
-    <path d="M15.8,41.3 L20,38.3 L15.8,35.3" stroke-width="1.4" />
-    <!-- Polo 2 -->
-    <line x1="60" y1="0" x2="60" y2="22" />
-    <line x1="60" y1="44" x2="60" y2="60" />
-    <!-- Seccionador fijo -->
-    <line x1="56.5" y1="22" x2="63.5" y2="22" />
+    <line x1="0" y1="44" x2="0" y2="22" />
+    <line x1="-2.5" y1="13.5" x2="2.5" y2="18.5" />
+    <line x1="2.5" y1="13.5" x2="-2.5" y2="18.5" />
+    <!-- Bimetálico escalonado exacto Radica -->
+    <path d="M0.00,31.85 L-3.32,32.71 L-4.24,29.40 L-7.56,30.26 L-6.65,33.57 L-9.97,34.43" stroke-width="1.8" />
+    <!-- Disparo magnético: flecha Radica -->
+    <line x1="0.00" y1="36.61" x2="-4.45" y2="37.64" stroke-width="1.8" />
+    <path d="M-4.87,35.91 L-10.37,39.05 L-4.05,39.45 Z" fill="#0f172a" stroke="none" />
+    <!-- Polo 2 (Fase) -->
+    <line x1="40" y1="0" x2="40" y2="22" />
+    <line x1="40" y1="44" x2="40" y2="60" />
+    <!-- Línea horizontal de seccionador -->
+    <line x1="36.5" y1="22" x2="43.5" y2="22" />
     <!-- Cuchilla móvil -->
-    <line x1="60" y1="44" x2="60" y2="22" />
-    <line x1="57.5" y1="13.5" x2="62.5" y2="18.5" />
-    <line x1="62.5" y1="13.5" x2="57.5" y2="18.5" />
-    <!-- Bimetálico escalonado -->
-    <path d="M60,31.8 L56.7,32.7 L56.7,35.3 L60,36.2" stroke-width="1.4" />
-    <!-- Disparo magnético (flecha) -->
-    <path d="M55.8,41.3 L60,38.3 L55.8,35.3" stroke-width="1.4" />
-    <!-- Polo 3 -->
-    <line x1="100" y1="0" x2="100" y2="22" />
-    <line x1="100" y1="44" x2="100" y2="60" />
-    <!-- Seccionador fijo -->
-    <line x1="96.5" y1="22" x2="103.5" y2="22" />
+    <line x1="40" y1="44" x2="40" y2="22" />
+    <line x1="37.5" y1="13.5" x2="42.5" y2="18.5" />
+    <line x1="42.5" y1="13.5" x2="37.5" y2="18.5" />
+    <!-- Bimetálico escalonado exacto Radica -->
+    <path d="M40.00,31.85 L36.68,32.71 L35.76,29.40 L32.44,30.26 L33.35,33.57 L30.03,34.43" stroke-width="1.8" />
+    <!-- Disparo magnético: flecha Radica -->
+    <line x1="40.00" y1="36.61" x2="35.55" y2="37.64" stroke-width="1.8" />
+    <path d="M35.13,35.91 L29.63,39.05 L35.95,39.45 Z" fill="#0f172a" stroke="none" />
+    <!-- Polo 3 (Fase) -->
+    <line x1="80" y1="0" x2="80" y2="22" />
+    <line x1="80" y1="44" x2="80" y2="60" />
+    <!-- Línea horizontal de seccionador -->
+    <line x1="76.5" y1="22" x2="83.5" y2="22" />
     <!-- Cuchilla móvil -->
-    <line x1="100" y1="44" x2="100" y2="22" />
-    <line x1="97.5" y1="13.5" x2="102.5" y2="18.5" />
-    <line x1="102.5" y1="13.5" x2="97.5" y2="18.5" />
-    <!-- Bimetálico escalonado -->
-    <path d="M100,31.8 L96.7,32.7 L96.7,35.3 L100,36.2" stroke-width="1.4" />
-    <!-- Disparo magnético (flecha) -->
-    <path d="M95.8,41.3 L100,38.3 L95.8,35.3" stroke-width="1.4" />
+    <line x1="80" y1="44" x2="80" y2="22" />
+    <line x1="77.5" y1="13.5" x2="82.5" y2="18.5" />
+    <line x1="82.5" y1="13.5" x2="77.5" y2="18.5" />
+    <!-- Bimetálico escalonado exacto Radica -->
+    <path d="M80.00,31.85 L76.68,32.71 L75.76,29.40 L72.44,30.26 L73.35,33.57 L70.03,34.43" stroke-width="1.8" />
+    <!-- Disparo magnético: flecha Radica -->
+    <line x1="80.00" y1="36.61" x2="75.55" y2="37.64" stroke-width="1.8" />
+    <path d="M75.13,35.91 L69.63,39.05 L75.95,39.45 Z" fill="#0f172a" stroke="none" />
   </g>
 </svg>
