@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 60" width="40" height="60">
+  
+  <circle id="terminal_1" cx="20" cy="0" r="2.5" fill="#1e293b" />
+  <circle id="terminal_2" cx="20" cy="60" r="2.5" fill="#1e293b" />
+  
+  <g stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    
+    <!-- Polo 1 -->
+    <line x1="20" y1="0" x2="20" y2="22" />
+    <line x1="20" y1="44" x2="20" y2="60" />
+    <!-- Seccionador fijo -->
+    <line x1="16.5" y1="22" x2="23.5" y2="22" />
+    <!-- Cuchilla móvil -->
+    <line x1="20" y1="44" x2="10" y2="22" />
+    <line x1="17.5" y1="13.5" x2="22.5" y2="18.5" />
+    <line x1="22.5" y1="13.5" x2="17.5" y2="18.5" />
+    <!-- Bimetálico escalonado -->
+    <path d="M14.5,31.8 L11.2,32.7 L11.2,35.3 L14.5,36.2" stroke-width="1.4" />
+    <!-- Disparo magnético (flecha) -->
+    <path d="M12.400000000000002,41.3 L16.6,38.3 L12.400000000000002,35.3" stroke-width="1.4" />
+  </g>
+</svg>

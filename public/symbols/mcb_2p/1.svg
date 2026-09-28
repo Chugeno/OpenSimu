@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 60" width="80" height="60">
+  
+  <circle id="terminal_1" cx="20" cy="0" r="2.5" fill="#1e293b" />
+  <circle id="terminal_2" cx="20" cy="60" r="2.5" fill="#1e293b" />
+  <circle id="terminal_3" cx="60" cy="0" r="2.5" fill="#1e293b" />
+  <circle id="terminal_4" cx="60" cy="60" r="2.5" fill="#1e293b" />
+  <line x1="20" y1="33" x2="60" y2="33" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3 2" stroke-linecap="round" />
+  <g stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    
+    <!-- Polo 1 -->
+    <line x1="20" y1="0" x2="20" y2="22" />
+    <line x1="20" y1="44" x2="20" y2="60" />
+    <!-- Seccionador fijo -->
+    <line x1="16.5" y1="22" x2="23.5" y2="22" />
+    <!-- Cuchilla móvil -->
+    <line x1="20" y1="44" x2="20" y2="22" />
+    <line x1="17.5" y1="13.5" x2="22.5" y2="18.5" />
+    <line x1="22.5" y1="13.5" x2="17.5" y2="18.5" />
+    <!-- Bimetálico escalonado -->
+    <path d="M20,31.8 L16.7,32.7 L16.7,35.3 L20,36.2" stroke-width="1.4" />
+    <!-- Disparo magnético (flecha) -->
+    <path d="M15.8,41.3 L20,38.3 L15.8,35.3" stroke-width="1.4" />
+    <!-- Polo 2 -->
+    <line x1="60" y1="0" x2="60" y2="22" />
+    <line x1="60" y1="44" x2="60" y2="60" />
+    <!-- Seccionador fijo -->
+    <line x1="56.5" y1="22" x2="63.5" y2="22" />
+    <!-- Cuchilla móvil -->
+    <line x1="60" y1="44" x2="60" y2="22" />
+    <line x1="57.5" y1="13.5" x2="62.5" y2="18.5" />
+    <line x1="62.5" y1="13.5" x2="57.5" y2="18.5" />
+    <!-- Bimetálico escalonado -->
+    <path d="M60,31.8 L56.7,32.7 L56.7,35.3 L60,36.2" stroke-width="1.4" />
+    <!-- Disparo magnético (flecha) -->
+    <path d="M55.8,41.3 L60,38.3 L55.8,35.3" stroke-width="1.4" />
+  </g>
+</svg>

@@ -170,18 +170,52 @@ export class SymbolRenderer {
       case 'motor_breaker_mag_3p':
       case 'motor_breaker_4p':
       case 'rcd_2p':
-      case 'rcd_4p':
-        this.renderProtectionBreaker(ctx, comp, isSimulation);
+      case 'rcd_4p': {
+        const isClosed = Boolean(comp.state.closed) && !comp.state.tripped;
+        const stateIdx = isClosed ? 1 : 0;
+        const svgPath = `/symbols/${comp.type}/${stateIdx}.svg`;
+        const isMotorBreaker = comp.type.startsWith('motor_breaker_');
+        const defaultHeight = isMotorBreaker ? 80 : 60;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 80, height: defaultHeight },
+          () => this.renderProtectionBreaker(ctx, comp, isSimulation)
+        );
         break;
+      }
 
-      case 'thermal_relay_3p':
-        this.renderThermalRelay(ctx, comp, isSimulation);
+      case 'thermal_relay_3p': {
+        const isTripped = Boolean(comp.state.tripped);
+        const stateIdx = isTripped ? 1 : 0;
+        const svgPath = `/symbols/thermal_relay_3p/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 120, height: 60 },
+          () => this.renderThermalRelay(ctx, comp, isSimulation)
+        );
         break;
+      }
 
       case 'surge_arrester_1p_n':
-      case 'surge_arrester_3p_n':
-        this.renderSurgeArrester(ctx, comp, isSimulation);
+      case 'surge_arrester_3p_n': {
+        const svgPath = `/symbols/${comp.type}/0.svg`;
+        const width = comp.type === 'surge_arrester_3p_n' ? 160 : 80;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width, height: 60 },
+          () => this.renderSurgeArrester(ctx, comp, isSimulation)
+        );
         break;
+      }
 
       case 'thermal_contact_nc': {
         const isTripped = comp.state.closed === false || comp.state.pressed || comp.state.energized;
