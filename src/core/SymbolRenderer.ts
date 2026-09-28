@@ -52,29 +52,86 @@ export class SymbolRenderer {
       case 'pushbutton_emergency_no':
       case 'switch_no':
       case 'contact_no':
-      case 'contact_no_1p':
-        this.renderSwitchNO(ctx, comp, isSimulation);
+      case 'contact_no_1p': {
+        const isClosed = Boolean(comp.state.pressed || comp.state.closed || comp.state.energized);
+        const stateIdx = isClosed ? 1 : 0;
+        const folder = comp.type === 'contact_no_1p' ? 'contact_no' : comp.type;
+        const svgPath = `/symbols/${folder}/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 40, height: 60 },
+          () => this.renderSwitchNO(ctx, comp, isSimulation)
+        );
         break;
+      }
 
       case 'pushbutton_nc':
       case 'pushbutton_emergency_nc':
       case 'switch_nc':
       case 'contact_nc':
-      case 'contact_nc_1p':
-        this.renderSwitchNC(ctx, comp, isSimulation);
+      case 'contact_nc_1p': {
+        const isClosed = comp.state.closed && !comp.state.pressed && !comp.state.energized;
+        const stateIdx = isClosed ? 0 : 1;
+        const folder = comp.type === 'contact_nc_1p' ? 'contact_nc' : comp.type;
+        const svgPath = `/symbols/${folder}/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 40, height: 60 },
+          () => this.renderSwitchNC(ctx, comp, isSimulation)
+        );
         break;
+      }
 
-      case 'contact_no_nc':
-        this.renderContactNONC(ctx, comp, isSimulation);
+      case 'contact_no_nc': {
+        const isActuated = Boolean(comp.state.energized || comp.state.pressed);
+        const stateIdx = isActuated ? 1 : 0;
+        const svgPath = `/symbols/contact_no_nc/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 80, height: 60 },
+          () => this.renderContactNONC(ctx, comp, isSimulation)
+        );
         break;
+      }
 
-      case 'contact_changeover':
-        this.renderContactChangeover(ctx, comp, isSimulation);
+      case 'contact_changeover': {
+        const isActuated = Boolean(comp.state.energized || comp.state.pressed);
+        const stateIdx = isActuated ? 1 : 0;
+        const svgPath = `/symbols/contact_changeover/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 80, height: 60 },
+          () => this.renderContactChangeover(ctx, comp, isSimulation)
+        );
         break;
+      }
 
-      case 'coil':
-        this.renderCoil(ctx, comp, isSimulation);
+      case 'coil': {
+        const energized = Boolean(isSimulation && comp.state.energized);
+        const stateIdx = energized ? 1 : 0;
+        const svgPath = `/symbols/coil/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 40, height: 60 },
+          () => this.renderCoil(ctx, comp, isSimulation)
+        );
         break;
+      }
 
       case 'contactor_1p':
       case 'contactor_2p':
@@ -86,9 +143,20 @@ export class SymbolRenderer {
         this.renderPowerContactor(ctx, comp, isSimulation);
         break;
 
-      case 'pilot_light':
-        this.renderPilotLight(ctx, comp, isSimulation);
+      case 'pilot_light': {
+        const energized = Boolean(isSimulation && comp.state.energized);
+        const stateIdx = energized ? 1 : 0;
+        const svgPath = `/symbols/pilot_light/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 40, height: 60 },
+          () => this.renderPilotLight(ctx, comp, isSimulation)
+        );
         break;
+      }
 
       case 'mcb_1p':
       case 'mcb_1p_n':
