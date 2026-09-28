@@ -839,6 +839,7 @@ export function getComponentBounds(comp: CircuitComponent): Rect {
   const isPower = def?.category === 'power' || comp.type.startsWith('source_') || comp.type.startsWith('power_');
   const isGround = comp.type === 'ground';
   const hasPushbuttonHead = comp.type.startsWith('pushbutton_') || comp.type.startsWith('switch_');
+  const isThermal = comp.type.startsWith('thermal_contact_');
 
   let padLeft = 44;
   let padRight = 20;
@@ -857,7 +858,13 @@ export function getComponentBounds(comp: CircuitComponent): Rect {
     padBottom = 12;
   } else if (hasPushbuttonHead) {
     padLeft = 56;
+  } else if (isThermal) {
+    padLeft = 64;
   }
+
+  // Extra padding if tag is longer than 3 characters (e.g. -KM1_AUX)
+  const tagExtra = Math.max(0, (comp.tag?.length || 0) - 3) * 7;
+  padLeft += tagExtra;
 
   const relX = minTX - padLeft;
   const relY = minTY - padTop;

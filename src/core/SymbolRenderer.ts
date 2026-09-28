@@ -2037,8 +2037,8 @@ export class SymbolRenderer {
 
     if (meta?.refTerminal) {
       // Offset SVG so that the reference terminal aligns at (0, 0) in component space
-      drawOffsetX = -meta.refTerminal.x;
-      drawOffsetY = -meta.refTerminal.y;
+      drawOffsetX = vb.minX - meta.refTerminal.x;
+      drawOffsetY = vb.minY - meta.refTerminal.y;
 
       // Dynamically sync component terminal positions according to the SVG IDs
       meta.terminals.forEach((pt, termKey) => {
@@ -2055,12 +2055,27 @@ export class SymbolRenderer {
     // SVG loaded successfully -> Draw image mapped to calibrated coordinates
     ctx.drawImage(img, drawOffsetX, drawOffsetY, vb.width, vb.height);
 
-    // Draw Tag and Terminal numbers automatically on top
-    const isThermal = comp.type.startsWith('thermal_contact_');
-    if (isThermal) {
-      const numTop = comp.terminals[0]?.name ?? (comp.type === 'thermal_contact_no' ? '97' : '95');
-      const numBot = comp.terminals[1]?.name ?? (comp.type === 'thermal_contact_no' ? '98' : '96');
-      this.renderTagAndNumbers(ctx, comp, numTop, numBot);
+    // Draw Tag dynamically aligned to the left edge of the SVG artboard (lienzo)
+    if (comp.tag) {
+      const tagMargin = 6;
+      const tagX = drawOffsetX - tagMargin;
+      const tagY = drawOffsetY + vb.height / 2 + 2;
+
+      ctx.font = 'bold 11px sans-serif';
+      ctx.fillStyle = '#0f172a';
+      ctx.textAlign = 'right';
+      ctx.fillText(comp.tag, tagX, tagY);
+    }
+
+    // Draw Terminal numbers next to their respective terminals
+    ctx.font = '9px sans-serif';
+    ctx.fillStyle = '#64748b';
+    ctx.textAlign = 'left';
+    for (const t of comp.terminals) {
+      if (!t.name) continue;
+      const numX = t.relX + 6;
+      const numY = t.relY >= 40 ? t.relY - 6 : t.relY + 10;
+      ctx.fillText(t.name, numX, numY);
     }
 
     return true;
