@@ -33,10 +33,10 @@
       }
     </style>
   </defs>
-  <circle id="terminal_95" class="st3" cx="32.5" r="2.5"/>
-  <circle id="terminal_96" class="st3" cx="32.5" cy="60" r="2.5"/>
-  <circle id="terminal_97" class="st3" cx="72.5" r="2.5"/>
-  <circle id="terminal_98" class="st3" cx="72.5" cy="60" r="2.5"/>
+  <circle id="terminal_11" class="st3" cx="32.5" r="2.5"/>
+  <circle id="terminal_12" class="st3" cx="32.5" cy="60" r="2.5"/>
+  <circle id="terminal_13" class="st3" cx="72.5" r="2.5"/>
+  <circle id="terminal_14" class="st3" cx="72.5" cy="60" r="2.5"/>
   <line class="st0" x1="30" y1="32" x2="72.5" y2="32"/>
   <line class="st1" x1="32.5" x2="32.5" y2="20"/>
   <line class="st1" x1="32.5" y1="20" x2="42.5" y2="20"/>
@@ -45,5 +45,5 @@
   <line class="st1" x1="72.5" x2="72.5" y2="20"/>
   <line class="st1" x1="72.5" y1="42" x2="72.5" y2="60"/>
   <line class="st1" x1="72.5" y1="42" x2="72.5" y2="20"/>
-  <path class="st2" d="M27.8,32h-4v-6h-6v6h-4"/>
+  <path class="st2" d="M31,27h-3.5v10h-3.5"/>
 </svg>

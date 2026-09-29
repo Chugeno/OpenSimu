@@ -33,15 +33,17 @@
       }
     </style>
   </defs>
-  <circle id="terminal_95" class="st3" cx="40" r="2.5"/>
-  <circle id="terminal_96" class="st3" cx="60" cy="60" r="2.5"/>
-  <circle id="terminal_98" class="st3" cx="20" cy="60" r="2.5"/>
-  <line class="st1" x1="44.4" y1="30" x2="36.4" y2="30"/>
-  <line class="st0" x1="40" x2="40" y2="18"/>
-  <line class="st0" x1="60" y1="60" x2="60" y2="42"/>
-  <line class="st0" x1="60" y1="42" x2="50" y2="42"/>
-  <line class="st0" x1="20" y1="60" x2="20" y2="42"/>
-  <line class="st0" x1="20" y1="42" x2="30" y2="42"/>
-  <line class="st0" x1="40" y1="18" x2="55.8" y2="45.1"/>
-  <path class="st2" d="M35.9,30h-4v-6h-6v6h-4"/>
+  <circle id="terminal_11" class="st3" cx="40" r="2.5"/>
+  <circle id="terminal_12" class="st3" cx="20" cy="60" r="2.5"/>
+  <circle id="terminal_14" class="st3" cx="60" cy="60" r="2.5"/>
+  <line class="st1" x1="37.5" y1="30" x2="29.5" y2="30"/>
+  <g>
+    <line class="st0" x1="40" x2="40" y2="45.1"/>
+    <line class="st0" x1="20" y1="60" x2="20" y2="42"/>
+    <line class="st0" x1="40" y1="57.5" x2="40" y2="42"/>
+    <line class="st0" x1="20" y1="42" x2="30" y2="42"/>
+    <line class="st0" x1="60" y1="60" x2="60" y2="42"/>
+    <line class="st0" x1="60" y1="42" x2="50" y2="42"/>
+  </g>
+  <path class="st2" d="M33,25h-3.5v10h-3.5"/>
 </svg>

@@ -169,6 +169,56 @@ export const COMPONENT_ICONS: Record<string, string> = {
       <polyline points="12.5,13 10,13 10,19 7.5,19" />
     </svg>`,
 
+  switch_no_nc: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.5">
+      <!-- NC Pole Left -->
+      <line x1="9" y1="4" x2="9" y2="10" />
+      <line x1="9" y1="10" x2="13" y2="10" />
+      <line x1="9" y1="20" x2="9" y2="28" />
+      <line x1="9" y1="20" x2="13" y2="8" />
+      <!-- NO Pole Right -->
+      <line x1="23" y1="4" x2="23" y2="10" />
+      <line x1="23" y1="20" x2="23" y2="28" />
+      <line x1="23" y1="20" x2="18" y2="10" />
+      <!-- Link with S -->
+      <line x1="10" y1="15" x2="22" y2="15" stroke-dasharray="1.5,1.5" stroke="#94a3b8" />
+      <polyline points="7,12 5,12 5,18 3,18" stroke-width="1.3" />
+    </svg>`,
+
+  switch_changeover: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.5">
+      <!-- Common Top -->
+      <line x1="16" y1="4" x2="16" y2="12" />
+      <!-- NC Left -->
+      <line x1="8" y1="28" x2="8" y2="20" />
+      <line x1="8" y1="20" x2="13" y2="20" />
+      <!-- NA Right -->
+      <line x1="24" y1="28" x2="24" y2="20" />
+      <line x1="24" y1="20" x2="19" y2="20" />
+      <!-- Blade to NC -->
+      <line x1="16" y1="12" x2="10" y2="21" />
+      <!-- S actuator -->
+      <polyline points="15,14 13,14 13,18 11,18" stroke-width="1.3" />
+    </svg>`,
+
+  switch_I_0_II: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.5">
+      <!-- Common Top -->
+      <line x1="16" y1="4" x2="16" y2="12" />
+      <!-- Terminal 12 (Left) -->
+      <line x1="8" y1="28" x2="8" y2="20" />
+      <line x1="8" y1="20" x2="12" y2="20" />
+      <!-- Terminal 14 (Right) -->
+      <line x1="24" y1="28" x2="24" y2="20" />
+      <line x1="24" y1="20" x2="20" y2="20" />
+      <!-- Blade straight vertical (Pos 0) -->
+      <line x1="16" y1="12" x2="16" y2="22" stroke="#38bdf8" />
+      <!-- Labels I - 0 - II -->
+      <text x="8" y="10" font-size="4" font-weight="bold" fill="#f59e0b" stroke="none" text-anchor="middle">I</text>
+      <text x="16" y="10" font-size="4" font-weight="bold" fill="#38bdf8" stroke="none" text-anchor="middle">0</text>
+      <text x="24" y="10" font-size="4" font-weight="bold" fill="#f59e0b" stroke="none" text-anchor="middle">II</text>
+    </svg>`,
+
   // PROTECCIONES (TERMOMAGNÉTICAS, GUARDAMOTOR, DIFERENCIAL)
   mcb_1p: `
     <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.8">

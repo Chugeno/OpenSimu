@@ -553,6 +553,49 @@ export class SimulationEngine {
           const ncPt = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };
           union(key(comPt), key(ncPt));
         }
+      } else if (comp.type === 'switch_no_nc') {
+        // Interruptor selector doble: 11-12 (NC: 0, 1), 13-14 (NA: 2, 3)
+        const isActuated = Boolean(comp.state.closed);
+        const naClosed = isActuated;
+        const ncClosed = !isActuated;
+        if (ncClosed && comp.terminals.length >= 2) {
+          union(
+            key({ x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY }),
+            key({ x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY })
+          );
+        }
+        if (naClosed && comp.terminals.length >= 4) {
+          union(
+            key({ x: comp.x + comp.terminals[2].relX, y: comp.y + comp.terminals[2].relY }),
+            key({ x: comp.x + comp.terminals[3].relX, y: comp.y + comp.terminals[3].relY })
+          );
+        }
+      } else if (comp.type === 'switch_changeover') {
+        // Conmutador: 0 = 11 COM (20, 0), 1 = 12 NC (0, 60), 2 = 14 NA (40, 60)
+        const isActuated = Boolean(comp.state.closed);
+        const comPt = { x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY };
+        if (isActuated && comp.terminals.length >= 3) {
+          // Conectado 11 con 14 (NA cerrado)
+          const naPt = { x: comp.x + comp.terminals[2].relX, y: comp.y + comp.terminals[2].relY };
+          union(key(comPt), key(naPt));
+        } else if (!isActuated && comp.terminals.length >= 2) {
+          // Conectado 11 con 12 (NC cerrado)
+          const ncPt = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };
+          union(key(comPt), key(ncPt));
+        }
+      } else if (comp.type === 'switch_I_0_II') {
+        // Conmutador rotativo I-0-II: 0 = 11 COM (20, 0), 1 = 12 Pos I (0, 60), 2 = 14 Pos II (40, 60)
+        const pos = comp.state.position ?? 0;
+        const comPt = { x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY };
+        if (pos === 1 && comp.terminals.length >= 2) {
+          // Posición I: Conecta 11 con 12
+          const p12 = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };
+          union(key(comPt), key(p12));
+        } else if (pos === 2 && comp.terminals.length >= 3) {
+          // Posición II: Conecta 11 con 14
+          const p14 = { x: comp.x + comp.terminals[2].relX, y: comp.y + comp.terminals[2].relY };
+          union(key(comPt), key(p14));
+        }
       }
     }
 

@@ -91,6 +91,54 @@ export class SymbolRenderer {
         break;
       }
 
+      case 'switch_no_nc': {
+        const isActuated = Boolean(comp.state.closed);
+        const stateIdx = isActuated ? 1 : 0;
+        const svgPath = `/symbols/switch_no_nc/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 80, height: 60 },
+          () => this.renderContactNONC(ctx, comp, isSimulation),
+          isActuated
+        );
+        break;
+      }
+
+      case 'switch_changeover': {
+        const isActuated = Boolean(comp.state.closed);
+        const stateIdx = isActuated ? 1 : 0;
+        const svgPath = `/symbols/switch_changeover/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 80, height: 60 },
+          () => this.renderContactChangeover(ctx, comp, isSimulation),
+          isActuated
+        );
+        break;
+      }
+
+      case 'switch_I_0_II': {
+        const pos = comp.state.position ?? 0;
+        const svgPath = `/symbols/switch_I_0_II/${pos}.svg`;
+        const isActuated = pos !== 0;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 80, height: 60 },
+          () => this.renderContactChangeover(ctx, comp, isSimulation),
+          isActuated
+        );
+        break;
+      }
+
       case 'contact_no_nc': {
         const isActuated = Boolean(comp.state.energized || comp.state.pressed);
         const stateIdx = isActuated ? 1 : 0;

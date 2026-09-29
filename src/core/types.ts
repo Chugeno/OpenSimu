@@ -87,6 +87,8 @@ export interface CircuitComponent {
     color?: string;    // For pilot lights (e.g. green, red, amber)
     protectionType?: 'mag' | 'mag_thermal'; // For motor breakers (mag = magnetic, mag_thermal = thermal-magnetic)
     direction?: 'CW' | 'CCW'; // For motors (CW = clockwise, CCW = counter-clockwise)
+    position?: number; // For multi-position rotary switches (e.g. 0, 1, 2 for switch_I_0_II)
+    switchStep?: number; // Cycle step: 0 -> 1 -> 2 -> 3
     poles?: number;
     svgUrl?: string;
     caption?: string;

@@ -107,6 +107,9 @@ export const TRANSLATIONS: Record<SupportedLocale, Record<string, string>> = {
     'comp.pushbutton_emergency_no': 'Seta de Emergencia NA (13-14)',
     'comp.switch_no': 'Interruptor Unipolar NA (13-14)',
     'comp.switch_nc': 'Interruptor Unipolar NC (11-12)',
+    'comp.switch_no_nc': 'Interruptor Selector Doble (11-12 / 13-14)',
+    'comp.switch_changeover': 'Interruptor Conmutado (11-12-14)',
+    'comp.switch_I_0_II': 'Interruptor Selector I-0-II (11-12-14)',
     'comp.level_switch': 'Interruptor de Nivel / Boya (11-12-14)',
 
     'comp.coil': 'Bobina de Contactor (-KM)',
@@ -256,6 +259,9 @@ export const TRANSLATIONS: Record<SupportedLocale, Record<string, string>> = {
     'comp.pushbutton_emergency_no': 'Seta de Emergencia NA (13-14)',
     'comp.switch_no': 'Interruptor NA (13-14)',
     'comp.switch_nc': 'Interruptor NC (11-12)',
+    'comp.switch_no_nc': 'Interruptor Selector Doble (11-12 / 13-14)',
+    'comp.switch_changeover': 'Interruptor Conmutado (11-12-14)',
+    'comp.switch_I_0_II': 'Interruptor Selector I-0-II (11-12-14)',
     'comp.level_switch': 'Interruptor de Nivel (11-12-14)',
 
     'comp.coil': 'Bobina de Contactor (-KM)',
@@ -405,6 +411,9 @@ export const TRANSLATIONS: Record<SupportedLocale, Record<string, string>> = {
     'comp.pushbutton_emergency_no': 'Emergency Stop NO (13-14)',
     'comp.switch_no': 'NO Single Switch (13-14)',
     'comp.switch_nc': 'NC Single Switch (11-12)',
+    'comp.switch_no_nc': 'Double Selector Switch (11-12 / 13-14)',
+    'comp.switch_changeover': 'Changeover Switch (11-12-14)',
+    'comp.switch_I_0_II': 'Rotary Selector Switch I-0-II (11-12-14)',
     'comp.level_switch': 'Level / Float Switch (11-12-14)',
 
     'comp.coil': 'Contactor Coil (-KM)',

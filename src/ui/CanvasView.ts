@@ -798,7 +798,15 @@ export class CanvasView {
           }
           this.stepSimulation();
         } else if (action === 'toggle') {
-          if (clickedComp.type === 'thermal_relay_3p') {
+          if (clickedComp.type === 'switch_I_0_II') {
+            const nextStep = ((clickedComp.state.switchStep ?? 0) + 1) % 4;
+            const nextPos = nextStep === 1 ? 1 : nextStep === 3 ? 2 : 0;
+            for (const c of linkedComps) {
+              c.state.switchStep = nextStep;
+              c.state.position = nextPos;
+              c.state.closed = nextPos !== 0;
+            }
+          } else if (clickedComp.type === 'thermal_relay_3p') {
             const willBeTripped = !clickedComp.state.tripped;
             for (const c of linkedComps) {
               c.state.tripped = willBeTripped;
@@ -1215,6 +1223,8 @@ export class CanvasView {
         poles: def.poles || 1,
         protectionType: def.type.startsWith('motor_breaker_') ? 'mag' : undefined,
         color: def.type === 'pilot_light' ? 'green' : undefined,
+        position: def.type === 'switch_I_0_II' ? 0 : undefined,
+        switchStep: def.type === 'switch_I_0_II' ? 0 : undefined,
       },
     };
 
