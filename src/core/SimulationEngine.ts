@@ -103,7 +103,14 @@ export class SimulationEngine {
       let coilStateChanged = false;
 
       for (const comp of components) {
-        if (comp.type === 'coil') {
+        if (
+          comp.type === 'coil' ||
+          comp.type === 'step_relay' ||
+          comp.type === 'connection_timer' ||
+          comp.type === 'disconnection_timer' ||
+          comp.type === 'disconnect_connection_timer' ||
+          comp.type === 'timer'
+        ) {
           const t1 = comp.terminals.find((t) => t.id === 'A1');
           const t2 = comp.terminals.find((t) => t.id === 'A2');
           if (t1 && t2) {
@@ -116,13 +123,46 @@ export class SimulationEngine {
               (t1.potential === 'DC_NEG' && t2.potential === 'DC_POS');
 
             const hasPotentialDiff = isPhaseDiff || isDcDiff;
-
             comp.state.energized = hasPotentialDiff;
+
             const wasActive = activeCoils.has(comp.tag);
             if (hasPotentialDiff && !wasActive) {
               activeCoils.add(comp.tag);
               coilStateChanged = true;
             } else if (!hasPotentialDiff && wasActive) {
+              activeCoils.delete(comp.tag);
+              coilStateChanged = true;
+            }
+          }
+        } else if (comp.type === 'bistable_coil') {
+          // A1 = Set (activa), B1 = Reset (desactiva), A2 = Común retorno
+          const tA1 = comp.terminals.find((t) => t.id === 'A1');
+          const tB1 = comp.terminals.find((t) => t.id === 'B1');
+          const tA2 = comp.terminals.find((t) => t.id === 'A2');
+          if (tA2) {
+            const checkDiff = (t: typeof tA2) => {
+              if (!t) return false;
+              const isPhase =
+                (t.potential.startsWith('L') && tA2.potential === 'N') ||
+                (t.potential === 'N' && tA2.potential.startsWith('L')) ||
+                (t.potential.startsWith('L') && tA2.potential.startsWith('L') && t.potential !== tA2.potential);
+              const isDc =
+                (t.potential === 'DC_POS' && tA2.potential === 'DC_NEG') ||
+                (t.potential === 'DC_NEG' && tA2.potential === 'DC_POS');
+              return isPhase || isDc;
+            };
+
+            const setPulses = tA1 ? checkDiff(tA1) : false;
+            const resetPulses = tB1 ? checkDiff(tB1) : false;
+
+            comp.state.energized = setPulses || resetPulses;
+
+            if (setPulses && !comp.state.bistableSet) {
+              comp.state.bistableSet = true;
+              activeCoils.add(comp.tag);
+              coilStateChanged = true;
+            } else if (resetPulses && comp.state.bistableSet) {
+              comp.state.bistableSet = false;
               activeCoils.delete(comp.tag);
               coilStateChanged = true;
             }
@@ -395,16 +435,35 @@ export class SimulationEngine {
     for (const comp of components) {
       const isCoilActive = activeCoils.has(comp.tag);
 
-      if (comp.type === 'pushbutton_no' || comp.type === 'switch_no' || comp.type === 'pushbutton_emergency_no') {
+      if (
+        comp.type === 'pushbutton_no' ||
+        comp.type === 'switch_no' ||
+        comp.type === 'pushbutton_emergency_no' ||
+        comp.type === 'limit_no' ||
+        comp.type === 'inductive_detector_no'
+      ) {
         const isClosed = comp.state.pressed || comp.state.closed;
         if (isClosed && comp.terminals.length >= 2) {
           const p1 = { x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY };
           const p2 = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };
           union(key(p1), key(p2));
         }
-      } else if (comp.type === 'pushbutton_nc' || comp.type === 'switch_nc' || comp.type === 'pushbutton_emergency_nc') {
+      } else if (
+        comp.type === 'pushbutton_nc' ||
+        comp.type === 'switch_nc' ||
+        comp.type === 'pushbutton_emergency_nc' ||
+        comp.type === 'limit_nc' ||
+        comp.type === 'inductive_detector_nc'
+      ) {
         const isOpen = comp.state.pressed || !comp.state.closed;
         if (!isOpen && comp.terminals.length >= 2) {
+          const p1 = { x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY };
+          const p2 = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };
+          union(key(p1), key(p2));
+        }
+      } else if (comp.type === 'fuse_I') {
+        const isClosed = comp.state.closed !== false && !comp.state.fuseBlown;
+        if (isClosed && comp.terminals.length >= 2) {
           const p1 = { x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY };
           const p2 = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };
           union(key(p1), key(p2));
@@ -553,9 +612,14 @@ export class SimulationEngine {
           const ncPt = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };
           union(key(comPt), key(ncPt));
         }
-      } else if (comp.type === 'switch_no_nc') {
-        // Interruptor selector doble: 11-12 (NC: 0, 1), 13-14 (NA: 2, 3)
-        const isActuated = Boolean(comp.state.closed);
+      } else if (
+        comp.type === 'switch_no_nc' ||
+        comp.type === 'pushbutton_no_nc' ||
+        comp.type === 'pushbutton_emergency_no_nc' ||
+        comp.type === 'limit_no_nc'
+      ) {
+        // Interruptor / pulsador / final de carrera doble: 11-12 (NC: 0, 1), 13-14 (NA: 2, 3)
+        const isActuated = Boolean(comp.state.pressed || comp.state.closed);
         const naClosed = isActuated;
         const ncClosed = !isActuated;
         if (ncClosed && comp.terminals.length >= 2) {
@@ -570,9 +634,14 @@ export class SimulationEngine {
             key({ x: comp.x + comp.terminals[3].relX, y: comp.y + comp.terminals[3].relY })
           );
         }
-      } else if (comp.type === 'switch_changeover') {
-        // Conmutador: 0 = 11 COM (20, 0), 1 = 12 NC (0, 60), 2 = 14 NA (40, 60)
-        const isActuated = Boolean(comp.state.closed);
+      } else if (
+        comp.type === 'switch_changeover' ||
+        comp.type === 'pushbutton_changeover' ||
+        comp.type === 'pushbutton_emergency_changeover' ||
+        comp.type === 'limit_changeover'
+      ) {
+        // Conmutador / inversor: 0 = 11 COM, 1 = 12 NC, 2 = 14 NA
+        const isActuated = Boolean(comp.state.pressed || comp.state.closed);
         const comPt = { x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY };
         if (isActuated && comp.terminals.length >= 3) {
           // Conectado 11 con 14 (NA cerrado)

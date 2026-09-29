@@ -112,6 +112,32 @@ export const COMPONENT_ICONS: Record<string, string> = {
       <line x1="21" y1="12.5" x2="21" y2="26" stroke="#1e3a8a" stroke-width="1.8" />
     </svg>`,
 
+  transformer: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.5">
+      <circle cx="16" cy="11" r="6" stroke="#38bdf8" />
+      <circle cx="16" cy="21" r="6" stroke="#f59e0b" />
+      <line x1="8" y1="3" x2="8" y2="11" stroke="#38bdf8" />
+      <line x1="24" y1="3" x2="24" y2="11" stroke="#38bdf8" />
+      <line x1="8" y1="21" x2="8" y2="29" stroke="#f59e0b" />
+      <line x1="24" y1="21" x2="24" y2="29" stroke="#f59e0b" />
+    </svg>`,
+
+  transformer_III: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.3">
+      <circle cx="9" cy="11" r="4.5" stroke="#38bdf8" />
+      <circle cx="16" cy="11" r="4.5" stroke="#38bdf8" />
+      <circle cx="23" cy="11" r="4.5" stroke="#38bdf8" />
+      <circle cx="9" cy="21" r="4.5" stroke="#f59e0b" />
+      <circle cx="16" cy="21" r="4.5" stroke="#f59e0b" />
+      <circle cx="23" cy="21" r="4.5" stroke="#f59e0b" />
+      <line x1="9" y1="3" x2="9" y2="6.5" stroke="#38bdf8" />
+      <line x1="16" y1="3" x2="16" y2="6.5" stroke="#38bdf8" />
+      <line x1="23" y1="3" x2="23" y2="6.5" stroke="#38bdf8" />
+      <line x1="9" y1="25.5" x2="9" y2="29" stroke="#f59e0b" />
+      <line x1="16" y1="25.5" x2="16" y2="29" stroke="#f59e0b" />
+      <line x1="23" y1="25.5" x2="23" y2="29" stroke="#f59e0b" />
+    </svg>`,
+
   ground: `
     <svg viewBox="0 0 32 32" fill="none" stroke="#16a34a" stroke-width="2">
       <line x1="16" y1="4" x2="16" y2="15" />
@@ -148,6 +174,125 @@ export const COMPONENT_ICONS: Record<string, string> = {
       <line x1="16" y1="21" x2="21" y2="9" />
       <line x1="17" y1="16" x2="9" y2="16" stroke-dasharray="1.5,1.5" />
       <path d="M 9 13 A 3 3 0 0 0 9 19 Z" />
+    </svg>`,
+
+  pushbutton_emergency_no: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.8">
+      <line x1="16" y1="4" x2="16" y2="11" />
+      <line x1="16" y1="21" x2="16" y2="28" />
+      <line x1="16" y1="21" x2="10" y2="11" />
+      <line x1="13" y1="16" x2="8" y2="16" stroke-dasharray="1.5,1.5" />
+      <path d="M 8 13 A 3 3 0 0 0 8 19 Z" />
+    </svg>`,
+
+  pushbutton_no_nc: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.5">
+      <line x1="9" y1="4" x2="9" y2="10" />
+      <line x1="9" y1="10" x2="13" y2="10" />
+      <line x1="9" y1="20" x2="9" y2="28" />
+      <line x1="9" y1="20" x2="13" y2="8" />
+      <line x1="23" y1="4" x2="23" y2="10" />
+      <line x1="23" y1="20" x2="23" y2="28" />
+      <line x1="23" y1="20" x2="18" y2="10" />
+      <line x1="10" y1="15" x2="22" y2="15" stroke-dasharray="1.5,1.5" stroke="#94a3b8" />
+      <polyline points="7,12 5,12 5,18 7,18" stroke-width="1.3" />
+    </svg>`,
+
+  pushbutton_changeover: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.5">
+      <line x1="16" y1="4" x2="16" y2="12" />
+      <line x1="8" y1="28" x2="8" y2="20" />
+      <line x1="8" y1="20" x2="13" y2="20" />
+      <line x1="24" y1="28" x2="24" y2="20" />
+      <line x1="24" y1="20" x2="19" y2="20" />
+      <line x1="16" y1="12" x2="10" y2="21" />
+      <polyline points="14,14 11.5,14 11.5,18 14,18" stroke-width="1.3" />
+    </svg>`,
+
+  pushbutton_emergency_no_nc: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.5">
+      <line x1="9" y1="4" x2="9" y2="10" />
+      <line x1="9" y1="10" x2="13" y2="10" />
+      <line x1="9" y1="20" x2="9" y2="28" />
+      <line x1="9" y1="20" x2="13" y2="8" />
+      <line x1="23" y1="4" x2="23" y2="10" />
+      <line x1="23" y1="20" x2="23" y2="28" />
+      <line x1="23" y1="20" x2="18" y2="10" />
+      <line x1="10" y1="15" x2="22" y2="15" stroke-dasharray="1.5,1.5" stroke="#94a3b8" />
+      <path d="M 6 12 A 3 3 0 0 0 6 18 Z" />
+    </svg>`,
+
+  pushbutton_emergency_changeover: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.5">
+      <line x1="16" y1="4" x2="16" y2="12" />
+      <line x1="8" y1="28" x2="8" y2="20" />
+      <line x1="8" y1="20" x2="13" y2="20" />
+      <line x1="24" y1="28" x2="24" y2="20" />
+      <line x1="24" y1="20" x2="19" y2="20" />
+      <line x1="16" y1="12" x2="10" y2="21" />
+      <path d="M 12 13 A 2.5 2.5 0 0 0 12 18 Z" />
+    </svg>`,
+
+  limit_no: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.8">
+      <line x1="18" y1="4" x2="18" y2="11" />
+      <line x1="18" y1="21" x2="18" y2="28" />
+      <line x1="18" y1="21" x2="12" y2="11" />
+      <line x1="15" y1="16" x2="9" y2="16" stroke-dasharray="1.5,1.5" stroke="#94a3b8" />
+      <circle cx="6" cy="16" r="3.5" stroke="#38bdf8" stroke-width="1.5" />
+    </svg>`,
+
+  limit_nc: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.8">
+      <line x1="18" y1="4" x2="18" y2="11" />
+      <line x1="18" y1="11" x2="24" y2="11" />
+      <line x1="18" y1="21" x2="18" y2="28" />
+      <line x1="18" y1="21" x2="23" y2="9" />
+      <line x1="19" y1="16" x2="10" y2="16" stroke-dasharray="1.5,1.5" stroke="#94a3b8" />
+      <circle cx="6" cy="16" r="3.5" stroke="#38bdf8" stroke-width="1.5" />
+    </svg>`,
+
+  limit_no_nc: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.5">
+      <line x1="13" y1="4" x2="13" y2="10" />
+      <line x1="13" y1="10" x2="17" y2="10" />
+      <line x1="13" y1="20" x2="13" y2="28" />
+      <line x1="13" y1="20" x2="17" y2="8" />
+      <line x1="25" y1="4" x2="25" y2="10" />
+      <line x1="25" y1="20" x2="25" y2="28" />
+      <line x1="25" y1="20" x2="20" y2="10" />
+      <line x1="8" y1="15" x2="24" y2="15" stroke-dasharray="1.5,1.5" stroke="#94a3b8" />
+      <circle cx="5" cy="15" r="3" stroke="#38bdf8" stroke-width="1.3" />
+    </svg>`,
+
+  limit_changeover: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.5">
+      <line x1="18" y1="4" x2="18" y2="12" />
+      <line x1="12" y1="28" x2="12" y2="20" />
+      <line x1="12" y1="20" x2="16" y2="20" />
+      <line x1="26" y1="28" x2="26" y2="20" />
+      <line x1="26" y1="20" x2="22" y2="20" />
+      <line x1="18" y1="12" x2="13" y2="21" />
+      <line x1="14" y1="16" x2="8" y2="16" stroke-dasharray="1.5,1.5" stroke="#94a3b8" />
+      <circle cx="5" cy="16" r="3" stroke="#38bdf8" stroke-width="1.3" />
+    </svg>`,
+
+  inductive_detector_no: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.5">
+      <rect x="5" y="8" width="22" height="16" rx="2" stroke="#e2e8f0" />
+      <rect x="8" y="11" width="6" height="10" fill="#38bdf8" stroke="none" />
+      <line x1="16" y1="4" x2="16" y2="8" />
+      <line x1="16" y1="24" x2="16" y2="28" />
+      <text x="21" y="18" font-size="5" font-weight="bold" fill="#22c55e" text-anchor="middle">NA</text>
+    </svg>`,
+
+  inductive_detector_nc: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.5">
+      <rect x="5" y="8" width="22" height="16" rx="2" stroke="#e2e8f0" />
+      <rect x="8" y="11" width="6" height="10" fill="#38bdf8" stroke="none" />
+      <line x1="16" y1="4" x2="16" y2="8" />
+      <line x1="16" y1="24" x2="16" y2="28" />
+      <text x="21" y="18" font-size="5" font-weight="bold" fill="#ef4444" text-anchor="middle">NC</text>
     </svg>`,
 
   switch_no: `
@@ -442,6 +587,15 @@ export const COMPONENT_ICONS: Record<string, string> = {
       <text x="16" y="29" font-size="5" font-weight="bold" fill="#38bdf8" text-anchor="middle">ΔI 4P</text>
     </svg>`,
 
+  fuse_I: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.8">
+      <line x1="16" y1="3" x2="16" y2="8" />
+      <line x1="16" y1="24" x2="16" y2="29" />
+      <rect x="11" y="8" width="10" height="16" rx="2" stroke="#e2e8f0" />
+      <line x1="16" y1="8" x2="16" y2="24" stroke="#38bdf8" stroke-width="1.4" />
+      <text x="25" y="18" font-size="5" font-weight="bold" fill="#f59e0b" text-anchor="middle">F</text>
+    </svg>`,
+
   // CONTACTORES DE POTENCIA
   contactor_1p: `
     <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.8">
@@ -561,6 +715,70 @@ export const COMPONENT_ICONS: Record<string, string> = {
       <line x1="16" y1="21" x2="16" y2="29" />
       <rect x="7" y="11" width="18" height="10" stroke="#e2e8f0" fill="#1e293b" />
       <text x="16" y="18.5" font-size="6" font-weight="bold" fill="#f8fafc" text-anchor="middle">KM</text>
+    </svg>`,
+
+  bistable_coil: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.6">
+      <line x1="10" y1="3" x2="10" y2="11" />
+      <line x1="22" y1="3" x2="22" y2="11" />
+      <line x1="16" y1="21" x2="16" y2="29" />
+      <rect x="7" y="11" width="18" height="10" stroke="#e2e8f0" fill="#1e293b" />
+      <line x1="10" y1="21" x2="13" y2="11" stroke="#38bdf8" />
+      <line x1="19" y1="11" x2="22" y2="21" stroke="#38bdf8" />
+      <text x="10" y="9" font-size="4" fill="#38bdf8">S</text>
+      <text x="22" y="9" font-size="4" fill="#38bdf8">R</text>
+    </svg>`,
+
+  step_relay: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.6">
+      <line x1="16" y1="3" x2="16" y2="11" />
+      <line x1="16" y1="21" x2="16" y2="29" />
+      <rect x="7" y="11" width="18" height="10" stroke="#e2e8f0" fill="#1e293b" />
+      <line x1="11" y1="21" x2="11" y2="11" stroke="#f59e0b" />
+      <line x1="11" y1="11" x2="16" y2="11" stroke="#f59e0b" />
+      <line x1="16" y1="11" x2="16" y2="16" stroke="#f59e0b" />
+      <line x1="16" y1="16" x2="21" y2="16" stroke="#f59e0b" />
+      <line x1="21" y1="16" x2="21" y2="21" stroke="#f59e0b" />
+    </svg>`,
+
+  connection_timer: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.6">
+      <line x1="16" y1="3" x2="16" y2="11" />
+      <line x1="16" y1="21" x2="16" y2="29" />
+      <rect x="7" y="11" width="18" height="10" stroke="#e2e8f0" fill="#1e293b" />
+      <line x1="7" y1="11" x2="13" y2="21" stroke="#38bdf8" />
+      <line x1="7" y1="21" x2="13" y2="11" stroke="#38bdf8" />
+      <line x1="13" y1="11" x2="13" y2="21" stroke="#38bdf8" />
+      <text x="19" y="18" font-size="4.5" font-weight="bold" fill="#38bdf8" text-anchor="middle">TON</text>
+    </svg>`,
+
+  disconnection_timer: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.6">
+      <line x1="16" y1="3" x2="16" y2="11" />
+      <line x1="16" y1="21" x2="16" y2="29" />
+      <rect x="7" y="11" width="18" height="10" stroke="#e2e8f0" fill="#1e293b" />
+      <rect x="7" y="11" width="6" height="10" fill="#f59e0b" stroke="none" />
+      <text x="19" y="18" font-size="4.5" font-weight="bold" fill="#f59e0b" text-anchor="middle">TOF</text>
+    </svg>`,
+
+  disconnect_connection_timer: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.6">
+      <line x1="16" y1="3" x2="16" y2="11" />
+      <line x1="16" y1="21" x2="16" y2="29" />
+      <rect x="7" y="11" width="18" height="10" stroke="#e2e8f0" fill="#1e293b" />
+      <rect x="10" y="11" width="3" height="10" fill="#f59e0b" stroke="none" />
+      <line x1="7" y1="11" x2="10" y2="21" stroke="#38bdf8" />
+      <line x1="7" y1="21" x2="10" y2="11" stroke="#38bdf8" />
+      <text x="19" y="18" font-size="4" font-weight="bold" fill="#38bdf8" text-anchor="middle">TON/F</text>
+    </svg>`,
+
+  timer: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.6">
+      <line x1="16" y1="3" x2="16" y2="11" />
+      <line x1="16" y1="21" x2="16" y2="29" />
+      <rect x="7" y="11" width="18" height="10" stroke="#e2e8f0" fill="#1e293b" />
+      <circle cx="16" cy="16" r="3.5" stroke="#38bdf8" stroke-width="1.2" />
+      <polyline points="16,14 16,16 17.5,16" stroke="#38bdf8" stroke-width="1.2" />
     </svg>`,
 
   // CONTACTOS AUXILIARES

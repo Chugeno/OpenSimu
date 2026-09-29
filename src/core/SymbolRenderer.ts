@@ -52,6 +52,7 @@ export class SymbolRenderer {
       case 'pushbutton_no':
       case 'pushbutton_emergency_no':
       case 'switch_no':
+      case 'limit_no':
       case 'contact_no':
       case 'contact_no_1p': {
         const isClosed = Boolean(comp.state.pressed || comp.state.closed || comp.state.energized);
@@ -73,6 +74,7 @@ export class SymbolRenderer {
       case 'pushbutton_nc':
       case 'pushbutton_emergency_nc':
       case 'switch_nc':
+      case 'limit_nc':
       case 'contact_nc':
       case 'contact_nc_1p': {
         const isClosed = comp.state.closed && !comp.state.pressed && !comp.state.energized;
@@ -92,10 +94,13 @@ export class SymbolRenderer {
         break;
       }
 
-      case 'switch_no_nc': {
-        const isActuated = Boolean(comp.state.closed);
+      case 'switch_no_nc':
+      case 'pushbutton_no_nc':
+      case 'pushbutton_emergency_no_nc':
+      case 'limit_no_nc': {
+        const isActuated = Boolean(comp.state.pressed || comp.state.closed || comp.state.energized);
         const stateIdx = isActuated ? 1 : 0;
-        const svgPath = `/symbols/switch_no_nc/${stateIdx}.svg`;
+        const svgPath = `/symbols/${comp.type}/${stateIdx}.svg`;
         this.renderSvgWithFallback(
           ctx,
           comp,
@@ -108,10 +113,13 @@ export class SymbolRenderer {
         break;
       }
 
-      case 'switch_changeover': {
-        const isActuated = Boolean(comp.state.closed);
+      case 'switch_changeover':
+      case 'pushbutton_changeover':
+      case 'pushbutton_emergency_changeover':
+      case 'limit_changeover': {
+        const isActuated = Boolean(comp.state.pressed || comp.state.closed || comp.state.energized);
         const stateIdx = isActuated ? 1 : 0;
-        const svgPath = `/symbols/switch_changeover/${stateIdx}.svg`;
+        const svgPath = `/symbols/${comp.type}/${stateIdx}.svg`;
         this.renderSvgWithFallback(
           ctx,
           comp,
@@ -172,10 +180,16 @@ export class SymbolRenderer {
         break;
       }
 
-      case 'coil': {
+      case 'coil':
+      case 'bistable_coil':
+      case 'step_relay':
+      case 'connection_timer':
+      case 'disconnection_timer':
+      case 'disconnect_connection_timer':
+      case 'timer': {
         const energized = Boolean(isSimulation && comp.state.energized);
         const stateIdx = energized ? 1 : 0;
-        const svgPath = `/symbols/coil/${stateIdx}.svg`;
+        const svgPath = `/symbols/${comp.type}/${stateIdx}.svg`;
         this.renderSvgWithFallback(
           ctx,
           comp,
@@ -232,6 +246,22 @@ export class SymbolRenderer {
           { minX: -20, minY: 0, width: 80, height: 60 },
           () => this.renderProtectionBreaker(ctx, comp, isSimulation),
           isClosed
+        );
+        break;
+      }
+
+      case 'fuse_I': {
+        const isOpen = Boolean(comp.state.closed === false || comp.state.fuseBlown);
+        const stateIdx = isOpen ? 1 : 0;
+        const svgPath = `/symbols/fuse_I/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 40, height: 60 },
+          () => this.renderProtectionBreaker(ctx, comp, isSimulation),
+          isOpen
         );
         break;
       }
@@ -369,6 +399,55 @@ export class SymbolRenderer {
           { minX: 0, minY: 0, width: 80, height: 60 },
           () => this.renderContactChangeover(ctx, comp, isSimulation),
           isTripped
+        );
+        break;
+      }
+
+      case 'inductive_detector_no':
+      case 'inductive_detector_nc': {
+        const isActuated = Boolean(comp.state.pressed || comp.state.closed || comp.state.energized);
+        const stateIdx = isActuated ? 1 : 0;
+        const svgPath = `/symbols/${comp.type}/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 52, height: 60 },
+          () => this.renderSwitchNO(ctx, comp, isSimulation),
+          isActuated
+        );
+        break;
+      }
+
+      case 'transformer': {
+        const svgPath = `/symbols/transformer/0.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 68.1, height: 100 },
+          () => {
+            ctx.strokeRect(0, 0, 68, 100);
+          },
+          false
+        );
+        break;
+      }
+
+      case 'transformer_III': {
+        const svgPath = `/symbols/transformer_III/0.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 91.2, height: 100 },
+          () => {
+            ctx.strokeRect(0, 0, 92, 100);
+          },
+          false
         );
         break;
       }

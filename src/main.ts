@@ -272,6 +272,53 @@ canvasView.onTagEditRequest = (comp) => {
       });
 
       modalExtraContent.appendChild(typeGrid);
+    } else if (
+      comp.type === 'connection_timer' ||
+      comp.type === 'disconnection_timer' ||
+      comp.type === 'disconnect_connection_timer' ||
+      comp.type === 'timer'
+    ) {
+      modalExtraOptions.style.display = 'block';
+      modalExtraLabel.textContent = 'Configuración de Temporización:';
+
+      const timerBox = document.createElement('div');
+      timerBox.style.display = 'flex';
+      timerBox.style.alignItems = 'center';
+      timerBox.style.gap = '10px';
+      timerBox.style.marginTop = '6px';
+
+      const valInput = document.createElement('input');
+      valInput.type = 'number';
+      valInput.min = '0.1';
+      valInput.step = '0.5';
+      valInput.value = (comp.state?.timeValue ?? 5).toString();
+      valInput.className = 'terminal-input';
+      valInput.style.width = '100px';
+      valInput.style.fontWeight = 'bold';
+      valInput.id = 'timer-val-input';
+
+      const unitSelect = document.createElement('select');
+      unitSelect.className = 'terminal-input';
+      unitSelect.style.width = '120px';
+      unitSelect.style.cursor = 'pointer';
+      unitSelect.id = 'timer-unit-select';
+
+      const units: { val: 's' | 'min' | 'h'; label: string }[] = [
+        { val: 's', label: 'Segundos (s)' },
+        { val: 'min', label: 'Minutos (min)' },
+        { val: 'h', label: 'Horas (h)' },
+      ];
+      units.forEach((u) => {
+        const opt = document.createElement('option');
+        opt.value = u.val;
+        opt.textContent = u.label;
+        if ((comp.state?.timeUnit ?? 's') === u.val) opt.selected = true;
+        unitSelect.appendChild(opt);
+      });
+
+      timerBox.appendChild(valInput);
+      timerBox.appendChild(unitSelect);
+      modalExtraContent.appendChild(timerBox);
     } else {
       modalExtraOptions.style.display = 'none';
     }
@@ -337,6 +384,22 @@ modalSave.onclick = () => {
     } else if (editingComponent.type.startsWith('motor_breaker_')) {
       editingComponent.state = editingComponent.state || {};
       editingComponent.state.protectionType = tempSelectedProtectionType;
+    } else if (
+      editingComponent.type === 'connection_timer' ||
+      editingComponent.type === 'disconnection_timer' ||
+      editingComponent.type === 'disconnect_connection_timer' ||
+      editingComponent.type === 'timer'
+    ) {
+      editingComponent.state = editingComponent.state || {};
+      const valEl = document.getElementById('timer-val-input') as HTMLInputElement | null;
+      const unitEl = document.getElementById('timer-unit-select') as HTMLSelectElement | null;
+      if (valEl) {
+        const parsed = parseFloat(valEl.value);
+        editingComponent.state.timeValue = !isNaN(parsed) && parsed > 0 ? parsed : 5;
+      }
+      if (unitEl) {
+        editingComponent.state.timeUnit = unitEl.value as any;
+      }
     }
     // Guardar numeración de bornes personalizada
     if (terminalsContainer) {

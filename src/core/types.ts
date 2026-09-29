@@ -97,6 +97,13 @@ export interface CircuitComponent {
     width?: number;
     height?: number;
     accentColor?: string;
+    timeValue?: number; // Configured delay duration (e.g. 5)
+    timeUnit?: 's' | 'min' | 'h'; // Unit of delay
+    timeElapsed?: number; // Milliseconds elapsed during simulation
+    timerActive?: boolean; // True when timer delay is finished or output contact triggered
+    bistableSet?: boolean; // For bistable coil memory state
+    stepRelayActive?: boolean; // For step relay / telerruptor toggle state
+    fuseBlown?: boolean; // For fuse blown state
   };
 }
 
