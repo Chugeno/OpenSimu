@@ -1,6 +1,6 @@
 import type { CircuitComponent } from './types';
 import { getComponentBounds } from './ComponentRegistry';
-import { EMBEDDED_SYMBOLS } from './EmbeddedSymbols';
+import { EMBEDDED_SYMBOLS, EMBEDDED_SYMBOLS_META } from './EmbeddedSymbols';
 
 export class SymbolRenderer {
   private static svgImageCache: Map<string, HTMLImageElement> = new Map();
@@ -2155,21 +2155,50 @@ export class SymbolRenderer {
   private static parseSvgMetadata(svgPath: string) {
     if (this.svgMetadataCache.has(svgPath)) return;
 
-    // Fast offline path: use pre-embedded SVG bundle if available
-    const embeddedXml = EMBEDDED_SYMBOLS[svgPath];
-    if (embeddedXml) {
-      this.processSvgXml(svgPath, embeddedXml);
+    // Ultra-fast zero-CPU path: use pre-compiled metadata generated at build time
+    const precompiled = EMBEDDED_SYMBOLS_META[svgPath];
+    if (precompiled) {
+      const termMap = new Map<string, { x: number; y: number }>();
+      for (const [k, v] of Object.entries(precompiled.terminals)) {
+        termMap.set(k.toLowerCase(), v);
+      }
+      this.svgMetadataCache.set(svgPath, {
+        terminals: termMap,
+        viewBox: precompiled.viewBox,
+        refTerminal: precompiled.refTerminal,
+      });
+
+      // Pre-generate actuated red SVG image using Data URI
+      const embeddedXml = EMBEDDED_SYMBOLS[svgPath];
+      if (embeddedXml) {
+        try {
+          const redSvgText = embeddedXml
+            .replace(/#(?:1e293b|0f172a|000000|111827)\b/gi, '#ef4444')
+            .replace(/rgb\(\s*(?:30|15|0)\s*,\s*(?:41|23|0)\s*,\s*(?:59|42|0)\s*\)/gi, '#ef4444');
+          const redUrl = `data:image/svg+xml;utf8,${encodeURIComponent(redSvgText)}`;
+          const redImg = new Image();
+          redImg.onload = () => {
+            if (this.onRedrawNeeded) this.onRedrawNeeded();
+          };
+          redImg.onerror = () => {
+            (redImg as any)._failed = true;
+          };
+          redImg.src = redUrl;
+          this.svgImageCache.set(`${svgPath}__actuated`, redImg);
+        } catch {
+          // Ignore
+        }
+      }
       return;
     }
 
-    // Asynchronously fetch and parse SVG XML to discover terminal IDs
+    // Fallback for external dynamic SVGs
     fetch(svgPath)
       .then((res) => (res.ok ? res.text() : Promise.reject('Failed to load SVG')))
       .then((xmlText) => {
         this.processSvgXml(svgPath, xmlText);
       })
       .catch(() => {
-        // Mark as empty so we don't refetch
         this.svgMetadataCache.set(svgPath, {
           terminals: new Map(),
           viewBox: { minX: 0, minY: 0, width: 40, height: 60 },

@@ -106,6 +106,10 @@ export class CanvasView {
   } | null = null;
   public hoveredJunctionNode: Point | null = null;
 
+  // Performance caches & Frame Throttle
+  private cachedJunctionNodes: Point[] | null = null;
+  private renderPending: boolean = false;
+
   // Callbacks
   public onStatusUpdate?: (status: { x: number; y: number; simStatus: string; zoom: number }) => void;
   public onTagEditRequest?: (comp: CircuitComponent) => void;
@@ -118,9 +122,23 @@ export class CanvasView {
     this.grid = new Grid();
 
     this.setupEvents();
-    SymbolRenderer.onRedrawNeeded = () => this.render();
+    SymbolRenderer.onRedrawNeeded = () => this.requestRender();
     this.resize();
     this.render();
+  }
+
+  public invalidateJunctionCache() {
+    this.cachedJunctionNodes = null;
+  }
+
+  public requestRender() {
+    if (!this.renderPending) {
+      this.renderPending = true;
+      requestAnimationFrame(() => {
+        this.renderPending = false;
+        this.render();
+      });
+    }
   }
 
   public resize() {
@@ -349,6 +367,7 @@ export class CanvasView {
     this.manualNodes = [];
     this.suppressedNodes = [];
     this.clearSelection();
+    this.invalidateJunctionCache();
     this.stopSimulation();
   }
 
@@ -424,6 +443,7 @@ export class CanvasView {
     this.manualNodes = snapshot.manualNodes || [];
     this.suppressedNodes = snapshot.suppressedNodes || [];
     this.clearSelection();
+    this.invalidateJunctionCache();
     this.render();
   }
 
@@ -557,6 +577,7 @@ export class CanvasView {
     this.selectedComponents = new Set(newComps);
     this.selectedWires = new Set(newWires);
 
+    this.invalidateJunctionCache();
     this.render();
     return true;
   }
@@ -680,6 +701,7 @@ export class CanvasView {
             this.components = this.components.filter((c) => !this.selectedComponents.has(c));
             this.wires = this.wires.filter((w) => !this.selectedWires.has(w));
             this.clearSelection();
+            this.invalidateJunctionCache();
             this.render();
           }
         }
@@ -978,7 +1000,7 @@ export class CanvasView {
     if (this.isPanning) {
       this.grid.panX = sx - this.panStart.x;
       this.grid.panY = sy - this.panStart.y;
-      this.render();
+      this.requestRender();
       return;
     }
 
@@ -1018,14 +1040,14 @@ export class CanvasView {
       for (const [wire, initPts] of this.initialWirePositions.entries()) {
         wire.points = initPts.map((p) => ({ x: p.x + dx, y: p.y + dy }));
       }
-      this.render();
+      this.requestRender();
       return;
     }
 
     if (this.isBoxSelecting && !this.isSimulation) {
       this.boxSelectCurrent = { ...world };
       this.updateBoxSelection(e.shiftKey || e.ctrlKey || e.metaKey);
-      this.render();
+      this.requestRender();
       return;
     }
 
@@ -1037,7 +1059,7 @@ export class CanvasView {
       this.activeTool === 'place_component' ||
       this.activeTool === 'delete'
     ) {
-      this.render();
+      this.requestRender();
     }
   }
 
@@ -1064,8 +1086,11 @@ export class CanvasView {
         }
       }
 
-      if (moved && this.preDragSnapshot) {
-        this.pushPreSnapshot(this.preDragSnapshot);
+      if (moved) {
+        this.invalidateJunctionCache();
+        if (this.preDragSnapshot) {
+          this.pushPreSnapshot(this.preDragSnapshot);
+        }
       }
       this.preDragSnapshot = null;
       this.initialCompPositions.clear();
@@ -1183,6 +1208,8 @@ export class CanvasView {
         potential: 'NONE',
       });
     }
+
+    this.invalidateJunctionCache();
   }
 
   private handleDoubleClick(e: MouseEvent) {
@@ -1782,6 +1809,10 @@ export class CanvasView {
   }
 
   public getActiveJunctionNodes(): Point[] {
+    if (this.cachedJunctionNodes !== null) {
+      return this.cachedJunctionNodes;
+    }
+
     const junctions: Point[] = [];
     const hasJunction = (p: Point) => junctions.some((j) => Grid.pointsEqual(j, p, 4));
 
@@ -1828,6 +1859,7 @@ export class CanvasView {
       }
     }
 
+    this.cachedJunctionNodes = junctions;
     return junctions;
   }
 
@@ -1860,6 +1892,8 @@ export class CanvasView {
         this.manualNodes.push({ ...snapped });
       }
     }
+
+    this.invalidateJunctionCache();
 
     if (this.isSimulation) {
       this.stepSimulation();

@@ -1,5 +1,5 @@
-// Auto-generated bundle of SVG symbols for 100% offline, standalone single-file distribution.
-// Generated automatically during build.
+// Auto-generated bundle of SVG symbols and pre-compiled terminal metadata for 100% offline, ultra-fast performance.
+// Generated automatically during build. Cero DOMParser required on client machine.
 export const EMBEDDED_SYMBOLS: Record<string, string> = {
   "/symbols/coil/0.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 40 60\" width=\"40\" height=\"60\">\n  <circle id=\"terminal_a1\" cx=\"20\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_a2\" cx=\"20\" cy=\"60\" r=\"2.5\" fill=\"#1e293b\" />\n  <!-- Conductores de conexión -->\n  <line x1=\"20\" y1=\"0\" x2=\"20\" y2=\"22\" stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n  <line x1=\"20\" y1=\"38\" x2=\"20\" y2=\"60\" stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n  <!-- Rectángulo IEC 60617 (32x16) -->\n  <rect x=\"4\" y=\"22\" width=\"32\" height=\"16\" fill=\"#ffffff\" stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linejoin=\"round\" />\n</svg>\n",
   "/symbols/coil/1.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 40 60\" width=\"40\" height=\"60\">\n  <circle id=\"terminal_a1\" cx=\"20\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_a2\" cx=\"20\" cy=\"60\" r=\"2.5\" fill=\"#1e293b\" />\n  <line x1=\"20\" y1=\"0\" x2=\"20\" y2=\"22\" stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n  <line x1=\"20\" y1=\"38\" x2=\"20\" y2=\"60\" stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n  <!-- Bobina energizada (brillo amarillo) -->\n  <rect x=\"4\" y=\"22\" width=\"32\" height=\"16\" fill=\"#fef08a\" stroke=\"#ca8a04\" stroke-width=\"2.2\" stroke-linejoin=\"round\" />\n</svg>\n",
@@ -89,4 +89,2607 @@ export const EMBEDDED_SYMBOLS: Record<string, string> = {
   "/symbols/thermal_contact_no_nc/1.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 80 60\">\n  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->\n  <defs>\n    <style>\n      .st0 {\n        stroke: #94a3b8;\n        stroke-dasharray: 3 2;\n        stroke-width: 1.2px;\n      }\n\n      .st0, .st1, .st2 {\n        fill: none;\n        stroke-linecap: round;\n      }\n\n      .st1 {\n        stroke: #1e293b;\n        stroke-width: 1.8px;\n      }\n\n      .st1, .st2 {\n        stroke-linejoin: round;\n      }\n\n      .st2 {\n        stroke: #0f172a;\n        stroke-width: 1.5px;\n      }\n\n      .st3 {\n        fill: #1e293b;\n      }\n    </style>\n  </defs>\n  <circle id=\"terminal_95\" class=\"st3\" cx=\"32.5\" r=\"2.5\"/>\n  <circle id=\"terminal_96\" class=\"st3\" cx=\"32.5\" cy=\"60\" r=\"2.5\"/>\n  <circle id=\"terminal_97\" class=\"st3\" cx=\"72.5\" r=\"2.5\"/>\n  <circle id=\"terminal_98\" class=\"st3\" cx=\"72.5\" cy=\"60\" r=\"2.5\"/>\n  <line class=\"st0\" x1=\"30\" y1=\"32\" x2=\"72.5\" y2=\"32\"/>\n  <line class=\"st1\" x1=\"32.5\" x2=\"32.5\" y2=\"20\"/>\n  <line class=\"st1\" x1=\"32.5\" y1=\"20\" x2=\"42.5\" y2=\"20\"/>\n  <line class=\"st1\" x1=\"32.5\" y1=\"42\" x2=\"32.5\" y2=\"60\"/>\n  <line class=\"st1\" x1=\"32.5\" y1=\"42\" x2=\"48.5\" y2=\"22\"/>\n  <line class=\"st1\" x1=\"72.5\" x2=\"72.5\" y2=\"20\"/>\n  <line class=\"st1\" x1=\"72.5\" y1=\"42\" x2=\"72.5\" y2=\"60\"/>\n  <line class=\"st1\" x1=\"72.5\" y1=\"42\" x2=\"72.5\" y2=\"20\"/>\n  <path class=\"st2\" d=\"M27.8,32h-4v-6h-6v6h-4\"/>\n</svg>",
   "/symbols/thermal_relay_3p/0.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 120 60\">\n  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->\n  <defs>\n    <style>\n      .st0 {\n        fill: none;\n        stroke: #1e293b;\n        stroke-linecap: round;\n        stroke-linejoin: round;\n        stroke-width: 1.8px;\n      }\n\n      .st1 {\n        fill: #fff;\n        stroke: #0f172a;\n        stroke-width: 1.5px;\n      }\n\n      .st2 {\n        fill: #1e293b;\n      }\n    </style>\n  </defs>\n  <circle id=\"terminal_1\" class=\"st2\" cx=\"20\" r=\"2.5\"/>\n  <circle id=\"terminal_2\" class=\"st2\" cx=\"20\" cy=\"60\" r=\"2.5\"/>\n  <circle id=\"terminal_3\" class=\"st2\" cx=\"60\" r=\"2.5\"/>\n  <circle id=\"terminal_4\" class=\"st2\" cx=\"60\" cy=\"60\" r=\"2.5\"/>\n  <circle id=\"terminal_5\" class=\"st2\" cx=\"100\" r=\"2.5\"/>\n  <circle id=\"terminal_6\" class=\"st2\" cx=\"100\" cy=\"60\" r=\"2.5\"/>\n  <rect class=\"st1\" x=\"10\" y=\"22\" width=\"100\" height=\"16\"/>\n  <path class=\"st1\" d=\"M60,38v-4.6h6v-6.9h-6v-4.6\"/>\n  <path class=\"st1\" d=\"M20,38v-4.6h6v-6.9h-6v-4.6\"/>\n  <path class=\"st1\" d=\"M100,38v-4.6h6v-6.9h-6v-4.6\"/>\n  <line class=\"st0\" x1=\"20\" x2=\"20\" y2=\"22\"/>\n  <line class=\"st0\" x1=\"20\" y1=\"38\" x2=\"20\" y2=\"60\"/>\n  <line class=\"st0\" x1=\"60\" x2=\"60\" y2=\"22\"/>\n  <line class=\"st0\" x1=\"60\" y1=\"38\" x2=\"60\" y2=\"60\"/>\n  <line class=\"st0\" x1=\"100\" x2=\"100\" y2=\"22\"/>\n  <line class=\"st0\" x1=\"100\" y1=\"38\" x2=\"100\" y2=\"60\"/>\n</svg>",
   "/symbols/thermal_relay_3p/1.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 120 60\">\n  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->\n  <defs>\n    <style>\n      .st0 {\n        stroke: #1e293b;\n        stroke-linecap: round;\n        stroke-linejoin: round;\n      }\n\n      .st0, .st1, .st2 {\n        fill: none;\n      }\n\n      .st0, .st2 {\n        stroke-width: 1.8px;\n      }\n\n      .st1 {\n        stroke-width: 1.5px;\n      }\n\n      .st1, .st2 {\n        stroke: #ef4444;\n      }\n\n      .st3 {\n        fill: #1e293b;\n      }\n\n      .st2 {\n        stroke-linecap: square;\n      }\n    </style>\n  </defs>\n  <circle id=\"terminal_1\" class=\"st3\" cx=\"20\" r=\"2.5\"/>\n  <circle id=\"terminal_2\" class=\"st3\" cx=\"20\" cy=\"60\" r=\"2.5\"/>\n  <circle id=\"terminal_3\" class=\"st3\" cx=\"60\" r=\"2.5\"/>\n  <circle id=\"terminal_4\" class=\"st3\" cx=\"60\" cy=\"60\" r=\"2.5\"/>\n  <circle id=\"terminal_5\" class=\"st3\" cx=\"100\" r=\"2.5\"/>\n  <circle id=\"terminal_6\" class=\"st3\" cx=\"100\" cy=\"60\" r=\"2.5\"/>\n  <rect class=\"st1\" x=\"10\" y=\"22\" width=\"100\" height=\"16\"/>\n  <line class=\"st0\" x1=\"20\" x2=\"20\" y2=\"22\"/>\n  <line class=\"st0\" x1=\"20\" y1=\"38\" x2=\"20\" y2=\"60\"/>\n  <line class=\"st0\" x1=\"60\" x2=\"60\" y2=\"22\"/>\n  <line class=\"st0\" x1=\"60\" y1=\"38\" x2=\"60\" y2=\"60\"/>\n  <line class=\"st0\" x1=\"100\" y1=\"38\" x2=\"100\" y2=\"60\"/>\n  <path class=\"st2\" d=\"M60,38v-4.6h6v-6.9h-6v-4.6\"/>\n  <path class=\"st2\" d=\"M20,38v-4.6h6v-6.9h-6v-4.6\"/>\n  <line class=\"st0\" x1=\"100\" x2=\"100\" y2=\"22\"/>\n  <path class=\"st2\" d=\"M100,38v-4.6h6v-6.9h-6v-4.6\"/>\n</svg>"
+};
+
+export const EMBEDDED_SYMBOLS_META: Record<string, {
+  viewBox: { minX: number; minY: number; width: number; height: number };
+  terminals: Record<string, { x: number; y: number }>;
+  refTerminal?: { x: number; y: number };
+}> = {
+  "/symbols/coil/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "a1": {
+        "x": 20,
+        "y": 0
+      },
+      "a2": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/coil/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "a1": {
+        "x": 20,
+        "y": 0
+      },
+      "a2": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/contact_changeover/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "11": {
+        "x": 40,
+        "y": 0
+      },
+      "12": {
+        "x": 20,
+        "y": 60
+      },
+      "14": {
+        "x": 60,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 40,
+      "y": 0
+    }
+  },
+  "/symbols/contact_changeover/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "11": {
+        "x": 40,
+        "y": 0
+      },
+      "12": {
+        "x": 20,
+        "y": 60
+      },
+      "14": {
+        "x": 60,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 40,
+      "y": 0
+    }
+  },
+  "/symbols/contact_nc/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "21": {
+        "x": 20,
+        "y": 0
+      },
+      "22": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/contact_nc/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "21": {
+        "x": 20,
+        "y": 0
+      },
+      "22": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/contact_no/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "13": {
+        "x": 20,
+        "y": 0
+      },
+      "14": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/contact_no/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "13": {
+        "x": 20,
+        "y": 0
+      },
+      "14": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/contact_no_nc/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "13": {
+        "x": 20,
+        "y": 0
+      },
+      "14": {
+        "x": 20,
+        "y": 60
+      },
+      "21": {
+        "x": 60,
+        "y": 0
+      },
+      "22": {
+        "x": 60,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/contact_no_nc/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "13": {
+        "x": 20,
+        "y": 0
+      },
+      "14": {
+        "x": 20,
+        "y": 60
+      },
+      "21": {
+        "x": 60,
+        "y": 0
+      },
+      "22": {
+        "x": 60,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/mcb_1p/0.svg": {
+    "viewBox": {
+      "minX": -20,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/mcb_1p/1.svg": {
+    "viewBox": {
+      "minX": -20,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/mcb_1p_n/0.svg": {
+    "viewBox": {
+      "minX": -20,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 60
+      },
+      "n": {
+        "x": 40,
+        "y": 0
+      },
+      "n2": {
+        "x": 40,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/mcb_1p_n/1.svg": {
+    "viewBox": {
+      "minX": -20,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 60
+      },
+      "n": {
+        "x": 40,
+        "y": 0
+      },
+      "n2": {
+        "x": 40,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/mcb_2p/0.svg": {
+    "viewBox": {
+      "minX": -20,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 60
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/mcb_2p/1.svg": {
+    "viewBox": {
+      "minX": -20,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 60
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/mcb_3p/0.svg": {
+    "viewBox": {
+      "minX": -20,
+      "minY": 0,
+      "width": 120,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 60
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 60
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/mcb_3p/1.svg": {
+    "viewBox": {
+      "minX": -20,
+      "minY": 0,
+      "width": 120,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 60
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 60
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/mcb_4p/0.svg": {
+    "viewBox": {
+      "minX": -20,
+      "minY": 0,
+      "width": 160,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 60
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 60
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 60
+      },
+      "n": {
+        "x": 120,
+        "y": 0
+      },
+      "n2": {
+        "x": 120,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/mcb_4p/1.svg": {
+    "viewBox": {
+      "minX": -20,
+      "minY": 0,
+      "width": 160,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 60
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 60
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 60
+      },
+      "n": {
+        "x": 120,
+        "y": 0
+      },
+      "n2": {
+        "x": 120,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_1p_n/0.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 100,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "n": {
+        "x": 40,
+        "y": 0
+      },
+      "n2": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_1p_n/1.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 100,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "n": {
+        "x": 40,
+        "y": 0
+      },
+      "n2": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_1p_n/mag_0.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 100,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "n": {
+        "x": 40,
+        "y": 0
+      },
+      "n2": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_1p_n/mag_1.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 100,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "n": {
+        "x": 40,
+        "y": 0
+      },
+      "n2": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_1p_n/mag_thermal_0.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 100,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "n": {
+        "x": 40,
+        "y": 0
+      },
+      "n2": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_1p_n/mag_thermal_1.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 100,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "n": {
+        "x": 40,
+        "y": 0
+      },
+      "n2": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_2p/0.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 100,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_2p/1.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 100,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_2p/mag_0.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 100,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_2p/mag_1.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 100,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_2p/mag_thermal_0.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 100,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_2p/mag_thermal_1.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 100,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_3p/0.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 140,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_3p/1.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 140,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_3p/mag_0.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 140,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_3p/mag_1.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 140,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_3p/mag_thermal_0.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 140,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_3p/mag_thermal_1.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 140,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_4p/0.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 180,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 80
+      },
+      "n": {
+        "x": 120,
+        "y": 0
+      },
+      "n2": {
+        "x": 120,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_4p/1.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 180,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 80
+      },
+      "n": {
+        "x": 120,
+        "y": 0
+      },
+      "n2": {
+        "x": 120,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_4p/mag_0.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 180,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 80
+      },
+      "n": {
+        "x": 120,
+        "y": 0
+      },
+      "n2": {
+        "x": 120,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_4p/mag_1.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 180,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 80
+      },
+      "n": {
+        "x": 120,
+        "y": 0
+      },
+      "n2": {
+        "x": 120,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_4p/mag_thermal_0.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 180,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 80
+      },
+      "n": {
+        "x": 120,
+        "y": 0
+      },
+      "n2": {
+        "x": 120,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/motor_breaker_4p/mag_thermal_1.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 180,
+      "height": 80
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 80
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 80
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 80
+      },
+      "n": {
+        "x": 120,
+        "y": 0
+      },
+      "n2": {
+        "x": 120,
+        "y": 80
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/pilot_light/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "x1": {
+        "x": 20,
+        "y": 0
+      },
+      "x2": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/pilot_light/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "x1": {
+        "x": 20,
+        "y": 0
+      },
+      "x2": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/pilot_light/blue_1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "x1": {
+        "x": 20,
+        "y": 0
+      },
+      "x2": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/pilot_light/green_1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "x1": {
+        "x": 20,
+        "y": 0
+      },
+      "x2": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/pilot_light/red_1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "x1": {
+        "x": 20,
+        "y": 0
+      },
+      "x2": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/pilot_light/white_1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "x1": {
+        "x": 20,
+        "y": 0
+      },
+      "x2": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/pilot_light/yellow_1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "x1": {
+        "x": 20,
+        "y": 0
+      },
+      "x2": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/pushbutton_emergency_nc/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "11": {
+        "x": 20,
+        "y": 0
+      },
+      "12": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/pushbutton_emergency_nc/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "11": {
+        "x": 20,
+        "y": 0
+      },
+      "12": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/pushbutton_emergency_no/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "13": {
+        "x": 20,
+        "y": 0
+      },
+      "14": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/pushbutton_emergency_no/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "13": {
+        "x": 20,
+        "y": 0
+      },
+      "14": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/pushbutton_nc/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "11": {
+        "x": 20,
+        "y": 0
+      },
+      "12": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/pushbutton_nc/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "11": {
+        "x": 20,
+        "y": 0
+      },
+      "12": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/pushbutton_no/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "13": {
+        "x": 20,
+        "y": 0
+      },
+      "14": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/pushbutton_no/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "13": {
+        "x": 20,
+        "y": 0
+      },
+      "14": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/rcd_2p/0.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 100,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 60
+      },
+      "n": {
+        "x": 40,
+        "y": 0
+      },
+      "n2": {
+        "x": 40,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/rcd_2p/1.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 100,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 60
+      },
+      "n": {
+        "x": 40,
+        "y": 0
+      },
+      "n2": {
+        "x": 40,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/rcd_4p/0.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 180,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 60
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 60
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 60
+      },
+      "n": {
+        "x": 120,
+        "y": 0
+      },
+      "n2": {
+        "x": 120,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/rcd_4p/1.svg": {
+    "viewBox": {
+      "minX": -40,
+      "minY": 0,
+      "width": 180,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 0,
+        "y": 0
+      },
+      "2": {
+        "x": 0,
+        "y": 60
+      },
+      "3": {
+        "x": 40,
+        "y": 0
+      },
+      "4": {
+        "x": 40,
+        "y": 60
+      },
+      "5": {
+        "x": 80,
+        "y": 0
+      },
+      "6": {
+        "x": 80,
+        "y": 60
+      },
+      "n": {
+        "x": 120,
+        "y": 0
+      },
+      "n2": {
+        "x": 120,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/surge_arrester_1p_n/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 20,
+        "y": 0
+      },
+      "2": {
+        "x": 60,
+        "y": 0
+      },
+      "pe": {
+        "x": 40,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/surge_arrester_1p_n/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 20,
+        "y": 0
+      },
+      "2": {
+        "x": 60,
+        "y": 0
+      },
+      "pe": {
+        "x": 40,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/surge_arrester_3p_n/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 160,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 20,
+        "y": 0
+      },
+      "2": {
+        "x": 60,
+        "y": 0
+      },
+      "3": {
+        "x": 100,
+        "y": 0
+      },
+      "4": {
+        "x": 140,
+        "y": 0
+      },
+      "pe": {
+        "x": 80,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/surge_arrester_3p_n/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 160,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 20,
+        "y": 0
+      },
+      "2": {
+        "x": 60,
+        "y": 0
+      },
+      "3": {
+        "x": 100,
+        "y": 0
+      },
+      "4": {
+        "x": 140,
+        "y": 0
+      },
+      "pe": {
+        "x": 80,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/switch_I_0_II/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "11": {
+        "x": 40,
+        "y": 0
+      },
+      "12": {
+        "x": 20,
+        "y": 60
+      },
+      "14": {
+        "x": 60,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 40,
+      "y": 0
+    }
+  },
+  "/symbols/switch_I_0_II/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "11": {
+        "x": 40,
+        "y": 0
+      },
+      "12": {
+        "x": 20,
+        "y": 60
+      },
+      "14": {
+        "x": 60,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 40,
+      "y": 0
+    }
+  },
+  "/symbols/switch_I_0_II/2.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "11": {
+        "x": 40,
+        "y": 0
+      },
+      "12": {
+        "x": 20,
+        "y": 60
+      },
+      "14": {
+        "x": 60,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 40,
+      "y": 0
+    }
+  },
+  "/symbols/switch_changeover/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "11": {
+        "x": 40,
+        "y": 0
+      },
+      "12": {
+        "x": 20,
+        "y": 60
+      },
+      "14": {
+        "x": 60,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 40,
+      "y": 0
+    }
+  },
+  "/symbols/switch_changeover/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "11": {
+        "x": 40,
+        "y": 0
+      },
+      "12": {
+        "x": 20,
+        "y": 60
+      },
+      "14": {
+        "x": 60,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 40,
+      "y": 0
+    }
+  },
+  "/symbols/switch_nc/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "11": {
+        "x": 20,
+        "y": 0
+      },
+      "12": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/switch_nc/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "11": {
+        "x": 20,
+        "y": 0
+      },
+      "12": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/switch_no/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "13": {
+        "x": 22,
+        "y": 0
+      },
+      "14": {
+        "x": 22,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 22,
+      "y": 0
+    }
+  },
+  "/symbols/switch_no/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "13": {
+        "x": 20,
+        "y": 0
+      },
+      "14": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/switch_no_nc/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "11": {
+        "x": 32,
+        "y": 0
+      },
+      "12": {
+        "x": 32,
+        "y": 60
+      },
+      "13": {
+        "x": 72,
+        "y": 0
+      },
+      "14": {
+        "x": 72,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 32,
+      "y": 0
+    }
+  },
+  "/symbols/switch_no_nc/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "11": {
+        "x": 32.5,
+        "y": 0
+      },
+      "12": {
+        "x": 32.5,
+        "y": 60
+      },
+      "13": {
+        "x": 72.5,
+        "y": 0
+      },
+      "14": {
+        "x": 72.5,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 32.5,
+      "y": 0
+    }
+  },
+  "/symbols/thermal_contact_changeover/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "95": {
+        "x": 40,
+        "y": 0
+      },
+      "96": {
+        "x": 20,
+        "y": 60
+      },
+      "98": {
+        "x": 60,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 40,
+      "y": 0
+    }
+  },
+  "/symbols/thermal_contact_changeover/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "95": {
+        "x": 40,
+        "y": 0
+      },
+      "96": {
+        "x": 60,
+        "y": 60
+      },
+      "98": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 40,
+      "y": 0
+    }
+  },
+  "/symbols/thermal_contact_nc/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "95": {
+        "x": 25.5,
+        "y": 0
+      },
+      "96": {
+        "x": 25.5,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 25.5,
+      "y": 0
+    }
+  },
+  "/symbols/thermal_contact_nc/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "95": {
+        "x": 20,
+        "y": 0
+      },
+      "96": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/thermal_contact_no/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "97": {
+        "x": 34.7,
+        "y": 0
+      },
+      "98": {
+        "x": 34.7,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 34.7,
+      "y": 0
+    }
+  },
+  "/symbols/thermal_contact_no/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "97": {
+        "x": 29,
+        "y": 0
+      },
+      "98": {
+        "x": 29,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 29,
+      "y": 0
+    }
+  },
+  "/symbols/thermal_contact_no_nc/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "95": {
+        "x": 32,
+        "y": 0
+      },
+      "96": {
+        "x": 32,
+        "y": 60
+      },
+      "97": {
+        "x": 72,
+        "y": 0
+      },
+      "98": {
+        "x": 72,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 32,
+      "y": 0
+    }
+  },
+  "/symbols/thermal_contact_no_nc/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 80,
+      "height": 60
+    },
+    "terminals": {
+      "95": {
+        "x": 32.5,
+        "y": 0
+      },
+      "96": {
+        "x": 32.5,
+        "y": 60
+      },
+      "97": {
+        "x": 72.5,
+        "y": 0
+      },
+      "98": {
+        "x": 72.5,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 32.5,
+      "y": 0
+    }
+  },
+  "/symbols/thermal_relay_3p/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 120,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 20,
+        "y": 0
+      },
+      "2": {
+        "x": 20,
+        "y": 60
+      },
+      "3": {
+        "x": 60,
+        "y": 0
+      },
+      "4": {
+        "x": 60,
+        "y": 60
+      },
+      "5": {
+        "x": 100,
+        "y": 0
+      },
+      "6": {
+        "x": 100,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/thermal_relay_3p/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 120,
+      "height": 60
+    },
+    "terminals": {
+      "1": {
+        "x": 20,
+        "y": 0
+      },
+      "2": {
+        "x": 20,
+        "y": 60
+      },
+      "3": {
+        "x": 60,
+        "y": 0
+      },
+      "4": {
+        "x": 60,
+        "y": 60
+      },
+      "5": {
+        "x": 100,
+        "y": 0
+      },
+      "6": {
+        "x": 100,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  }
 };
