@@ -711,13 +711,37 @@ export class CanvasView {
       const mouseX = e.clientX - rect.left;
       const mouseY = e.clientY - rect.top;
 
-      const worldBefore = this.grid.screenToWorld(mouseX, mouseY);
-      const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9;
-      this.grid.zoom = Math.max(0.3, Math.min(3.0, this.grid.zoom * zoomFactor));
+      const isZoom = e.altKey || e.ctrlKey || e.metaKey;
 
-      const worldAfter = this.grid.screenToWorld(mouseX, mouseY);
-      this.grid.panX += (worldAfter.x - worldBefore.x) * this.grid.zoom;
-      this.grid.panY += (worldAfter.y - worldBefore.y) * this.grid.zoom;
+      if (isZoom) {
+        // Zoom centrado en el cursor (Alt + ruedita, o dos dedos pinch trackpad con e.ctrlKey)
+        const worldBefore = this.grid.screenToWorld(mouseX, mouseY);
+        
+        // Factor suave según si es trackpad pinch (delta pequeño) o ruedita mecánica
+        const zoomDelta = -e.deltaY * (e.ctrlKey ? 0.01 : 0.0025);
+        const clampedDelta = Math.max(-0.4, Math.min(0.4, zoomDelta));
+        const factor = Math.exp(clampedDelta);
+        const newZoom = Math.max(0.2, Math.min(4.0, this.grid.zoom * factor));
+
+        this.grid.zoom = newZoom;
+        this.grid.panX = mouseX - worldBefore.x * newZoom;
+        this.grid.panY = mouseY - worldBefore.y * newZoom;
+      } else {
+        // Desplazamiento / Pan (Trackpad 360°, o ruedita de mouse vertical, Shift para horizontal)
+        let dx = e.deltaX;
+        let dy = e.deltaY;
+
+        if (e.shiftKey) {
+          // Si mantiene Shift, asegurar desplazamiento horizontal
+          if (Math.abs(dx) < Math.abs(dy)) {
+            dx = dy;
+            dy = 0;
+          }
+        }
+
+        this.grid.panX -= dx;
+        this.grid.panY -= dy;
+      }
 
       this.render();
       this.notifyStatus();
