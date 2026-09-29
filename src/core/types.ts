@@ -103,6 +103,7 @@ export interface CircuitComponent {
     timerActive?: boolean; // True when timer delay is finished or output contact triggered
     bistableSet?: boolean; // For bistable coil memory state
     stepRelayActive?: boolean; // For step relay / telerruptor toggle state
+    prevEnergized?: boolean; // For rising edge detection on impulse relays / step relays
     fuseBlown?: boolean; // For fuse blown state
   };
 }

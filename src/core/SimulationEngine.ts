@@ -21,6 +21,15 @@ export class SimulationEngine {
     // Inicializar con las bobinas que ya estaban activas para permitir autoretención
     const activeCoils = new Set<string>(currentActiveCoils || []);
 
+    // Asegurar que componentes con memoria biestable o telerruptor activo retengan sus contactos
+    for (const comp of components) {
+      if (comp.type === 'bistable_coil' && comp.state.bistableSet) {
+        activeCoils.add(comp.tag);
+      } else if (comp.type === 'step_relay' && comp.state.stepRelayActive) {
+        activeCoils.add(comp.tag);
+      }
+    }
+
     // Reset potentials
     for (const comp of components) {
       for (const t of comp.terminals) {
@@ -105,7 +114,6 @@ export class SimulationEngine {
       for (const comp of components) {
         if (
           comp.type === 'coil' ||
-          comp.type === 'step_relay' ||
           comp.type === 'connection_timer' ||
           comp.type === 'disconnection_timer' ||
           comp.type === 'disconnect_connection_timer' ||
@@ -134,8 +142,48 @@ export class SimulationEngine {
               coilStateChanged = true;
             }
           }
+        } else if (comp.type === 'step_relay') {
+          // Telerruptor / Relé de pasos:
+          // Un impulso (flanco de subida en A1-A2) conmuta el mecanismo de trinquete (stepRelayActive).
+          // La bobina física se energiza solo mientras hay tensión presente en A1-A2.
+          // Los contactos auxiliares asociados (-K) permanecen cerrados/abiertos según stepRelayActive.
+          const t1 = comp.terminals.find((t) => t.id === 'A1');
+          const t2 = comp.terminals.find((t) => t.id === 'A2');
+          if (t1 && t2) {
+            const isPhaseDiff =
+              (t1.potential.startsWith('L') && t2.potential === 'N') ||
+              (t1.potential === 'N' && t2.potential.startsWith('L')) ||
+              (t1.potential.startsWith('L') && t2.potential.startsWith('L') && t1.potential !== t2.potential);
+            const isDcDiff =
+              (t1.potential === 'DC_POS' && t2.potential === 'DC_NEG') ||
+              (t1.potential === 'DC_NEG' && t2.potential === 'DC_POS');
+
+            const hasPotentialDiff = isPhaseDiff || isDcDiff;
+            comp.state.energized = hasPotentialDiff;
+
+            // Detección de flanco de subida únicamente en el primer ciclo de este paso
+            if (cycle === 0) {
+              if (hasPotentialDiff && !comp.state.prevEnergized) {
+                comp.state.stepRelayActive = !comp.state.stepRelayActive;
+                coilStateChanged = true;
+              }
+              comp.state.prevEnergized = hasPotentialDiff;
+            }
+
+            if (comp.state.stepRelayActive) {
+              if (!activeCoils.has(comp.tag)) {
+                activeCoils.add(comp.tag);
+                coilStateChanged = true;
+              }
+            } else {
+              if (activeCoils.has(comp.tag)) {
+                activeCoils.delete(comp.tag);
+                coilStateChanged = true;
+              }
+            }
+          }
         } else if (comp.type === 'bistable_coil') {
-          // A1 = Set (activa), B1 = Reset (desactiva), A2 = Común retorno
+          // A1 = Set (enclava), B1 = Reset (desenclava), A2 = Común retorno
           const tA1 = comp.terminals.find((t) => t.id === 'A1');
           const tB1 = comp.terminals.find((t) => t.id === 'B1');
           const tA2 = comp.terminals.find((t) => t.id === 'A2');
@@ -159,12 +207,22 @@ export class SimulationEngine {
 
             if (setPulses && !comp.state.bistableSet) {
               comp.state.bistableSet = true;
-              activeCoils.add(comp.tag);
               coilStateChanged = true;
             } else if (resetPulses && comp.state.bistableSet) {
               comp.state.bistableSet = false;
-              activeCoils.delete(comp.tag);
               coilStateChanged = true;
+            }
+
+            if (comp.state.bistableSet) {
+              if (!activeCoils.has(comp.tag)) {
+                activeCoils.add(comp.tag);
+                coilStateChanged = true;
+              }
+            } else {
+              if (activeCoils.has(comp.tag)) {
+                activeCoils.delete(comp.tag);
+                coilStateChanged = true;
+              }
             }
           }
         } else if (comp.type === 'pilot_light') {

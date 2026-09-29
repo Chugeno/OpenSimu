@@ -334,7 +334,11 @@ export class CanvasView {
       comp.state.pressed = false;
       comp.state.energized = false;
       comp.state.tripped = false;
-      comp.state.closed = comp.type.endsWith('_nc') && comp.type !== 'contact_no_nc';
+      comp.state.prevEnergized = false;
+      comp.state.bistableSet = false;
+      comp.state.stepRelayActive = false;
+      comp.state.fuseBlown = false;
+      comp.state.closed = (comp.type.endsWith('_nc') && comp.type !== 'contact_no_nc') || comp.type.startsWith('fuse_');
     }
     this.simulationResult = { running: false, shortCircuit: false, activeCoils: [] };
     this.notifyHistoryChange();
@@ -550,7 +554,7 @@ export class CanvasView {
       cloned.tag = tagMap.get(comp.tag) || comp.tag;
       cloned.state = {
         pressed: false,
-        closed: comp.type.endsWith('_nc') && comp.type !== 'contact_no_nc',
+        closed: (comp.type.endsWith('_nc') && comp.type !== 'contact_no_nc') || comp.type.startsWith('fuse_'),
         energized: false,
         tripped: false,
         poles: comp.state?.poles || 1,
@@ -1245,7 +1249,7 @@ export class CanvasView {
       terminals: def.terminals.map((t) => ({ ...t, potential: 'NONE' })),
       state: {
         pressed: false,
-        closed: def.type.endsWith('_nc') && def.type !== 'contact_no_nc',
+        closed: (def.type.endsWith('_nc') && def.type !== 'contact_no_nc') || def.type.startsWith('fuse_'),
         energized: false,
         poles: def.poles || 1,
         protectionType: def.type.startsWith('motor_breaker_') ? 'mag' : undefined,
@@ -1560,7 +1564,7 @@ export class CanvasView {
             y: snapped.y,
             rotation: 0,
             terminals: ghostDef.terminals.map((t) => ({ ...t, potential: 'NONE' })),
-            state: { closed: ghostDef.type.endsWith('_nc') && ghostDef.type !== 'contact_no_nc', poles: ghostDef.poles || 1 },
+            state: { closed: (ghostDef.type.endsWith('_nc') && ghostDef.type !== 'contact_no_nc') || ghostDef.type.startsWith('fuse_'), poles: ghostDef.poles || 1 },
           },
           false,
           false

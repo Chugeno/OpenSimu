@@ -181,7 +181,6 @@ export class SymbolRenderer {
       }
 
       case 'coil':
-      case 'bistable_coil':
       case 'step_relay':
       case 'connection_timer':
       case 'disconnection_timer':
@@ -198,6 +197,22 @@ export class SymbolRenderer {
           { minX: 0, minY: 0, width: 40, height: 60 },
           () => this.renderCoil(ctx, comp, isSimulation),
           energized
+        );
+        break;
+      }
+
+      case 'bistable_coil': {
+        const isActuated = Boolean(isSimulation && (comp.state.bistableSet || comp.state.energized));
+        const stateIdx = isActuated ? 1 : 0;
+        const svgPath = `/symbols/bistable_coil/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 40, height: 60 },
+          () => this.renderCoil(ctx, comp, isSimulation),
+          isActuated
         );
         break;
       }
