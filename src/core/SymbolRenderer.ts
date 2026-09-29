@@ -1,5 +1,6 @@
 import type { CircuitComponent } from './types';
 import { getComponentBounds } from './ComponentRegistry';
+import { EMBEDDED_SYMBOLS } from './EmbeddedSymbols';
 
 export class SymbolRenderer {
   private static svgImageCache: Map<string, HTMLImageElement> = new Map();
@@ -2153,103 +2154,19 @@ export class SymbolRenderer {
 
   private static parseSvgMetadata(svgPath: string) {
     if (this.svgMetadataCache.has(svgPath)) return;
-    
+
+    // Fast offline path: use pre-embedded SVG bundle if available
+    const embeddedXml = EMBEDDED_SYMBOLS[svgPath];
+    if (embeddedXml) {
+      this.processSvgXml(svgPath, embeddedXml);
+      return;
+    }
+
     // Asynchronously fetch and parse SVG XML to discover terminal IDs
     fetch(svgPath)
       .then((res) => (res.ok ? res.text() : Promise.reject('Failed to load SVG')))
       .then((xmlText) => {
-        try {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(xmlText, 'image/svg+xml');
-          const svgEl = doc.querySelector('svg');
-          if (!svgEl) return;
-
-          let minX = 0, minY = 0, width = 40, height = 60;
-          const vbAttr = svgEl.getAttribute('viewBox');
-          if (vbAttr) {
-            const parts = vbAttr.split(/[\s,]+/).map(parseFloat);
-            if (parts.length === 4) {
-              [minX, minY, width, height] = parts;
-            }
-          }
-
-          const termMap = new Map<string, { x: number; y: number }>();
-          // Find all elements whose id contains 'terminal_' or 't_'
-          const allElements = doc.querySelectorAll('[id]');
-          allElements.forEach((el) => {
-            const rawId = el.getAttribute('id') || '';
-            const match = rawId.match(/^(?:terminal_|t_)(.+)$/i);
-            if (!match) return;
-            const termName = match[1].toLowerCase();
-
-            let x = 0;
-            let y = 0;
-            if (el.tagName.toLowerCase() === 'circle') {
-              x = parseFloat(el.getAttribute('cx') || '0');
-              y = parseFloat(el.getAttribute('cy') || '0');
-            } else if (el.tagName.toLowerCase() === 'rect') {
-              x = parseFloat(el.getAttribute('x') || '0') + parseFloat(el.getAttribute('width') || '0') / 2;
-              y = parseFloat(el.getAttribute('y') || '0') + parseFloat(el.getAttribute('height') || '0') / 2;
-            } else if (el.tagName.toLowerCase() === 'line') {
-              x = parseFloat(el.getAttribute('x1') || '0');
-              y = parseFloat(el.getAttribute('y1') || '0');
-            } else {
-              // Generic element fallback
-              const bbox = (el as any).getBBox ? (el as any).getBBox() : null;
-              if (bbox) {
-                x = bbox.x + bbox.width / 2;
-                y = bbox.y + bbox.height / 2;
-              }
-            }
-
-            termMap.set(termName, { x, y });
-          });
-
-          // Primary reference terminal for aligning component origin (0, 0)
-          let refTerminal: { x: number; y: number } | undefined;
-          if (termMap.size > 0) {
-            // Find the top-most or first terminal (e.g. 95, 97, 11, 13, 1, etc.)
-            let minTermY = Infinity;
-            let minTermX = Infinity;
-            termMap.forEach((pt) => {
-              if (pt.y < minTermY || (pt.y === minTermY && pt.x < minTermX)) {
-                minTermY = pt.y;
-                minTermX = pt.x;
-                refTerminal = pt;
-              }
-            });
-          }
-
-          this.svgMetadataCache.set(svgPath, {
-            terminals: termMap,
-            viewBox: { minX, minY, width, height },
-            refTerminal,
-          });
-
-          // Generate actuated red SVG image (replaces dark strokes/fills with CADe_SIMU red #ef4444)
-          try {
-            const redSvgText = xmlText
-              .replace(/#(?:1e293b|0f172a|000000|111827)\b/gi, '#ef4444')
-              .replace(/rgb\(\s*(?:30|15|0)\s*,\s*(?:41|23|0)\s*,\s*(?:59|42|0)\s*\)/gi, '#ef4444');
-            const blob = new Blob([redSvgText], { type: 'image/svg+xml' });
-            const redUrl = URL.createObjectURL(blob);
-            const redImg = new Image();
-            redImg.onload = () => {
-              if (this.onRedrawNeeded) this.onRedrawNeeded();
-            };
-            redImg.onerror = () => {
-              (redImg as any)._failed = true;
-            };
-            redImg.src = redUrl;
-            this.svgImageCache.set(`${svgPath}__actuated`, redImg);
-          } catch {
-            // Ignore blob generation errors
-          }
-
-          if (this.onRedrawNeeded) this.onRedrawNeeded();
-        } catch {
-          // Ignore parsing error
-        }
+        this.processSvgXml(svgPath, xmlText);
       })
       .catch(() => {
         // Mark as empty so we don't refetch
@@ -2258,6 +2175,108 @@ export class SymbolRenderer {
           viewBox: { minX: 0, minY: 0, width: 40, height: 60 },
         });
       });
+  }
+
+  private static processSvgXml(svgPath: string, xmlText: string) {
+    try {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(xmlText, 'image/svg+xml');
+      const svgEl = doc.querySelector('svg');
+      if (!svgEl) return;
+
+      let minX = 0, minY = 0, width = 40, height = 60;
+      const vbAttr = svgEl.getAttribute('viewBox');
+      if (vbAttr) {
+        const parts = vbAttr.split(/[\s,]+/).map(parseFloat);
+        if (parts.length === 4) {
+          [minX, minY, width, height] = parts;
+        }
+      }
+
+      const termMap = new Map<string, { x: number; y: number }>();
+      // Find all elements whose id contains 'terminal_' or 't_'
+      const allElements = doc.querySelectorAll('[id]');
+      allElements.forEach((el) => {
+        const rawId = el.getAttribute('id') || '';
+        const match = rawId.match(/^(?:terminal_|t_)(.+)$/i);
+        if (!match) return;
+        const termName = match[1].toLowerCase();
+
+        let x = 0;
+        let y = 0;
+        if (el.tagName.toLowerCase() === 'circle') {
+          x = parseFloat(el.getAttribute('cx') || '0');
+          y = parseFloat(el.getAttribute('cy') || '0');
+        } else if (el.tagName.toLowerCase() === 'rect') {
+          x = parseFloat(el.getAttribute('x') || '0') + parseFloat(el.getAttribute('width') || '0') / 2;
+          y = parseFloat(el.getAttribute('y') || '0') + parseFloat(el.getAttribute('height') || '0') / 2;
+        } else if (el.tagName.toLowerCase() === 'line') {
+          x = parseFloat(el.getAttribute('x1') || '0');
+          y = parseFloat(el.getAttribute('y1') || '0');
+        } else {
+          // Generic element fallback
+          const bbox = (el as any).getBBox ? (el as any).getBBox() : null;
+          if (bbox) {
+            x = bbox.x + bbox.width / 2;
+            y = bbox.y + bbox.height / 2;
+          }
+        }
+
+        termMap.set(termName, { x, y });
+      });
+
+      // Primary reference terminal for aligning component origin (0, 0)
+      let refTerminal: { x: number; y: number } | undefined;
+      if (termMap.size > 0) {
+        // Find the top-most or first terminal (e.g. 95, 97, 11, 13, 1, etc.)
+        let minTermY = Infinity;
+        let minTermX = Infinity;
+        termMap.forEach((pt) => {
+          if (pt.y < minTermY || (pt.y === minTermY && pt.x < minTermX)) {
+            minTermY = pt.y;
+            minTermX = pt.x;
+            refTerminal = pt;
+          }
+        });
+      }
+
+      this.svgMetadataCache.set(svgPath, {
+        terminals: termMap,
+        viewBox: { minX, minY, width, height },
+        refTerminal,
+      });
+
+      // Generate actuated red SVG image (replaces dark strokes/fills with CADe_SIMU red #ef4444)
+      try {
+        const redSvgText = xmlText
+          .replace(/#(?:1e293b|0f172a|000000|111827)\b/gi, '#ef4444')
+          .replace(/rgb\(\s*(?:30|15|0)\s*,\s*(?:41|23|0)\s*,\s*(?:59|42|0)\s*\)/gi, '#ef4444');
+        const redUrl = `data:image/svg+xml;utf8,${encodeURIComponent(redSvgText)}`;
+        const redImg = new Image();
+        redImg.onload = () => {
+          if (this.onRedrawNeeded) this.onRedrawNeeded();
+        };
+        redImg.onerror = () => {
+          (redImg as any)._failed = true;
+        };
+        redImg.src = redUrl;
+        this.svgImageCache.set(`${svgPath}__actuated`, redImg);
+      } catch {
+        // Ignore blob generation errors
+      }
+
+      if (this.onRedrawNeeded) this.onRedrawNeeded();
+    } catch {
+      // Ignore parsing error
+    }
+  }
+
+  private static getSvgSourceUrl(svgPath: string): string {
+    const embedded = EMBEDDED_SYMBOLS[svgPath];
+    if (embedded) {
+      return `data:image/svg+xml;utf8,${encodeURIComponent(embedded)}`;
+    }
+    return svgPath;
   }
 
   private static renderSvgWithFallback(
@@ -2275,10 +2294,10 @@ export class SymbolRenderer {
     let img = this.svgImageCache.get(cacheKey);
 
     if (img === undefined) {
+      const srcUrl = this.getSvgSourceUrl(svgPath);
       if (shouldTintRed) {
         if (!this.svgImageCache.has(svgPath)) {
           const baseImg = new Image();
-          baseImg.src = svgPath;
           baseImg.onload = () => {
             if (this.onRedrawNeeded) this.onRedrawNeeded();
           };
@@ -2286,13 +2305,13 @@ export class SymbolRenderer {
             (baseImg as any)._failed = true;
             if (this.onRedrawNeeded) this.onRedrawNeeded();
           };
+          baseImg.src = srcUrl;
           this.svgImageCache.set(svgPath, baseImg);
         }
         this.parseSvgMetadata(svgPath);
         img = this.svgImageCache.get(svgPath);
       } else {
         img = new Image();
-        img.src = svgPath;
         img.onload = () => {
           if (this.onRedrawNeeded) this.onRedrawNeeded();
         };
@@ -2300,6 +2319,7 @@ export class SymbolRenderer {
           (img as any)._failed = true;
           if (this.onRedrawNeeded) this.onRedrawNeeded();
         };
+        img.src = srcUrl;
         this.svgImageCache.set(svgPath, img);
         this.parseSvgMetadata(svgPath);
       }

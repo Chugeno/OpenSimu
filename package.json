@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "bundle:symbols": "node --loader ts-node/esm scripts/bundle-symbols.ts || tsx scripts/bundle-symbols.ts || node scripts/bundle-symbols.js || npx tsx scripts/bundle-symbols.ts",
+    "build": "npx tsx scripts/bundle-symbols.ts && tsc && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
