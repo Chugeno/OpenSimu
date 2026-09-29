@@ -67,6 +67,8 @@ export interface ComponentDefinition {
   poles?: number;
   manualAction?: ManualActionType;
   terminals: Omit<Terminal, 'potential'>[];
+  dividerBefore?: boolean;
+  hidden?: boolean;
 }
 
 export interface CircuitComponent {
@@ -83,6 +85,7 @@ export interface CircuitComponent {
     energized?: boolean; // For coils / lights
     tripped?: boolean;  // For circuit breakers / thermal relays
     color?: string;    // For pilot lights (e.g. green, red, amber)
+    protectionType?: 'mag' | 'mag_thermal'; // For motor breakers (mag = magnetic, mag_thermal = thermal-magnetic)
     direction?: 'CW' | 'CCW'; // For motors (CW = clockwise, CCW = counter-clockwise)
     poles?: number;
     svgUrl?: string;

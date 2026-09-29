@@ -55,6 +55,12 @@ const terminalsSection = document.getElementById('terminals-section') as HTMLDiv
 const terminalsContainer = document.getElementById('terminals-container') as HTMLDivElement;
 const modalCancel = document.getElementById('modal-cancel') as HTMLButtonElement;
 const modalSave = document.getElementById('modal-save') as HTMLButtonElement;
+const modalExtraOptions = document.getElementById('modal-extra-options') as HTMLDivElement | null;
+const modalExtraLabel = document.getElementById('modal-extra-label') as HTMLLabelElement | null;
+const modalExtraContent = document.getElementById('modal-extra-content') as HTMLDivElement | null;
+
+let tempSelectedColor: 'green' | 'red' | 'yellow' | 'blue' | 'white' = 'green';
+let tempSelectedProtectionType: 'mag' | 'mag_thermal' = 'mag';
 
 const shortCircuitModal = document.getElementById('short-circuit-modal') as HTMLDivElement;
 const shortCircuitMsg = document.getElementById('short-circuit-msg') as HTMLParagraphElement;
@@ -177,6 +183,100 @@ canvasView.onTagEditRequest = (comp) => {
   }
   tagInput.value = comp.tag;
 
+  // Opciones extra dinámicas (Colores de pilotos, Tipo de guardamotor)
+  if (modalExtraOptions && modalExtraLabel && modalExtraContent) {
+    modalExtraContent.innerHTML = '';
+    if (comp.type === 'pilot_light') {
+      modalExtraOptions.style.display = 'block';
+      modalExtraLabel.textContent = 'Color de Señalización:';
+      tempSelectedColor = (comp.state?.color as any) || 'green';
+
+      const colorGrid = document.createElement('div');
+      colorGrid.className = 'color-picker-grid';
+
+      const colors: { key: 'green' | 'red' | 'yellow' | 'blue' | 'white'; label: string; hex: string }[] = [
+        { key: 'green', label: 'Verde', hex: '#22c55e' },
+        { key: 'red', label: 'Rojo', hex: '#ef4444' },
+        { key: 'yellow', label: 'Amarillo', hex: '#eab308' },
+        { key: 'blue', label: 'Azul', hex: '#3b82f6' },
+        { key: 'white', label: 'Blanco / Gris', hex: '#e2e8f0' },
+      ];
+
+      colors.forEach((c) => {
+        const chip = document.createElement('div');
+        chip.className = `color-chip ${tempSelectedColor === c.key ? 'active' : ''}`;
+
+        const dot = document.createElement('span');
+        dot.className = 'color-chip-dot';
+        dot.style.background = c.hex;
+
+        const text = document.createElement('span');
+        text.textContent = c.label;
+
+        chip.appendChild(dot);
+        chip.appendChild(text);
+
+        chip.onclick = () => {
+          tempSelectedColor = c.key;
+          colorGrid.querySelectorAll('.color-chip').forEach((el) => el.classList.remove('active'));
+          chip.classList.add('active');
+        };
+
+        colorGrid.appendChild(chip);
+      });
+
+      modalExtraContent.appendChild(colorGrid);
+    } else if (comp.type.startsWith('motor_breaker_')) {
+      modalExtraOptions.style.display = 'block';
+      modalExtraLabel.textContent = 'Tipo de Protección Guardamotor:';
+      tempSelectedProtectionType = comp.state?.protectionType || 'mag';
+
+      const typeGrid = document.createElement('div');
+      typeGrid.className = 'protection-type-grid';
+
+      const types: { key: 'mag' | 'mag_thermal'; title: string; desc: string }[] = [
+        {
+          key: 'mag',
+          title: '⚡ Magnético',
+          desc: 'Protección contra cortocircuito (I >>). Disparo instantáneo.',
+        },
+        {
+          key: 'mag_thermal',
+          title: '🔥⚡ Magnetotérmico',
+          desc: 'Protección contra sobrecarga (bimetal térmico) y cortocircuito.',
+        },
+      ];
+
+      types.forEach((t) => {
+        const card = document.createElement('div');
+        card.className = `protection-type-card ${tempSelectedProtectionType === t.key ? 'active' : ''}`;
+
+        const title = document.createElement('div');
+        title.className = 'protection-type-title';
+        title.textContent = t.title;
+
+        const desc = document.createElement('div');
+        desc.className = 'protection-type-desc';
+        desc.textContent = t.desc;
+
+        card.appendChild(title);
+        card.appendChild(desc);
+
+        card.onclick = () => {
+          tempSelectedProtectionType = t.key;
+          typeGrid.querySelectorAll('.protection-type-card').forEach((el) => el.classList.remove('active'));
+          card.classList.add('active');
+        };
+
+        typeGrid.appendChild(card);
+      });
+
+      modalExtraContent.appendChild(typeGrid);
+    } else {
+      modalExtraOptions.style.display = 'none';
+    }
+  }
+
   // Generar inputs dinámicos para cada borne de conexión
   if (terminalsContainer && terminalsSection) {
     terminalsContainer.innerHTML = '';
@@ -229,6 +329,14 @@ modalSave.onclick = () => {
     canvasView.saveSnapshot();
     if (tagInput.value.trim()) {
       editingComponent.tag = tagInput.value.trim();
+    }
+    // Guardar opciones extra (color de piloto, tipo de protección guardamotor)
+    if (editingComponent.type === 'pilot_light') {
+      editingComponent.state = editingComponent.state || {};
+      editingComponent.state.color = tempSelectedColor;
+    } else if (editingComponent.type.startsWith('motor_breaker_')) {
+      editingComponent.state = editingComponent.state || {};
+      editingComponent.state.protectionType = tempSelectedProtectionType;
     }
     // Guardar numeración de bornes personalizada
     if (terminalsContainer) {
@@ -386,9 +494,14 @@ function renderPalette() {
   }
 
   // Filter definitions for current category
-  const defs = Object.values(COMPONENT_DEFINITIONS).filter((d) => d.category === currentCategory);
+  const defs = Object.values(COMPONENT_DEFINITIONS).filter((d) => d.category === currentCategory && !d.hidden);
 
   defs.forEach((def) => {
+    if (def.dividerBefore) {
+      const sep = document.createElement('div');
+      sep.className = 'palette-sep';
+      paletteContainer.appendChild(sep);
+    }
     const btn = document.createElement('button');
     const isActive = canvasView.activeTool === 'place_component' && activeCompType === def.type;
     btn.className = `comp-btn ${isActive ? 'active' : ''}`;

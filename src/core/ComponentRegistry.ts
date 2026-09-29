@@ -150,7 +150,8 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     terminals: [{ id: 'PE', name: 'PE', relX: 0, relY: 0 }],
   },
 
-  // PROTECCIONES (TERMOMAGNÉTICAS, GUARDAMOTOR, DIFERENCIAL)
+  // PROTECCIONES (TERMOMAGNÉTICAS, GUARDAMOTOR, DIFERENCIAL, RELÉ TÉRMICO, DESCARGADORES)
+  // Grupo 1: Termomagnéticas (MCB)
   mcb_1p: {
     type: 'mcb_1p',
     category: 'protections',
@@ -235,10 +236,45 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
       { id: 'N2', name: 'N', relX: 120, relY: 60 },
     ],
   },
+
+  // Grupo 2: Guardamotores (1P+N, 2P, 3P, 4P)
+  motor_breaker_1p_n: {
+    type: 'motor_breaker_1p_n',
+    category: 'protections',
+    name: 'Guardamotor 1P+N',
+    defaultTag: '-QM',
+    width: 60,
+    height: 80,
+    poles: 2,
+    manualAction: 'toggle',
+    dividerBefore: true,
+    terminals: [
+      { id: '1', name: '1', relX: 0, relY: 0 },
+      { id: '2', name: '2', relX: 0, relY: 80 },
+      { id: 'N', name: 'N', relX: 40, relY: 0 },
+      { id: 'N2', name: 'N', relX: 40, relY: 80 },
+    ],
+  },
+  motor_breaker_2p: {
+    type: 'motor_breaker_2p',
+    category: 'protections',
+    name: 'Guardamotor 2P',
+    defaultTag: '-QM',
+    width: 60,
+    height: 80,
+    poles: 2,
+    manualAction: 'toggle',
+    terminals: [
+      { id: '1', name: '1', relX: 0, relY: 0 },
+      { id: '2', name: '2', relX: 0, relY: 80 },
+      { id: '3', name: '3', relX: 40, relY: 0 },
+      { id: '4', name: '4', relX: 40, relY: 80 },
+    ],
+  },
   motor_breaker_3p: {
     type: 'motor_breaker_3p',
     category: 'protections',
-    name: 'Guardamotor Magnetotérmico 3P',
+    name: 'Guardamotor 3P',
     defaultTag: '-QM',
     width: 100,
     height: 80,
@@ -251,6 +287,42 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
       { id: '4', name: '4', relX: 40, relY: 80 },
       { id: '5', name: '5', relX: 80, relY: 0 },
       { id: '6', name: '6', relX: 80, relY: 80 },
+    ],
+  },
+  motor_breaker_4p: {
+    type: 'motor_breaker_4p',
+    category: 'protections',
+    name: 'Guardamotor 4P (3P+N)',
+    defaultTag: '-QM',
+    width: 140,
+    height: 80,
+    poles: 4,
+    manualAction: 'toggle',
+    terminals: [
+      { id: '1', name: '1', relX: 0, relY: 0 },
+      { id: '2', name: '2', relX: 0, relY: 80 },
+      { id: '3', name: '3', relX: 40, relY: 0 },
+      { id: '4', name: '4', relX: 40, relY: 80 },
+      { id: '5', name: '5', relX: 80, relY: 0 },
+      { id: '6', name: '6', relX: 80, relY: 80 },
+      { id: 'N', name: 'N', relX: 120, relY: 0 },
+      { id: 'N2', name: 'N', relX: 120, relY: 80 },
+    ],
+  },
+  // Obsoletos / ocultos de la paleta
+  motor_breaker_1p: {
+    type: 'motor_breaker_1p',
+    category: 'protections',
+    name: 'Guardamotor 1P',
+    defaultTag: '-QM',
+    width: 60,
+    height: 80,
+    poles: 1,
+    manualAction: 'toggle',
+    hidden: true,
+    terminals: [
+      { id: '1', name: '1', relX: 0, relY: 0 },
+      { id: '2', name: '2', relX: 0, relY: 80 },
     ],
   },
   motor_breaker_mag_3p: {
@@ -262,6 +334,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     height: 80,
     poles: 3,
     manualAction: 'toggle',
+    hidden: true,
     terminals: [
       { id: '1', name: '1', relX: 0, relY: 0 },
       { id: '2', name: '2', relX: 0, relY: 80 },
@@ -271,6 +344,8 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
       { id: '6', name: '6', relX: 80, relY: 80 },
     ],
   },
+
+  // Grupo 3: Diferenciales (RCD)
   rcd_2p: {
     type: 'rcd_2p',
     category: 'protections',
@@ -280,6 +355,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     height: 60,
     poles: 2,
     manualAction: 'toggle',
+    dividerBefore: true,
     terminals: [
       { id: '1', name: '1', relX: 0, relY: 0 },
       { id: '2', name: '2', relX: 0, relY: 60 },
@@ -307,72 +383,8 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
       { id: 'N2', name: 'N', relX: 120, relY: 60 },
     ],
   },
-  motor_breaker_1p: {
-    type: 'motor_breaker_1p',
-    category: 'protections',
-    name: 'Guardamotor 1P',
-    defaultTag: '-QM',
-    width: 60,
-    height: 80,
-    poles: 1,
-    manualAction: 'toggle',
-    terminals: [
-      { id: '1', name: '1', relX: 0, relY: 0 },
-      { id: '2', name: '2', relX: 0, relY: 80 },
-    ],
-  },
-  motor_breaker_1p_n: {
-    type: 'motor_breaker_1p_n',
-    category: 'protections',
-    name: 'Guardamotor 1P+N',
-    defaultTag: '-QM',
-    width: 60,
-    height: 80,
-    poles: 2,
-    manualAction: 'toggle',
-    terminals: [
-      { id: '1', name: '1', relX: 0, relY: 0 },
-      { id: '2', name: '2', relX: 0, relY: 80 },
-      { id: 'N', name: 'N', relX: 40, relY: 0 },
-      { id: 'N2', name: 'N', relX: 40, relY: 80 },
-    ],
-  },
-  motor_breaker_2p: {
-    type: 'motor_breaker_2p',
-    category: 'protections',
-    name: 'Guardamotor 2P',
-    defaultTag: '-QM',
-    width: 60,
-    height: 80,
-    poles: 2,
-    manualAction: 'toggle',
-    terminals: [
-      { id: '1', name: '1', relX: 0, relY: 0 },
-      { id: '2', name: '2', relX: 0, relY: 80 },
-      { id: '3', name: '3', relX: 40, relY: 0 },
-      { id: '4', name: '4', relX: 40, relY: 80 },
-    ],
-  },
-  motor_breaker_4p: {
-    type: 'motor_breaker_4p',
-    category: 'protections',
-    name: 'Guardamotor 4P (3P+N)',
-    defaultTag: '-QM',
-    width: 140,
-    height: 80,
-    poles: 4,
-    manualAction: 'toggle',
-    terminals: [
-      { id: '1', name: '1', relX: 0, relY: 0 },
-      { id: '2', name: '2', relX: 0, relY: 80 },
-      { id: '3', name: '3', relX: 40, relY: 0 },
-      { id: '4', name: '4', relX: 40, relY: 80 },
-      { id: '5', name: '5', relX: 80, relY: 0 },
-      { id: '6', name: '6', relX: 80, relY: 80 },
-      { id: 'N', name: 'N', relX: 120, relY: 0 },
-      { id: 'N2', name: 'N', relX: 120, relY: 80 },
-    ],
-  },
+
+  // Grupo 4: Relé Térmico de Fuerza
   thermal_relay_3p: {
     type: 'thermal_relay_3p',
     category: 'protections',
@@ -382,6 +394,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     height: 60,
     poles: 3,
     manualAction: 'toggle',
+    dividerBefore: true,
     terminals: [
       { id: '1', name: '1', relX: 0, relY: 0 },
       { id: '2', name: '2', relX: 0, relY: 60 },
@@ -391,6 +404,8 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
       { id: '6', name: '6', relX: 80, relY: 60 },
     ],
   },
+
+  // Grupo 5: Descargadores de Sobretensión
   surge_arrester_1p_n: {
     type: 'surge_arrester_1p_n',
     category: 'protections',
@@ -399,6 +414,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     width: 60,
     height: 60,
     manualAction: 'none',
+    dividerBefore: true,
     terminals: [
       { id: '1', name: '1', relX: 0, relY: 0 },
       { id: '2', name: '2', relX: 40, relY: 0 },

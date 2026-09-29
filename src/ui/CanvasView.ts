@@ -1189,6 +1189,8 @@ export class CanvasView {
         closed: def.type.endsWith('_nc') && def.type !== 'contact_no_nc',
         energized: false,
         poles: def.poles || 1,
+        protectionType: def.type.startsWith('motor_breaker_') ? 'mag' : undefined,
+        color: def.type === 'pilot_light' ? 'green' : undefined,
       },
     };
 

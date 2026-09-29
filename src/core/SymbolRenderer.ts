@@ -146,7 +146,10 @@ export class SymbolRenderer {
       case 'pilot_light': {
         const energized = Boolean(isSimulation && comp.state.energized);
         const stateIdx = energized ? 1 : 0;
-        const svgPath = `/symbols/pilot_light/${stateIdx}.svg`;
+        const colorKey = comp.state.color || 'green';
+        const svgPath = stateIdx === 1
+          ? `/symbols/pilot_light/${colorKey}_1.svg`
+          : `/symbols/pilot_light/0.svg`;
         this.renderSvgWithFallback(
           ctx,
           comp,
@@ -162,26 +165,55 @@ export class SymbolRenderer {
       case 'mcb_1p_n':
       case 'mcb_2p':
       case 'mcb_3p':
-      case 'mcb_4p':
-      case 'motor_breaker_1p':
-      case 'motor_breaker_1p_n':
-      case 'motor_breaker_2p':
-      case 'motor_breaker_3p':
-      case 'motor_breaker_mag_3p':
-      case 'motor_breaker_4p':
-      case 'rcd_2p':
-      case 'rcd_4p': {
+      case 'mcb_4p': {
         const isClosed = Boolean(comp.state.closed) && !comp.state.tripped;
         const stateIdx = isClosed ? 1 : 0;
         const svgPath = `/symbols/${comp.type}/${stateIdx}.svg`;
-        const isMotorBreaker = comp.type.startsWith('motor_breaker_');
-        const defaultHeight = isMotorBreaker ? 80 : 60;
         this.renderSvgWithFallback(
           ctx,
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 80, height: defaultHeight },
+          { minX: -20, minY: 0, width: 80, height: 60 },
+          () => this.renderProtectionBreaker(ctx, comp, isSimulation)
+        );
+        break;
+      }
+
+      case 'motor_breaker_1p':
+      case 'motor_breaker_1p_n':
+      case 'motor_breaker_2p':
+      case 'motor_breaker_3p':
+      case 'motor_breaker_mag_3p':
+      case 'motor_breaker_4p': {
+        const isClosed = Boolean(comp.state.closed) && !comp.state.tripped;
+        const stateIdx = isClosed ? 1 : 0;
+        const isMag = (comp.state.protectionType ?? 'mag') === 'mag';
+        const prefix = isMag ? 'mag' : 'mag_thermal';
+        const normalizedType = comp.type === 'motor_breaker_mag_3p' ? 'motor_breaker_3p' : comp.type;
+        const svgPath = `/symbols/${normalizedType}/${prefix}_${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: -40, minY: 0, width: 140, height: 80 },
+          () => this.renderProtectionBreaker(ctx, comp, isSimulation)
+        );
+        break;
+      }
+
+      case 'rcd_2p':
+      case 'rcd_4p': {
+        const isClosed = Boolean(comp.state.closed) && !comp.state.tripped;
+        const stateIdx = isClosed ? 1 : 0;
+        const svgPath = `/symbols/${comp.type}/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: -40, minY: 0, width: 140, height: 60 },
           () => this.renderProtectionBreaker(ctx, comp, isSimulation)
         );
         break;
@@ -939,7 +971,26 @@ export class SymbolRenderer {
 
   private static renderPilotLight(ctx: CanvasRenderingContext2D, comp: CircuitComponent, isSim: boolean) {
     const energized = comp.state.energized;
-    const color = comp.state.color || '#22c55e'; // Green default
+    const colorKey = comp.state.color || 'green';
+
+    let hexColor = '#22c55e';
+    let glowColor = '#4ade80';
+    if (colorKey === 'red' || colorKey === '#ef4444') {
+      hexColor = '#ef4444';
+      glowColor = '#f87171';
+    } else if (colorKey === 'yellow' || colorKey === '#eab308') {
+      hexColor = '#eab308';
+      glowColor = '#fde047';
+    } else if (colorKey === 'blue' || colorKey === '#3b82f6') {
+      hexColor = '#3b82f6';
+      glowColor = '#60a5fa';
+    } else if (colorKey === 'white' || colorKey === '#94a3b8' || colorKey === '#ffffff') {
+      hexColor = '#f8fafc';
+      glowColor = '#ffffff';
+    } else if (colorKey.startsWith('#')) {
+      hexColor = colorKey;
+      glowColor = colorKey;
+    }
 
     // Terminals
     ctx.beginPath();
@@ -961,9 +1012,9 @@ export class SymbolRenderer {
     ctx.arc(0, 30, 12, 0, Math.PI * 2);
 
     if (isSim && energized) {
-      ctx.fillStyle = color;
-      ctx.shadowColor = color;
-      ctx.shadowBlur = 12;
+      ctx.fillStyle = hexColor;
+      ctx.shadowColor = glowColor;
+      ctx.shadowBlur = 14;
       ctx.fill();
     } else {
       ctx.fillStyle = '#ffffff';
@@ -978,8 +1029,19 @@ export class SymbolRenderer {
     ctx.lineTo(d, 30 + d);
     ctx.moveTo(-d, 30 + d);
     ctx.lineTo(d, 30 - d);
-    ctx.strokeStyle = isSim && energized ? '#ffffff' : '#1e293b';
+    ctx.strokeStyle = isSim && energized ? (colorKey === 'white' ? '#0f172a' : '#ffffff') : '#1e293b';
     ctx.stroke();
+
+    // In edit mode or off state: show small color dot at center to identify the lamp color
+    if (!isSim || !energized) {
+      ctx.beginPath();
+      ctx.arc(0, 30, 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = hexColor;
+      ctx.fill();
+      ctx.strokeStyle = '#64748b';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
     ctx.restore();
 
     // Terminal numbers X1, X2
@@ -1048,7 +1110,7 @@ export class SymbolRenderer {
     const isRCD = comp.type.startsWith('rcd_');
     const isMotorBreaker = comp.type.startsWith('motor_breaker_');
     const isMCB = comp.type.startsWith('mcb_');
-    const isMagOnly = comp.type === 'motor_breaker_mag_3p';
+    const isMagOnly = comp.type === 'motor_breaker_mag_3p' || (comp.type.startsWith('motor_breaker_') && (comp.state.protectionType ?? 'mag') === 'mag');
 
     // Para Guardamotor: Dibujar primero actuador mecánico lateral y cajas de disparo (con fondo blanco limpio)
     if (isMotorBreaker) {
