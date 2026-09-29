@@ -63,7 +63,8 @@ export class SymbolRenderer {
           isSimulation,
           svgPath,
           { minX: 0, minY: 0, width: 40, height: 60 },
-          () => this.renderSwitchNO(ctx, comp, isSimulation)
+          () => this.renderSwitchNO(ctx, comp, isSimulation),
+          isClosed
         );
         break;
       }
@@ -75,6 +76,7 @@ export class SymbolRenderer {
       case 'contact_nc_1p': {
         const isClosed = comp.state.closed && !comp.state.pressed && !comp.state.energized;
         const stateIdx = isClosed ? 0 : 1;
+        const isActuated = !isClosed;
         const folder = comp.type === 'contact_nc_1p' ? 'contact_nc' : comp.type;
         const svgPath = `/symbols/${folder}/${stateIdx}.svg`;
         this.renderSvgWithFallback(
@@ -83,7 +85,8 @@ export class SymbolRenderer {
           isSimulation,
           svgPath,
           { minX: 0, minY: 0, width: 40, height: 60 },
-          () => this.renderSwitchNC(ctx, comp, isSimulation)
+          () => this.renderSwitchNC(ctx, comp, isSimulation),
+          isActuated
         );
         break;
       }
@@ -98,7 +101,8 @@ export class SymbolRenderer {
           isSimulation,
           svgPath,
           { minX: 0, minY: 0, width: 80, height: 60 },
-          () => this.renderContactNONC(ctx, comp, isSimulation)
+          () => this.renderContactNONC(ctx, comp, isSimulation),
+          isActuated
         );
         break;
       }
@@ -113,7 +117,8 @@ export class SymbolRenderer {
           isSimulation,
           svgPath,
           { minX: 0, minY: 0, width: 80, height: 60 },
-          () => this.renderContactChangeover(ctx, comp, isSimulation)
+          () => this.renderContactChangeover(ctx, comp, isSimulation),
+          isActuated
         );
         break;
       }
@@ -128,7 +133,8 @@ export class SymbolRenderer {
           isSimulation,
           svgPath,
           { minX: 0, minY: 0, width: 40, height: 60 },
-          () => this.renderCoil(ctx, comp, isSimulation)
+          () => this.renderCoil(ctx, comp, isSimulation),
+          energized
         );
         break;
       }
@@ -175,7 +181,8 @@ export class SymbolRenderer {
           isSimulation,
           svgPath,
           { minX: -20, minY: 0, width: 80, height: 60 },
-          () => this.renderProtectionBreaker(ctx, comp, isSimulation)
+          () => this.renderProtectionBreaker(ctx, comp, isSimulation),
+          isClosed
         );
         break;
       }
@@ -198,7 +205,8 @@ export class SymbolRenderer {
           isSimulation,
           svgPath,
           { minX: -40, minY: 0, width: 140, height: 80 },
-          () => this.renderProtectionBreaker(ctx, comp, isSimulation)
+          () => this.renderProtectionBreaker(ctx, comp, isSimulation),
+          isClosed
         );
         break;
       }
@@ -214,7 +222,8 @@ export class SymbolRenderer {
           isSimulation,
           svgPath,
           { minX: -40, minY: 0, width: 140, height: 60 },
-          () => this.renderProtectionBreaker(ctx, comp, isSimulation)
+          () => this.renderProtectionBreaker(ctx, comp, isSimulation),
+          isClosed
         );
         break;
       }
@@ -229,7 +238,8 @@ export class SymbolRenderer {
           isSimulation,
           svgPath,
           { minX: 0, minY: 0, width: 120, height: 60 },
-          () => this.renderThermalRelay(ctx, comp, isSimulation)
+          () => this.renderThermalRelay(ctx, comp, isSimulation),
+          isTripped
         );
         break;
       }
@@ -244,7 +254,8 @@ export class SymbolRenderer {
           isSimulation,
           svgPath,
           { minX: 0, minY: 0, width, height: 60 },
-          () => this.renderSurgeArrester(ctx, comp, isSimulation)
+          () => this.renderSurgeArrester(ctx, comp, isSimulation),
+          false
         );
         break;
       }
@@ -259,7 +270,8 @@ export class SymbolRenderer {
           isSimulation,
           svgPath,
           { minX: -20, minY: 0, width: 40, height: 60 },
-          () => this.renderSwitchNC(ctx, comp, isSimulation)
+          () => this.renderSwitchNC(ctx, comp, isSimulation),
+          isTripped
         );
         break;
       }
@@ -274,7 +286,8 @@ export class SymbolRenderer {
           isSimulation,
           svgPath,
           { minX: -20, minY: 0, width: 40, height: 60 },
-          () => this.renderSwitchNO(ctx, comp, isSimulation)
+          () => this.renderSwitchNO(ctx, comp, isSimulation),
+          isTripped
         );
         break;
       }
@@ -289,7 +302,8 @@ export class SymbolRenderer {
           isSimulation,
           svgPath,
           { minX: 0, minY: 0, width: 80, height: 60 },
-          () => this.renderContactNONC(ctx, comp, isSimulation)
+          () => this.renderContactNONC(ctx, comp, isSimulation),
+          isTripped
         );
         break;
       }
@@ -304,7 +318,8 @@ export class SymbolRenderer {
           isSimulation,
           svgPath,
           { minX: 0, minY: 0, width: 80, height: 60 },
-          () => this.renderContactChangeover(ctx, comp, isSimulation)
+          () => this.renderContactChangeover(ctx, comp, isSimulation),
+          isTripped
         );
         break;
       }
@@ -393,16 +408,20 @@ export class SymbolRenderer {
     }
   }
 
-  private static renderSwitchNO(ctx: CanvasRenderingContext2D, comp: CircuitComponent, _isSim: boolean) {
+  private static renderSwitchNO(ctx: CanvasRenderingContext2D, comp: CircuitComponent, isSim: boolean) {
     const isClosed = comp.state.pressed || comp.state.closed || comp.state.energized;
+    const isActuated = Boolean(isSim && isClosed);
+    const strokeColor = isActuated ? '#ef4444' : '#1e293b';
 
     // Terminal dots
+    ctx.fillStyle = strokeColor;
     ctx.beginPath();
     ctx.arc(0, 0, 2.5, 0, Math.PI * 2);
     ctx.arc(0, 60, 2.5, 0, Math.PI * 2);
     ctx.fill();
 
     // Vertical lead lines
+    ctx.strokeStyle = strokeColor;
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(0, 20);
@@ -438,8 +457,8 @@ export class SymbolRenderer {
       ctx.restore();
     }
 
-    // 2. CAPA SUPERIOR: Cuchilla móvil y símbolos/iconos de identificación en negro (pisan la línea gris)
-    ctx.strokeStyle = '#1e293b';
+    // 2. CAPA SUPERIOR: Cuchilla móvil y símbolos/iconos de identificación en negro o rojo (pisan la línea gris)
+    ctx.strokeStyle = strokeColor;
     ctx.lineWidth = 1.8;
 
     // Contact blade: hinged at bottom (0, 42), tilting up-left in open state
@@ -504,16 +523,20 @@ export class SymbolRenderer {
     this.renderTagAndNumbers(ctx, comp, numTop, numBot);
   }
 
-  private static renderSwitchNC(ctx: CanvasRenderingContext2D, comp: CircuitComponent, _isSim: boolean) {
+  private static renderSwitchNC(ctx: CanvasRenderingContext2D, comp: CircuitComponent, isSim: boolean) {
     const isClosed = comp.state.closed && !comp.state.pressed && !comp.state.energized;
+    const isActuated = Boolean(isSim && !isClosed);
+    const strokeColor = isActuated ? '#ef4444' : '#1e293b';
 
     // Terminal dots
+    ctx.fillStyle = strokeColor;
     ctx.beginPath();
     ctx.arc(0, 0, 2.5, 0, Math.PI * 2);
     ctx.arc(0, 60, 2.5, 0, Math.PI * 2);
     ctx.fill();
 
     // Vertical lead lines & Horizontal fixed contact bar to the RIGHT (IEC 60617 / CADe_SIMU)
+    ctx.strokeStyle = strokeColor;
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(0, 20);
@@ -550,8 +573,8 @@ export class SymbolRenderer {
       ctx.restore();
     }
 
-    // 2. CAPA SUPERIOR: Cuchilla móvil y símbolos/iconos de identificación en negro (pisan la línea gris)
-    ctx.strokeStyle = '#1e293b';
+    // 2. CAPA SUPERIOR: Cuchilla móvil y símbolos/iconos de identificación en negro o rojo (pisan la línea gris)
+    ctx.strokeStyle = strokeColor;
     ctx.lineWidth = 1.8;
 
     // Blade: hinged at bottom (0, 42)
@@ -674,10 +697,12 @@ export class SymbolRenderer {
   private static renderPowerContactor(
     ctx: CanvasRenderingContext2D,
     comp: CircuitComponent,
-    _isSim: boolean
+    isSim: boolean
   ) {
     const poles = comp.state.poles || 1;
     const isClosed = comp.state.closed || comp.state.energized;
+    const isActuated = Boolean(isSim && isClosed);
+    const strokeColor = isActuated ? '#ef4444' : '#1e293b';
 
     // 1. CAPA INFERIOR: Barra de acoplamiento mecánico en gris punteado si poles > 1 (detrás de las cuchillas)
     if (poles > 1) {
@@ -692,15 +717,15 @@ export class SymbolRenderer {
       ctx.restore();
     }
 
-    // 2. CAPA SUPERIOR: Bornes, líneas de paso, botitas y cuchillas en negro (pisan la línea gris)
-    ctx.strokeStyle = '#1e293b';
+    // 2. CAPA SUPERIOR: Bornes, líneas de paso, botitas y cuchillas en negro o rojo (pisan la línea gris)
+    ctx.strokeStyle = strokeColor;
     ctx.lineWidth = 1.8;
 
     for (let p = 0; p < poles; p++) {
       const offsetX = p * 40;
 
       // Terminal dots
-      ctx.fillStyle = '#0f172a';
+      ctx.fillStyle = strokeColor;
       ctx.beginPath();
       ctx.arc(offsetX, 0, 2.5, 0, Math.PI * 2);
       ctx.arc(offsetX, 60, 2.5, 0, Math.PI * 2);
@@ -751,16 +776,19 @@ export class SymbolRenderer {
   private static renderContactNONC(
     ctx: CanvasRenderingContext2D,
     comp: CircuitComponent,
-    _isSim: boolean
+    isSim: boolean
   ) {
     const isActuated = Boolean(comp.state.energized || comp.state.pressed);
+    const strokeColor = Boolean(isSim && isActuated) ? '#ef4444' : '#1e293b';
 
     // Pole 1: NO (13-14) at X = 0
+    ctx.fillStyle = strokeColor;
     ctx.beginPath();
     ctx.arc(0, 0, 2.5, 0, Math.PI * 2);
     ctx.arc(0, 60, 2.5, 0, Math.PI * 2);
     ctx.fill();
 
+    ctx.strokeStyle = strokeColor;
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(0, 20);
@@ -775,11 +803,13 @@ export class SymbolRenderer {
     ctx.fillText(comp.terminals[1]?.name ?? '14', 4, 54);
 
     // Pole 2: NC (21-22) at X = 40
+    ctx.fillStyle = strokeColor;
     ctx.beginPath();
     ctx.arc(40, 0, 2.5, 0, Math.PI * 2);
     ctx.arc(40, 60, 2.5, 0, Math.PI * 2);
     ctx.fill();
 
+    ctx.strokeStyle = strokeColor;
     ctx.beginPath();
     ctx.moveTo(40, 0);
     ctx.lineTo(40, 20);
@@ -808,8 +838,8 @@ export class SymbolRenderer {
     ctx.stroke();
     ctx.restore();
 
-    // 2. CAPA SUPERIOR: Cuchillas de ambos polos en negro (pisan la línea gris)
-    ctx.strokeStyle = '#1e293b';
+    // 2. CAPA SUPERIOR: Cuchillas de ambos polos en negro o rojo (pisan la línea gris)
+    ctx.strokeStyle = strokeColor;
     ctx.lineWidth = 1.8;
 
     // Pole 1 blade (hinged at (0, 42))
@@ -865,9 +895,10 @@ export class SymbolRenderer {
   private static renderContactChangeover(
     ctx: CanvasRenderingContext2D,
     comp: CircuitComponent,
-    _isSim: boolean
+    isSim: boolean
   ) {
     const isActuated = Boolean(comp.state.energized || comp.state.pressed);
+    const strokeColor = Boolean(isSim && isActuated) ? '#ef4444' : '#1e293b';
 
     const comX = comp.terminals[0]?.relX ?? 20;
     const comY = comp.terminals[0]?.relY ?? 0;
@@ -877,7 +908,7 @@ export class SymbolRenderer {
     const naY = comp.terminals[2]?.relY ?? 60;
 
     // Terminal dots (individual paths to prevent canvas fill polygon)
-    ctx.fillStyle = '#0f172a';
+    ctx.fillStyle = strokeColor;
     for (const [tx, ty] of [
       [comX, comY],
       [ncX, ncY],
@@ -889,6 +920,7 @@ export class SymbolRenderer {
     }
 
     // COM vertical lead from (comX, 0) to (comX, 18)
+    ctx.strokeStyle = strokeColor;
     ctx.beginPath();
     ctx.moveTo(comX, comY);
     ctx.lineTo(comX, 18);
@@ -922,8 +954,8 @@ export class SymbolRenderer {
       ctx.restore();
     }
 
-    // 2. CAPA SUPERIOR: Cuchilla basculante en negro (pisa la línea gris)
-    ctx.strokeStyle = '#1e293b';
+    // 2. CAPA SUPERIOR: Cuchilla basculante en negro o rojo (pisa la línea gris)
+    ctx.strokeStyle = strokeColor;
     ctx.lineWidth = 1.8;
     ctx.beginPath();
     if (!isActuated) {
@@ -1084,7 +1116,7 @@ export class SymbolRenderer {
   private static renderProtectionBreaker(
     ctx: CanvasRenderingContext2D,
     comp: CircuitComponent,
-    _isSim: boolean
+    isSim: boolean
   ) {
     let poles = 1;
     if (
@@ -1261,7 +1293,12 @@ export class SymbolRenderer {
       ctx.restore();
     }
 
-    // 2. CAPA SUPERIOR: Polos, cuchillas, símbolos bimetálicos/magnéticos en negro (pisan la línea gris)
+    // 2. CAPA SUPERIOR: Polos, cuchillas, símbolos bimetálicos/magnéticos en negro o rojo (pisan la línea gris)
+    const isActuated = Boolean(isSim && isClosed);
+    const strokeColor = isActuated ? '#ef4444' : '#1e293b';
+    ctx.strokeStyle = strokeColor;
+    ctx.fillStyle = strokeColor;
+
     for (let p = 0; p < poles; p++) {
       const offsetX = p * 40;
       const isNeutralPole = (poles === 2 && p === 1 && (isRCD || comp.type === 'mcb_1p_n' || comp.type === 'motor_breaker_1p_n')) || (poles === 4 && p === 3);
@@ -2141,6 +2178,26 @@ export class SymbolRenderer {
             refTerminal,
           });
 
+          // Generate actuated red SVG image (replaces dark strokes/fills with CADe_SIMU red #ef4444)
+          try {
+            const redSvgText = xmlText
+              .replace(/#(?:1e293b|0f172a|000000|111827)\b/gi, '#ef4444')
+              .replace(/rgb\(\s*(?:30|15|0)\s*,\s*(?:41|23|0)\s*,\s*(?:59|42|0)\s*\)/gi, '#ef4444');
+            const blob = new Blob([redSvgText], { type: 'image/svg+xml' });
+            const redUrl = URL.createObjectURL(blob);
+            const redImg = new Image();
+            redImg.onload = () => {
+              if (this.onRedrawNeeded) this.onRedrawNeeded();
+            };
+            redImg.onerror = () => {
+              (redImg as any)._failed = true;
+            };
+            redImg.src = redUrl;
+            this.svgImageCache.set(`${svgPath}__actuated`, redImg);
+          } catch {
+            // Ignore blob generation errors
+          }
+
           if (this.onRedrawNeeded) this.onRedrawNeeded();
         } catch {
           // Ignore parsing error
@@ -2158,26 +2215,46 @@ export class SymbolRenderer {
   private static renderSvgWithFallback(
     ctx: CanvasRenderingContext2D,
     comp: CircuitComponent,
-    _isSim: boolean,
+    isSimulation: boolean,
     svgPath: string,
     defaultViewBox: { minX: number; minY: number; width: number; height: number },
-    canvasFallback: () => void
+    canvasFallback: () => void,
+    isActuated: boolean = false
   ): boolean {
-    let img = this.svgImageCache.get(svgPath);
+    const shouldTintRed = Boolean(isSimulation && isActuated && comp.type !== 'pilot_light');
+    const cacheKey = shouldTintRed ? `${svgPath}__actuated` : svgPath;
+
+    let img = this.svgImageCache.get(cacheKey);
 
     if (img === undefined) {
-      // First attempt to load image & metadata
-      img = new Image();
-      img.src = svgPath;
-      img.onload = () => {
-        if (this.onRedrawNeeded) this.onRedrawNeeded();
-      };
-      img.onerror = () => {
-        (img as any)._failed = true;
-        if (this.onRedrawNeeded) this.onRedrawNeeded();
-      };
-      this.svgImageCache.set(svgPath, img);
-      this.parseSvgMetadata(svgPath);
+      if (shouldTintRed) {
+        if (!this.svgImageCache.has(svgPath)) {
+          const baseImg = new Image();
+          baseImg.src = svgPath;
+          baseImg.onload = () => {
+            if (this.onRedrawNeeded) this.onRedrawNeeded();
+          };
+          baseImg.onerror = () => {
+            (baseImg as any)._failed = true;
+            if (this.onRedrawNeeded) this.onRedrawNeeded();
+          };
+          this.svgImageCache.set(svgPath, baseImg);
+        }
+        this.parseSvgMetadata(svgPath);
+        img = this.svgImageCache.get(svgPath);
+      } else {
+        img = new Image();
+        img.src = svgPath;
+        img.onload = () => {
+          if (this.onRedrawNeeded) this.onRedrawNeeded();
+        };
+        img.onerror = () => {
+          (img as any)._failed = true;
+          if (this.onRedrawNeeded) this.onRedrawNeeded();
+        };
+        this.svgImageCache.set(svgPath, img);
+        this.parseSvgMetadata(svgPath);
+      }
     }
 
     if (img && !img.complete) {
