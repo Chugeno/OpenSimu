@@ -181,11 +181,7 @@ export class SymbolRenderer {
       }
 
       case 'coil':
-      case 'step_relay':
-      case 'connection_timer':
-      case 'disconnection_timer':
-      case 'disconnect_connection_timer':
-      case 'timer': {
+      case 'step_relay': {
         const energized = Boolean(isSimulation && comp.state.energized);
         const stateIdx = energized ? 1 : 0;
         const svgPath = `/symbols/${comp.type}/${stateIdx}.svg`;
@@ -198,6 +194,100 @@ export class SymbolRenderer {
           () => this.renderCoil(ctx, comp, isSimulation),
           energized
         );
+        break;
+      }
+
+      case 'connection_timer':
+      case 'disconnection_timer':
+      case 'disconnect_connection_timer': {
+        const energized = Boolean(isSimulation && comp.state.energized);
+        const stateIdx = energized ? 1 : 0;
+        const svgPath = `/symbols/${comp.type}/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 40, height: 60 },
+          () => this.renderCoil(ctx, comp, isSimulation),
+          energized
+        );
+
+        if (isSimulation) {
+          const val = comp.state.timeValue ?? 5;
+          const unit = comp.state.timeUnit ?? 's';
+          const mult = unit === 'h' ? 3600 : unit === 'min' ? 60 : 1;
+          const totalSec = val * mult;
+          const elapsedSec = (comp.state.timeElapsed ?? 0) / 1000;
+          const remainingSec = Math.max(0, totalSec - elapsedSec);
+
+          ctx.save();
+          ctx.font = 'bold 9px sans-serif';
+          let badgeText = '';
+          let badgeColor = '#475569';
+
+          if (comp.state.timerActive) {
+            badgeText = `⏱ ACTIVO (${totalSec}s)`;
+            badgeColor = '#16a34a';
+          } else if ((comp.state.timeElapsed ?? 0) > 0) {
+            badgeText = `⏱ ${remainingSec.toFixed(1)}s / ${totalSec}s`;
+            badgeColor = '#ea580c';
+          } else {
+            badgeText = `⏱ ${totalSec}s`;
+            badgeColor = '#475569';
+          }
+
+          const tw = ctx.measureText(badgeText).width;
+          const bx = 20 - tw / 2 - 4;
+          const by = 64;
+          ctx.fillStyle = badgeColor;
+          ctx.beginPath();
+          ctx.roundRect(bx, by, tw + 8, 13, 3);
+          ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillText(badgeText, bx + 4, by + 9.5);
+          ctx.restore();
+        }
+        break;
+      }
+
+      case 'timer': {
+        const isActuated = Boolean(isSimulation && (comp.state.timerActive || comp.state.energized));
+        const stateIdx = isActuated ? 1 : 0;
+        const svgPath = `/symbols/timer/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: 0, minY: 0, width: 40, height: 60 },
+          () => this.renderCoil(ctx, comp, isSimulation),
+          isActuated
+        );
+
+        if (isSimulation) {
+          ctx.save();
+          ctx.font = 'bold 9px sans-serif';
+          const onTime = comp.state.timerOnTime ?? '08:00';
+          const offTime = comp.state.timerOffTime ?? '18:00';
+          const isTest = comp.state.timerManualTest;
+          const badgeText = isTest
+            ? '⚡ TEST ON'
+            : comp.state.timerActive
+            ? `⏰ ON (${onTime}-${offTime})`
+            : `⏰ OFF (${onTime}-${offTime})`;
+          const badgeColor = comp.state.timerActive ? '#16a34a' : '#475569';
+          const tw = ctx.measureText(badgeText).width;
+          const bx = 20 - tw / 2 - 4;
+          const by = 64;
+          ctx.fillStyle = badgeColor;
+          ctx.beginPath();
+          ctx.roundRect(bx, by, tw + 8, 13, 3);
+          ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillText(badgeText, bx + 4, by + 9.5);
+          ctx.restore();
+        }
         break;
       }
 

@@ -101,6 +101,10 @@ export interface CircuitComponent {
     timeUnit?: 's' | 'min' | 'h'; // Unit of delay
     timeElapsed?: number; // Milliseconds elapsed during simulation
     timerActive?: boolean; // True when timer delay is finished or output contact triggered
+    timerDays?: string[]; // E.g. ['L', 'M', 'X', 'J', 'V']
+    timerOnTime?: string; // E.g. '08:00'
+    timerOffTime?: string; // E.g. '18:00'
+    timerManualTest?: boolean; // True to force active in simulation test mode
     bistableSet?: boolean; // For bistable coil memory state
     stepRelayActive?: boolean; // For step relay / telerruptor toggle state
     prevEnergized?: boolean; // For rising edge detection on impulse relays / step relays

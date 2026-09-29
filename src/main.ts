@@ -61,6 +61,8 @@ const modalExtraContent = document.getElementById('modal-extra-content') as HTML
 
 let tempSelectedColor: 'green' | 'red' | 'yellow' | 'blue' | 'white' = 'green';
 let tempSelectedProtectionType: 'mag' | 'mag_thermal' = 'mag';
+let tempSelectedDays: string[] = ['L', 'M', 'X', 'J', 'V'];
+let tempTimerManualTest: boolean = false;
 
 const shortCircuitModal = document.getElementById('short-circuit-modal') as HTMLDivElement;
 const shortCircuitMsg = document.getElementById('short-circuit-msg') as HTMLParagraphElement;
@@ -272,11 +274,138 @@ canvasView.onTagEditRequest = (comp) => {
       });
 
       modalExtraContent.appendChild(typeGrid);
+    } else if (comp.type === 'timer') {
+      modalExtraOptions.style.display = 'block';
+      modalExtraLabel.textContent = 'Programación Semanal (Reloj Horario):';
+
+      tempSelectedDays = [...(comp.state?.timerDays ?? ['L', 'M', 'X', 'J', 'V'])];
+      tempTimerManualTest = Boolean(comp.state?.timerManualTest);
+
+      const weeklyBox = document.createElement('div');
+      weeklyBox.style.display = 'flex';
+      weeklyBox.style.flexDirection = 'column';
+      weeklyBox.style.gap = '12px';
+      weeklyBox.style.marginTop = '8px';
+
+      // 1. Selector de días de la semana
+      const daysTitle = document.createElement('span');
+      daysTitle.textContent = 'Días de Funcionamiento:';
+      daysTitle.style.fontSize = '12px';
+      daysTitle.style.fontWeight = 'bold';
+      daysTitle.style.color = '#cbd5e1';
+
+      const daysContainer = document.createElement('div');
+      daysContainer.style.display = 'flex';
+      daysContainer.style.gap = '6px';
+      daysContainer.style.flexWrap = 'wrap';
+
+      const allDays: { id: string; name: string }[] = [
+        { id: 'L', name: 'Lun' },
+        { id: 'M', name: 'Mar' },
+        { id: 'X', name: 'Mié' },
+        { id: 'J', name: 'Jue' },
+        { id: 'V', name: 'Vie' },
+        { id: 'S', name: 'Sáb' },
+        { id: 'D', name: 'Dom' },
+      ];
+
+      allDays.forEach((d) => {
+        const dayBtn = document.createElement('button');
+        dayBtn.type = 'button';
+        dayBtn.textContent = d.name;
+        dayBtn.className = `btn btn-sm ${tempSelectedDays.includes(d.id) ? 'btn-primary' : 'btn-secondary'}`;
+        dayBtn.style.padding = '4px 8px';
+        dayBtn.style.fontSize = '12px';
+        dayBtn.style.fontWeight = 'bold';
+        dayBtn.onclick = () => {
+          if (tempSelectedDays.includes(d.id)) {
+            tempSelectedDays = tempSelectedDays.filter((x) => x !== d.id);
+            dayBtn.className = 'btn btn-sm btn-secondary';
+          } else {
+            tempSelectedDays.push(d.id);
+            dayBtn.className = 'btn btn-sm btn-primary';
+          }
+        };
+        daysContainer.appendChild(dayBtn);
+      });
+
+      // 2. Horarios ON / OFF
+      const timeRow = document.createElement('div');
+      timeRow.style.display = 'flex';
+      timeRow.style.alignItems = 'center';
+      timeRow.style.gap = '14px';
+
+      const onCol = document.createElement('div');
+      onCol.style.display = 'flex';
+      onCol.style.flexDirection = 'column';
+      onCol.style.gap = '4px';
+      const onLbl = document.createElement('span');
+      onLbl.textContent = 'Hora Encendido (ON):';
+      onLbl.style.fontSize = '11px';
+      onLbl.style.color = '#94a3b8';
+      const onInp = document.createElement('input');
+      onInp.type = 'time';
+      onInp.id = 'timer-on-input';
+      onInp.value = comp.state?.timerOnTime ?? '08:00';
+      onInp.className = 'terminal-input';
+      onInp.style.width = '110px';
+      onCol.appendChild(onLbl);
+      onCol.appendChild(onInp);
+
+      const offCol = document.createElement('div');
+      offCol.style.display = 'flex';
+      offCol.style.flexDirection = 'column';
+      offCol.style.gap = '4px';
+      const offLbl = document.createElement('span');
+      offLbl.textContent = 'Hora Apagado (OFF):';
+      offLbl.style.fontSize = '11px';
+      offLbl.style.color = '#94a3b8';
+      const offInp = document.createElement('input');
+      offInp.type = 'time';
+      offInp.id = 'timer-off-input';
+      offInp.value = comp.state?.timerOffTime ?? '18:00';
+      offInp.className = 'terminal-input';
+      offInp.style.width = '110px';
+      offCol.appendChild(offLbl);
+      offCol.appendChild(offInp);
+
+      timeRow.appendChild(onCol);
+      timeRow.appendChild(offCol);
+
+      // 3. Forzar activación para prueba en simulación
+      const testRow = document.createElement('label');
+      testRow.style.display = 'flex';
+      testRow.style.alignItems = 'center';
+      testRow.style.gap = '8px';
+      testRow.style.cursor = 'pointer';
+      testRow.style.fontSize = '12px';
+      testRow.style.fontWeight = 'bold';
+      testRow.style.color = '#f59e0b';
+      testRow.style.marginTop = '4px';
+
+      const testChk = document.createElement('input');
+      testChk.type = 'checkbox';
+      testChk.id = 'timer-test-checkbox';
+      testChk.checked = tempTimerManualTest;
+      testChk.onchange = () => {
+        tempTimerManualTest = testChk.checked;
+      };
+
+      const testTxt = document.createElement('span');
+      testTxt.textContent = '⚡ Forzar activo en simulación (Modo Prueba)';
+
+      testRow.appendChild(testChk);
+      testRow.appendChild(testTxt);
+
+      weeklyBox.appendChild(daysTitle);
+      weeklyBox.appendChild(daysContainer);
+      weeklyBox.appendChild(timeRow);
+      weeklyBox.appendChild(testRow);
+      modalExtraContent.appendChild(weeklyBox);
     } else if (
       comp.type === 'connection_timer' ||
       comp.type === 'disconnection_timer' ||
-      comp.type === 'disconnect_connection_timer' ||
-      comp.type === 'timer'
+      comp.type === 'disconnect_connection_timer'
     ) {
       modalExtraOptions.style.display = 'block';
       modalExtraLabel.textContent = 'Configuración de Temporización:';
@@ -384,11 +513,18 @@ modalSave.onclick = () => {
     } else if (editingComponent.type.startsWith('motor_breaker_')) {
       editingComponent.state = editingComponent.state || {};
       editingComponent.state.protectionType = tempSelectedProtectionType;
+    } else if (editingComponent.type === 'timer') {
+      editingComponent.state = editingComponent.state || {};
+      editingComponent.state.timerDays = [...tempSelectedDays];
+      const onEl = document.getElementById('timer-on-input') as HTMLInputElement | null;
+      const offEl = document.getElementById('timer-off-input') as HTMLInputElement | null;
+      if (onEl) editingComponent.state.timerOnTime = onEl.value;
+      if (offEl) editingComponent.state.timerOffTime = offEl.value;
+      editingComponent.state.timerManualTest = tempTimerManualTest;
     } else if (
       editingComponent.type === 'connection_timer' ||
       editingComponent.type === 'disconnection_timer' ||
-      editingComponent.type === 'disconnect_connection_timer' ||
-      editingComponent.type === 'timer'
+      editingComponent.type === 'disconnect_connection_timer'
     ) {
       editingComponent.state = editingComponent.state || {};
       const valEl = document.getElementById('timer-val-input') as HTMLInputElement | null;

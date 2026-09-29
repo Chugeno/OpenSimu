@@ -21,11 +21,19 @@ export class SimulationEngine {
     // Inicializar con las bobinas que ya estaban activas para permitir autoretención
     const activeCoils = new Set<string>(currentActiveCoils || []);
 
-    // Asegurar que componentes con memoria biestable o telerruptor activo retengan sus contactos
+    // Asegurar que componentes con memoria biestable, telerruptor o temporizador activo retengan sus contactos
     for (const comp of components) {
       if (comp.type === 'bistable_coil' && comp.state.bistableSet) {
         activeCoils.add(comp.tag);
       } else if (comp.type === 'step_relay' && comp.state.stepRelayActive) {
+        activeCoils.add(comp.tag);
+      } else if (
+        (comp.type === 'connection_timer' ||
+          comp.type === 'disconnection_timer' ||
+          comp.type === 'disconnect_connection_timer' ||
+          comp.type === 'timer') &&
+        comp.state.timerActive
+      ) {
         activeCoils.add(comp.tag);
       }
     }
@@ -112,13 +120,7 @@ export class SimulationEngine {
       let coilStateChanged = false;
 
       for (const comp of components) {
-        if (
-          comp.type === 'coil' ||
-          comp.type === 'connection_timer' ||
-          comp.type === 'disconnection_timer' ||
-          comp.type === 'disconnect_connection_timer' ||
-          comp.type === 'timer'
-        ) {
+        if (comp.type === 'coil') {
           const t1 = comp.terminals.find((t) => t.id === 'A1');
           const t2 = comp.terminals.find((t) => t.id === 'A2');
           if (t1 && t2) {
@@ -140,6 +142,39 @@ export class SimulationEngine {
             } else if (!hasPotentialDiff && wasActive) {
               activeCoils.delete(comp.tag);
               coilStateChanged = true;
+            }
+          }
+        } else if (
+          comp.type === 'connection_timer' ||
+          comp.type === 'disconnection_timer' ||
+          comp.type === 'disconnect_connection_timer' ||
+          comp.type === 'timer'
+        ) {
+          const t1 = comp.terminals.find((t) => t.id === 'A1');
+          const t2 = comp.terminals.find((t) => t.id === 'A2');
+          if (t1 && t2) {
+            const isPhaseDiff =
+              (t1.potential.startsWith('L') && t2.potential === 'N') ||
+              (t1.potential === 'N' && t2.potential.startsWith('L')) ||
+              (t1.potential.startsWith('L') && t2.potential.startsWith('L') && t1.potential !== t2.potential);
+            const isDcDiff =
+              (t1.potential === 'DC_POS' && t2.potential === 'DC_NEG') ||
+              (t1.potential === 'DC_NEG' && t2.potential === 'DC_POS');
+
+            const hasPotentialDiff = isPhaseDiff || isDcDiff;
+            comp.state.energized = hasPotentialDiff;
+
+            // Las bobinas temporizadas SOLO accionan sus contactos si comp.state.timerActive es true!
+            if (comp.state.timerActive) {
+              if (!activeCoils.has(comp.tag)) {
+                activeCoils.add(comp.tag);
+                coilStateChanged = true;
+              }
+            } else {
+              if (activeCoils.has(comp.tag)) {
+                activeCoils.delete(comp.tag);
+                coilStateChanged = true;
+              }
             }
           }
         } else if (comp.type === 'step_relay') {

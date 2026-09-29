@@ -176,7 +176,7 @@ export class CadeSimuParser {
           terminals: def.terminals.map((t) => ({ ...t, potential: 'NONE' })),
           state: {
             pressed: false,
-            closed: (def.type.endsWith('_nc') && def.type !== 'contact_no_nc') || def.type.startsWith('fuse_'),
+            closed: (def.type.endsWith('_nc') && !def.type.includes('_no_nc') && def.type !== 'contact_no_nc') || def.type.startsWith('fuse_'),
             energized: false,
             poles: def.poles || 1,
           },

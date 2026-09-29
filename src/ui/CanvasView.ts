@@ -31,6 +31,7 @@ export class CanvasView {
 
   public isSimulation: boolean = false;
   public simulationResult: SimulationResult = { running: false, shortCircuit: false, activeCoils: [] };
+  private simIntervalId: number | null = null;
 
   public activeTool: ToolType = 'select';
   public pendingComponentType: string | null = null;
@@ -316,6 +317,10 @@ export class CanvasView {
     this.canvas.style.cursor = 'default';
   }
 
+  public static isNormallyClosed(type: string): boolean {
+    return (type.endsWith('_nc') && !type.includes('_no_nc') && type !== 'contact_no_nc') || type.startsWith('fuse_');
+  }
+
   public startSimulation() {
     this.isSimulation = true;
     this.activeTool = 'select';
@@ -324,9 +329,18 @@ export class CanvasView {
     this.isDrawingWire = false;
     this.notifyHistoryChange();
     this.stepSimulation();
+
+    if (this.simIntervalId) clearInterval(this.simIntervalId);
+    this.simIntervalId = window.setInterval(() => {
+      this.simulationTick(100);
+    }, 100);
   }
 
   public stopSimulation() {
+    if (this.simIntervalId) {
+      clearInterval(this.simIntervalId);
+      this.simIntervalId = null;
+    }
     this.isSimulation = false;
     this.activeMomentaryComp = null;
     // Reset all component states
@@ -338,7 +352,9 @@ export class CanvasView {
       comp.state.bistableSet = false;
       comp.state.stepRelayActive = false;
       comp.state.fuseBlown = false;
-      comp.state.closed = (comp.type.endsWith('_nc') && comp.type !== 'contact_no_nc') || comp.type.startsWith('fuse_');
+      comp.state.timerActive = false;
+      comp.state.timeElapsed = 0;
+      comp.state.closed = CanvasView.isNormallyClosed(comp.type);
     }
     this.simulationResult = { running: false, shortCircuit: false, activeCoils: [] };
     this.notifyHistoryChange();
@@ -359,6 +375,124 @@ export class CanvasView {
 
     if (this.simulationResult.shortCircuit && this.onShortCircuit) {
       this.onShortCircuit(this.simulationResult);
+    }
+  }
+
+  private simulationTick(deltaMs: number) {
+    if (!this.isSimulation) return;
+
+    let stateChanged = false;
+    let needsRenderOnly = false;
+
+    for (const comp of this.components) {
+      if (comp.type === 'connection_timer') {
+        const val = comp.state.timeValue ?? 5;
+        const unit = comp.state.timeUnit ?? 's';
+        const mult = unit === 'h' ? 3600000 : unit === 'min' ? 60000 : 1000;
+        const targetMs = val * mult;
+
+        if (comp.state.energized) {
+          if (!comp.state.timerActive) {
+            comp.state.timeElapsed = (comp.state.timeElapsed ?? 0) + deltaMs;
+            needsRenderOnly = true;
+            if (comp.state.timeElapsed >= targetMs) {
+              comp.state.timerActive = true;
+              stateChanged = true;
+            }
+          }
+        } else {
+          if ((comp.state.timeElapsed ?? 0) > 0 || comp.state.timerActive) {
+            comp.state.timeElapsed = 0;
+            comp.state.timerActive = false;
+            stateChanged = true;
+          }
+        }
+      } else if (comp.type === 'disconnection_timer') {
+        const val = comp.state.timeValue ?? 5;
+        const unit = comp.state.timeUnit ?? 's';
+        const mult = unit === 'h' ? 3600000 : unit === 'min' ? 60000 : 1000;
+        const targetMs = val * mult;
+
+        if (comp.state.energized) {
+          if (!comp.state.timerActive || (comp.state.timeElapsed ?? 0) > 0) {
+            comp.state.timerActive = true;
+            comp.state.timeElapsed = 0;
+            stateChanged = true;
+          }
+        } else {
+          if (comp.state.timerActive) {
+            comp.state.timeElapsed = (comp.state.timeElapsed ?? 0) + deltaMs;
+            needsRenderOnly = true;
+            if (comp.state.timeElapsed >= targetMs) {
+              comp.state.timerActive = false;
+              comp.state.timeElapsed = 0;
+              stateChanged = true;
+            }
+          }
+        }
+      } else if (comp.type === 'disconnect_connection_timer') {
+        const val = comp.state.timeValue ?? 5;
+        const unit = comp.state.timeUnit ?? 's';
+        const mult = unit === 'h' ? 3600000 : unit === 'min' ? 60000 : 1000;
+        const targetMs = val * mult;
+
+        if (comp.state.energized) {
+          if (!comp.state.timerActive) {
+            comp.state.timeElapsed = (comp.state.timeElapsed ?? 0) + deltaMs;
+            needsRenderOnly = true;
+            if (comp.state.timeElapsed >= targetMs) {
+              comp.state.timerActive = true;
+              comp.state.timeElapsed = 0;
+              stateChanged = true;
+            }
+          }
+        } else {
+          if (comp.state.timerActive) {
+            comp.state.timeElapsed = (comp.state.timeElapsed ?? 0) + deltaMs;
+            needsRenderOnly = true;
+            if (comp.state.timeElapsed >= targetMs) {
+              comp.state.timerActive = false;
+              comp.state.timeElapsed = 0;
+              stateChanged = true;
+            }
+          }
+        }
+      } else if (comp.type === 'timer') {
+        if (comp.state.timerManualTest === true) {
+          if (!comp.state.timerActive) {
+            comp.state.timerActive = true;
+            stateChanged = true;
+          }
+        } else {
+          const now = new Date();
+          const dayMap = ['D', 'L', 'M', 'X', 'J', 'V', 'S'];
+          const currentDay = dayMap[now.getDay()];
+          const currentDays = comp.state.timerDays ?? ['L', 'M', 'X', 'J', 'V'];
+          const dayMatches = currentDays.includes(currentDay);
+          const onTime = comp.state.timerOnTime ?? '08:00';
+          const offTime = comp.state.timerOffTime ?? '18:00';
+          const currentMinutes = now.getHours() * 60 + now.getMinutes();
+          const [onH, onM] = onTime.split(':').map(Number);
+          const [offH, offM] = offTime.split(':').map(Number);
+          const onMinutes = onH * 60 + onM;
+          const offMinutes = offH * 60 + offM;
+          const timeMatches =
+            onMinutes <= offMinutes
+              ? currentMinutes >= onMinutes && currentMinutes < offMinutes
+              : currentMinutes >= onMinutes || currentMinutes < offMinutes;
+          const shouldBeActive = dayMatches && timeMatches;
+          if (comp.state.timerActive !== shouldBeActive) {
+            comp.state.timerActive = shouldBeActive;
+            stateChanged = true;
+          }
+        }
+      }
+    }
+
+    if (stateChanged) {
+      this.stepSimulation();
+    } else if (needsRenderOnly) {
+      this.render();
     }
   }
 
@@ -554,7 +688,7 @@ export class CanvasView {
       cloned.tag = tagMap.get(comp.tag) || comp.tag;
       cloned.state = {
         pressed: false,
-        closed: (comp.type.endsWith('_nc') && comp.type !== 'contact_no_nc') || comp.type.startsWith('fuse_'),
+        closed: CanvasView.isNormallyClosed(comp.type),
         energized: false,
         tripped: false,
         poles: comp.state?.poles || 1,
@@ -846,8 +980,8 @@ export class CanvasView {
             const willBeClosed = !clickedComp.state.closed;
             for (const c of linkedComps) {
               c.state.tripped = false;
-              const isNC = c.type.endsWith('_nc') && c.type !== 'contact_no_nc';
-              const clickedIsNC = clickedComp.type.endsWith('_nc') && clickedComp.type !== 'contact_no_nc';
+              const isNC = CanvasView.isNormallyClosed(c.type);
+              const clickedIsNC = CanvasView.isNormallyClosed(clickedComp.type);
               if (isNC === clickedIsNC) {
                 c.state.closed = willBeClosed;
               } else {
@@ -1249,7 +1383,7 @@ export class CanvasView {
       terminals: def.terminals.map((t) => ({ ...t, potential: 'NONE' })),
       state: {
         pressed: false,
-        closed: (def.type.endsWith('_nc') && def.type !== 'contact_no_nc') || def.type.startsWith('fuse_'),
+        closed: CanvasView.isNormallyClosed(def.type),
         energized: false,
         poles: def.poles || 1,
         protectionType: def.type.startsWith('motor_breaker_') ? 'mag' : undefined,
@@ -1564,7 +1698,7 @@ export class CanvasView {
             y: snapped.y,
             rotation: 0,
             terminals: ghostDef.terminals.map((t) => ({ ...t, potential: 'NONE' })),
-            state: { closed: (ghostDef.type.endsWith('_nc') && ghostDef.type !== 'contact_no_nc') || ghostDef.type.startsWith('fuse_'), poles: ghostDef.poles || 1 },
+            state: { closed: CanvasView.isNormallyClosed(ghostDef.type), poles: ghostDef.poles || 1 },
           },
           false,
           false

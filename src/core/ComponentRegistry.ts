@@ -484,6 +484,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
   },
 
   // ACCIONAMIENTOS (MANDOS / PULSADORES)
+  // 1. Pulsadores estándar
   pushbutton_no: {
     type: 'pushbutton_no',
     category: 'control',
@@ -510,6 +511,95 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
       { id: '12', name: '12', relX: 0, relY: 60 },
     ],
   },
+  pushbutton_no_nc: {
+    type: 'pushbutton_no_nc',
+    category: 'control',
+    name: 'Pulsador Doble (NC 11-12 / NA 13-14)',
+    defaultTag: '-S',
+    width: 80,
+    height: 60,
+    manualAction: 'momentary',
+    terminals: [
+      { id: '11', name: '11', relX: 0, relY: 0 },
+      { id: '12', name: '12', relX: 0, relY: 60 },
+      { id: '13', name: '13', relX: 40, relY: 0 },
+      { id: '14', name: '14', relX: 40, relY: 60 },
+    ],
+  },
+  pushbutton_changeover: {
+    type: 'pushbutton_changeover',
+    category: 'control',
+    name: 'Pulsador Conmutado (11-12-14)',
+    defaultTag: '-S',
+    width: 80,
+    height: 60,
+    manualAction: 'momentary',
+    terminals: [
+      { id: '11', name: '11', relX: 0, relY: 0 },
+      { id: '12', name: '12', relX: -20, relY: 60 },
+      { id: '14', name: '14', relX: 20, relY: 60 },
+    ],
+  },
+
+  // 2. Setas de emergencia
+  pushbutton_emergency_nc: {
+    type: 'pushbutton_emergency_nc',
+    category: 'control',
+    name: 'Seta de Emergencia NC (11-12)',
+    defaultTag: '-S',
+    width: 40,
+    height: 60,
+    manualAction: 'toggle',
+    dividerBefore: true,
+    terminals: [
+      { id: '11', name: '11', relX: 0, relY: 0 },
+      { id: '12', name: '12', relX: 0, relY: 60 },
+    ],
+  },
+  pushbutton_emergency_no: {
+    type: 'pushbutton_emergency_no',
+    category: 'control',
+    name: 'Seta de Emergencia NA (13-14)',
+    defaultTag: '-S',
+    width: 40,
+    height: 60,
+    manualAction: 'toggle',
+    terminals: [
+      { id: '13', name: '13', relX: 0, relY: 0 },
+      { id: '14', name: '14', relX: 0, relY: 60 },
+    ],
+  },
+  pushbutton_emergency_no_nc: {
+    type: 'pushbutton_emergency_no_nc',
+    category: 'control',
+    name: 'Seta Emergencia Doble (NC 11-12 / NA 13-14)',
+    defaultTag: '-S',
+    width: 80,
+    height: 60,
+    manualAction: 'toggle',
+    terminals: [
+      { id: '11', name: '11', relX: 0, relY: 0 },
+      { id: '12', name: '12', relX: 0, relY: 60 },
+      { id: '13', name: '13', relX: 40, relY: 0 },
+      { id: '14', name: '14', relX: 40, relY: 60 },
+    ],
+  },
+  pushbutton_emergency_changeover: {
+    type: 'pushbutton_emergency_changeover',
+    category: 'control',
+    name: 'Seta Emergencia Conmutada (11-12-14)',
+    defaultTag: '-S',
+    width: 80,
+    height: 60,
+    manualAction: 'toggle',
+    terminals: [
+      { id: '11', name: '11', relX: 0, relY: 0 },
+      { id: '12', name: '12', relX: -20, relY: 60 },
+      { id: '14', name: '14', relX: 20, relY: 60 },
+    ],
+  },
+
+  // 3. Interruptores / Selectores rotativos
   switch_no: {
     type: 'switch_no',
     category: 'control',
@@ -518,6 +608,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     width: 40,
     height: 60,
     manualAction: 'toggle',
+    dividerBefore: true,
     terminals: [
       { id: '13', name: '13', relX: 0, relY: 0 },
       { id: '14', name: '14', relX: 0, relY: 60 },
@@ -579,90 +670,8 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
       { id: '14', name: '14', relX: 40, relY: 60 },
     ],
   },
-  pushbutton_emergency_nc: {
-    type: 'pushbutton_emergency_nc',
-    category: 'control',
-    name: 'Seta de Emergencia NC (11-12)',
-    defaultTag: '-S',
-    width: 40,
-    height: 60,
-    manualAction: 'toggle',
-    terminals: [
-      { id: '11', name: '11', relX: 0, relY: 0 },
-      { id: '12', name: '12', relX: 0, relY: 60 },
-    ],
-  },
-  pushbutton_emergency_no: {
-    type: 'pushbutton_emergency_no',
-    category: 'control',
-    name: 'Seta de Emergencia NA (13-14)',
-    defaultTag: '-S',
-    width: 40,
-    height: 60,
-    manualAction: 'toggle',
-    terminals: [
-      { id: '13', name: '13', relX: 0, relY: 0 },
-      { id: '14', name: '14', relX: 0, relY: 60 },
-    ],
-  },
-  pushbutton_no_nc: {
-    type: 'pushbutton_no_nc',
-    category: 'control',
-    name: 'Pulsador Doble (NC 11-12 / NA 13-14)',
-    defaultTag: '-S',
-    width: 80,
-    height: 60,
-    manualAction: 'momentary',
-    terminals: [
-      { id: '11', name: '11', relX: 0, relY: 0 },
-      { id: '12', name: '12', relX: 0, relY: 60 },
-      { id: '13', name: '13', relX: 40, relY: 0 },
-      { id: '14', name: '14', relX: 40, relY: 60 },
-    ],
-  },
-  pushbutton_changeover: {
-    type: 'pushbutton_changeover',
-    category: 'control',
-    name: 'Pulsador Conmutado (11-12-14)',
-    defaultTag: '-S',
-    width: 80,
-    height: 60,
-    manualAction: 'momentary',
-    terminals: [
-      { id: '11', name: '11', relX: 0, relY: 0 },
-      { id: '12', name: '12', relX: -20, relY: 60 },
-      { id: '14', name: '14', relX: 20, relY: 60 },
-    ],
-  },
-  pushbutton_emergency_no_nc: {
-    type: 'pushbutton_emergency_no_nc',
-    category: 'control',
-    name: 'Seta Emergencia Doble (NC 11-12 / NA 13-14)',
-    defaultTag: '-S',
-    width: 80,
-    height: 60,
-    manualAction: 'toggle',
-    terminals: [
-      { id: '11', name: '11', relX: 0, relY: 0 },
-      { id: '12', name: '12', relX: 0, relY: 60 },
-      { id: '13', name: '13', relX: 40, relY: 0 },
-      { id: '14', name: '14', relX: 40, relY: 60 },
-    ],
-  },
-  pushbutton_emergency_changeover: {
-    type: 'pushbutton_emergency_changeover',
-    category: 'control',
-    name: 'Seta Emergencia Conmutada (11-12-14)',
-    defaultTag: '-S',
-    width: 80,
-    height: 60,
-    manualAction: 'toggle',
-    terminals: [
-      { id: '11', name: '11', relX: 0, relY: 0 },
-      { id: '12', name: '12', relX: -20, relY: 60 },
-      { id: '14', name: '14', relX: 20, relY: 60 },
-    ],
-  },
+
+  // 4. Finales de carrera
   limit_no: {
     type: 'limit_no',
     category: 'control',
@@ -670,7 +679,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     defaultTag: '-FC',
     width: 40,
     height: 60,
-    manualAction: 'momentary',
+    manualAction: 'toggle',
     dividerBefore: true,
     terminals: [
       { id: '13', name: '13', relX: 0, relY: 0 },
@@ -684,7 +693,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     defaultTag: '-FC',
     width: 40,
     height: 60,
-    manualAction: 'momentary',
+    manualAction: 'toggle',
     terminals: [
       { id: '11', name: '11', relX: 0, relY: 0 },
       { id: '12', name: '12', relX: 0, relY: 60 },
@@ -697,7 +706,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     defaultTag: '-FC',
     width: 80,
     height: 60,
-    manualAction: 'momentary',
+    manualAction: 'toggle',
     terminals: [
       { id: '11', name: '11', relX: 0, relY: 0 },
       { id: '12', name: '12', relX: 0, relY: 60 },
@@ -712,13 +721,15 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     defaultTag: '-FC',
     width: 80,
     height: 60,
-    manualAction: 'momentary',
+    manualAction: 'toggle',
     terminals: [
       { id: '11', name: '11', relX: 0, relY: 0 },
       { id: '12', name: '12', relX: -20, relY: 60 },
       { id: '14', name: '14', relX: 20, relY: 60 },
     ],
   },
+
+  // 5. Detectores / Sensores de proximidad
   inductive_detector_no: {
     type: 'inductive_detector_no',
     category: 'control',
@@ -726,7 +737,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     defaultTag: '-B',
     width: 52,
     height: 60,
-    manualAction: 'momentary',
+    manualAction: 'toggle',
     dividerBefore: true,
     terminals: [
       { id: 'A1', name: 'A1', relX: 0, relY: 0 },
@@ -740,7 +751,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     defaultTag: '-B',
     width: 52,
     height: 60,
-    manualAction: 'momentary',
+    manualAction: 'toggle',
     terminals: [
       { id: 'A1', name: 'A1', relX: 0, relY: 0 },
       { id: 'A2', name: 'A2', relX: 0, relY: 60 },
@@ -771,8 +782,8 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     manualAction: 'none',
     terminals: [
       { id: 'A1', name: 'A1', relX: 0, relY: 0 },
-      { id: 'B1', name: 'B1', relX: 21, relY: 0 },
-      { id: 'A2', name: 'A2', relX: 11, relY: 60 },
+      { id: 'B1', name: 'B1', relX: 20, relY: 0 },
+      { id: 'A2', name: 'A2', relX: 0, relY: 60 },
     ],
   },
   step_relay: {

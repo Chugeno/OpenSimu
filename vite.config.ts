@@ -8,5 +8,6 @@ export default defineConfig({
     assetsInlineLimit: 100000000,
     chunkSizeWarningLimit: 100000000,
     cssCodeSplit: false,
+    copyPublicDir: false,
   },
 });
