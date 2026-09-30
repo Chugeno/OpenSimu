@@ -67,6 +67,18 @@ export const EMBEDDED_SYMBOLS: Record<string, string> = {
   "/symbols/motor_breaker_4p/mag_1.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-40 0 180 80\" width=\"180\" height=\"80\">\n  \n  <circle id=\"terminal_1\" cx=\"0\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_2\" cx=\"0\" cy=\"80\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_3\" cx=\"40\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_4\" cx=\"40\" cy=\"80\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_5\" cx=\"80\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_6\" cx=\"80\" cy=\"80\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_n\" cx=\"120\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_n2\" cx=\"120\" cy=\"80\" r=\"2.5\" fill=\"#1e293b\" />\n  \n  <!-- Palanca manual T a la izquierda -->\n  <line x1=\"-34\" y1=\"24\" x2=\"-34\" y2=\"32\" stroke=\"#0f172a\" stroke-width=\"1.5\" stroke-linecap=\"round\" />\n  <line x1=\"-34\" y1=\"28\" x2=\"-26\" y2=\"28\" stroke=\"#64748b\" stroke-width=\"1.2\" stroke-dasharray=\"3 2\" />\n  \n  <!-- Cuadradito blanco con cruz -->\n  <rect x=\"-26\" y=\"22\" width=\"12\" height=\"12\" fill=\"#ffffff\" stroke=\"#0f172a\" stroke-width=\"1.5\" />\n  <line x1=\"-20\" y1=\"22\" x2=\"-20\" y2=\"34\" stroke=\"#0f172a\" stroke-width=\"1.5\" />\n  <line x1=\"-26\" y1=\"28\" x2=\"-14\" y2=\"28\" stroke=\"#0f172a\" stroke-width=\"1.5\" />\n  \n  <!-- Barra de acoplamiento de cuchillas a Y = 28 -->\n  <line x1=\"-14\" y1=\"28\" x2=\"120\" y2=\"28\" stroke=\"#64748b\" stroke-width=\"1.2\" stroke-dasharray=\"3 2\" />\n  \n  <rect x=\"-10\" y=\"44\" width=\"140\" height=\"18\" fill=\"#ffffff\" stroke=\"#0f172a\" stroke-width=\"1.5\" />\n  <line x1=\"-20\" y1=\"34\" x2=\"-20\" y2=\"53\" stroke=\"#64748b\" stroke-width=\"1.2\" stroke-dasharray=\"3 2\" />\n  <line x1=\"-20\" y1=\"53\" x2=\"-10\" y2=\"53\" stroke=\"#64748b\" stroke-width=\"1.2\" stroke-dasharray=\"3 2\" />\n    \n  <g stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\">\n    \n    <!-- Polo 1 -->\n    <line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"20\" />\n    <line x1=\"-2.5\" y1=\"12.5\" x2=\"2.5\" y2=\"17.5\" />\n    <line x1=\"2.5\" y1=\"12.5\" x2=\"-2.5\" y2=\"17.5\" />\n    <line x1=\"-3.5\" y1=\"20\" x2=\"3.5\" y2=\"20\" />\n    <line x1=\"0\" y1=\"36\" x2=\"0\" y2=\"20\" />\n    <line x1=\"0\" y1=\"36\" x2=\"0\" y2=\"44\" />\n    <line x1=\"-6.5\" y1=\"50\" x2=\"-6.5\" y2=\"56\" />\n    <line x1=\"-8\" y1=\"50\" x2=\"-5\" y2=\"50\" />\n    <line x1=\"-8\" y1=\"56\" x2=\"-5\" y2=\"56\" />\n    <path d=\"M-2.5,50 L1,53 L-2.5,56\" />\n    <path d=\"M3.5,50 L7,53 L3.5,56\" />\n    <line x1=\"0\" y1=\"62\" x2=\"0\" y2=\"80\" />\n    <!-- Polo 2 -->\n    <line x1=\"40\" y1=\"0\" x2=\"40\" y2=\"20\" />\n    <line x1=\"37.5\" y1=\"12.5\" x2=\"42.5\" y2=\"17.5\" />\n    <line x1=\"42.5\" y1=\"12.5\" x2=\"37.5\" y2=\"17.5\" />\n    <line x1=\"36.5\" y1=\"20\" x2=\"43.5\" y2=\"20\" />\n    <line x1=\"40\" y1=\"36\" x2=\"40\" y2=\"20\" />\n    <line x1=\"40\" y1=\"36\" x2=\"40\" y2=\"44\" />\n    <line x1=\"33.5\" y1=\"50\" x2=\"33.5\" y2=\"56\" />\n    <line x1=\"32\" y1=\"50\" x2=\"35\" y2=\"50\" />\n    <line x1=\"32\" y1=\"56\" x2=\"35\" y2=\"56\" />\n    <path d=\"M37.5,50 L41,53 L37.5,56\" />\n    <path d=\"M43.5,50 L47,53 L43.5,56\" />\n    <line x1=\"40\" y1=\"62\" x2=\"40\" y2=\"80\" />\n    <!-- Polo 3 -->\n    <line x1=\"80\" y1=\"0\" x2=\"80\" y2=\"20\" />\n    <line x1=\"77.5\" y1=\"12.5\" x2=\"82.5\" y2=\"17.5\" />\n    <line x1=\"82.5\" y1=\"12.5\" x2=\"77.5\" y2=\"17.5\" />\n    <line x1=\"76.5\" y1=\"20\" x2=\"83.5\" y2=\"20\" />\n    <line x1=\"80\" y1=\"36\" x2=\"80\" y2=\"20\" />\n    <line x1=\"80\" y1=\"36\" x2=\"80\" y2=\"44\" />\n    <line x1=\"73.5\" y1=\"50\" x2=\"73.5\" y2=\"56\" />\n    <line x1=\"72\" y1=\"50\" x2=\"75\" y2=\"50\" />\n    <line x1=\"72\" y1=\"56\" x2=\"75\" y2=\"56\" />\n    <path d=\"M77.5,50 L81,53 L77.5,56\" />\n    <path d=\"M83.5,50 L87,53 L83.5,56\" />\n    <line x1=\"80\" y1=\"62\" x2=\"80\" y2=\"80\" />\n    <!-- Polo 4 -->\n    <line x1=\"120\" y1=\"0\" x2=\"120\" y2=\"20\" />\n    <line x1=\"117.5\" y1=\"12.5\" x2=\"122.5\" y2=\"17.5\" />\n    <line x1=\"122.5\" y1=\"12.5\" x2=\"117.5\" y2=\"17.5\" />\n    <line x1=\"116.5\" y1=\"20\" x2=\"123.5\" y2=\"20\" />\n    <line x1=\"120\" y1=\"36\" x2=\"120\" y2=\"20\" />\n    <line x1=\"120\" y1=\"36\" x2=\"120\" y2=\"80\" />\n  </g>\n</svg>\n",
   "/symbols/motor_breaker_4p/mag_thermal_0.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-40 0 180 80\" width=\"180\" height=\"80\">\n  \n  <circle id=\"terminal_1\" cx=\"0\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_2\" cx=\"0\" cy=\"80\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_3\" cx=\"40\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_4\" cx=\"40\" cy=\"80\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_5\" cx=\"80\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_6\" cx=\"80\" cy=\"80\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_n\" cx=\"120\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_n2\" cx=\"120\" cy=\"80\" r=\"2.5\" fill=\"#1e293b\" />\n  \n  <!-- Palanca manual T a la izquierda -->\n  <line x1=\"-34\" y1=\"24\" x2=\"-34\" y2=\"32\" stroke=\"#0f172a\" stroke-width=\"1.5\" stroke-linecap=\"round\" />\n  <line x1=\"-34\" y1=\"28\" x2=\"-26\" y2=\"28\" stroke=\"#64748b\" stroke-width=\"1.2\" stroke-dasharray=\"3 2\" />\n  \n  <!-- Cuadradito blanco con cruz -->\n  <rect x=\"-26\" y=\"22\" width=\"12\" height=\"12\" fill=\"#ffffff\" stroke=\"#0f172a\" stroke-width=\"1.5\" />\n  <line x1=\"-20\" y1=\"22\" x2=\"-20\" y2=\"34\" stroke=\"#0f172a\" stroke-width=\"1.5\" />\n  <line x1=\"-26\" y1=\"28\" x2=\"-14\" y2=\"28\" stroke=\"#0f172a\" stroke-width=\"1.5\" />\n  \n  <!-- Barra de acoplamiento de cuchillas a Y = 28 -->\n  <line x1=\"-14\" y1=\"28\" x2=\"120\" y2=\"28\" stroke=\"#64748b\" stroke-width=\"1.2\" stroke-dasharray=\"3 2\" />\n  \n  <rect x=\"-10\" y=\"38\" width=\"140\" height=\"14\" fill=\"#ffffff\" stroke=\"#0f172a\" stroke-width=\"1.5\" />\n  <rect x=\"-10\" y=\"52\" width=\"140\" height=\"14\" fill=\"#ffffff\" stroke=\"#0f172a\" stroke-width=\"1.5\" />\n  <line x1=\"-20\" y1=\"34\" x2=\"-20\" y2=\"59\" stroke=\"#64748b\" stroke-width=\"1.2\" stroke-dasharray=\"3 2\" />\n  <line x1=\"-20\" y1=\"45\" x2=\"-10\" y2=\"45\" stroke=\"#64748b\" stroke-width=\"1.2\" stroke-dasharray=\"3 2\" />\n  <line x1=\"-20\" y1=\"59\" x2=\"-10\" y2=\"59\" stroke=\"#64748b\" stroke-width=\"1.2\" stroke-dasharray=\"3 2\" />\n    \n  <g stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\">\n    \n    <!-- Polo 1 -->\n    <line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"20\" />\n    <line x1=\"-2.5\" y1=\"12.5\" x2=\"2.5\" y2=\"17.5\" />\n    <line x1=\"2.5\" y1=\"12.5\" x2=\"-2.5\" y2=\"17.5\" />\n    <line x1=\"-3.5\" y1=\"20\" x2=\"3.5\" y2=\"20\" />\n    <line x1=\"0\" y1=\"36\" x2=\"-10\" y2=\"20\" />\n    <line x1=\"0\" y1=\"36\" x2=\"0\" y2=\"38\" />\n    <path d=\"M0,38 L0,41 L5.5,41 L5.5,49 L0,49 L0,52\" />\n    <!-- Magnético I >> -->\n    <line x1=\"-6\" y1=\"56.5\" x2=\"-6\" y2=\"61.5\" />\n    <line x1=\"-7.5\" y1=\"56.5\" x2=\"-4.5\" y2=\"56.5\" />\n    <line x1=\"-7.5\" y1=\"61.5\" x2=\"-4.5\" y2=\"61.5\" />\n    <path d=\"M-2,56.5 L1,59 L-2,61.5\" />\n    <path d=\"M3.5,56.5 L6.5,59 L3.5,61.5\" />\n    <line x1=\"0\" y1=\"66\" x2=\"0\" y2=\"80\" />\n    <!-- Polo 2 -->\n    <line x1=\"40\" y1=\"0\" x2=\"40\" y2=\"20\" />\n    <line x1=\"37.5\" y1=\"12.5\" x2=\"42.5\" y2=\"17.5\" />\n    <line x1=\"42.5\" y1=\"12.5\" x2=\"37.5\" y2=\"17.5\" />\n    <line x1=\"36.5\" y1=\"20\" x2=\"43.5\" y2=\"20\" />\n    <line x1=\"40\" y1=\"36\" x2=\"30\" y2=\"20\" />\n    <line x1=\"40\" y1=\"36\" x2=\"40\" y2=\"38\" />\n    <path d=\"M40,38 L40,41 L45.5,41 L45.5,49 L40,49 L40,52\" />\n    <!-- Magnético I >> -->\n    <line x1=\"34\" y1=\"56.5\" x2=\"34\" y2=\"61.5\" />\n    <line x1=\"32.5\" y1=\"56.5\" x2=\"35.5\" y2=\"56.5\" />\n    <line x1=\"32.5\" y1=\"61.5\" x2=\"35.5\" y2=\"61.5\" />\n    <path d=\"M38,56.5 L41,59 L38,61.5\" />\n    <path d=\"M43.5,56.5 L46.5,59 L43.5,61.5\" />\n    <line x1=\"40\" y1=\"66\" x2=\"40\" y2=\"80\" />\n    <!-- Polo 3 -->\n    <line x1=\"80\" y1=\"0\" x2=\"80\" y2=\"20\" />\n    <line x1=\"77.5\" y1=\"12.5\" x2=\"82.5\" y2=\"17.5\" />\n    <line x1=\"82.5\" y1=\"12.5\" x2=\"77.5\" y2=\"17.5\" />\n    <line x1=\"76.5\" y1=\"20\" x2=\"83.5\" y2=\"20\" />\n    <line x1=\"80\" y1=\"36\" x2=\"70\" y2=\"20\" />\n    <line x1=\"80\" y1=\"36\" x2=\"80\" y2=\"38\" />\n    <path d=\"M80,38 L80,41 L85.5,41 L85.5,49 L80,49 L80,52\" />\n    <!-- Magnético I >> -->\n    <line x1=\"74\" y1=\"56.5\" x2=\"74\" y2=\"61.5\" />\n    <line x1=\"72.5\" y1=\"56.5\" x2=\"75.5\" y2=\"56.5\" />\n    <line x1=\"72.5\" y1=\"61.5\" x2=\"75.5\" y2=\"61.5\" />\n    <path d=\"M78,56.5 L81,59 L78,61.5\" />\n    <path d=\"M83.5,56.5 L86.5,59 L83.5,61.5\" />\n    <line x1=\"80\" y1=\"66\" x2=\"80\" y2=\"80\" />\n    <!-- Polo 4 -->\n    <line x1=\"120\" y1=\"0\" x2=\"120\" y2=\"20\" />\n    <line x1=\"117.5\" y1=\"12.5\" x2=\"122.5\" y2=\"17.5\" />\n    <line x1=\"122.5\" y1=\"12.5\" x2=\"117.5\" y2=\"17.5\" />\n    <line x1=\"116.5\" y1=\"20\" x2=\"123.5\" y2=\"20\" />\n    <line x1=\"120\" y1=\"36\" x2=\"110\" y2=\"20\" />\n    <line x1=\"120\" y1=\"36\" x2=\"120\" y2=\"80\" />\n  </g>\n</svg>\n",
   "/symbols/motor_breaker_4p/mag_thermal_1.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-40 0 180 80\" width=\"180\" height=\"80\">\n  \n  <circle id=\"terminal_1\" cx=\"0\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_2\" cx=\"0\" cy=\"80\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_3\" cx=\"40\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_4\" cx=\"40\" cy=\"80\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_5\" cx=\"80\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_6\" cx=\"80\" cy=\"80\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_n\" cx=\"120\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_n2\" cx=\"120\" cy=\"80\" r=\"2.5\" fill=\"#1e293b\" />\n  \n  <!-- Palanca manual T a la izquierda -->\n  <line x1=\"-34\" y1=\"24\" x2=\"-34\" y2=\"32\" stroke=\"#0f172a\" stroke-width=\"1.5\" stroke-linecap=\"round\" />\n  <line x1=\"-34\" y1=\"28\" x2=\"-26\" y2=\"28\" stroke=\"#64748b\" stroke-width=\"1.2\" stroke-dasharray=\"3 2\" />\n  \n  <!-- Cuadradito blanco con cruz -->\n  <rect x=\"-26\" y=\"22\" width=\"12\" height=\"12\" fill=\"#ffffff\" stroke=\"#0f172a\" stroke-width=\"1.5\" />\n  <line x1=\"-20\" y1=\"22\" x2=\"-20\" y2=\"34\" stroke=\"#0f172a\" stroke-width=\"1.5\" />\n  <line x1=\"-26\" y1=\"28\" x2=\"-14\" y2=\"28\" stroke=\"#0f172a\" stroke-width=\"1.5\" />\n  \n  <!-- Barra de acoplamiento de cuchillas a Y = 28 -->\n  <line x1=\"-14\" y1=\"28\" x2=\"120\" y2=\"28\" stroke=\"#64748b\" stroke-width=\"1.2\" stroke-dasharray=\"3 2\" />\n  \n  <rect x=\"-10\" y=\"38\" width=\"140\" height=\"14\" fill=\"#ffffff\" stroke=\"#0f172a\" stroke-width=\"1.5\" />\n  <rect x=\"-10\" y=\"52\" width=\"140\" height=\"14\" fill=\"#ffffff\" stroke=\"#0f172a\" stroke-width=\"1.5\" />\n  <line x1=\"-20\" y1=\"34\" x2=\"-20\" y2=\"59\" stroke=\"#64748b\" stroke-width=\"1.2\" stroke-dasharray=\"3 2\" />\n  <line x1=\"-20\" y1=\"45\" x2=\"-10\" y2=\"45\" stroke=\"#64748b\" stroke-width=\"1.2\" stroke-dasharray=\"3 2\" />\n  <line x1=\"-20\" y1=\"59\" x2=\"-10\" y2=\"59\" stroke=\"#64748b\" stroke-width=\"1.2\" stroke-dasharray=\"3 2\" />\n    \n  <g stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\">\n    \n    <!-- Polo 1 -->\n    <line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"20\" />\n    <line x1=\"-2.5\" y1=\"12.5\" x2=\"2.5\" y2=\"17.5\" />\n    <line x1=\"2.5\" y1=\"12.5\" x2=\"-2.5\" y2=\"17.5\" />\n    <line x1=\"-3.5\" y1=\"20\" x2=\"3.5\" y2=\"20\" />\n    <line x1=\"0\" y1=\"36\" x2=\"0\" y2=\"20\" />\n    <line x1=\"0\" y1=\"36\" x2=\"0\" y2=\"38\" />\n    <path d=\"M0,38 L0,41 L5.5,41 L5.5,49 L0,49 L0,52\" />\n    <!-- Magnético I >> -->\n    <line x1=\"-6\" y1=\"56.5\" x2=\"-6\" y2=\"61.5\" />\n    <line x1=\"-7.5\" y1=\"56.5\" x2=\"-4.5\" y2=\"56.5\" />\n    <line x1=\"-7.5\" y1=\"61.5\" x2=\"-4.5\" y2=\"61.5\" />\n    <path d=\"M-2,56.5 L1,59 L-2,61.5\" />\n    <path d=\"M3.5,56.5 L6.5,59 L3.5,61.5\" />\n    <line x1=\"0\" y1=\"66\" x2=\"0\" y2=\"80\" />\n    <!-- Polo 2 -->\n    <line x1=\"40\" y1=\"0\" x2=\"40\" y2=\"20\" />\n    <line x1=\"37.5\" y1=\"12.5\" x2=\"42.5\" y2=\"17.5\" />\n    <line x1=\"42.5\" y1=\"12.5\" x2=\"37.5\" y2=\"17.5\" />\n    <line x1=\"36.5\" y1=\"20\" x2=\"43.5\" y2=\"20\" />\n    <line x1=\"40\" y1=\"36\" x2=\"40\" y2=\"20\" />\n    <line x1=\"40\" y1=\"36\" x2=\"40\" y2=\"38\" />\n    <path d=\"M40,38 L40,41 L45.5,41 L45.5,49 L40,49 L40,52\" />\n    <!-- Magnético I >> -->\n    <line x1=\"34\" y1=\"56.5\" x2=\"34\" y2=\"61.5\" />\n    <line x1=\"32.5\" y1=\"56.5\" x2=\"35.5\" y2=\"56.5\" />\n    <line x1=\"32.5\" y1=\"61.5\" x2=\"35.5\" y2=\"61.5\" />\n    <path d=\"M38,56.5 L41,59 L38,61.5\" />\n    <path d=\"M43.5,56.5 L46.5,59 L43.5,61.5\" />\n    <line x1=\"40\" y1=\"66\" x2=\"40\" y2=\"80\" />\n    <!-- Polo 3 -->\n    <line x1=\"80\" y1=\"0\" x2=\"80\" y2=\"20\" />\n    <line x1=\"77.5\" y1=\"12.5\" x2=\"82.5\" y2=\"17.5\" />\n    <line x1=\"82.5\" y1=\"12.5\" x2=\"77.5\" y2=\"17.5\" />\n    <line x1=\"76.5\" y1=\"20\" x2=\"83.5\" y2=\"20\" />\n    <line x1=\"80\" y1=\"36\" x2=\"80\" y2=\"20\" />\n    <line x1=\"80\" y1=\"36\" x2=\"80\" y2=\"38\" />\n    <path d=\"M80,38 L80,41 L85.5,41 L85.5,49 L80,49 L80,52\" />\n    <!-- Magnético I >> -->\n    <line x1=\"74\" y1=\"56.5\" x2=\"74\" y2=\"61.5\" />\n    <line x1=\"72.5\" y1=\"56.5\" x2=\"75.5\" y2=\"56.5\" />\n    <line x1=\"72.5\" y1=\"61.5\" x2=\"75.5\" y2=\"61.5\" />\n    <path d=\"M78,56.5 L81,59 L78,61.5\" />\n    <path d=\"M83.5,56.5 L86.5,59 L83.5,61.5\" />\n    <line x1=\"80\" y1=\"66\" x2=\"80\" y2=\"80\" />\n    <!-- Polo 4 -->\n    <line x1=\"120\" y1=\"0\" x2=\"120\" y2=\"20\" />\n    <line x1=\"117.5\" y1=\"12.5\" x2=\"122.5\" y2=\"17.5\" />\n    <line x1=\"122.5\" y1=\"12.5\" x2=\"117.5\" y2=\"17.5\" />\n    <line x1=\"116.5\" y1=\"20\" x2=\"123.5\" y2=\"20\" />\n    <line x1=\"120\" y1=\"36\" x2=\"120\" y2=\"20\" />\n    <line x1=\"120\" y1=\"36\" x2=\"120\" y2=\"80\" />\n  </g>\n</svg>\n",
+  "/symbols/offdelay_nc/0.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 40 60\">\n  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->\n  <defs>\n    <style>\n      .st0 {\n        stroke: #1e293b;\n      }\n\n      .st0, .st1 {\n        fill: none;\n        stroke-linecap: round;\n        stroke-linejoin: round;\n        stroke-width: 1.8px;\n      }\n\n      .st1 {\n        stroke: #64748b;\n      }\n\n      .st2 {\n        fill: #1e293b;\n      }\n    </style>\n  </defs>\n  <circle id=\"terminal_55\" class=\"st2\" cx=\"20\" r=\"2.5\"/>\n  <circle id=\"terminal_56\" class=\"st2\" cx=\"20\" cy=\"60\" r=\"2.5\"/>\n  <g>\n    <line class=\"st1\" x1=\"8.7\" y1=\"26.1\" x2=\"24.9\" y2=\"26.1\"/>\n    <line class=\"st1\" x1=\"8.7\" y1=\"31.4\" x2=\"23.3\" y2=\"31.4\"/>\n  </g>\n  <path class=\"st0\" d=\"M3.3,34.8c3.3,0,6-2.7,6-6s-2.7-6-6-6\"/>\n  <g>\n    <line class=\"st0\" x1=\"20\" x2=\"20\" y2=\"20\"/>\n    <line class=\"st0\" x1=\"20\" y1=\"20\" x2=\"30\" y2=\"20\"/>\n    <line class=\"st0\" x1=\"20\" y1=\"42\" x2=\"20\" y2=\"60\"/>\n    <line class=\"st0\" x1=\"20\" y1=\"42\" x2=\"28\" y2=\"16\"/>\n  </g>\n</svg>",
+  "/symbols/offdelay_nc/1.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 40 60\">\n  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->\n  <defs>\n    <style>\n      .st0 {\n        stroke: #1e293b;\n      }\n\n      .st0, .st1 {\n        fill: none;\n        stroke-linecap: round;\n        stroke-linejoin: round;\n        stroke-width: 1.8px;\n      }\n\n      .st1 {\n        stroke: #64748b;\n      }\n\n      .st2 {\n        fill: #1e293b;\n      }\n    </style>\n  </defs>\n  <g>\n    <line class=\"st1\" x1=\"13.8\" y1=\"26.1\" x2=\"32.7\" y2=\"26.1\"/>\n    <line class=\"st1\" x1=\"13.8\" y1=\"31.4\" x2=\"28.5\" y2=\"31.4\"/>\n  </g>\n  <path class=\"st0\" d=\"M8.4,34.8c3.3,0,6-2.7,6-6s-2.7-6-6-6\"/>\n  <circle id=\"terminal_55\" class=\"st2\" cx=\"20\" r=\"2.5\"/>\n  <circle id=\"terminal_56\" class=\"st2\" cx=\"20\" cy=\"60\" r=\"2.5\"/>\n  <g>\n    <line class=\"st0\" x1=\"20\" x2=\"20\" y2=\"20\"/>\n    <line class=\"st0\" x1=\"20\" y1=\"20\" x2=\"30\" y2=\"20\"/>\n    <line class=\"st0\" x1=\"20\" y1=\"42\" x2=\"20\" y2=\"60\"/>\n    <line class=\"st0\" x1=\"20\" y1=\"42\" x2=\"36\" y2=\"22\"/>\n  </g>\n</svg>",
+  "/symbols/offdelay_no/0.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 40 60\">\n  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->\n  <defs>\n    <style>\n      .st0 {\n        stroke: #1e293b;\n      }\n\n      .st0, .st1 {\n        fill: none;\n        stroke-linecap: round;\n        stroke-linejoin: round;\n        stroke-width: 1.8px;\n      }\n\n      .st1 {\n        stroke: #64748b;\n      }\n\n      .st2 {\n        fill: #1e293b;\n      }\n    </style>\n  </defs>\n  <g>\n    <line class=\"st1\" x1=\"8.2\" y1=\"25.9\" x2=\"24.5\" y2=\"25.9\"/>\n    <line class=\"st1\" x1=\"8.2\" y1=\"31.2\" x2=\"27.1\" y2=\"31.2\"/>\n  </g>\n  <path class=\"st0\" d=\"M2.8,34.6c3.3,0,6-2.7,6-6s-2.7-6-6-6\"/>\n  <circle id=\"terminal_67\" class=\"st2\" cx=\"32.5\" r=\"2.5\"/>\n  <circle id=\"terminal_68\" class=\"st2\" cx=\"32.5\" cy=\"60\" r=\"2.5\"/>\n  <g>\n    <line class=\"st0\" x1=\"32.5\" x2=\"32.5\" y2=\"20\"/>\n    <line class=\"st0\" x1=\"32.5\" y1=\"42\" x2=\"32.5\" y2=\"60\"/>\n    <line class=\"st0\" x1=\"32.5\" y1=\"42\" x2=\"22.5\" y2=\"22\"/>\n  </g>\n</svg>",
+  "/symbols/offdelay_no/1.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 40 60\">\n  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->\n  <defs>\n    <style>\n      .st0 {\n        fill: #fff;\n      }\n\n      .st0, .st1, .st2 {\n        stroke-linecap: round;\n        stroke-linejoin: round;\n        stroke-width: 1.8px;\n      }\n\n      .st0, .st2 {\n        stroke: #64748b;\n      }\n\n      .st1 {\n        stroke: #1e293b;\n      }\n\n      .st1, .st2 {\n        fill: none;\n      }\n\n      .st3 {\n        fill: #1e293b;\n      }\n    </style>\n  </defs>\n  <line class=\"st2\" x1=\"13.6\" y1=\"25.9\" x2=\"32.5\" y2=\"25.9\"/>\n  <line class=\"st2\" x1=\"13.6\" y1=\"31.2\" x2=\"32.5\" y2=\"31.2\"/>\n  <path class=\"st1\" d=\"M8.2,34.6c3.3,0,6-2.7,6-6s-2.7-6-6-6\"/>\n  <circle id=\"terminal_67\" class=\"st3\" cx=\"32.5\" r=\"2.5\"/>\n  <circle id=\"terminal_68\" class=\"st3\" cx=\"32.5\" cy=\"60\" r=\"2.5\"/>\n  <g>\n    <line class=\"st1\" x1=\"32.5\" x2=\"32.5\" y2=\"20\"/>\n    <line class=\"st1\" x1=\"32.5\" y1=\"42\" x2=\"32.5\" y2=\"60\"/>\n    <line class=\"st1\" x1=\"32.5\" y1=\"42\" x2=\"32.5\" y2=\"20\"/>\n  </g>\n  <path class=\"st0\" d=\"M32.5,25.9\"/>\n  <path class=\"st0\" d=\"M32.5,31.2\"/>\n</svg>",
+  "/symbols/on_offdelay_nc/0.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 40 60\">\n  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->\n  <defs>\n    <style>\n      .st0 {\n        stroke: #1e293b;\n      }\n\n      .st0, .st1 {\n        fill: none;\n        stroke-linecap: round;\n        stroke-linejoin: round;\n        stroke-width: 1.8px;\n      }\n\n      .st1 {\n        stroke: #64748b;\n      }\n\n      .st2 {\n        fill: #1e293b;\n      }\n    </style>\n  </defs>\n  <circle id=\"terminal_55\" class=\"st2\" cx=\"20\" r=\"2.5\"/>\n  <circle id=\"terminal_56\" class=\"st2\" cx=\"20\" cy=\"60\" r=\"2.5\"/>\n  <g>\n    <line class=\"st1\" x1=\"9.9\" y1=\"26.1\" x2=\"24.9\" y2=\"26.1\"/>\n    <line class=\"st1\" x1=\"9.9\" y1=\"31.4\" x2=\"23.3\" y2=\"31.4\"/>\n  </g>\n  <path class=\"st0\" d=\"M15.3,34.8c-3.3,0-6-2.7-6-6s2.7-6,6-6\"/>\n  <path class=\"st0\" d=\"M1.3,34.8c3.3,0,6-2.7,6-6s-2.7-6-6-6\"/>\n  <g>\n    <line class=\"st0\" x1=\"20\" x2=\"20\" y2=\"20\"/>\n    <line class=\"st0\" x1=\"20\" y1=\"20\" x2=\"30\" y2=\"20\"/>\n    <line class=\"st0\" x1=\"20\" y1=\"42\" x2=\"20\" y2=\"60\"/>\n    <line class=\"st0\" x1=\"20\" y1=\"42\" x2=\"28\" y2=\"16\"/>\n  </g>\n</svg>",
+  "/symbols/on_offdelay_nc/1.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 40 60\">\n  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->\n  <defs>\n    <style>\n      .st0 {\n        stroke: #1e293b;\n      }\n\n      .st0, .st1 {\n        fill: none;\n        stroke-linecap: round;\n        stroke-linejoin: round;\n        stroke-width: 1.8px;\n      }\n\n      .st1 {\n        stroke: #64748b;\n      }\n\n      .st2 {\n        fill: #1e293b;\n      }\n    </style>\n  </defs>\n  <g>\n    <line class=\"st1\" x1=\"15\" y1=\"26.1\" x2=\"32.7\" y2=\"26.1\"/>\n    <line class=\"st1\" x1=\"15\" y1=\"31.4\" x2=\"28.5\" y2=\"31.4\"/>\n  </g>\n  <path class=\"st0\" d=\"M20.4,34.8c-3.3,0-6-2.7-6-6s2.7-6,6-6\"/>\n  <path class=\"st0\" d=\"M6.4,34.8c3.3,0,6-2.7,6-6s-2.7-6-6-6\"/>\n  <circle id=\"terminal_55\" class=\"st2\" cx=\"20\" r=\"2.5\"/>\n  <circle id=\"terminal_56\" class=\"st2\" cx=\"20\" cy=\"60\" r=\"2.5\"/>\n  <g>\n    <line class=\"st0\" x1=\"20\" x2=\"20\" y2=\"20\"/>\n    <line class=\"st0\" x1=\"20\" y1=\"20\" x2=\"30\" y2=\"20\"/>\n    <line class=\"st0\" x1=\"20\" y1=\"42\" x2=\"20\" y2=\"60\"/>\n    <line class=\"st0\" x1=\"20\" y1=\"42\" x2=\"36\" y2=\"22\"/>\n  </g>\n</svg>",
+  "/symbols/on_offdelay_no/0.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 40 60\">\n  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->\n  <defs>\n    <style>\n      .st0 {\n        stroke: #1e293b;\n      }\n\n      .st0, .st1 {\n        fill: none;\n        stroke-linecap: round;\n        stroke-linejoin: round;\n        stroke-width: 1.8px;\n      }\n\n      .st1 {\n        stroke: #64748b;\n      }\n\n      .st2 {\n        fill: #1e293b;\n      }\n    </style>\n  </defs>\n  <g>\n    <line class=\"st1\" x1=\"9.5\" y1=\"25.9\" x2=\"24.5\" y2=\"25.9\"/>\n    <line class=\"st1\" x1=\"9.5\" y1=\"31.2\" x2=\"27.1\" y2=\"31.2\"/>\n  </g>\n  <path class=\"st0\" d=\"M14.8,34.6c-3.3,0-6-2.7-6-6s2.7-6,6-6\"/>\n  <path class=\"st0\" d=\"M.8,34.6c3.3,0,6-2.7,6-6s-2.7-6-6-6\"/>\n  <circle id=\"terminal_67\" class=\"st2\" cx=\"32.5\" r=\"2.5\"/>\n  <circle id=\"terminal_68\" class=\"st2\" cx=\"32.5\" cy=\"60\" r=\"2.5\"/>\n  <g>\n    <line class=\"st0\" x1=\"32.5\" x2=\"32.5\" y2=\"20\"/>\n    <line class=\"st0\" x1=\"32.5\" y1=\"42\" x2=\"32.5\" y2=\"60\"/>\n    <line class=\"st0\" x1=\"32.5\" y1=\"42\" x2=\"22.5\" y2=\"22\"/>\n  </g>\n</svg>",
+  "/symbols/on_offdelay_no/1.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 40 60\">\n  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->\n  <defs>\n    <style>\n      .st0 {\n        fill: #fff;\n      }\n\n      .st0, .st1, .st2 {\n        stroke-linecap: round;\n        stroke-linejoin: round;\n        stroke-width: 1.8px;\n      }\n\n      .st0, .st2 {\n        stroke: #64748b;\n      }\n\n      .st1 {\n        stroke: #1e293b;\n      }\n\n      .st1, .st2 {\n        fill: none;\n      }\n\n      .st3 {\n        fill: #1e293b;\n      }\n    </style>\n  </defs>\n  <line class=\"st2\" x1=\"14.8\" y1=\"25.9\" x2=\"32.5\" y2=\"25.9\"/>\n  <line class=\"st2\" x1=\"14.8\" y1=\"31.2\" x2=\"32.5\" y2=\"31.2\"/>\n  <path class=\"st1\" d=\"M20.2,34.6c-3.3,0-6-2.7-6-6s2.7-6,6-6\"/>\n  <path class=\"st1\" d=\"M6.2,34.6c3.3,0,6-2.7,6-6s-2.7-6-6-6\"/>\n  <circle id=\"terminal_67\" class=\"st3\" cx=\"32.5\" r=\"2.5\"/>\n  <circle id=\"terminal_68\" class=\"st3\" cx=\"32.5\" cy=\"60\" r=\"2.5\"/>\n  <g>\n    <line class=\"st1\" x1=\"32.5\" x2=\"32.5\" y2=\"20\"/>\n    <line class=\"st1\" x1=\"32.5\" y1=\"42\" x2=\"32.5\" y2=\"60\"/>\n    <line class=\"st1\" x1=\"32.5\" y1=\"42\" x2=\"32.5\" y2=\"20\"/>\n  </g>\n  <path class=\"st0\" d=\"M32.5,25.9\"/>\n  <path class=\"st0\" d=\"M32.5,31.2\"/>\n</svg>",
+  "/symbols/ondelay_nc/0.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 40 60\">\n  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->\n  <defs>\n    <style>\n      .st0 {\n        fill: #fff;\n        stroke: #64748b;\n      }\n\n      .st0, .st1 {\n        stroke-linecap: round;\n        stroke-linejoin: round;\n        stroke-width: 1.8px;\n      }\n\n      .st1 {\n        fill: none;\n        stroke: #1e293b;\n      }\n\n      .st2 {\n        fill: #1e293b;\n      }\n    </style>\n  </defs>\n  <circle id=\"terminal_55\" class=\"st2\" cx=\"20\" r=\"2.5\"/>\n  <circle id=\"terminal_56\" class=\"st2\" cx=\"20\" cy=\"60\" r=\"2.5\"/>\n  <g>\n    <line class=\"st0\" x1=\"9.9\" y1=\"26.1\" x2=\"24.9\" y2=\"26.1\"/>\n    <line class=\"st0\" x1=\"9.9\" y1=\"31.4\" x2=\"23.3\" y2=\"31.4\"/>\n  </g>\n  <path class=\"st1\" d=\"M15.3,34.8c-3.3,0-6-2.7-6-6s2.7-6,6-6\"/>\n  <g>\n    <line class=\"st1\" x1=\"20\" x2=\"20\" y2=\"20\"/>\n    <line class=\"st1\" x1=\"20\" y1=\"20\" x2=\"30\" y2=\"20\"/>\n    <line class=\"st1\" x1=\"20\" y1=\"42\" x2=\"20\" y2=\"60\"/>\n    <line class=\"st1\" x1=\"20\" y1=\"42\" x2=\"28\" y2=\"16\"/>\n  </g>\n</svg>",
+  "/symbols/ondelay_nc/1.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 40 60\">\n  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->\n  <defs>\n    <style>\n      .st0 {\n        fill: #fff;\n        stroke: #64748b;\n      }\n\n      .st0, .st1 {\n        stroke-linecap: round;\n        stroke-linejoin: round;\n        stroke-width: 1.8px;\n      }\n\n      .st1 {\n        fill: none;\n        stroke: #1e293b;\n      }\n\n      .st2 {\n        fill: #1e293b;\n      }\n    </style>\n  </defs>\n  <g>\n    <line class=\"st0\" x1=\"15\" y1=\"26.1\" x2=\"32.7\" y2=\"26.1\"/>\n    <line class=\"st0\" x1=\"15\" y1=\"31.4\" x2=\"28.5\" y2=\"31.4\"/>\n  </g>\n  <path class=\"st1\" d=\"M20.4,34.8c-3.3,0-6-2.7-6-6s2.7-6,6-6\"/>\n  <circle id=\"terminal_55\" class=\"st2\" cx=\"20\" r=\"2.5\"/>\n  <circle id=\"terminal_56\" class=\"st2\" cx=\"20\" cy=\"60\" r=\"2.5\"/>\n  <g>\n    <line class=\"st1\" x1=\"20\" x2=\"20\" y2=\"20\"/>\n    <line class=\"st1\" x1=\"20\" y1=\"20\" x2=\"30\" y2=\"20\"/>\n    <line class=\"st1\" x1=\"20\" y1=\"42\" x2=\"20\" y2=\"60\"/>\n    <line class=\"st1\" x1=\"20\" y1=\"42\" x2=\"36\" y2=\"22\"/>\n  </g>\n</svg>",
+  "/symbols/ondelay_no/0.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 40 60\">\n  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->\n  <defs>\n    <style>\n      .st0 {\n        fill: #fff;\n        stroke: #64748b;\n      }\n\n      .st0, .st1 {\n        stroke-linecap: round;\n        stroke-linejoin: round;\n        stroke-width: 1.8px;\n      }\n\n      .st1 {\n        fill: none;\n        stroke: #1e293b;\n      }\n\n      .st2 {\n        fill: #1e293b;\n      }\n    </style>\n  </defs>\n  <g>\n    <line class=\"st0\" x1=\"9.5\" y1=\"25.9\" x2=\"24.5\" y2=\"25.9\"/>\n    <line class=\"st0\" x1=\"9.5\" y1=\"31.2\" x2=\"27.1\" y2=\"31.2\"/>\n  </g>\n  <path class=\"st1\" d=\"M14.8,34.6c-3.3,0-6-2.7-6-6s2.7-6,6-6\"/>\n  <circle id=\"terminal_67\" class=\"st2\" cx=\"32.5\" r=\"2.5\"/>\n  <circle id=\"terminal_68\" class=\"st2\" cx=\"32.5\" cy=\"60\" r=\"2.5\"/>\n  <g>\n    <line class=\"st1\" x1=\"32.5\" x2=\"32.5\" y2=\"20\"/>\n    <line class=\"st1\" x1=\"32.5\" y1=\"42\" x2=\"32.5\" y2=\"60\"/>\n    <line class=\"st1\" x1=\"32.5\" y1=\"42\" x2=\"22.5\" y2=\"22\"/>\n  </g>\n</svg>",
+  "/symbols/ondelay_no/1.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 40 60\">\n  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->\n  <defs>\n    <style>\n      .st0 {\n        fill: #fff;\n        stroke: #64748b;\n      }\n\n      .st0, .st1 {\n        stroke-linecap: round;\n        stroke-linejoin: round;\n        stroke-width: 1.8px;\n      }\n\n      .st1 {\n        fill: none;\n        stroke: #1e293b;\n      }\n\n      .st2 {\n        fill: #1e293b;\n      }\n    </style>\n  </defs>\n  <line class=\"st0\" x1=\"14.8\" y1=\"25.9\" x2=\"32.5\" y2=\"25.9\"/>\n  <line class=\"st0\" x1=\"14.8\" y1=\"31.2\" x2=\"32.5\" y2=\"31.2\"/>\n  <path class=\"st1\" d=\"M20.2,34.6c-3.3,0-6-2.7-6-6s2.7-6,6-6\"/>\n  <circle id=\"terminal_67\" class=\"st2\" cx=\"32.5\" cy=\"0\" r=\"2.5\"/>\n  <circle id=\"terminal_68\" class=\"st2\" cx=\"32.5\" cy=\"60\" r=\"2.5\"/>\n  <g>\n    <line class=\"st1\" x1=\"32.5\" y1=\"0\" x2=\"32.5\" y2=\"20\"/>\n    <line class=\"st1\" x1=\"32.5\" y1=\"42\" x2=\"32.5\" y2=\"60\"/>\n    <line class=\"st1\" x1=\"32.5\" y1=\"42\" x2=\"32.5\" y2=\"20\"/>\n  </g>\n  <path class=\"st0\" d=\"M32.5,25.9\"/>\n  <path class=\"st0\" d=\"M32.5,31.2\"/>\n</svg>",
   "/symbols/pilot_light/0.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 40 60\" width=\"40\" height=\"60\">\n  <circle id=\"terminal_x1\" cx=\"20\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_x2\" cx=\"20\" cy=\"60\" r=\"2.5\" fill=\"#1e293b\" />\n  <line x1=\"20\" y1=\"0\" x2=\"20\" y2=\"18\" stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n  <line x1=\"20\" y1=\"42\" x2=\"20\" y2=\"60\" stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n  <!-- Círculo de la lámpara -->\n  <circle cx=\"20\" cy=\"30\" r=\"12\" fill=\"#ffffff\" stroke=\"#1e293b\" stroke-width=\"1.8\" />\n  <!-- Aspa interior en X (IEC 60617) -->\n  <line x1=\"11.5\" y1=\"21.5\" x2=\"28.5\" y2=\"38.5\" stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n  <line x1=\"11.5\" y1=\"38.5\" x2=\"28.5\" y2=\"21.5\" stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n</svg>\n",
   "/symbols/pilot_light/1.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 40 60\" width=\"40\" height=\"60\">\n  <circle id=\"terminal_x1\" cx=\"20\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_x2\" cx=\"20\" cy=\"60\" r=\"2.5\" fill=\"#1e293b\" />\n  <line x1=\"20\" y1=\"0\" x2=\"20\" y2=\"18\" stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n  <line x1=\"20\" y1=\"42\" x2=\"20\" y2=\"60\" stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n  <!-- Círculo de la lámpara -->\n  <circle cx=\"20\" cy=\"30\" r=\"12\" fill=\"#86efac\" stroke=\"#16a34a\" stroke-width=\"2.2\" />\n  <!-- Aspa interior en X (IEC 60617) -->\n  <line x1=\"11.5\" y1=\"21.5\" x2=\"28.5\" y2=\"38.5\" stroke=\"#166534\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n  <line x1=\"11.5\" y1=\"38.5\" x2=\"28.5\" y2=\"21.5\" stroke=\"#166534\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n</svg>\n",
   "/symbols/pilot_light/blue_1.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 40 60\" width=\"40\" height=\"60\">\n  <circle id=\"terminal_x1\" cx=\"20\" cy=\"0\" r=\"2.5\" fill=\"#1e293b\" />\n  <circle id=\"terminal_x2\" cx=\"20\" cy=\"60\" r=\"2.5\" fill=\"#1e293b\" />\n  <line x1=\"20\" y1=\"0\" x2=\"20\" y2=\"18\" stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n  <line x1=\"20\" y1=\"42\" x2=\"20\" y2=\"60\" stroke=\"#1e293b\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n  <!-- Círculo de la lámpara -->\n  <circle cx=\"20\" cy=\"30\" r=\"12\" fill=\"#93c5fd\" stroke=\"#2563eb\" stroke-width=\"2.2\" />\n  <!-- Aspa interior en X (IEC 60617) -->\n  <line x1=\"11.5\" y1=\"21.5\" x2=\"28.5\" y2=\"38.5\" stroke=\"#1e40af\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n  <line x1=\"11.5\" y1=\"38.5\" x2=\"28.5\" y2=\"21.5\" stroke=\"#1e40af\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n</svg>\n",
@@ -2085,6 +2097,270 @@ export const EMBEDDED_SYMBOLS_META: Record<string, {
     },
     "refTerminal": {
       "x": 0,
+      "y": 0
+    }
+  },
+  "/symbols/offdelay_nc/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "55": {
+        "x": 20,
+        "y": 0
+      },
+      "56": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/offdelay_nc/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "55": {
+        "x": 20,
+        "y": 0
+      },
+      "56": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/offdelay_no/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "67": {
+        "x": 32.5,
+        "y": 0
+      },
+      "68": {
+        "x": 32.5,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 32.5,
+      "y": 0
+    }
+  },
+  "/symbols/offdelay_no/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "67": {
+        "x": 32.5,
+        "y": 0
+      },
+      "68": {
+        "x": 32.5,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 32.5,
+      "y": 0
+    }
+  },
+  "/symbols/on_offdelay_nc/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "55": {
+        "x": 20,
+        "y": 0
+      },
+      "56": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/on_offdelay_nc/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "55": {
+        "x": 20,
+        "y": 0
+      },
+      "56": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/on_offdelay_no/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "67": {
+        "x": 32.5,
+        "y": 0
+      },
+      "68": {
+        "x": 32.5,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 32.5,
+      "y": 0
+    }
+  },
+  "/symbols/on_offdelay_no/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "67": {
+        "x": 32.5,
+        "y": 0
+      },
+      "68": {
+        "x": 32.5,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 32.5,
+      "y": 0
+    }
+  },
+  "/symbols/ondelay_nc/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "55": {
+        "x": 20,
+        "y": 0
+      },
+      "56": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/ondelay_nc/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "55": {
+        "x": 20,
+        "y": 0
+      },
+      "56": {
+        "x": 20,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 20,
+      "y": 0
+    }
+  },
+  "/symbols/ondelay_no/0.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "67": {
+        "x": 32.5,
+        "y": 0
+      },
+      "68": {
+        "x": 32.5,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 32.5,
+      "y": 0
+    }
+  },
+  "/symbols/ondelay_no/1.svg": {
+    "viewBox": {
+      "minX": 0,
+      "minY": 0,
+      "width": 40,
+      "height": 60
+    },
+    "terminals": {
+      "67": {
+        "x": 32.5,
+        "y": 0
+      },
+      "68": {
+        "x": 32.5,
+        "y": 60
+      }
+    },
+    "refTerminal": {
+      "x": 32.5,
       "y": 0
     }
   },

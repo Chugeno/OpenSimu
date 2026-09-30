@@ -79,6 +79,12 @@ export class CadeSimuParser {
     '7001': 'contact_nc',
     '7002': 'contact_no_nc',
     '7003': 'contact_changeover',
+    '7004': 'ondelay_no',
+    '7005': 'ondelay_nc',
+    '7006': 'offdelay_no',
+    '7007': 'offdelay_nc',
+    '7008': 'on_offdelay_no',
+    '7009': 'on_offdelay_nc',
     '8016': 'thermal_contact_no',
     '8017': 'thermal_contact_nc',
     '8018': 'thermal_contact_no_nc',
@@ -87,6 +93,13 @@ export class CadeSimuParser {
     // Señalización
     '9008': 'pilot_light',
     '9009': 'pilot_light',
+
+    // Bobinas especiales y temporizadas
+    '9002': 'connection_timer',
+    '9003': 'disconnection_timer',
+    '9004': 'disconnect_connection_timer',
+    '9005': 'step_relay',
+    '9006': 'bistable_coil',
   };
 
   /**

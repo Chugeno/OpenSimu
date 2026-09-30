@@ -21,19 +21,13 @@ export class SimulationEngine {
     // Inicializar con las bobinas que ya estaban activas para permitir autoretención
     const activeCoils = new Set<string>(currentActiveCoils || []);
 
-    // Asegurar que componentes con memoria biestable, telerruptor o temporizador activo retengan sus contactos
+    // Asegurar que componentes con memoria biestable, telerruptor o temporizador horario activo retengan sus contactos
     for (const comp of components) {
       if (comp.type === 'bistable_coil' && comp.state.bistableSet) {
         activeCoils.add(comp.tag);
       } else if (comp.type === 'step_relay' && comp.state.stepRelayActive) {
         activeCoils.add(comp.tag);
-      } else if (
-        (comp.type === 'connection_timer' ||
-          comp.type === 'disconnection_timer' ||
-          comp.type === 'disconnect_connection_timer' ||
-          comp.type === 'timer') &&
-        comp.state.timerActive
-      ) {
+      } else if (comp.type === 'timer' && comp.state.timerActive) {
         activeCoils.add(comp.tag);
       }
     }
@@ -147,8 +141,7 @@ export class SimulationEngine {
         } else if (
           comp.type === 'connection_timer' ||
           comp.type === 'disconnection_timer' ||
-          comp.type === 'disconnect_connection_timer' ||
-          comp.type === 'timer'
+          comp.type === 'disconnect_connection_timer'
         ) {
           const t1 = comp.terminals.find((t) => t.id === 'A1');
           const t2 = comp.terminals.find((t) => t.id === 'A2');
@@ -164,17 +157,59 @@ export class SimulationEngine {
             const hasPotentialDiff = isPhaseDiff || isDcDiff;
             comp.state.energized = hasPotentialDiff;
 
-            // Las bobinas temporizadas SOLO accionan sus contactos si comp.state.timerActive es true!
-            if (comp.state.timerActive) {
-              if (!activeCoils.has(comp.tag)) {
-                activeCoils.add(comp.tag);
-                coilStateChanged = true;
-              }
-            } else {
-              if (activeCoils.has(comp.tag)) {
+            // En relé a la desconexión (TOF), al recibir tensión se arma inmediatamente
+            if (comp.type === 'disconnection_timer' && hasPotentialDiff) {
+              comp.state.timerActive = true;
+              comp.state.timeElapsed = 0;
+            }
+
+            // Los contactos auxiliares estándar (-KM/-KT) responden de forma INSTANTÁNEA a la excitación A1-A2
+            const wasActive = activeCoils.has(comp.tag);
+            if (hasPotentialDiff && !wasActive) {
+              activeCoils.add(comp.tag);
+              coilStateChanged = true;
+            } else if (!hasPotentialDiff && wasActive) {
+              const otherCoilEnergized = components.some(
+                (c) =>
+                  c !== comp &&
+                  c.tag === comp.tag &&
+                  (c.type === 'coil' ||
+                    c.type === 'connection_timer' ||
+                    c.type === 'disconnection_timer' ||
+                    c.type === 'disconnect_connection_timer' ||
+                    c.type === 'step_relay' ||
+                    c.type === 'bistable_coil') &&
+                  Boolean(c.state.energized)
+              );
+              if (!otherCoilEnergized) {
                 activeCoils.delete(comp.tag);
                 coilStateChanged = true;
               }
+            }
+          }
+        } else if (comp.type === 'timer') {
+          // Relé programador horario semanal
+          const t1 = comp.terminals.find((t) => t.id === 'A1');
+          const t2 = comp.terminals.find((t) => t.id === 'A2');
+          if (t1 && t2) {
+            const isPhaseDiff =
+              (t1.potential.startsWith('L') && t2.potential === 'N') ||
+              (t1.potential === 'N' && t2.potential.startsWith('L')) ||
+              (t1.potential.startsWith('L') && t2.potential.startsWith('L') && t1.potential !== t2.potential);
+            const isDcDiff =
+              (t1.potential === 'DC_POS' && t2.potential === 'DC_NEG') ||
+              (t1.potential === 'DC_NEG' && t2.potential === 'DC_POS');
+            comp.state.energized = isPhaseDiff || isDcDiff;
+          }
+          if (comp.state.timerActive) {
+            if (!activeCoils.has(comp.tag)) {
+              activeCoils.add(comp.tag);
+              coilStateChanged = true;
+            }
+          } else {
+            if (activeCoils.has(comp.tag)) {
+              activeCoils.delete(comp.tag);
+              coilStateChanged = true;
             }
           }
         } else if (comp.type === 'step_relay') {
@@ -408,6 +443,21 @@ export class SimulationEngine {
       } else if (comp.type.startsWith('thermal_contact_')) {
         const tagTripped = components.some((c) => c.tag === comp.tag && Boolean(c.state.tripped));
         comp.state.energized = isTripped || tagTripped;
+      } else if (comp.type === 'ondelay_no' || comp.type === 'ondelay_nc') {
+        const isActuated = components.some(
+          (c) => c.tag === comp.tag && c.type === 'connection_timer' && Boolean(c.state.timerActive)
+        ) || Boolean(comp.state.pressed);
+        comp.state.energized = isActuated;
+      } else if (comp.type === 'offdelay_no' || comp.type === 'offdelay_nc') {
+        const isActuated = components.some(
+          (c) => c.tag === comp.tag && c.type === 'disconnection_timer' && Boolean(c.state.timerActive)
+        ) || Boolean(comp.state.pressed);
+        comp.state.energized = isActuated;
+      } else if (comp.type === 'on_offdelay_no' || comp.type === 'on_offdelay_nc') {
+        const isActuated = components.some(
+          (c) => c.tag === comp.tag && c.type === 'disconnect_connection_timer' && Boolean(c.state.timerActive)
+        ) || Boolean(comp.state.pressed);
+        comp.state.energized = isActuated;
       }
     }
 
@@ -668,6 +718,69 @@ export class SimulationEngine {
       } else if (comp.type === 'contact_nc' || comp.type === 'contact_nc_1p') {
         const isClosed = !isCoilActive && !comp.state.pressed && comp.state.closed !== false;
         comp.state.energized = isCoilActive;
+        if (isClosed && comp.terminals.length >= 2) {
+          const p1 = { x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY };
+          const p2 = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };
+          union(key(p1), key(p2));
+        }
+      } else if (comp.type === 'ondelay_no') {
+        const isActuated = components.some(
+          (c) => c.tag === comp.tag && c.type === 'connection_timer' && Boolean(c.state.timerActive)
+        ) || Boolean(comp.state.pressed);
+        comp.state.energized = isActuated;
+        if (isActuated && comp.terminals.length >= 2) {
+          const p1 = { x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY };
+          const p2 = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };
+          union(key(p1), key(p2));
+        }
+      } else if (comp.type === 'ondelay_nc') {
+        const isActuated = components.some(
+          (c) => c.tag === comp.tag && c.type === 'connection_timer' && Boolean(c.state.timerActive)
+        ) || Boolean(comp.state.pressed);
+        comp.state.energized = isActuated;
+        const isClosed = !isActuated && comp.state.closed !== false;
+        if (isClosed && comp.terminals.length >= 2) {
+          const p1 = { x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY };
+          const p2 = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };
+          union(key(p1), key(p2));
+        }
+      } else if (comp.type === 'offdelay_no') {
+        const isActuated = components.some(
+          (c) => c.tag === comp.tag && c.type === 'disconnection_timer' && Boolean(c.state.timerActive)
+        ) || Boolean(comp.state.pressed);
+        comp.state.energized = isActuated;
+        if (isActuated && comp.terminals.length >= 2) {
+          const p1 = { x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY };
+          const p2 = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };
+          union(key(p1), key(p2));
+        }
+      } else if (comp.type === 'offdelay_nc') {
+        const isActuated = components.some(
+          (c) => c.tag === comp.tag && c.type === 'disconnection_timer' && Boolean(c.state.timerActive)
+        ) || Boolean(comp.state.pressed);
+        comp.state.energized = isActuated;
+        const isClosed = !isActuated && comp.state.closed !== false;
+        if (isClosed && comp.terminals.length >= 2) {
+          const p1 = { x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY };
+          const p2 = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };
+          union(key(p1), key(p2));
+        }
+      } else if (comp.type === 'on_offdelay_no') {
+        const isActuated = components.some(
+          (c) => c.tag === comp.tag && c.type === 'disconnect_connection_timer' && Boolean(c.state.timerActive)
+        ) || Boolean(comp.state.pressed);
+        comp.state.energized = isActuated;
+        if (isActuated && comp.terminals.length >= 2) {
+          const p1 = { x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY };
+          const p2 = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };
+          union(key(p1), key(p2));
+        }
+      } else if (comp.type === 'on_offdelay_nc') {
+        const isActuated = components.some(
+          (c) => c.tag === comp.tag && c.type === 'disconnect_connection_timer' && Boolean(c.state.timerActive)
+        ) || Boolean(comp.state.pressed);
+        comp.state.energized = isActuated;
+        const isClosed = !isActuated && comp.state.closed !== false;
         if (isClosed && comp.terminals.length >= 2) {
           const p1 = { x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY };
           const p2 = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };

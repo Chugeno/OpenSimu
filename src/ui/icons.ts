@@ -823,6 +823,78 @@ export const COMPONENT_ICONS: Record<string, string> = {
       <line x1="16" y1="11" x2="12" y2="21" />
     </svg>`,
 
+  // CONTACTOS TEMPORIZADOS (TON, TOF, TON/TOF)
+  ondelay_no: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.8">
+      <line x1="18" y1="4" x2="18" y2="11" />
+      <line x1="18" y1="21" x2="18" y2="28" />
+      <line x1="18" y1="21" x2="12" y2="11" />
+      <!-- Paracaídas a la conexión hacia la izquierda -->
+      <path d="M12,18 C9,18 7,16 7,14 C7,12 9,10 12,10" stroke="#38bdf8" stroke-width="1.5" />
+      <text x="21" y="10" font-size="5.5" fill="#94a3b8">67</text>
+      <text x="21" y="27" font-size="5.5" fill="#94a3b8">68</text>
+    </svg>`,
+
+  ondelay_nc: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.8">
+      <line x1="18" y1="4" x2="18" y2="11" />
+      <line x1="18" y1="11" x2="24" y2="11" />
+      <line x1="18" y1="21" x2="18" y2="28" />
+      <line x1="18" y1="21" x2="23" y2="9" />
+      <!-- Paracaídas a la conexión hacia la izquierda -->
+      <path d="M14,18 C11,18 9,16 9,14 C9,12 11,10 14,10" stroke="#38bdf8" stroke-width="1.5" />
+      <text x="6" y="10" font-size="5.5" fill="#94a3b8">55</text>
+      <text x="6" y="27" font-size="5.5" fill="#94a3b8">56</text>
+    </svg>`,
+
+  offdelay_no: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.8">
+      <line x1="18" y1="4" x2="18" y2="11" />
+      <line x1="18" y1="21" x2="18" y2="28" />
+      <line x1="18" y1="21" x2="12" y2="11" />
+      <!-- Paracaídas a la desconexión hacia la derecha -->
+      <path d="M8,18 C11,18 13,16 13,14 C13,12 11,10 8,10" stroke="#f59e0b" stroke-width="1.5" />
+      <text x="21" y="10" font-size="5.5" fill="#94a3b8">67</text>
+      <text x="21" y="27" font-size="5.5" fill="#94a3b8">68</text>
+    </svg>`,
+
+  offdelay_nc: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.8">
+      <line x1="18" y1="4" x2="18" y2="11" />
+      <line x1="18" y1="11" x2="24" y2="11" />
+      <line x1="18" y1="21" x2="18" y2="28" />
+      <line x1="18" y1="21" x2="23" y2="9" />
+      <!-- Paracaídas a la desconexión hacia la derecha -->
+      <path d="M10,18 C13,18 15,16 15,14 C15,12 13,10 10,10" stroke="#f59e0b" stroke-width="1.5" />
+      <text x="6" y="10" font-size="5.5" fill="#94a3b8">55</text>
+      <text x="6" y="27" font-size="5.5" fill="#94a3b8">56</text>
+    </svg>`,
+
+  on_offdelay_no: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.8">
+      <line x1="18" y1="4" x2="18" y2="11" />
+      <line x1="18" y1="21" x2="18" y2="28" />
+      <line x1="18" y1="21" x2="12" y2="11" />
+      <!-- Doble paracaídas Conexión / Desconexión -->
+      <path d="M13,18 C10,18 8,16 8,14 C8,12 10,10 13,10" stroke="#38bdf8" stroke-width="1.4" />
+      <path d="M6,18 C9,18 11,16 11,14 C11,12 9,10 6,10" stroke="#f59e0b" stroke-width="1.4" />
+      <text x="21" y="10" font-size="5.5" fill="#94a3b8">67</text>
+      <text x="21" y="27" font-size="5.5" fill="#94a3b8">68</text>
+    </svg>`,
+
+  on_offdelay_nc: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.8">
+      <line x1="18" y1="4" x2="18" y2="11" />
+      <line x1="18" y1="11" x2="24" y2="11" />
+      <line x1="18" y1="21" x2="18" y2="28" />
+      <line x1="18" y1="21" x2="23" y2="9" />
+      <!-- Doble paracaídas Conexión / Desconexión -->
+      <path d="M15,18 C12,18 10,16 10,14 C10,12 12,10 15,10" stroke="#38bdf8" stroke-width="1.4" />
+      <path d="M8,18 C11,18 13,16 13,14 C13,12 11,10 8,10" stroke="#f59e0b" stroke-width="1.4" />
+      <text x="6" y="10" font-size="5.5" fill="#94a3b8">55</text>
+      <text x="6" y="27" font-size="5.5" fill="#94a3b8">56</text>
+    </svg>`,
+
   thermal_contact_nc: `
     <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.8">
       <line x1="16" y1="4" x2="16" y2="11" />

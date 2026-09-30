@@ -54,7 +54,10 @@ export class SymbolRenderer {
       case 'switch_no':
       case 'limit_no':
       case 'contact_no':
-      case 'contact_no_1p': {
+      case 'contact_no_1p':
+      case 'ondelay_no':
+      case 'offdelay_no':
+      case 'on_offdelay_no': {
         const isClosed = Boolean(comp.state.pressed || comp.state.closed || comp.state.energized);
         const stateIdx = isClosed ? 1 : 0;
         const folder = comp.type === 'contact_no_1p' ? 'contact_no' : comp.type;
@@ -76,7 +79,10 @@ export class SymbolRenderer {
       case 'switch_nc':
       case 'limit_nc':
       case 'contact_nc':
-      case 'contact_nc_1p': {
+      case 'contact_nc_1p':
+      case 'ondelay_nc':
+      case 'offdelay_nc':
+      case 'on_offdelay_nc': {
         const isClosed = comp.state.closed && !comp.state.pressed && !comp.state.energized;
         const stateIdx = isClosed ? 0 : 1;
         const isActuated = !isClosed;
@@ -226,15 +232,45 @@ export class SymbolRenderer {
           let badgeText = '';
           let badgeColor = '#475569';
 
-          if (comp.state.timerActive) {
-            badgeText = `⏱ ACTIVO (${totalSec}s)`;
-            badgeColor = '#16a34a';
-          } else if ((comp.state.timeElapsed ?? 0) > 0) {
-            badgeText = `⏱ ${remainingSec.toFixed(1)}s / ${totalSec}s`;
-            badgeColor = '#ea580c';
+          if (comp.type === 'disconnection_timer') {
+            if (comp.state.energized) {
+              badgeText = `⏱ ACTIVO (${totalSec}s)`;
+              badgeColor = '#16a34a';
+            } else if (comp.state.timerActive) {
+              badgeText = `⏱ OFF: ${remainingSec.toFixed(1)}s / ${totalSec}s`;
+              badgeColor = '#ea580c';
+            } else {
+              badgeText = `⏱ ${totalSec}s`;
+              badgeColor = '#475569';
+            }
+          } else if (comp.type === 'disconnect_connection_timer') {
+            if (comp.state.energized) {
+              if (comp.state.timerActive) {
+                badgeText = `⏱ ACTIVO (${totalSec}s)`;
+                badgeColor = '#16a34a';
+              } else {
+                badgeText = `⏱ ON: ${remainingSec.toFixed(1)}s / ${totalSec}s`;
+                badgeColor = '#ea580c';
+              }
+            } else if (comp.state.timerActive) {
+              badgeText = `⏱ OFF: ${remainingSec.toFixed(1)}s / ${totalSec}s`;
+              badgeColor = '#ea580c';
+            } else {
+              badgeText = `⏱ ${totalSec}s`;
+              badgeColor = '#475569';
+            }
           } else {
-            badgeText = `⏱ ${totalSec}s`;
-            badgeColor = '#475569';
+            // connection_timer
+            if (comp.state.timerActive) {
+              badgeText = `⏱ ACTIVO (${totalSec}s)`;
+              badgeColor = '#16a34a';
+            } else if ((comp.state.timeElapsed ?? 0) > 0 && comp.state.energized) {
+              badgeText = `⏱ ON: ${remainingSec.toFixed(1)}s / ${totalSec}s`;
+              badgeColor = '#ea580c';
+            } else {
+              badgeText = `⏱ ${totalSec}s`;
+              badgeColor = '#475569';
+            }
           }
 
           const tw = ctx.measureText(badgeText).width;

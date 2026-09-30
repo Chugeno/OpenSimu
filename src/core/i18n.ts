@@ -148,6 +148,12 @@ export const TRANSLATIONS: Record<SupportedLocale, Record<string, string>> = {
     'comp.contact_nc': 'Contacto Auxiliar NC (21-22)',
     'comp.contact_no_nc': 'Contacto Doble NA+NC (13-14 / 21-22)',
     'comp.contact_changeover': 'Contacto Conmutado SPDT (11-12-14)',
+    'comp.ondelay_no': 'Contacto Temporizado a la Conexión NA (67-68)',
+    'comp.ondelay_nc': 'Contacto Temporizado a la Conexión NC (55-56)',
+    'comp.offdelay_no': 'Contacto Temporizado a la Desconexión NA (67-68)',
+    'comp.offdelay_nc': 'Contacto Temporizado a la Desconexión NC (55-56)',
+    'comp.on_offdelay_no': 'Contacto Temporizado Conexión/Desconexión NA (67-68)',
+    'comp.on_offdelay_nc': 'Contacto Temporizado Conexión/Desconexión NC (55-56)',
 
     // Cables y Nodos
     'wire.junction': 'Nodo / Conexión (Punto de Unión)',
@@ -319,6 +325,12 @@ export const TRANSLATIONS: Record<SupportedLocale, Record<string, string>> = {
     'comp.contact_nc': 'Contacto Auxiliar NC (21-22)',
     'comp.contact_no_nc': 'Contacto Doble NA+NC (13-14 / 21-22)',
     'comp.contact_changeover': 'Contacto Conmutado (11-12-14)',
+    'comp.ondelay_no': 'Contacto Temporizado a la Conexión NA (67-68)',
+    'comp.ondelay_nc': 'Contacto Temporizado a la Conexión NC (55-56)',
+    'comp.offdelay_no': 'Contacto Temporizado a la Desconexión NA (67-68)',
+    'comp.offdelay_nc': 'Contacto Temporizado a la Desconexión NC (55-56)',
+    'comp.on_offdelay_no': 'Contacto Temporizado Conexión/Desconexión NA (67-68)',
+    'comp.on_offdelay_nc': 'Contacto Temporizado Conexión/Desconexión NC (55-56)',
 
     // Cables y Nodos
     'wire.junction': 'Punto de Conexión (Nodo)',
@@ -490,6 +502,12 @@ export const TRANSLATIONS: Record<SupportedLocale, Record<string, string>> = {
     'comp.contact_nc': 'Auxiliary Contact NC (21-22)',
     'comp.contact_no_nc': 'Dual Aux Contact NO+NC (13-14 / 21-22)',
     'comp.contact_changeover': 'Changeover Contact (11-12-14)',
+    'comp.ondelay_no': 'On-Delay Timed Contact NO (67-68)',
+    'comp.ondelay_nc': 'On-Delay Timed Contact NC (55-56)',
+    'comp.offdelay_no': 'Off-Delay Timed Contact NO (67-68)',
+    'comp.offdelay_nc': 'Off-Delay Timed Contact NC (55-56)',
+    'comp.on_offdelay_no': 'On/Off-Delay Timed Contact NO (67-68)',
+    'comp.on_offdelay_nc': 'On/Off-Delay Timed Contact NC (55-56)',
 
     // Cables y Nodos
     'wire.junction': 'Junction Node (Connection Dot)',

@@ -979,10 +979,100 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
       { id: '14', name: '14', relX: 40, relY: 60 },
     ],
   },
+
+  // CONTACTOS TEMPORIZADOS A LA CONEXIÓN (TON)
+  ondelay_no: {
+    type: 'ondelay_no',
+    category: 'contacts',
+    name: 'Contacto Temporizado a la Conexión NA (67-68)',
+    defaultTag: '-KT',
+    width: 40,
+    height: 60,
+    manualAction: 'none',
+    dividerBefore: true,
+    terminals: [
+      { id: '67', name: '67', relX: 0, relY: 0 },
+      { id: '68', name: '68', relX: 0, relY: 60 },
+    ],
+  },
+  ondelay_nc: {
+    type: 'ondelay_nc',
+    category: 'contacts',
+    name: 'Contacto Temporizado a la Conexión NC (55-56)',
+    defaultTag: '-KT',
+    width: 40,
+    height: 60,
+    manualAction: 'none',
+    terminals: [
+      { id: '55', name: '55', relX: 0, relY: 0 },
+      { id: '56', name: '56', relX: 0, relY: 60 },
+    ],
+  },
+
+  // CONTACTOS TEMPORIZADOS A LA DESCONEXIÓN (TOF)
+  offdelay_no: {
+    type: 'offdelay_no',
+    category: 'contacts',
+    name: 'Contacto Temporizado a la Desconexión NA (67-68)',
+    defaultTag: '-KT',
+    width: 40,
+    height: 60,
+    manualAction: 'none',
+    dividerBefore: true,
+    terminals: [
+      { id: '67', name: '67', relX: 0, relY: 0 },
+      { id: '68', name: '68', relX: 0, relY: 60 },
+    ],
+  },
+  offdelay_nc: {
+    type: 'offdelay_nc',
+    category: 'contacts',
+    name: 'Contacto Temporizado a la Desconexión NC (55-56)',
+    defaultTag: '-KT',
+    width: 40,
+    height: 60,
+    manualAction: 'none',
+    terminals: [
+      { id: '55', name: '55', relX: 0, relY: 0 },
+      { id: '56', name: '56', relX: 0, relY: 60 },
+    ],
+  },
+
+  // CONTACTOS TEMPORIZADOS CONEXIÓN / DESCONEXIÓN (TON / TOF)
+  on_offdelay_no: {
+    type: 'on_offdelay_no',
+    category: 'contacts',
+    name: 'Contacto Temporizado Conexión/Desconexión NA (67-68)',
+    defaultTag: '-KT',
+    width: 40,
+    height: 60,
+    manualAction: 'none',
+    dividerBefore: true,
+    terminals: [
+      { id: '67', name: '67', relX: 0, relY: 0 },
+      { id: '68', name: '68', relX: 0, relY: 60 },
+    ],
+  },
+  on_offdelay_nc: {
+    type: 'on_offdelay_nc',
+    category: 'contacts',
+    name: 'Contacto Temporizado Conexión/Desconexión NC (55-56)',
+    defaultTag: '-KT',
+    width: 40,
+    height: 60,
+    manualAction: 'none',
+    terminals: [
+      { id: '55', name: '55', relX: 0, relY: 0 },
+      { id: '56', name: '56', relX: 0, relY: 60 },
+    ],
+  },
+
+  // CONTACTOS DE RELÉ TÉRMICO
   thermal_contact_nc: {
     type: 'thermal_contact_nc',
     category: 'contacts',
     name: 'Contacto Térmico NC (95-96)',
+    dividerBefore: true,
     defaultTag: '-F',
     width: 30,
     height: 60,
