@@ -456,10 +456,65 @@ canvasView.onTagEditRequest = (comp) => {
   // Generar inputs dinámicos para cada borne de conexión
   if (terminalsContainer && terminalsSection) {
     terminalsContainer.innerHTML = '';
+    // Eliminar cualquier selector de décadas previo si existiera
+    const existingDecadeSelector = terminalsSection.querySelector('.decade-selector-container');
+    if (existingDecadeSelector) {
+      existingDecadeSelector.remove();
+    }
+
     if (!comp.terminals || comp.terminals.length === 0) {
       terminalsSection.style.display = 'none';
     } else {
       terminalsSection.style.display = 'block';
+
+      // Botonera de selección rápida de decenas para contactos auxiliares NA y NC comunes (CADe_SIMU style)
+      // Excluye conmutadores (contact_changeover, contact_no_nc) y contactos temporizados
+      if (comp.type === 'contact_no' || comp.type === 'contact_nc') {
+        const isNC = comp.type === 'contact_nc';
+        const decadeBox = document.createElement('div');
+        decadeBox.className = 'decade-selector-container';
+
+        const decTitle = document.createElement('div');
+        decTitle.className = 'decade-selector-title';
+        decTitle.textContent = isNC ? 'Pares prefijados NC (11-12, 21-22...):' : 'Pares prefijados NA (13-14, 23-24...):';
+
+        const grid = document.createElement('div');
+        grid.className = 'decade-btn-grid';
+
+        const decades = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+        decades.forEach((dec) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'decade-btn';
+          btn.textContent = dec.toString();
+
+          const termIn = isNC ? (dec + 1).toString() : (dec + 3).toString();
+          const termOut = isNC ? (dec + 2).toString() : (dec + 4).toString();
+
+          // Si coincide con los valores actuales, resaltar
+          if (comp.terminals && comp.terminals[0]?.name === termIn && comp.terminals[1]?.name === termOut) {
+            btn.classList.add('active');
+          }
+
+          btn.onclick = () => {
+            grid.querySelectorAll('.decade-btn').forEach((b) => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const inp0 = document.getElementById('terminal-input-0') as HTMLInputElement | null;
+            const inp1 = document.getElementById('terminal-input-1') as HTMLInputElement | null;
+            if (inp0) inp0.value = termIn;
+            if (inp1) inp1.value = termOut;
+          };
+
+          grid.appendChild(btn);
+        });
+
+        decadeBox.appendChild(decTitle);
+        decadeBox.appendChild(grid);
+        // Insertar antes del contenedor de bornes
+        terminalsSection.insertBefore(decadeBox, terminalsContainer);
+      }
+
       comp.terminals.forEach((t, idx) => {
         const item = document.createElement('div');
         item.className = 'terminal-item';
@@ -475,8 +530,13 @@ canvasView.onTagEditRequest = (comp) => {
         input.type = 'text';
         input.id = `terminal-input-${idx}`;
         input.className = 'terminal-input';
-        input.value = t.name;
+        input.value = (t.name || '').toUpperCase();
         input.dataset.index = idx.toString();
+
+        // Forzar mayúsculas automáticamente en tiempo real
+        input.addEventListener('input', () => {
+          input.value = input.value.toUpperCase();
+        });
 
         input.onkeydown = (e) => {
           e.stopPropagation();
@@ -492,7 +552,10 @@ canvasView.onTagEditRequest = (comp) => {
   }
 
   tagModal.style.display = 'flex';
-  setTimeout(() => tagInput.focus(), 50);
+  setTimeout(() => {
+    tagInput.focus();
+    tagInput.select();
+  }, 50);
 };
 
 modalCancel.onclick = () => {
@@ -504,7 +567,7 @@ modalSave.onclick = () => {
   if (editingComponent) {
     canvasView.saveSnapshot();
     if (tagInput.value.trim()) {
-      editingComponent.tag = tagInput.value.trim();
+      editingComponent.tag = tagInput.value.trim().toUpperCase();
     }
     // Guardar opciones extra (color de piloto, tipo de protección guardamotor)
     if (editingComponent.type === 'pilot_light') {
@@ -543,7 +606,7 @@ modalSave.onclick = () => {
       inputs.forEach((inp) => {
         const idx = parseInt(inp.dataset.index || '-1', 10);
         if (idx >= 0 && editingComponent!.terminals[idx]) {
-          const val = inp.value.trim();
+          const val = inp.value.trim().toUpperCase();
           if (val) {
             editingComponent!.terminals[idx].name = val;
           }
@@ -555,6 +618,11 @@ modalSave.onclick = () => {
   tagModal.style.display = 'none';
   editingComponent = null;
 };
+
+// Forzar mayúsculas automáticamente en tagInput al escribir
+tagInput.addEventListener('input', () => {
+  tagInput.value = tagInput.value.toUpperCase();
+});
 
 tagInput.onkeydown = (e) => {
   e.stopPropagation();

@@ -2600,9 +2600,17 @@ export class SymbolRenderer {
 
       // Dynamically sync component terminal positions according to the SVG IDs
       meta.terminals.forEach((pt, termKey) => {
-        const compTerm = comp.terminals.find(
-          (t) => t.id.toLowerCase() === termKey || t.name.toLowerCase() === termKey
-        );
+        const compTerm = comp.terminals.find((t) => {
+          const id = t.id.toLowerCase();
+          const name = t.name.toLowerCase();
+          if (id === termKey || name === termKey) return true;
+          // Soporte para bornes de 1 dígito en accionamientos IEC (13/3, 14/4, 11/1, 12/2)
+          if (termKey === '13' && (id === '3' || name === '3')) return true;
+          if (termKey === '14' && (id === '4' || name === '4')) return true;
+          if (termKey === '11' && (id === '1' || name === '1')) return true;
+          if (termKey === '12' && (id === '2' || name === '2')) return true;
+          return false;
+        });
         if (compTerm) {
           compTerm.relX = Math.round(pt.x - meta.refTerminal!.x);
           compTerm.relY = Math.round(pt.y - meta.refTerminal!.y);
