@@ -27,6 +27,10 @@ const btnSelect = document.getElementById('btn-select') as HTMLButtonElement;
 const btnDelete = document.getElementById('btn-delete') as HTMLButtonElement;
 const btnUndo = document.getElementById('btn-undo') as HTMLButtonElement | null;
 const btnRedo = document.getElementById('btn-redo') as HTMLButtonElement | null;
+const btnRotateCw = document.getElementById('btn-rotate-cw') as HTMLButtonElement | null;
+const btnRotateCcw = document.getElementById('btn-rotate-ccw') as HTMLButtonElement | null;
+const btnMirrorH = document.getElementById('btn-mirror-h') as HTMLButtonElement | null;
+const btnMirrorV = document.getElementById('btn-mirror-v') as HTMLButtonElement | null;
 const btnClear = document.getElementById('btn-clear') as HTMLButtonElement;
 const btnShowroom = document.getElementById('btn-showroom') as HTMLButtonElement;
 const btnDemo = document.getElementById('btn-demo') as HTMLButtonElement;
@@ -680,6 +684,30 @@ if (btnUndo) {
 if (btnRedo) {
   btnRedo.onclick = () => {
     canvasView.redo();
+  };
+}
+
+if (btnRotateCw) {
+  btnRotateCw.onclick = () => {
+    canvasView.rotateSelected(90);
+  };
+}
+
+if (btnRotateCcw) {
+  btnRotateCcw.onclick = () => {
+    canvasView.rotateSelected(-90);
+  };
+}
+
+if (btnMirrorH) {
+  btnMirrorH.onclick = () => {
+    canvasView.mirrorSelectedHorizontal();
+  };
+}
+
+if (btnMirrorV) {
+  btnMirrorV.onclick = () => {
+    canvasView.mirrorSelectedVertical();
   };
 }
 

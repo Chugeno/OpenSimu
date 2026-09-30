@@ -78,6 +78,8 @@ export interface CircuitComponent {
   x: number;
   y: number;
   rotation: number; // 0, 90, 180, 270
+  mirrorH?: boolean; // Flip horizontal (left/right)
+  mirrorV?: boolean; // Flip vertical (top/bottom)
   terminals: Terminal[];
   state: {
     pressed?: boolean; // For pushbuttons

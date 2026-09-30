@@ -1292,10 +1292,19 @@ export function getComponentBounds(comp: CircuitComponent): Rect {
   const tagExtra = Math.max(0, (comp.tag?.length || 0) - 3) * 7;
   padLeft += tagExtra;
 
+  // Ajuste simétrico para componentes rotados a 90° o 270° (horizontales)
+  const isHorizontal = comp.rotation === 90 || comp.rotation === 270;
+  if (isHorizontal) {
+    padTop = Math.max(padTop, 20);
+    padBottom = Math.max(padBottom, 20);
+    padLeft = Math.max(padLeft, 20);
+    padRight = Math.max(padRight, 20);
+  }
+
   const relX = minTX - padLeft;
   const relY = minTY - padTop;
-  const width = Math.max(30, (maxTX - minTX) + padLeft + padRight);
-  const height = Math.max(26, (maxTY - minTY) + padTop + padBottom);
+  const width = Math.max(36, (maxTX - minTX) + padLeft + padRight);
+  const height = Math.max(36, (maxTY - minTY) + padTop + padBottom);
 
   return {
     x: comp.x + relX,
@@ -1303,4 +1312,53 @@ export function getComponentBounds(comp: CircuitComponent): Rect {
     width,
     height,
   };
+}
+
+/**
+ * Transforma un punto local (x, y) según la rotación (0, 90, 180, 270) y espejado horizontal/vertical
+ */
+export function transformLocalPoint(
+  point: { x: number; y: number },
+  rotation: number = 0,
+  mirrorH: boolean = false,
+  mirrorV: boolean = false
+): { x: number; y: number } {
+  let x = point.x;
+  let y = point.y;
+
+  // Espejado en el sistema de coordenadas local
+  if (mirrorH) x = -x;
+  if (mirrorV) y = -y;
+
+  // Rotación en pasos ortogonales de 90°
+  const rot = ((rotation % 360) + 360) % 360;
+  const rad = (rot * Math.PI) / 180;
+  const cos = Math.round(Math.cos(rad));
+  const sin = Math.round(Math.sin(rad));
+
+  const rx = x * cos - y * sin;
+  const ry = x * sin + y * cos;
+
+  return { x: rx, y: ry };
+}
+
+/**
+ * Actualiza las coordenadas relativas de los bornes (relX, relY) en base a su rotación y espejado
+ */
+export function updateComponentTerminals(comp: CircuitComponent): void {
+  const def = COMPONENT_DEFINITIONS[comp.type];
+  if (!def || !def.terminals || def.terminals.length === 0) return;
+
+  const rot = comp.rotation || 0;
+  const mH = Boolean(comp.mirrorH);
+  const mV = Boolean(comp.mirrorV);
+
+  comp.terminals.forEach((t, idx) => {
+    const baseT = def.terminals[idx] || def.terminals.find((dt) => dt.id === t.id);
+    if (baseT) {
+      const transformed = transformLocalPoint({ x: baseT.relX, y: baseT.relY }, rot, mH, mV);
+      t.relX = transformed.x;
+      t.relY = transformed.y;
+    }
+  });
 }

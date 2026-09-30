@@ -1,5 +1,5 @@
 import type { CircuitComponent, Wire, WireType } from './types';
-import { COMPONENT_DEFINITIONS } from './ComponentRegistry';
+import { COMPONENT_DEFINITIONS, updateComponentTerminals } from './ComponentRegistry';
 import { Grid } from './Grid';
 
 export interface CadeSimuImportResult {
@@ -28,6 +28,9 @@ export class CadeSimuParser {
     '3007': 'power_3p_n_pe', // L1+L2+L3+N+PE
     '3010': 'power_dc', // + -
     '3015': 'ground', // Tierra física
+    '3012': 'transformer', // Transformador monofásico
+    '3017': 'transformer_III', // Transformador trifásico
+
     // Motores
     '1000': 'motor_3p',
     '1001': 'motor_3p_star_delta',
@@ -43,11 +46,18 @@ export class CadeSimuParser {
     '8005': 'pushbutton_emergency_no',
     '8008': 'switch_no',
     '8009': 'switch_nc',
+    '8015': 'switch_changeover',
+    '8014': 'switch_no_nc',
+    '8010': 'limit_no',
+    '8011': 'limit_nc',
+    '8012': 'limit_no_nc',
+    '8013': 'limit_changeover',
 
     // Bobinas
     '9000': 'coil',
     '9001': 'coil',
     '2000': 'coil',
+    '2008': 'contactor_3p',
 
     // Protecciones (Automáticos y disyuntores)
     '6000': 'mcb_1p',
@@ -66,8 +76,10 @@ export class CadeSimuParser {
     '6013': 'surge_arrester_1p_n',
     '6014': 'surge_arrester_3p_n',
 
+    // Fusibles
+    '5000': 'fuse_I',
+
     // Contactores y Contactos
-    '5000': 'contactor_1p',
     '5001': 'contact_nc_1p',
     '5002': 'contactor_2p',
     '5003': 'contact_nc_2p',
@@ -93,6 +105,7 @@ export class CadeSimuParser {
     // Señalización
     '9008': 'pilot_light',
     '9009': 'pilot_light',
+    '9011': 'buzzer',
 
     // Bobinas especiales y temporizadas
     '9002': 'connection_timer',
@@ -179,13 +192,19 @@ export class CadeSimuParser {
       const compY = this.coordToOpenSimu(y1);
 
       if (def) {
-        components.push({
+        const orient = paramList[18] ? parseInt(paramList[18], 10) : 0;
+        const rot = !isNaN(orient) ? (orient & 3) * 90 : 0;
+        const mH = !isNaN(orient) ? Boolean(orient & 4) : false;
+
+        const comp: CircuitComponent = {
           id: `c_cad_${Date.now()}_${components.length}`,
           type: def.type,
           tag: tag || def.defaultTag,
           x: compX,
           y: compY,
-          rotation: 0,
+          rotation: rot,
+          mirrorH: mH,
+          mirrorV: false,
           terminals: def.terminals.map((t) => ({ ...t, potential: 'NONE' })),
           state: {
             pressed: false,
@@ -193,7 +212,9 @@ export class CadeSimuParser {
             energized: false,
             poles: def.poles || 1,
           },
-        });
+        };
+        updateComponentTerminals(comp);
+        components.push(comp);
       }
     }
 
@@ -259,6 +280,11 @@ export class CadeSimuParser {
       contactor_2p: '5002',
       contactor_3p: '5004',
       contactor_4p: '5006',
+      fuse_I: '5000',
+      transformer: '3012',
+      transformer_III: '3017',
+      switch_changeover: '8015',
+      buzzer: '9011',
       pilot_light: '9008',
     };
 
@@ -268,8 +294,9 @@ export class CadeSimuParser {
       const prefix = index === 0 ? 'CADe_SIMU*' : '*';
       const xCad = this.openSimuToCoord(comp.x);
       const yCad = this.openSimuToCoord(comp.y);
+      const orient = (Math.round((comp.rotation || 0) / 90) % 4) + (comp.mirrorH ? 4 : 0);
 
-      output += `${prefix}${index}*${code}#${comp.tag}#########*0*0*0*0*0*0*0*0*${xCad}*${yCad}*0*0*-12*-9*6*3*0*0*0*1*0*0*0#`;
+      output += `${prefix}${index}*${code}#${comp.tag}#########*0*0*0*0*0*0*0*0*${xCad}*${yCad}*0*0*-12*-9*6*3*0*${orient}*0*1*0*0*0#`;
       index++;
     }
 

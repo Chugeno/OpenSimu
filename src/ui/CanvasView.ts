@@ -2,7 +2,7 @@ import type { CircuitComponent, Wire, WireType, Point, SimulationResult, Rect, C
 import { Grid } from '../core/Grid';
 import { SymbolRenderer } from '../core/SymbolRenderer';
 import { SimulationEngine } from '../core/SimulationEngine';
-import { COMPONENT_DEFINITIONS, getComponentBounds } from '../core/ComponentRegistry';
+import { COMPONENT_DEFINITIONS, getComponentBounds, updateComponentTerminals } from '../core/ComponentRegistry';
 
 export type ToolType = 
   | 'select' 
@@ -53,6 +53,11 @@ export class CanvasView {
   // Multi-selection state
   public selectedComponents: Set<CircuitComponent> = new Set();
   public selectedWires: Set<Wire> = new Set();
+
+  // Pending placement orientation
+  public pendingRotation: number = 0;
+  public pendingMirrorH: boolean = false;
+  public pendingMirrorV: boolean = false;
 
   public get selectedComponent(): CircuitComponent | null {
     return this.selectedComponents.size === 1 ? Array.from(this.selectedComponents)[0] : null;
@@ -591,6 +596,59 @@ export class CanvasView {
     this.notifyHistoryChange();
   }
 
+  // --- ROTACIÓN Y ESPEJADO (TODOS LOS ELEMENTOS) ---
+  public rotateSelected(deltaDegrees: number): void {
+    if (this.isSimulation) return;
+
+    if (this.selectedComponents.size > 0) {
+      this.saveSnapshot();
+      for (const comp of this.selectedComponents) {
+        comp.rotation = ((comp.rotation || 0) + deltaDegrees) % 360;
+        if (comp.rotation < 0) comp.rotation += 360;
+        updateComponentTerminals(comp);
+      }
+      this.invalidateJunctionCache();
+      this.render();
+    } else if (this.activeTool === 'place_component') {
+      this.pendingRotation = ((this.pendingRotation + deltaDegrees) % 360 + 360) % 360;
+      this.render();
+    }
+  }
+
+  public mirrorSelectedHorizontal(): void {
+    if (this.isSimulation) return;
+
+    if (this.selectedComponents.size > 0) {
+      this.saveSnapshot();
+      for (const comp of this.selectedComponents) {
+        comp.mirrorH = !comp.mirrorH;
+        updateComponentTerminals(comp);
+      }
+      this.invalidateJunctionCache();
+      this.render();
+    } else if (this.activeTool === 'place_component') {
+      this.pendingMirrorH = !this.pendingMirrorH;
+      this.render();
+    }
+  }
+
+  public mirrorSelectedVertical(): void {
+    if (this.isSimulation) return;
+
+    if (this.selectedComponents.size > 0) {
+      this.saveSnapshot();
+      for (const comp of this.selectedComponents) {
+        comp.mirrorV = !comp.mirrorV;
+        updateComponentTerminals(comp);
+      }
+      this.invalidateJunctionCache();
+      this.render();
+    } else if (this.activeTool === 'place_component') {
+      this.pendingMirrorV = !this.pendingMirrorV;
+      this.render();
+    }
+  }
+
   // --- PORTAPAPELES (COPIAR / CORTAR / PEGAR / DUPLICAR / SELECCIONAR TODO) ---
   public selectAll() {
     if (this.isSimulation) return;
@@ -826,6 +884,27 @@ export class CanvasView {
         if (e.code === 'KeyA') {
           e.preventDefault();
           this.selectAll();
+          return;
+        }
+      } else {
+        // Atajos sin Ctrl/Cmd
+        if (e.code === 'KeyR') {
+          e.preventDefault();
+          this.rotateSelected(e.shiftKey ? -90 : 90);
+          return;
+        }
+        if (e.code === 'KeyH') {
+          e.preventDefault();
+          if (e.shiftKey) {
+            this.mirrorSelectedVertical();
+          } else {
+            this.mirrorSelectedHorizontal();
+          }
+          return;
+        }
+        if (e.code === 'KeyY') {
+          e.preventDefault();
+          this.mirrorSelectedVertical();
           return;
         }
       }
@@ -1379,7 +1458,9 @@ export class CanvasView {
       tag,
       x: pos.x,
       y: pos.y,
-      rotation: 0,
+      rotation: this.pendingRotation || 0,
+      mirrorH: this.pendingMirrorH,
+      mirrorV: this.pendingMirrorV,
       terminals: def.terminals.map((t) => ({ ...t, potential: 'NONE' })),
       state: {
         pressed: false,
@@ -1392,6 +1473,7 @@ export class CanvasView {
         switchStep: def.type === 'switch_I_0_II' ? 0 : undefined,
       },
     };
+    updateComponentTerminals(newComp);
 
     this.components.push(newComp);
     this.clearSelection();
@@ -1688,21 +1770,20 @@ export class CanvasView {
       ctx.globalAlpha = 0.5;
       const ghostDef = COMPONENT_DEFINITIONS[this.pendingComponentType];
       if (ghostDef) {
-        SymbolRenderer.renderComponent(
-          ctx,
-          {
-            id: 'ghost',
-            type: ghostDef.type,
-            tag: ghostDef.defaultTag,
-            x: snapped.x,
-            y: snapped.y,
-            rotation: 0,
-            terminals: ghostDef.terminals.map((t) => ({ ...t, potential: 'NONE' })),
-            state: { closed: CanvasView.isNormallyClosed(ghostDef.type), poles: ghostDef.poles || 1 },
-          },
-          false,
-          false
-        );
+        const ghostComp: CircuitComponent = {
+          id: 'ghost',
+          type: ghostDef.type,
+          tag: ghostDef.defaultTag,
+          x: snapped.x,
+          y: snapped.y,
+          rotation: this.pendingRotation || 0,
+          mirrorH: this.pendingMirrorH,
+          mirrorV: this.pendingMirrorV,
+          terminals: ghostDef.terminals.map((t) => ({ ...t, potential: 'NONE' })),
+          state: { closed: CanvasView.isNormallyClosed(ghostDef.type), poles: ghostDef.poles || 1 },
+        };
+        updateComponentTerminals(ghostComp);
+        SymbolRenderer.renderComponent(ctx, ghostComp, false, false);
       }
       ctx.restore();
     }

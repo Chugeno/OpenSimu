@@ -1,5 +1,5 @@
 import type { CircuitComponent } from './types';
-import { getComponentBounds } from './ComponentRegistry';
+import { getComponentBounds, transformLocalPoint } from './ComponentRegistry';
 import { EMBEDDED_SYMBOLS, EMBEDDED_SYMBOLS_META } from './EmbeddedSymbols';
 
 export class SymbolRenderer {
@@ -31,6 +31,18 @@ export class SymbolRenderer {
     ctx.lineWidth = 1.8;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
+
+    const rot = ((comp.rotation || 0) % 360 + 360) % 360;
+    const mH = Boolean(comp.mirrorH);
+    const mV = Boolean(comp.mirrorV);
+
+    ctx.save();
+    if (rot !== 0) {
+      ctx.rotate((rot * Math.PI) / 180);
+    }
+    if (mH || mV) {
+      ctx.scale(mH ? -1 : 1, mV ? -1 : 1);
+    }
 
     switch (comp.type) {
       case 'source_l':
@@ -613,6 +625,8 @@ export class SymbolRenderer {
         ctx.strokeRect(0, 0, 30, 40);
         break;
     }
+
+    ctx.restore(); // Restore context to translate(comp.x, comp.y) unrotated
 
     // Draw Terminals
     this.renderTerminals(ctx, comp, isSimulation);
@@ -2612,8 +2626,11 @@ export class SymbolRenderer {
           return false;
         });
         if (compTerm) {
-          compTerm.relX = Math.round(pt.x - meta.refTerminal!.x);
-          compTerm.relY = Math.round(pt.y - meta.refTerminal!.y);
+          const rawRelX = Math.round(pt.x - meta.refTerminal!.x);
+          const rawRelY = Math.round(pt.y - meta.refTerminal!.y);
+          const transformed = transformLocalPoint({ x: rawRelX, y: rawRelY }, comp.rotation || 0, comp.mirrorH, comp.mirrorV);
+          compTerm.relX = transformed.x;
+          compTerm.relY = transformed.y;
         }
       });
     }
@@ -2630,7 +2647,21 @@ export class SymbolRenderer {
       ctx.font = 'bold 11px sans-serif';
       ctx.fillStyle = '#0f172a';
       ctx.textAlign = 'right';
-      ctx.fillText(comp.tag, tagX, tagY);
+
+      if (comp.rotation || comp.mirrorH || comp.mirrorV) {
+        ctx.save();
+        ctx.translate(tagX, tagY);
+        if (comp.mirrorH || comp.mirrorV) {
+          ctx.scale(comp.mirrorH ? -1 : 1, comp.mirrorV ? -1 : 1);
+        }
+        if (comp.rotation) {
+          ctx.rotate((-comp.rotation * Math.PI) / 180);
+        }
+        ctx.fillText(comp.tag, 0, 0);
+        ctx.restore();
+      } else {
+        ctx.fillText(comp.tag, tagX, tagY);
+      }
     }
 
     // Draw Terminal numbers next to their respective terminals
@@ -2639,9 +2670,40 @@ export class SymbolRenderer {
     ctx.textAlign = 'left';
     for (const t of comp.terminals) {
       if (!t.name) continue;
-      const numX = t.relX + 6;
-      const numY = t.relY >= 40 ? t.relY - 6 : t.relY + 10;
-      ctx.fillText(t.name, numX, numY);
+      let baseRelX = 0;
+      let baseRelY = 0;
+      if (meta?.refTerminal) {
+        const id = t.id.toLowerCase();
+        const name = t.name.toLowerCase();
+        let pt = meta.terminals.get(id) || meta.terminals.get(name);
+        if (!pt) {
+          if (id === '3' || name === '3') pt = meta.terminals.get('13');
+          else if (id === '4' || name === '4') pt = meta.terminals.get('14');
+          else if (id === '1' || name === '1') pt = meta.terminals.get('11');
+          else if (id === '2' || name === '2') pt = meta.terminals.get('12');
+        }
+        if (pt) {
+          baseRelX = Math.round(pt.x - meta.refTerminal.x);
+          baseRelY = Math.round(pt.y - meta.refTerminal.y);
+        }
+      }
+      const numX = baseRelX + 6;
+      const numY = baseRelY >= 40 ? baseRelY - 6 : baseRelY + 10;
+
+      if (comp.rotation || comp.mirrorH || comp.mirrorV) {
+        ctx.save();
+        ctx.translate(numX, numY);
+        if (comp.mirrorH || comp.mirrorV) {
+          ctx.scale(comp.mirrorH ? -1 : 1, comp.mirrorV ? -1 : 1);
+        }
+        if (comp.rotation) {
+          ctx.rotate((-comp.rotation * Math.PI) / 180);
+        }
+        ctx.fillText(t.name, 0, 0);
+        ctx.restore();
+      } else {
+        ctx.fillText(t.name, numX, numY);
+      }
     }
 
     return true;
