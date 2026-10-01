@@ -1,0 +1,174 @@
+{
+  "version": "1.0.0",
+  "name": "OpenSimu Circuit",
+  "created": "2026-10-01T19:44:22.480Z",
+  "components": [
+    {
+      "id": "c_cad_1790883838658_0",
+      "type": "power_3p_pe",
+      "tag": "-X",
+      "x": 240,
+      "y": 300,
+      "rotation": 0,
+      "mirrorH": false,
+      "mirrorV": false,
+      "terminals": [
+        {
+          "id": "L1",
+          "name": "L1",
+          "relX": 0,
+          "relY": 0,
+          "potential": "L1"
+        },
+        {
+          "id": "L2",
+          "name": "L2",
+          "relX": 40,
+          "relY": 0,
+          "potential": "L1"
+        },
+        {
+          "id": "L3",
+          "name": "L3",
+          "relX": 80,
+          "relY": 0,
+          "potential": "L3"
+        },
+        {
+          "id": "PE",
+          "name": "PE",
+          "relX": 120,
+          "relY": 0,
+          "potential": "NONE"
+        }
+      ],
+      "state": {
+        "pressed": false,
+        "closed": false,
+        "energized": false,
+        "poles": 1,
+        "tripped": false,
+        "prevEnergized": false,
+        "bistableSet": false,
+        "stepRelayActive": false,
+        "fuseBlown": false,
+        "timerActive": false,
+        "timeElapsed": 0
+      }
+    },
+    {
+      "id": "c_cad_1790883838658_1",
+      "type": "mcb_3p",
+      "tag": "-F",
+      "x": 240,
+      "y": 500,
+      "rotation": 0,
+      "mirrorH": false,
+      "mirrorV": false,
+      "terminals": [
+        {
+          "id": "1",
+          "name": "1",
+          "relX": 0,
+          "relY": 0,
+          "potential": "L1"
+        },
+        {
+          "id": "2",
+          "name": "3",
+          "relX": 40,
+          "relY": 0,
+          "potential": "L1"
+        },
+        {
+          "id": "3",
+          "name": "5",
+          "relX": 80,
+          "relY": 0,
+          "potential": "L3"
+        },
+        {
+          "id": "4",
+          "name": "2",
+          "relX": 40,
+          "relY": 80,
+          "potential": "L3"
+        },
+        {
+          "id": "5",
+          "name": "4",
+          "relX": 80,
+          "relY": 0,
+          "potential": "L3"
+        },
+        {
+          "id": "6",
+          "name": "6",
+          "relX": 80,
+          "relY": 80,
+          "potential": "L3"
+        }
+      ],
+      "state": {
+        "pressed": false,
+        "closed": false,
+        "energized": false,
+        "poles": 3,
+        "tripped": false,
+        "prevEnergized": false,
+        "bistableSet": false,
+        "stepRelayActive": false,
+        "fuseBlown": false,
+        "timerActive": false,
+        "timeElapsed": 0
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "w_cad_1790883838659_0",
+      "type": "phase",
+      "points": [
+        {
+          "x": 240,
+          "y": 300
+        },
+        {
+          "x": 240,
+          "y": 500
+        }
+      ],
+      "potential": "L1"
+    },
+    {
+      "id": "w_cad_1790883838659_1",
+      "type": "phase",
+      "points": [
+        {
+          "x": 280,
+          "y": 300
+        },
+        {
+          "x": 280,
+          "y": 500
+        }
+      ],
+      "potential": "L1"
+    },
+    {
+      "id": "w_cad_1790883838659_2",
+      "type": "phase",
+      "points": [
+        {
+          "x": 320,
+          "y": 300
+        },
+        {
+          "x": 320,
+          "y": 500
+        }
+      ],
+      "potential": "L3"
+    }
+  ]
+}

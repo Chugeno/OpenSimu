@@ -1,12 +1,12 @@
 {
-  "name": "amazing-borg",
+  "name": "opensimu",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "bundle:symbols": "node --loader ts-node/esm scripts/bundle-symbols.ts || tsx scripts/bundle-symbols.ts || node scripts/bundle-symbols.js || npx tsx scripts/bundle-symbols.ts",
-    "build": "npx tsx scripts/bundle-symbols.ts && tsc && vite build",
+    "build": "npx tsx scripts/bundle-symbols.ts && tsc && vite build && node -e \"const fs = require('fs'); fs.copyFileSync('dist/index.html', 'dist/OpenSimu.html'); console.log('✓ OpenSimu.html generado en dist/');\"",
     "preview": "vite preview"
   },
   "devDependencies": {

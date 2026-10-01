@@ -42,17 +42,19 @@ export class CadeSimuParser {
     '8001': 'pushbutton_nc',
     '8002': 'pushbutton_no_nc',
     '8003': 'pushbutton_changeover',
-    '8004': 'pushbutton_emergency_nc',
-    '8005': 'pushbutton_emergency_no',
+    '8004': 'pushbutton_emergency_no',
+    '8005': 'pushbutton_emergency_nc',
+    '8006': 'pushbutton_emergency_no_nc',
+    '8007': 'pushbutton_emergency_changeover',
     '8008': 'switch_no',
     '8009': 'switch_nc',
-    '8015': 'switch_changeover',
-    '8014': 'switch_no_nc',
+    '8010': 'switch_no_nc',
+    '8011': 'switch_changeover',
+    '8012': 'limit_no',
+    '8013': 'limit_nc',
+    '8014': 'limit_no_nc',
+    '8015': 'limit_changeover',
     '8020': 'switch_I_0_II',
-    '8010': 'limit_no',
-    '8011': 'limit_nc',
-    '8012': 'limit_no_nc',
-    '8013': 'limit_changeover',
 
     // Bobinas
     '9000': 'coil',
@@ -250,21 +252,46 @@ export class CadeSimuParser {
           },
         };
 
-        const cadTermNames = [
+        const rawCadTerms = [
           tokens[i + 3],
           tokens[i + 4],
           tokens[i + 5],
           tokens[i + 6],
           tokens[i + 7],
           tokens[i + 8],
-        ].map((t) => (t || '').trim()).filter(Boolean);
+        ].map((t) => (t || '').trim());
 
-        if (cadTermNames.length > 0) {
+        const poles = def.poles || 1;
+        if (poles > 1 && comp.terminals.length === poles * 2) {
+          for (let p = 0; p < poles; p++) {
+            const inName = rawCadTerms[p];
+            const outName = rawCadTerms[poles + p];
+            if (inName) comp.terminals[p * 2].name = inName;
+            if (outName) comp.terminals[p * 2 + 1].name = outName;
+          }
+        } else if (comp.terminals.length === 4 && (def.type.includes('_no_nc') || def.type.includes('double'))) {
+          if (rawCadTerms[0]) comp.terminals[0].name = rawCadTerms[0];
+          if (rawCadTerms[2]) comp.terminals[1].name = rawCadTerms[2];
+          if (rawCadTerms[1]) comp.terminals[2].name = rawCadTerms[1];
+          if (rawCadTerms[3]) comp.terminals[3].name = rawCadTerms[3];
+        } else {
           comp.terminals.forEach((term, idx) => {
-            if (cadTermNames[idx]) {
-              term.name = cadTermNames[idx];
+            if (rawCadTerms[idx]) {
+              term.name = rawCadTerms[idx];
             }
           });
+        }
+
+        if (def.type === 'pilot_light') {
+          const colorToken = (tokens[i + 5] || '').trim();
+          const CAD_COLOR_MAP: Record<string, string> = {
+            '0': 'green',
+            '1': 'red',
+            '2': 'yellow',
+            '3': 'blue',
+            '4': 'white',
+          };
+          comp.state.color = CAD_COLOR_MAP[colorToken] || 'green';
         }
 
         updateComponentTerminals(comp);
@@ -317,10 +344,20 @@ export class CadeSimuParser {
       surge_arrester_3p_n: '6014',
       pushbutton_no: '8000',
       pushbutton_nc: '8001',
-      pushbutton_emergency_nc: '8004',
-      pushbutton_emergency_no: '8005',
+      pushbutton_no_nc: '8002',
+      pushbutton_changeover: '8003',
+      pushbutton_emergency_no: '8004',
+      pushbutton_emergency_nc: '8005',
+      pushbutton_emergency_no_nc: '8006',
+      pushbutton_emergency_changeover: '8007',
       switch_no: '8008',
       switch_nc: '8009',
+      switch_no_nc: '8010',
+      switch_changeover: '8011',
+      limit_no: '8012',
+      limit_nc: '8013',
+      limit_no_nc: '8014',
+      limit_changeover: '8015',
       coil: '9000',
       contact_no: '7000',
       contact_nc: '7001',
@@ -337,7 +374,6 @@ export class CadeSimuParser {
       fuse_I: '5000',
       transformer: '3012',
       transformer_III: '3017',
-      switch_changeover: '8015',
       switch_I_0_II: '8020',
       bistable_coil: '9001',
       buzzer: '9011',
@@ -353,7 +389,32 @@ export class CadeSimuParser {
       const yCad = this.openSimuToCoord(comp.y);
       const orient = (Math.round((comp.rotation || 0) / 90) % 4) + (comp.mirrorH ? 4 : 0);
 
-      output += `${prefix}${index}*${code}#${comp.tag}#########*0*0*0*0*0*0*0*0*${xCad}*${yCad}*0*0*-12*-9*6*3*0*${orient}*0*1*0*0*0#`;
+      if (comp.type === 'pilot_light') {
+        const COLOR_TO_CAD: Record<string, string> = {
+          green: '0',
+          red: '1',
+          yellow: '2',
+          blue: '3',
+          white: '4',
+          '#22c55e': '0',
+          '#16a34a': '0',
+          '#ef4444': '1',
+          '#dc2626': '1',
+          '#eab308': '2',
+          '#ca8a04': '2',
+          '#3b82f6': '3',
+          '#2563eb': '3',
+          '#f8fafc': '4',
+          '#ffffff': '4',
+          '#94a3b8': '4',
+        };
+        const colorVal = comp.state?.color ? (COLOR_TO_CAD[comp.state.color] || '0') : '0';
+        const t1 = comp.terminals[0]?.name || 'X1';
+        const t2 = comp.terminals[1]?.name || 'X2';
+        output += `${prefix}${index}*${code}#${comp.tag}##${t1}#${t2}#${colorVal}#####*0*0*0*0*0*0*0*0*${xCad}*${yCad}*0*0*-12*-9*6*3*0*${orient}*0*1*0*0*0#`;
+      } else {
+        output += `${prefix}${index}*${code}#${comp.tag}#########*0*0*0*0*0*0*0*0*${xCad}*${yCad}*0*0*-12*-9*6*3*0*${orient}*0*1*0*0*0#`;
+      }
       index++;
     }
 

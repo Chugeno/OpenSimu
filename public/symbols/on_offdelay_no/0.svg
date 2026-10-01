@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 40 80" height="80" width="40">
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 80 80">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
   <defs>
     <style>
       .st0 {
         stroke: #1e293b;
       }
 
-      .st0, .st1 {
+      .st0, .st1, .st2 {
         fill: none;
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: 1.8px;
+      }
+
+      .st3 {
+        fill: #1b293d;
       }
 
       .st1 {
@@ -18,28 +23,24 @@
       }
 
       .st2 {
-        fill: #1e293b;
+        stroke: #1b293d;
       }
     </style>
   </defs>
-  <circle id="terminal_67" class="st2" cx="32.5" r="2.5" cy="0" />
-  <circle id="terminal_68" class="st2" cx="32.5" cy="80" r="2.5" />
-  <line x1="32.5" y1="0" x2="32.5" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="32.5" y1="70" x2="32.5" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <g transform="translate(0, 10)">
-    <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
-  
   <g>
-    <line class="st1" x1="9.5" y1="25.9" x2="24.5" y2="25.9"/>
-    <line class="st1" x1="9.5" y1="31.2" x2="27.1" y2="31.2"/>
+    <circle id="terminal_14" class="st3" cx="40" cy="80" r="2.5"/>
+    <circle id="terminal_13" class="st3" cx="40" r="2.5"/>
+    <line class="st2" x1="40" x2="40" y2="20"/>
+    <polyline class="st2" points="25 20 40 60 40 80"/>
   </g>
-  <path class="st0" d="M14.8,34.6c-3.3,0-6-2.7-6-6s2.7-6,6-6"/>
-  <path class="st0" d="M.8,34.6c3.3,0,6-2.7,6-6s-2.7-6-6-6"/>
-
   <g>
-    <line class="st0" x1="32.5" x2="32.5" y2="20"/>
-    <line class="st0" x1="32.5" y1="42" x2="32.5" y2="60"/>
-    <line class="st0" x1="32.5" y1="42" x2="22.5" y2="22"/>
+    <line class="st1" x1="45.6" y1="41.4" x2="37.5" y2="41.4"/>
+    <line class="st1" x1="45.6" y1="36.1" x2="37.5" y2="36.1"/>
   </g>
+  <path class="st0" d="M45.6,44.8c3.3,0,6-2.7,6-6s-2.7-6-6-6"/>
+  <g>
+    <line class="st1" x1="18.5" y1="36.1" x2="26.6" y2="36.1"/>
+    <line class="st1" x1="18.5" y1="41.4" x2="26.6" y2="41.4"/>
   </g>
+  <path class="st0" d="M18.5,32.7c-3.3,0-6,2.7-6,6s2.7,6,6,6"/>
 </svg>

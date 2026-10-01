@@ -1,28 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
-  
-  <circle id="terminal_13" cx="20" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_14" cx="20" cy="80" r="2.5" fill="#1e293b" />
-  <circle id="terminal_21" cx="60" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_22" cx="60" cy="80" r="2.5" fill="#1e293b" />
-  <line x1="20" y1="0" x2="20" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="60" y1="0" x2="60" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="20" y1="70" x2="20" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="60" y1="70" x2="60" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <g transform="translate(0, 10)">
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 80 80">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
+  <defs>
+    <style>
+      .st0 {
+        stroke: #94a3b8;
+        stroke-dasharray: 2 2;
+        stroke-width: 1.2px;
+      }
 
-  <!-- Enlace mecánico (Capa inferior, gris punteado) -->
-  <line x1="15" y1="32" x2="63.5" y2="32" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2 2" stroke-linecap="round" />
-  <g stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <!-- Polo 1 (NA abierto) -->
-    <line x1="20" y1="0" x2="20" y2="20" />
-    <line x1="20" y1="42" x2="20" y2="60" />
-    <line x1="20" y1="42" x2="10" y2="22" />
-    <!-- Polo 2 (NC cerrado) -->
-    <line x1="60" y1="0" x2="60" y2="20" />
-    <line x1="60" y1="20" x2="70" y2="20" />
-    <line x1="60" y1="42" x2="60" y2="60" />
-    <line x1="60" y1="42" x2="68" y2="16" />
-  </g>
-  </g>
+      .st0, .st1 {
+        fill: none;
+        stroke-linecap: round;
+      }
+
+      .st2 {
+        fill: #1b293d;
+      }
+
+      .st1 {
+        stroke: #1b293d;
+        stroke-linejoin: round;
+        stroke-width: 1.8px;
+      }
+    </style>
+  </defs>
+  <line class="st0" x1="12.5" y1="39.5" x2="67.5" y2="39.5"/>
+  <circle id="terminal_21" class="st2" cx="60" cy="0" r="2.5"/>
+  <circle id="terminal_22" class="st2" cx="60" cy="80" r="2.5"/>
+  <circle id="terminal_13" class="st2" cx="20" r="2.5"/>
+  <circle id="terminal_14" class="st2" cx="20" cy="80" r="2.5"/>
+  <line class="st1" x1="20" x2="20" y2="20"/>
+  <polyline class="st1" points="5 20 20 60 20 80"/>
+  <polyline class="st1" points="60 0 60 25 77.5 25"/>
+  <polyline class="st1" points="75 20 60 60 60 80"/>
 </svg>

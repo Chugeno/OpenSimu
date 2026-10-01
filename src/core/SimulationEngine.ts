@@ -39,6 +39,8 @@ export class SimulationEngine {
       }
       if (comp.type === 'coil' || comp.type === 'pilot_light') {
         comp.state.energized = activeCoils.has(comp.tag);
+      } else if (comp.type === 'transformer' || comp.type === 'transformer_III') {
+        comp.state.energized = false;
       }
     }
     for (const w of wires) {
@@ -94,12 +96,194 @@ export class SimulationEngine {
         }
       }
 
+      // 2b. Evaluate transformers as secondary sources
+      for (const comp of components) {
+        if (comp.type === 'transformer') {
+          const t1 = comp.terminals.find((t) => t.id === '1');
+          const t2 = comp.terminals.find((t) => t.id === '2');
+          const t3 = comp.terminals.find((t) => t.id === '3');
+          const t4 = comp.terminals.find((t) => t.id === '4');
+          if (t1 && t2 && t3 && t4) {
+            const pt1 = { x: comp.x + t1.relX, y: comp.y + t1.relY };
+            const pt2 = { x: comp.x + t2.relX, y: comp.y + t2.relY };
+            const pt3 = { x: comp.x + t3.relX, y: comp.y + t3.relY };
+            const pt4 = { x: comp.x + t4.relX, y: comp.y + t4.relY };
+
+            const c1 = this.findClusterForPoint(clusters, pt1);
+            const c2 = this.findClusterForPoint(clusters, pt2);
+            const c3 = this.findClusterForPoint(clusters, pt3);
+            const c4 = this.findClusterForPoint(clusters, pt4);
+
+            const pot1 = c1 ? c1.potential : 'NONE';
+            const pot2 = c2 ? c2.potential : 'NONE';
+            const pot3 = c3 ? c3.potential : 'NONE';
+            const pot4 = c4 ? c4.potential : 'NONE';
+
+            // Primario alimentado (1-2)
+            const isPrimPhaseDiff =
+              (pot1.startsWith('L') && pot2 === 'N') ||
+              (pot1 === 'N' && pot2.startsWith('L')) ||
+              (pot1.startsWith('L') && pot2.startsWith('L') && pot1 !== pot2);
+            const isPrimDcDiff =
+              (pot1 === 'DC_POS' && pot2 === 'DC_NEG') ||
+              (pot1 === 'DC_NEG' && pot2 === 'DC_POS');
+            const isPrimEnergized = isPrimPhaseDiff || isPrimDcDiff;
+
+            // Secundario alimentado (3-4 reversible)
+            const isSecPhaseDiff =
+              (pot3.startsWith('L') && pot4 === 'N') ||
+              (pot3 === 'N' && pot4.startsWith('L')) ||
+              (pot3.startsWith('L') && pot4.startsWith('L') && pot3 !== pot4);
+            const isSecDcDiff =
+              (pot3 === 'DC_POS' && pot4 === 'DC_NEG') ||
+              (pot3 === 'DC_NEG' && pot4 === 'DC_POS');
+            const isSecEnergized = !isPrimEnergized && (isSecPhaseDiff || isSecDcDiff);
+
+            comp.state.energized = isPrimEnergized || isSecEnergized;
+
+            if (isPrimEnergized) {
+              if (c3 && c4 && c3 === c4) {
+                shortCircuit = true;
+                shortCircuitMessage = `¡Cortocircuito directo entre bornes secundarios del transformador ${comp.tag}!`;
+                shortCircuitLocation = { ...pt3 };
+              } else {
+                if (c3) {
+                  if (c3.potential === 'NONE') c3.potential = 'L1';
+                  else if (c3.potential === 'N' || c3.potential === 'DC_NEG') {
+                    shortCircuit = true;
+                    shortCircuitMessage = `¡Cortocircuito detectado en secundario del transformador ${comp.tag} (L1 y ${c3.potential})!`;
+                    shortCircuitLocation = { ...pt3 };
+                  }
+                }
+                if (c4) {
+                  if (c4.potential === 'NONE') c4.potential = 'N';
+                  else if (c4.potential.startsWith('L') || c4.potential === 'DC_POS') {
+                    shortCircuit = true;
+                    shortCircuitMessage = `¡Cortocircuito detectado en secundario del transformador ${comp.tag} (N y ${c4.potential})!`;
+                    shortCircuitLocation = { ...pt4 };
+                  }
+                }
+              }
+            } else if (isSecEnergized) {
+              if (c1 && c2 && c1 === c2) {
+                shortCircuit = true;
+                shortCircuitMessage = `¡Cortocircuito directo entre bornes primarios del transformador ${comp.tag}!`;
+                shortCircuitLocation = { ...pt1 };
+              } else {
+                if (c1) {
+                  if (c1.potential === 'NONE') c1.potential = 'L1';
+                  else if (c1.potential === 'N' || c1.potential === 'DC_NEG') {
+                    shortCircuit = true;
+                    shortCircuitMessage = `¡Cortocircuito en primario del transformador ${comp.tag}!`;
+                    shortCircuitLocation = { ...pt1 };
+                  }
+                }
+                if (c2) {
+                  if (c2.potential === 'NONE') c2.potential = 'N';
+                  else if (c2.potential.startsWith('L') || c2.potential === 'DC_POS') {
+                    shortCircuit = true;
+                    shortCircuitMessage = `¡Cortocircuito en primario del transformador ${comp.tag}!`;
+                    shortCircuitLocation = { ...pt2 };
+                  }
+                }
+              }
+            }
+          }
+        } else if (comp.type === 'transformer_III') {
+          const t1 = comp.terminals.find((t) => t.id === '1');
+          const t2 = comp.terminals.find((t) => t.id === '2');
+          const t3 = comp.terminals.find((t) => t.id === '3');
+          const t4 = comp.terminals.find((t) => t.id === '4');
+          const t5 = comp.terminals.find((t) => t.id === '5');
+          const t6 = comp.terminals.find((t) => t.id === '6');
+          if (t1 && t2 && t3 && t4 && t5 && t6) {
+            const pt1 = { x: comp.x + t1.relX, y: comp.y + t1.relY };
+            const pt2 = { x: comp.x + t2.relX, y: comp.y + t2.relY };
+            const pt3 = { x: comp.x + t3.relX, y: comp.y + t3.relY };
+            const c1 = this.findClusterForPoint(clusters, pt1);
+            const c2 = this.findClusterForPoint(clusters, pt2);
+            const c3 = this.findClusterForPoint(clusters, pt3);
+            const pot1 = c1 ? c1.potential : 'NONE';
+            const pot2 = c2 ? c2.potential : 'NONE';
+            const pot3 = c3 ? c3.potential : 'NONE';
+
+            const is3Phase =
+              pot1.startsWith('L') &&
+              pot2.startsWith('L') &&
+              pot3.startsWith('L') &&
+              pot1 !== pot2 &&
+              pot2 !== pot3 &&
+              pot1 !== pot3;
+
+            comp.state.energized = is3Phase;
+
+            if (is3Phase) {
+              const pt4 = { x: comp.x + t4.relX, y: comp.y + t4.relY };
+              const pt5 = { x: comp.x + t5.relX, y: comp.y + t5.relY };
+              const pt6 = { x: comp.x + t6.relX, y: comp.y + t6.relY };
+              const c4 = this.findClusterForPoint(clusters, pt4);
+              const c5 = this.findClusterForPoint(clusters, pt5);
+              const c6 = this.findClusterForPoint(clusters, pt6);
+
+              if (c4) {
+                if (c4.potential === 'NONE') c4.potential = 'L1';
+                else if (c4.potential !== 'L1') {
+                  shortCircuit = true;
+                  shortCircuitMessage = `¡Cortocircuito en secundario trifásico de ${comp.tag}!`;
+                  shortCircuitLocation = { ...pt4 };
+                }
+              }
+              if (c5) {
+                if (c5.potential === 'NONE') c5.potential = 'L2';
+                else if (c5.potential !== 'L2') {
+                  shortCircuit = true;
+                  shortCircuitMessage = `¡Cortocircuito en secundario trifásico de ${comp.tag}!`;
+                  shortCircuitLocation = { ...pt5 };
+                }
+              }
+              if (c6) {
+                if (c6.potential === 'NONE') c6.potential = 'L3';
+                else if (c6.potential !== 'L3') {
+                  shortCircuit = true;
+                  shortCircuitMessage = `¡Cortocircuito en secundario trifásico de ${comp.tag}!`;
+                  shortCircuitLocation = { ...pt6 };
+                }
+              }
+            }
+          }
+        }
+      }
+
       // 3. Assign potentials to terminals and wire segments
       for (const comp of components) {
         for (const t of comp.terminals) {
           const pt = { x: comp.x + t.relX, y: comp.y + t.relY };
           const cluster = this.findClusterForPoint(clusters, pt);
           t.potential = cluster ? cluster.potential : 'NONE';
+        }
+        // Si el transformador está energizado pero sus bornes de salida no tienen cables conectados aún, reflejar tensión en el borne
+        if (comp.type === 'transformer' && comp.state.energized) {
+          const t1 = comp.terminals.find((t) => t.id === '1');
+          const t2 = comp.terminals.find((t) => t.id === '2');
+          const t3 = comp.terminals.find((t) => t.id === '3');
+          const t4 = comp.terminals.find((t) => t.id === '4');
+          if (t1 && t2 && t3 && t4) {
+            const isPrim = (t1.potential.startsWith('L') && t2.potential === 'N') || (t1.potential === 'N' && t2.potential.startsWith('L')) || (t1.potential.startsWith('L') && t2.potential.startsWith('L') && t1.potential !== t2.potential);
+            if (isPrim) {
+              if (t3.potential === 'NONE') t3.potential = 'L1';
+              if (t4.potential === 'NONE') t4.potential = 'N';
+            } else {
+              if (t1.potential === 'NONE') t1.potential = 'L1';
+              if (t2.potential === 'NONE') t2.potential = 'N';
+            }
+          }
+        } else if (comp.type === 'transformer_III' && comp.state.energized) {
+          const t4 = comp.terminals.find((t) => t.id === '4');
+          const t5 = comp.terminals.find((t) => t.id === '5');
+          const t6 = comp.terminals.find((t) => t.id === '6');
+          if (t4 && t4.potential === 'NONE') t4.potential = 'L1';
+          if (t5 && t5.potential === 'NONE') t5.potential = 'L2';
+          if (t6 && t6.potential === 'NONE') t6.potential = 'L3';
         }
       }
 

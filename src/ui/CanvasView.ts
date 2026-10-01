@@ -1018,7 +1018,10 @@ export class CanvasView {
       const clickedComp = this.findComponentAt(world);
       if (clickedComp) {
         const def = COMPONENT_DEFINITIONS[clickedComp.type];
-        const action = def?.manualAction || 'none';
+        let action = def?.manualAction || 'none';
+        if (clickedComp.type.startsWith('pushbutton_emergency_')) {
+          action = clickedComp.state?.latching ? 'toggle' : 'momentary';
+        }
         const targetTag = clickedComp.tag;
 
         // Elementos vinculados por nombre idéntico (case-sensitive exact match estilo CADe_SIMU)
@@ -1059,15 +1062,13 @@ export class CanvasView {
             const willBeClosed = !clickedComp.state.closed;
             for (const c of linkedComps) {
               c.state.tripped = false;
+              c.state.pressed = false;
               const isNC = CanvasView.isNormallyClosed(c.type);
               const clickedIsNC = CanvasView.isNormallyClosed(clickedComp.type);
               if (isNC === clickedIsNC) {
                 c.state.closed = willBeClosed;
               } else {
                 c.state.closed = !willBeClosed;
-              }
-              if (c.state.pressed !== undefined) {
-                c.state.pressed = willBeClosed;
               }
             }
           }

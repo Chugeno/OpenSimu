@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 60 80" width="60" height="80">
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 60 80">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
   <defs>
     <style>
-      .st_wire {
+      .st0 {
+        fill: none;
         stroke: #ef4444;
-        stroke-width: 1.8px;
         stroke-linecap: round;
         stroke-linejoin: round;
-        fill: none;
+        stroke-width: 1.8px;
       }
-      .st_term {
+
+      .st1 {
         fill: #ef4444;
-      }
-      .st_tie {
-        stroke: #94a3b8;
-        stroke-width: 1.2px;
-        stroke-dasharray: 3 2;
-        fill: none;
       }
     </style>
   </defs>
-  <circle id="terminal_1" class="st_term" cx="0" cy="0" r="2.5" />
-  <circle id="terminal_2" class="st_term" cx="0" cy="80" r="2.5" />
-  
-  <g>
-    <line class="st_wire" x1="0" y1="0" x2="0" y2="28" />
-    <path class="st_wire" d="M0,24 A4,4 0 0,0 0,32" />
-    <line class="st_wire" x1="0" y1="52" x2="0" y2="80" />
-    <line class="st_wire" x1="0" y1="52" x2="0" y2="28" />
-  </g>
+  <circle id="terminal_2" class="st1" cx="20" cy="80" r="2.5"/>
+  <circle id="terminal_1" class="st1" cx="20" r="2.5"/>
+  <line class="st0" x1="20" x2="20" y2="80"/>
+  <path class="st0" d="M20,12c-2.2,0-4,1.8-4,4s1.8,4,4,4"/>
 </svg>

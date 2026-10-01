@@ -549,7 +549,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     defaultTag: '-S',
     width: 40,
     height: 80,
-    manualAction: 'toggle',
+    manualAction: 'momentary',
     dividerBefore: true,
     terminals: [
       { id: '1', name: '1', relX: 0, relY: 0 },
@@ -563,7 +563,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     defaultTag: '-S',
     width: 40,
     height: 80,
-    manualAction: 'toggle',
+    manualAction: 'momentary',
     terminals: [
       { id: '3', name: '3', relX: 0, relY: 0 },
       { id: '4', name: '4', relX: 0, relY: 80 },
@@ -576,7 +576,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     defaultTag: '-S',
     width: 80,
     height: 80,
-    manualAction: 'toggle',
+    manualAction: 'momentary',
     terminals: [
       { id: '1', name: '1', relX: 0, relY: 0 },
       { id: '2', name: '2', relX: 0, relY: 80 },
@@ -591,7 +591,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     defaultTag: '-S',
     width: 60,
     height: 80,
-    manualAction: 'toggle',
+    manualAction: 'momentary',
     terminals: [
       { id: '1', name: '1', relX: 20, relY: 0 },
       { id: '2', name: '2', relX: 0, relY: 80 },

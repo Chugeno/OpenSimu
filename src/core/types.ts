@@ -87,6 +87,7 @@ export interface CircuitComponent {
     energized?: boolean; // For coils / lights
     tripped?: boolean;  // For circuit breakers / thermal relays
     color?: string;    // For pilot lights (e.g. green, red, amber)
+    latching?: boolean; // For emergency pushbuttons (false = sin retención, true = con retención)
     protectionType?: 'mag' | 'mag_thermal'; // For motor breakers (mag = magnetic, mag_thermal = thermal-magnetic)
     direction?: 'CW' | 'CCW'; // For motors (CW = clockwise, CCW = counter-clockwise)
     position?: number; // For multi-position rotary switches (e.g. 0, 1, 2 for switch_I_0_II)

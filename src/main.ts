@@ -67,6 +67,7 @@ let tempSelectedColor: 'green' | 'red' | 'yellow' | 'blue' | 'white' = 'green';
 let tempSelectedProtectionType: 'mag' | 'mag_thermal' = 'mag';
 let tempSelectedDays: string[] = ['L', 'M', 'X', 'J', 'V'];
 let tempTimerManualTest: boolean = false;
+let tempSelectedLatching: boolean = false;
 
 const shortCircuitModal = document.getElementById('short-circuit-modal') as HTMLDivElement;
 const shortCircuitMsg = document.getElementById('short-circuit-msg') as HTMLParagraphElement;
@@ -270,6 +271,52 @@ canvasView.onTagEditRequest = (comp) => {
 
         card.onclick = () => {
           tempSelectedProtectionType = t.key;
+          typeGrid.querySelectorAll('.protection-type-card').forEach((el) => el.classList.remove('active'));
+          card.classList.add('active');
+        };
+
+        typeGrid.appendChild(card);
+      });
+
+      modalExtraContent.appendChild(typeGrid);
+    } else if (comp.type.startsWith('pushbutton_emergency_')) {
+      modalExtraOptions.style.display = 'block';
+      modalExtraLabel.textContent = 'Mecanismo de Retención / Enclavamiento:';
+      tempSelectedLatching = Boolean(comp.state?.latching);
+
+      const typeGrid = document.createElement('div');
+      typeGrid.className = 'protection-type-grid';
+
+      const options: { key: boolean; title: string; desc: string }[] = [
+        {
+          key: false,
+          title: '🔘 Sin retención (Pulsador)',
+          desc: 'Accionamiento momentáneo. Vuelve automáticamente a reposo al soltar (o arrastrar fuera para enclavar).',
+        },
+        {
+          key: true,
+          title: '🔒 Con retención (Enclavamiento)',
+          desc: 'Enclavamiento mecánico biestable. Un clic enclava el pulsador, otro clic lo desenclava.',
+        },
+      ];
+
+      options.forEach((opt) => {
+        const card = document.createElement('div');
+        card.className = `protection-type-card ${tempSelectedLatching === opt.key ? 'active' : ''}`;
+
+        const title = document.createElement('div');
+        title.className = 'protection-type-title';
+        title.textContent = opt.title;
+
+        const desc = document.createElement('div');
+        desc.className = 'protection-type-desc';
+        desc.textContent = opt.desc;
+
+        card.appendChild(title);
+        card.appendChild(desc);
+
+        card.onclick = () => {
+          tempSelectedLatching = opt.key;
           typeGrid.querySelectorAll('.protection-type-card').forEach((el) => el.classList.remove('active'));
           card.classList.add('active');
         };
@@ -580,6 +627,17 @@ modalSave.onclick = () => {
     } else if (editingComponent.type.startsWith('motor_breaker_')) {
       editingComponent.state = editingComponent.state || {};
       editingComponent.state.protectionType = tempSelectedProtectionType;
+    } else if (editingComponent.type.startsWith('pushbutton_emergency_')) {
+      editingComponent.state = editingComponent.state || {};
+      editingComponent.state.latching = tempSelectedLatching;
+      if (editingComponent.tag && editingComponent.tag !== '-S') {
+        for (const c of canvasView.components) {
+          if (c.tag === editingComponent.tag && c.type.startsWith('pushbutton_emergency_')) {
+            c.state = c.state || {};
+            c.state.latching = tempSelectedLatching;
+          }
+        }
+      }
     } else if (editingComponent.type === 'timer') {
       editingComponent.state = editingComponent.state || {};
       editingComponent.state.timerDays = [...tempSelectedDays];

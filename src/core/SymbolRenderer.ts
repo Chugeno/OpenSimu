@@ -1,5 +1,5 @@
 import type { CircuitComponent } from './types';
-import { getComponentBounds, transformLocalPoint } from './ComponentRegistry';
+import { COMPONENT_DEFINITIONS, getComponentBounds, transformLocalPoint } from './ComponentRegistry';
 import { EMBEDDED_SYMBOLS, EMBEDDED_SYMBOLS_META } from './EmbeddedSymbols';
 
 export class SymbolRenderer {
@@ -71,7 +71,10 @@ export class SymbolRenderer {
       case 'offdelay_no':
       case 'on_offdelay_no': {
         const isClosed = Boolean(comp.state.pressed || comp.state.closed || comp.state.energized);
-        const stateIdx = isClosed ? 1 : 0;
+        let stateIdx = isClosed ? 1 : 0;
+        if (comp.type === 'pushbutton_emergency_no' && comp.state?.latching) {
+          stateIdx += 2;
+        }
         const folder = comp.type === 'contact_no_1p' ? 'contact_no' : comp.type;
         const svgPath = `/symbols/${folder}/${stateIdx}.svg`;
         this.renderSvgWithFallback(
@@ -96,7 +99,10 @@ export class SymbolRenderer {
       case 'offdelay_nc':
       case 'on_offdelay_nc': {
         const isClosed = comp.state.closed && !comp.state.pressed && !comp.state.energized;
-        const stateIdx = isClosed ? 0 : 1;
+        let stateIdx = isClosed ? 0 : 1;
+        if (comp.type === 'pushbutton_emergency_nc' && comp.state?.latching) {
+          stateIdx += 2;
+        }
         const isActuated = !isClosed;
         const folder = comp.type === 'contact_nc_1p' ? 'contact_nc' : comp.type;
         const svgPath = `/symbols/${folder}/${stateIdx}.svg`;
@@ -117,7 +123,10 @@ export class SymbolRenderer {
       case 'pushbutton_emergency_no_nc':
       case 'limit_no_nc': {
         const isActuated = Boolean(comp.state.pressed || comp.state.closed || comp.state.energized);
-        const stateIdx = isActuated ? 1 : 0;
+        let stateIdx = isActuated ? 1 : 0;
+        if (comp.type === 'pushbutton_emergency_no_nc' && comp.state?.latching) {
+          stateIdx += 2;
+        }
         const svgPath = `/symbols/${comp.type}/${stateIdx}.svg`;
         this.renderSvgWithFallback(
           ctx,
@@ -136,7 +145,10 @@ export class SymbolRenderer {
       case 'pushbutton_emergency_changeover':
       case 'limit_changeover': {
         const isActuated = Boolean(comp.state.pressed || comp.state.closed || comp.state.energized);
-        const stateIdx = isActuated ? 1 : 0;
+        let stateIdx = isActuated ? 1 : 0;
+        if (comp.type === 'pushbutton_emergency_changeover' && comp.state?.latching) {
+          stateIdx += 2;
+        }
         const svgPath = `/symbols/${comp.type}/${stateIdx}.svg`;
         this.renderSvgWithFallback(
           ctx,
@@ -664,6 +676,9 @@ export class SymbolRenderer {
     // Draw Terminals
     this.renderTerminals(ctx, comp, isSimulation);
 
+    // Draw Component Labels (Tag and Terminal Names) in unrotated, upright orientation
+    this.renderComponentLabels(ctx, comp);
+
     ctx.restore();
   }
 
@@ -685,12 +700,6 @@ export class SymbolRenderer {
       ctx.stroke();
       return;
     }
-
-    // Dibujar Tag a la izquierda (-X)
-    ctx.font = 'bold 11px sans-serif';
-    ctx.fillStyle = '#0f172a';
-    ctx.textAlign = 'right';
-    ctx.fillText(comp.tag, -8, -4);
 
     // Dibujar cada borna de alimentación
     for (const t of comp.terminals) {
@@ -714,11 +723,6 @@ export class SymbolRenderer {
       ctx.beginPath();
       ctx.arc(t.relX, -6, 3.5, 0, Math.PI * 2);
       ctx.stroke();
-
-      // Etiqueta de borna arriba (L, N, PE, L1, L2, L3, +, -)
-      ctx.font = 'bold 10px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText(t.name, t.relX, -14);
 
       ctx.restore();
     }
@@ -832,11 +836,6 @@ export class SymbolRenderer {
       }
       ctx.restore();
     }
-
-    // Tag and Terminal Numbers
-    const numTop = comp.terminals[0]?.name ?? (isThermal ? '97' : '13');
-    const numBot = comp.terminals[1]?.name ?? (isThermal ? '98' : '14');
-    this.renderTagAndNumbers(ctx, comp, numTop, numBot);
   }
 
   private static renderSwitchNC(ctx: CanvasRenderingContext2D, comp: CircuitComponent, isSim: boolean) {
@@ -952,10 +951,6 @@ export class SymbolRenderer {
       }
       ctx.restore();
     }
-
-    const numTop = comp.terminals[0]?.name ?? (isThermal ? '95' : '11');
-    const numBot = comp.terminals[1]?.name ?? (isThermal ? '96' : '12');
-    this.renderTagAndNumbers(ctx, comp, numTop, numBot);
   }
 
   private static renderCoil(ctx: CanvasRenderingContext2D, comp: CircuitComponent, isSim: boolean) {
@@ -993,21 +988,6 @@ export class SymbolRenderer {
     ctx.fillRect(boxX, boxY, boxW, boxH);
     ctx.strokeRect(boxX, boxY, boxW, boxH);
     ctx.restore();
-
-    // Terminal labels A1 and A2 outside
-    ctx.font = '9px sans-serif';
-    ctx.fillStyle = '#64748b';
-    ctx.textAlign = 'left';
-    const tTop = comp.terminals[0]?.name ?? 'A1';
-    const tBot = comp.terminals[1]?.name ?? 'A2';
-    ctx.fillText(tTop, 6, 12);
-    ctx.fillText(tBot, 6, 52);
-
-    // Tag OUTSIDE the coil box to the LEFT
-    ctx.font = 'bold 11px sans-serif';
-    ctx.fillStyle = '#0f172a';
-    ctx.textAlign = 'right';
-    ctx.fillText(comp.tag, -20, 34);
   }
 
   private static renderPowerContactor(
@@ -1070,22 +1050,7 @@ export class SymbolRenderer {
         ctx.lineTo(offsetX - 10, 28);
       }
       ctx.stroke();
-
-      // Numbers (odd on top, even on bottom)
-      ctx.font = '9px sans-serif';
-      ctx.fillStyle = '#64748b';
-      ctx.textAlign = 'left';
-      const topNum = comp.terminals[p * 2]?.name ?? `${p * 2 + 1}`;
-      const botNum = comp.terminals[p * 2 + 1]?.name ?? `${p * 2 + 2}`;
-      ctx.fillText(topNum, offsetX + 4, 10);
-      ctx.fillText(botNum, offsetX + 4, 74);
     }
-
-    // Tag to the LEFT of Pole 1
-    ctx.font = 'bold 11px sans-serif';
-    ctx.fillStyle = '#0f172a';
-    ctx.textAlign = 'right';
-    ctx.fillText(comp.tag, -14, 40);
   }
 
   private static renderContactNONC(
@@ -1111,12 +1076,6 @@ export class SymbolRenderer {
     ctx.lineTo(0, 60);
     ctx.stroke();
 
-    ctx.font = '9px sans-serif';
-    ctx.fillStyle = '#64748b';
-    ctx.textAlign = 'left';
-    ctx.fillText(comp.terminals[0]?.name ?? '13', 4, 10);
-    ctx.fillText(comp.terminals[1]?.name ?? '14', 4, 54);
-
     // Pole 2: NC (21-22) at X = 40
     ctx.fillStyle = strokeColor;
     ctx.beginPath();
@@ -1132,9 +1091,6 @@ export class SymbolRenderer {
     ctx.moveTo(40, 42);
     ctx.lineTo(40, 60);
     ctx.stroke();
-
-    ctx.fillText(comp.terminals[2]?.name ?? '21', 46, 10);
-    ctx.fillText(comp.terminals[3]?.name ?? '22', 46, 54);
 
     // Mechanical link touching both blades at Y = 32
     const blade1X = isActuated ? 0 : -5;
@@ -1198,13 +1154,6 @@ export class SymbolRenderer {
       ctx.stroke();
       ctx.restore();
     }
-
-    // Tag to the LEFT of Pole 1 (con margen suficiente para no pisar el actuador)
-    ctx.font = 'bold 11px sans-serif';
-    ctx.fillStyle = '#0f172a';
-    ctx.textAlign = 'right';
-    const tagX = isThermal ? -28 : -14;
-    ctx.fillText(comp.tag, tagX, 32);
   }
 
   private static renderContactChangeover(
@@ -1299,21 +1248,6 @@ export class SymbolRenderer {
       ctx.stroke();
       ctx.restore();
     }
-
-    // Terminal labels
-    ctx.font = '9px sans-serif';
-    ctx.fillStyle = '#64748b';
-    ctx.textAlign = 'left';
-    ctx.fillText(comp.terminals[0]?.name ?? (isThermal ? '95' : '11'), comX + 5, 12);
-    ctx.fillText(comp.terminals[1]?.name ?? (isThermal ? '96' : '12'), ncX + 13, 50);
-    ctx.fillText(comp.terminals[2]?.name ?? (isThermal ? '98' : '14'), naX + 5, 50);
-
-    // Tag to the LEFT
-    ctx.font = 'bold 11px sans-serif';
-    ctx.fillStyle = '#0f172a';
-    ctx.textAlign = 'right';
-    const tagX = isThermal ? -26 : -14;
-    ctx.fillText(comp.tag, tagX, 32);
   }
 
   private static renderPilotLight(ctx: CanvasRenderingContext2D, comp: CircuitComponent, isSim: boolean) {
@@ -1391,41 +1325,6 @@ export class SymbolRenderer {
     }
     ctx.restore();
 
-    // Terminal numbers X1, X2
-    ctx.font = '9px sans-serif';
-    ctx.fillStyle = '#64748b';
-    ctx.textAlign = 'left';
-    ctx.fillText(comp.terminals[0]?.name ?? 'X1', 6, 12);
-    ctx.fillText(comp.terminals[1]?.name ?? 'X2', 6, 52);
-
-    // Tag to the LEFT
-    ctx.font = 'bold 11px sans-serif';
-    ctx.fillStyle = '#0f172a';
-    ctx.textAlign = 'right';
-    ctx.fillText(comp.tag, -16, 34);
-  }
-
-  private static renderTagAndNumbers(
-    ctx: CanvasRenderingContext2D,
-    comp: CircuitComponent,
-    numTop: string,
-    numBot: string
-  ) {
-    // Numbers on the right
-    ctx.font = '9px sans-serif';
-    ctx.fillStyle = '#64748b';
-    ctx.textAlign = 'left';
-    ctx.fillText(numTop, 6, 10);
-    ctx.fillText(numBot, 6, 54);
-
-    // Tag on the LEFT (clearing pushbutton / switch / thermal actuator if present)
-    const isThermal = comp.type.startsWith('thermal_contact_');
-    const hasCap = comp.type.startsWith('pushbutton_') || comp.type.startsWith('switch_');
-    const tagX = isThermal ? -26 : hasCap ? -22 : -14;
-    ctx.font = 'bold 11px sans-serif';
-    ctx.fillStyle = '#0f172a';
-    ctx.textAlign = 'right';
-    ctx.fillText(comp.tag, tagX, 32);
   }
 
   private static renderProtectionBreaker(
@@ -1854,27 +1753,7 @@ export class SymbolRenderer {
         ctx.stroke();
       }
 
-      // Terminal numbering on the LEFT of lead (IEC / Radica style)
-      ctx.font = 'bold 9px sans-serif';
-      ctx.fillStyle = '#64748b';
-      ctx.textAlign = 'right';
-      const defaultTop = isNeutralPole ? 'N' : `${p * 2 + 1}`;
-      const defaultBot = isNeutralPole ? 'N' : `${p * 2 + 2}`;
-      const topNum = comp.terminals[p * 2]?.name ?? defaultTop;
-      const botNum = comp.terminals[p * 2 + 1]?.name ?? defaultBot;
-      const topY = 11;
-      const botY = isMotorBreaker ? 77 : 56;
-      ctx.fillText(topNum, offsetX - 5, topY);
-      ctx.fillText(botNum, offsetX - 5, botY);
     }
-
-    // Tag to the LEFT
-    ctx.font = 'bold 11px sans-serif';
-    ctx.fillStyle = '#0f172a';
-    ctx.textAlign = 'right';
-    const tagX = (isMotorBreaker || isRCD) ? -40 : (isMCB ? -22 : -14);
-    const tagY = isMotorBreaker ? 36 : 33;
-    ctx.fillText(comp.tag, tagX, tagY);
   }
 
   private static renderThermalRelay(
@@ -1941,14 +1820,6 @@ export class SymbolRenderer {
       ctx.lineTo(ox, boxY + boxH);
       ctx.stroke();
 
-      // Terminal numbers (1, 3, 5 arriba; 2, 4, 6 abajo)
-      ctx.font = 'bold 9px sans-serif';
-      ctx.fillStyle = '#64748b';
-      ctx.textAlign = 'right';
-      const topNum = comp.terminals[p * 2]?.name ?? `${p * 2 + 1}`;
-      const botNum = comp.terminals[p * 2 + 1]?.name ?? `${p * 2 + 2}`;
-      ctx.fillText(topNum, ox - 5, 11);
-      ctx.fillText(botNum, ox - 5, 56);
     }
 
     // Caja de ajuste / rearme del relé térmico a la izquierda (en X = -28, Y = 22..38)
@@ -1964,12 +1835,6 @@ export class SymbolRenderer {
     ctx.textBaseline = 'middle';
     ctx.fillText(isTripped ? 'TRIP' : 'Ir', -22, 30);
     ctx.restore();
-
-    // Tag a la izquierda
-    ctx.font = 'bold 11px sans-serif';
-    ctx.fillStyle = isTripped ? '#dc2626' : '#0f172a';
-    ctx.textAlign = 'right';
-    ctx.fillText(comp.tag, -34, 30);
   }
 
   private static renderSurgeArrester(
@@ -2023,12 +1888,6 @@ export class SymbolRenderer {
       ctx.lineTo(ox, 44);
       ctx.stroke();
 
-      // Terminal number at top
-      ctx.font = 'bold 9px sans-serif';
-      ctx.fillStyle = '#64748b';
-      ctx.textAlign = 'right';
-      const topName = comp.terminals[p]?.name ?? `${p + 1}`;
-      ctx.fillText(topName, ox - 5, 11);
     }
 
     // Barra común de descarga a tierra en Y = 44
@@ -2053,18 +1912,6 @@ export class SymbolRenderer {
     ctx.lineTo(peX + 1, 58);
     ctx.stroke();
     ctx.restore();
-
-    // Terminal PE label
-    ctx.font = 'bold 9px sans-serif';
-    ctx.fillStyle = '#16a34a';
-    ctx.textAlign = 'left';
-    ctx.fillText('PE', peX + 6, 56);
-
-    // Tag a la izquierda
-    ctx.font = 'bold 11px sans-serif';
-    ctx.fillStyle = '#0f172a';
-    ctx.textAlign = 'right';
-    ctx.fillText(comp.tag, -14, 30);
   }
 
   private static renderTextLabel(ctx: CanvasRenderingContext2D, comp: CircuitComponent) {
@@ -2320,25 +2167,36 @@ export class SymbolRenderer {
     ctx.restore();
 
     // Inner Labels: 'M' and '3 ~' / '1 ~'
+    // Inner Labels: 'M' and '3 ~' / '1 ~' (counter-rotated to stay upright)
+    ctx.save();
+    ctx.translate(cx, cy);
+    const rot = comp.rotation || 0;
+    const mH = Boolean(comp.mirrorH);
+    const mV = Boolean(comp.mirrorV);
+    // Invert the context's mirror and rotation so the text stays strictly upright
+    ctx.scale(mH ? -1 : 1, mV ? -1 : 1);
+    ctx.rotate(-rot);
+
     ctx.font = 'bold 14px system-ui, -apple-system, sans-serif';
     ctx.fillStyle = isRunning ? '#15803d' : '#0f172a';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('M', cx, cy - 6);
+    ctx.fillText('M', 0, -6);
 
     ctx.font = 'bold 10px system-ui, -apple-system, sans-serif';
-    ctx.fillText(is3P ? '3' : '1', cx - 6, cy + 9);
+    ctx.fillText(is3P ? '3' : '1', -6, 9);
 
     // Símbolo senoidal AC ~
     ctx.beginPath();
-    const wx = cx - 1;
-    const wy = cy + 9;
+    const wx = -1;
+    const wy = 9;
     ctx.lineWidth = 1.4;
     ctx.strokeStyle = isRunning ? '#15803d' : '#0f172a';
     ctx.moveTo(wx, wy);
     ctx.bezierCurveTo(wx + 2.5, wy - 2.8, wx + 2.5, wy - 2.8, wx + 5, wy);
     ctx.bezierCurveTo(wx + 7.5, wy + 2.8, wx + 7.5, wy + 2.8, wx + 10, wy);
     ctx.stroke();
+    ctx.restore();
 
     // Rotation Arrow when energized
     if (isRunning) {
@@ -2350,27 +2208,6 @@ export class SymbolRenderer {
         });
       }
     }
-
-    // Terminal Names & Tag
-    ctx.font = '9px sans-serif';
-    ctx.fillStyle = '#64748b';
-    ctx.textAlign = 'left';
-
-    // Top terminal names
-    for (const t of comp.terminals) {
-      if (t.relY === 0) {
-        ctx.fillText(t.name, t.relX + 5, 10);
-      } else {
-        ctx.fillText(t.name, t.relX + 5, t.relY - 4);
-      }
-    }
-
-    // Component Tag to the LEFT
-    ctx.font = 'bold 11px sans-serif';
-    ctx.fillStyle = '#0f172a';
-    ctx.textAlign = 'right';
-    const tagX = is3P ? -14 : -18;
-    ctx.fillText(comp.tag, tagX, cy);
   }
 
   private static drawRotationArrow(
@@ -2638,28 +2475,55 @@ export class SymbolRenderer {
     // or use the SVG coordinates directly
     let drawOffsetX = vb.minX;
     let drawOffsetY = vb.minY;
+    let refBaseX = 0;
+    let refBaseY = 0;
 
     if (meta?.refTerminal) {
-      // Offset SVG so that the reference terminal aligns at (0, 0) in component space
-      drawOffsetX = vb.minX - meta.refTerminal.x;
-      drawOffsetY = vb.minY - meta.refTerminal.y;
+      const def = COMPONENT_DEFINITIONS[comp.type];
+      let refKey: string | undefined;
+      for (const [k, pt] of meta.terminals.entries()) {
+        if (Math.abs(pt.x - meta.refTerminal.x) < 0.1 && Math.abs(pt.y - meta.refTerminal.y) < 0.1) {
+          refKey = k;
+          break;
+        }
+      }
+
+      if (refKey && def && def.terminals) {
+        const baseRefTerm = def.terminals.find((t) => {
+          const id = t.id.toLowerCase();
+          if (id === refKey) return true;
+          if ((refKey === '13' && id === '3') || (refKey === '3' && id === '13')) return true;
+          if ((refKey === '14' && id === '4') || (refKey === '4' && id === '14')) return true;
+          if ((refKey === '11' && id === '1') || (refKey === '1' && id === '11')) return true;
+          if ((refKey === '12' && id === '2') || (refKey === '2' && id === '12')) return true;
+          if (refKey === '95' && id === '1') return true;
+          return false;
+        });
+        if (baseRefTerm) {
+          refBaseX = baseRefTerm.relX;
+          refBaseY = baseRefTerm.relY;
+        }
+      }
+
+      // Offset SVG so that the reference terminal aligns at its canonical definition position (refBaseX, refBaseY)
+      drawOffsetX = vb.minX - meta.refTerminal.x + refBaseX;
+      drawOffsetY = vb.minY - meta.refTerminal.y + refBaseY;
 
       // Dynamically sync component terminal positions according to the SVG IDs
       meta.terminals.forEach((pt, termKey) => {
         const compTerm = comp.terminals.find((t) => {
           const id = t.id.toLowerCase();
-          const name = t.name.toLowerCase();
-          if (id === termKey || name === termKey) return true;
+          if (id === termKey) return true;
           // Soporte para bornes de 1 dígito en accionamientos IEC (13/3, 14/4, 11/1, 12/2)
-          if (termKey === '13' && (id === '3' || name === '3')) return true;
-          if (termKey === '14' && (id === '4' || name === '4')) return true;
-          if (termKey === '11' && (id === '1' || name === '1')) return true;
-          if (termKey === '12' && (id === '2' || name === '2')) return true;
+          if ((termKey === '13' && id === '3') || (termKey === '3' && id === '13')) return true;
+          if ((termKey === '14' && id === '4') || (termKey === '4' && id === '14')) return true;
+          if ((termKey === '11' && id === '1') || (termKey === '1' && id === '11')) return true;
+          if ((termKey === '12' && id === '2') || (termKey === '2' && id === '12')) return true;
           return false;
         });
         if (compTerm) {
-          const rawRelX = Math.round(pt.x - meta.refTerminal!.x);
-          const rawRelY = Math.round(pt.y - meta.refTerminal!.y);
+          const rawRelX = Math.round(pt.x - meta.refTerminal!.x + refBaseX);
+          const rawRelY = Math.round(pt.y - meta.refTerminal!.y + refBaseY);
           const transformed = transformLocalPoint({ x: rawRelX, y: rawRelY }, comp.rotation || 0, comp.mirrorH, comp.mirrorV);
           compTerm.relX = transformed.x;
           compTerm.relY = transformed.y;
@@ -2669,74 +2533,6 @@ export class SymbolRenderer {
 
     // SVG loaded successfully -> Draw image mapped to calibrated coordinates
     ctx.drawImage(img, drawOffsetX, drawOffsetY, vb.width, vb.height);
-
-    // Draw Tag dynamically aligned to the left edge of the SVG artboard (lienzo)
-    if (comp.tag) {
-      const tagMargin = 1;
-      const tagX = drawOffsetX - tagMargin;
-      const tagY = drawOffsetY + vb.height / 2 + 2;
-
-      ctx.font = 'bold 11px sans-serif';
-      ctx.fillStyle = '#0f172a';
-      ctx.textAlign = 'right';
-
-      if (comp.rotation || comp.mirrorH || comp.mirrorV) {
-        ctx.save();
-        ctx.translate(tagX, tagY);
-        if (comp.mirrorH || comp.mirrorV) {
-          ctx.scale(comp.mirrorH ? -1 : 1, comp.mirrorV ? -1 : 1);
-        }
-        if (comp.rotation) {
-          ctx.rotate((-comp.rotation * Math.PI) / 180);
-        }
-        ctx.fillText(comp.tag, 0, 0);
-        ctx.restore();
-      } else {
-        ctx.fillText(comp.tag, tagX, tagY);
-      }
-    }
-
-    // Draw Terminal numbers next to their respective terminals
-    ctx.font = '9px sans-serif';
-    ctx.fillStyle = '#64748b';
-    ctx.textAlign = 'left';
-    for (const t of comp.terminals) {
-      if (!t.name) continue;
-      let baseRelX = 0;
-      let baseRelY = 0;
-      if (meta?.refTerminal) {
-        const id = t.id.toLowerCase();
-        const name = t.name.toLowerCase();
-        let pt = meta.terminals.get(id) || meta.terminals.get(name);
-        if (!pt) {
-          if (id === '3' || name === '3') pt = meta.terminals.get('13');
-          else if (id === '4' || name === '4') pt = meta.terminals.get('14');
-          else if (id === '1' || name === '1') pt = meta.terminals.get('11');
-          else if (id === '2' || name === '2') pt = meta.terminals.get('12');
-        }
-        if (pt) {
-          baseRelX = Math.round(pt.x - meta.refTerminal.x);
-          baseRelY = Math.round(pt.y - meta.refTerminal.y);
-        }
-      }
-      const numX = baseRelX + 6;
-      const numY = baseRelY >= 40 ? baseRelY - 6 : baseRelY + 10;
-
-      if (comp.rotation || comp.mirrorH || comp.mirrorV) {
-        ctx.save();
-        ctx.translate(numX, numY);
-        if (comp.mirrorH || comp.mirrorV) {
-          ctx.scale(comp.mirrorH ? -1 : 1, comp.mirrorV ? -1 : 1);
-        }
-        if (comp.rotation) {
-          ctx.rotate((-comp.rotation * Math.PI) / 180);
-        }
-        ctx.fillText(t.name, 0, 0);
-        ctx.restore();
-      } else {
-        ctx.fillText(t.name, numX, numY);
-      }
-    }
 
     return true;
   }
@@ -2748,5 +2544,124 @@ export class SymbolRenderer {
       ctx.arc(t.relX, t.relY, 3, 0, Math.PI * 2);
       ctx.fill();
     }
+  }
+
+  /**
+   * Renderiza el Tag del componente y los números/nombres de bornes en orientación siempre correcta (legible, sin rotar ni espejar)
+   */
+  private static renderComponentLabels(ctx: CanvasRenderingContext2D, comp: CircuitComponent) {
+    if (comp.type === 'text_label' || comp.type === 'svg_symbol') return;
+
+    const def = COMPONENT_DEFINITIONS[comp.type];
+    const w = def?.width || 40;
+    const h = def?.height || 80;
+    const rot = comp.rotation || 0;
+    const mH = Boolean(comp.mirrorH);
+    const mV = Boolean(comp.mirrorV);
+
+    const isPower = comp.type.startsWith('power_') || comp.type.startsWith('source_');
+    const isGround = comp.type === 'ground';
+    const isThermal = comp.type.startsWith('thermal_');
+    const isMotorBreaker = comp.type.startsWith('motor_breaker_');
+    const hasHead = comp.type.startsWith('pushbutton_') || comp.type.startsWith('switch_');
+
+    // 1. Centro local del componente
+    const localCenterX = def?.poles ? (def.poles - 1) * 20 : w / 2;
+    const localCenterY = isPower ? 0 : h / 2;
+
+    // 2. Ancla local de la etiqueta (Tag)
+    const localTagX = isThermal ? -34 : isMotorBreaker ? -36 : hasHead ? -22 : (isPower ? -12 : -8);
+    const localTagY = isPower ? 0 : h / 2;
+
+    const center = transformLocalPoint({ x: localCenterX, y: localCenterY }, rot, mH, mV);
+    const tagAnchor = transformLocalPoint({ x: localTagX, y: localTagY }, rot, mH, mV);
+
+    // Renderizar Tag si existe y no es ground
+    if (comp.tag && !isGround) {
+      const dx = tagAnchor.x - center.x;
+      const dy = tagAnchor.y - center.y;
+
+      let drawX = tagAnchor.x;
+      let drawY = tagAnchor.y;
+      let align: CanvasTextAlign = 'center';
+      let baseline: CanvasTextBaseline = 'middle';
+
+      if (Math.abs(dx) >= Math.abs(dy)) {
+        if (dx < 0) {
+          align = 'right';
+          drawX -= 2;
+        } else {
+          align = 'left';
+          drawX += 2;
+        }
+      } else {
+        if (dy < 0) {
+          baseline = 'bottom';
+          drawY -= 3;
+        } else {
+          baseline = 'top';
+          drawY += 3;
+        }
+      }
+
+      ctx.save();
+      ctx.font = 'bold 11px sans-serif';
+      ctx.fillStyle = comp.state?.tripped ? '#dc2626' : '#0f172a';
+      ctx.textAlign = align;
+      ctx.textBaseline = baseline;
+      ctx.fillText(comp.tag, drawX, drawY);
+      ctx.restore();
+    }
+
+    // 3. Renderizar nombres de bornes
+    if (isPower) {
+      ctx.save();
+      ctx.font = 'bold 10px sans-serif';
+      for (const t of comp.terminals) {
+        if (!t.name || t.name.trim() === '') continue;
+        const outDir = transformLocalPoint({ x: 0, y: -14 }, rot, mH, mV);
+        ctx.fillStyle = t.name === 'PE' ? '#16a34a' : t.name === 'N' ? '#0284c7' : '#854d0e';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(t.name, t.relX + outDir.x, t.relY + outDir.y);
+      }
+      ctx.restore();
+      return;
+    }
+
+    ctx.save();
+    ctx.font = '9px sans-serif';
+
+    for (const t of comp.terminals) {
+      if (!t.name || t.name.trim() === '') continue;
+
+      const vx = center.x - t.relX;
+      const vy = center.y - t.relY;
+
+      let numX = t.relX;
+      let numY = t.relY;
+      let align: CanvasTextAlign = 'left';
+      let baseline: CanvasTextBaseline = 'middle';
+
+      if (Math.abs(vy) >= Math.abs(vx)) {
+        // Borne orientado verticalmente (arriba o abajo del símbolo)
+        align = 'left';
+        baseline = 'middle';
+        numX = t.relX + 5;
+        numY = vy >= 0 ? t.relY + 10 : t.relY - 10;
+      } else {
+        // Borne orientado horizontalmente (izquierda o derecha del símbolo)
+        align = 'center';
+        baseline = 'bottom';
+        numX = vx > 0 ? t.relX + 10 : t.relX - 10;
+        numY = t.relY - 5;
+      }
+
+      ctx.fillStyle = t.name === 'PE' ? '#16a34a' : '#64748b';
+      ctx.textAlign = align;
+      ctx.textBaseline = baseline;
+      ctx.fillText(t.name, numX, numY);
+    }
+    ctx.restore();
   }
 }
