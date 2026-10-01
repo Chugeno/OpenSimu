@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -10.0 70.0 20.0" width="70.0" height="20.0">
-  <title>Resistencia, símbolo general</title>
-  <line x1="-20" y1="0" x2="-10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="-10" y="-5" width="30" height="10" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="20" y1="0" x2="30" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

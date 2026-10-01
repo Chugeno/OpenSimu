@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -10.0 50.0 20.0" width="50.0" height="20.0">
-  <title>Retorno automático (sentido de la flecha)</title>
-  <line x1="-20" y1="0" x2="20" y2="0" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="3,-5 3,5 -3,0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

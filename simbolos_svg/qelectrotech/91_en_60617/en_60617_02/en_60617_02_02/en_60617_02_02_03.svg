@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -15.0 30.0 20.0" width="30.0" height="20.0">
-  <title>Corriente continua</title>
-  <line x1="-10" y1="-10" x2="10" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-10" y1="0" x2="10" y2="0" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

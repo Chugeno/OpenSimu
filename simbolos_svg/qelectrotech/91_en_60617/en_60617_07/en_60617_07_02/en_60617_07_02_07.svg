@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -50.0 40.0 80.0" width="40.0" height="80.0">
-  <title>Contacto conmutador de cierre antes de apertura, en ambos sentidos</title>
-  <line x1="0" y1="-20" x2="0" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="0" x2="0" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="0" x2="-8" y2="-23" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-20" y1="-40" x2="-20" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-20" y1="-30" x2="4" y2="-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

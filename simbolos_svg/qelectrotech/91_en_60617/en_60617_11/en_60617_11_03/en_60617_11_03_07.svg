@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-150.0 -22.0 160.0 30.0" width="160.0" height="30.0">
-  <title>Línea con empalme enterrado</title>
-  <line x1="0" y1="0" x2="-140" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-75" y1="-10" x2="-65" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-80" y1="-15" x2="-60" y2="-15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-85" y1="-20" x2="-55" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="-70.0" cy="0.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#000000"/>
-</svg>

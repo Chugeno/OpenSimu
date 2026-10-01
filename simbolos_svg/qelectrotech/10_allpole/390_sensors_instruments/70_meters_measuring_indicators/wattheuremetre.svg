@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-12.0 -2.0 40.0 60.0" width="40.0" height="60.0">
-  <title>Contador de vatios-hora</title>
-  <rect x="-6" y="0" width="32" height="50" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-6" y1="14" x2="26" y2="14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

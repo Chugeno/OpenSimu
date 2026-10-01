@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-12.0 -42.0 20.0 50.0" width="20.0" height="50.0">
-  <title>Región intrínseca entre un colector y una región de tipo de conductividad diferente</title>
-  <line x1="-10" y1="-40" x2="-10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="-10,-25 -2,-20 -2,0 -10,-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-10" y1="-5" x2="6" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

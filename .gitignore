@@ -23,3 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 *.ai
+*.cad
+*.m4a
+*.mp3
+*.wav
+*.pdf
+simbolos_svg/
+public/simbolos_svg
+public/symbols/60px/

@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.0 -45.0 50.0 50.0" width="50.0" height="50.0">
-  <title>Toma de corriente (potencia) con transformador de aislamiento</title>
-  <path d="M 0.00 0.00 A 10.00 10.00 0 0 0 -20.00 -0.00" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-10" y1="-40" x2="-10" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-40" y1="-40" x2="-11" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="-10.0" cy="-10.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" fill="none"/>
-</svg>

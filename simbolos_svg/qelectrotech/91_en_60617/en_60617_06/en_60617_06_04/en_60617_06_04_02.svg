@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-65.0 -65.0 70.0 70.0" width="70.0" height="70.0">
-  <title>Motor lineal, símbolo general</title>
-  <ellipse cx="-30.0" cy="-30.0" rx="30.0" ry="30.0" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-60" y1="-10" x2="0" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

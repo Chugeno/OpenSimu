@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-22.0 -41.0 30.0 60.0" width="30.0" height="60.0">
-  <title>Contador NA</title>
-  <rect x="-20" y="-15" width="10" height="10" stroke="black" stroke-width="0.5" fill="none"/>
-  <line x1="-10" y1="-10" x2="-3" y2="-10" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="-5,-20 0,0 0,10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="-30" x2="0" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="-15.0" cy="-10.0" rx="2.0" ry="2.0" stroke="black" stroke-width="0.5" fill="none"/>
-</svg>

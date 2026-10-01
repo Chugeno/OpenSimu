@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-11.0 -50.0 20.0 80.0" width="20.0" height="80.0">
-  <title>Interruptor seccionador con disparo automático; seccionador en carga automático</title>
-  <line x1="0" y1="-24" x2="0" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="0" x2="0" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="0" x2="-8" y2="-23" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="0.0" cy="-22.0" rx="2.0" ry="2.0" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-2" y1="-24" x2="2" y2="-24" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="-6,-16 -8,-15 -7,-13 -5,-14" stroke="black" stroke-width="1" fill="#000000" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

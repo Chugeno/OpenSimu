@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.0 -45.0 50.0 50.0" width="50.0" height="50.0">
-  <title>Rectificador en conexión de onda completa (puente)</title>
-  <polyline points="-20,0 -40,-20 -20,-40 0,-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-20" y1="-30" x2="-20" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-25" y1="-15" x2="-15" y2="-15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="-25,-25 -15,-25 -20,-15" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

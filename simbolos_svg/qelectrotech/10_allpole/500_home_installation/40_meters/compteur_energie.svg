@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-19.0 -20.0 50.0 70.0" width="50.0" height="70.0">
-  <title>Contador de energía</title>
-  <line x1="-6" y1="10" x2="26" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="-6" y="0" width="32" height="40" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="0" y1="-10" x2="0" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="20" y1="-10" x2="20" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

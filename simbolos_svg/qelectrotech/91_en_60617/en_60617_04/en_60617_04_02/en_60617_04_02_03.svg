@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-35.0 -10.0 70.0 40.0" width="70.0" height="40.0">
-  <title>Condensador de paso; Condensador de paso</title>
-  <line x1="-20" y1="0" x2="20" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-18" y1="-5" x2="18" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="0" x2="0" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-30" y1="-5" x2="30" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20.0 -45.0 50.0 90.0" width="50.0" height="90.0">
-  <title>Autotransformador monofásico</title>
-  <line x1="8" y1="-20" x2="8" y2="-35" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-8" y1="-13" x2="-8" y2="-35" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 18.55 -18.49 A 25.00 25.00 0 0 0 -15.00 5.00" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="8" y1="18" x2="8" y2="35" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-8" y1="18" x2="-8" y2="35" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="0.0" cy="5.0" rx="15.0" ry="15.0" stroke="black" stroke-width="1" fill="none"/>
-</svg>

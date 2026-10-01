@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20.0 -31.0 30.0 60.0" width="30.0" height="60.0">
-  <title>Relé termico NC</title>
-  <line x1="-13" y1="0" x2="3" y2="0" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="-18,7 -18,3 -13,3 -13,-3 -18,-3 -18,-7" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="0,20 0,10 6,-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="-9" x2="7" y2="-9" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="-20" x2="0" y2="-9" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

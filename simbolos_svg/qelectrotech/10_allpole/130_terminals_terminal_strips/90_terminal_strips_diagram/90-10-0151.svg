@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-55.0 -13.0 110.0 20.0" width="110.0" height="20.0">
-  <title>Clema de descontinuación</title>
-  <line x1="-40" y1="-10" x2="-40" y2="0" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="40" y1="0" x2="40" y2="-10" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="-50,-2 -40,1 -27,-4 -14,4 -3,-2 8,3 31,-4 42,2 50,-2" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

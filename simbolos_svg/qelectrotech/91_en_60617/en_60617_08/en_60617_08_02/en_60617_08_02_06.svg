@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -45.0 50.0 50.0" width="50.0" height="50.0">
-  <title>Fasímetro</title>
-  <ellipse cx="0.0" cy="-20.0" rx="20.0" ry="20.0" stroke="black" stroke-width="1" fill="none"/>
-  <path d="M -1.74 -24.80 A 4.95 3.30 0 1 0 1.56 -24.82" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="1.6" y1="-25" x2="1.6" y2="-15.1" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

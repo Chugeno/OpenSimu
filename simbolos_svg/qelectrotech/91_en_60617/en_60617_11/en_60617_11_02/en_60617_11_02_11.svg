@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.0 -45.0 50.0 50.0" width="50.0" height="50.0">
-  <title>Central eólica, prevista</title>
-  <rect x="-40" y="-40" width="40" height="40" stroke="black" stroke-width="1" fill="none"/>
-  <polyline points="-20,-40 0,0 -20,0 0,-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-40" y1="-20" x2="-10" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

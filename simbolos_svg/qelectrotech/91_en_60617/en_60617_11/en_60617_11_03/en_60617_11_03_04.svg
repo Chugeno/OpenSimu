@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-150.0 -32.0 160.0 40.0" width="160.0" height="40.0">
-  <title>Línea en canaleta, línea en tubería</title>
-  <line x1="0" y1="0" x2="-140" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="-70.0" cy="-20.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" fill="none"/>
-</svg>

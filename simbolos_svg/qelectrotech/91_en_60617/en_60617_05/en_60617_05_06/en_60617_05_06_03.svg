@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-27.0 -60.0 40.0 70.0" width="40.0" height="70.0">
-  <title>Célula fotovoltaica</title>
-  <line x1="0" y1="-22" x2="0" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="-50" x2="0" y2="-28" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-20" y1="-40" x2="-10" y2="-30" stroke="black" stroke-width="1" fill="#000000" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-25" y1="-35" x2="-15" y2="-25" stroke="black" stroke-width="1" fill="#000000" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-5" y1="-28" x2="5" y2="-28" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-10" y1="-22" x2="10" y2="-22" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

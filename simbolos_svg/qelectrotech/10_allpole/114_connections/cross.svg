@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -15.0 30.0 30.0" width="30.0" height="30.0">
-  <title>Cruzar</title>
-  <ellipse cx="0.0" cy="0.0" rx="1.0" ry="1.0" stroke="black" stroke-width="1" fill="#000000"/>
-  <line x1="-4" y1="0" x2="4" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="-4" x2="0" y2="4" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

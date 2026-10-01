@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-35.0 -15.0 60.0 40.0" width="60.0" height="40.0">
-  <title>Engranajes</title>
-  <line x1="0" y1="0" x2="20" y2="0" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="-10.0" cy="0.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
-  <ellipse cx="-10.0" cy="15.0" rx="5.0" ry="5.0" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
-  <line x1="-30" y1="15" x2="-15" y2="15" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

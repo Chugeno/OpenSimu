@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-39.0 -10.0 50.0 20.0" width="50.0" height="20.0">
-  <title>Accionado por semiconductores</title>
-  <rect x="-34" y="-5" width="20" height="10" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-14" y1="0" x2="6" y2="0" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-29" y1="0" x2="-24" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-24" y1="3" x2="-24" y2="-3" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-24" y1="-1" x2="-21" y2="-3" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-24" y1="1" x2="-21" y2="3" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

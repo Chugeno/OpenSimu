@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-9.0 -30.0 20.0 60.0" width="20.0" height="60.0">
-  <title>Final de carrera (NC)</title>
-  <polyline points="5,-10 0,10 0,20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="-9" x2="6" y2="-9" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="-20" x2="0" y2="-9" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="4,-7 -1,-7 1,6" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

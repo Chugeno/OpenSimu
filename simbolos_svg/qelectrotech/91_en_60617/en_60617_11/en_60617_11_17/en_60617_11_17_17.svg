@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50.0 -10.0 100.0 20.0" width="100.0" height="20.0">
-  <title>Unidad de transposición de fases</title>
-  <line x1="40" y1="0" x2="-40" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-40" y1="-5" x2="-40" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="40" y1="-5" x2="40" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="-20,-5 -10,-5 10,5 20,5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

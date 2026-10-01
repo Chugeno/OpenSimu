@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10.0 -15.0 20.0 30.0" width="20.0" height="30.0">
-  <title>Puente</title>
-  <path d="M -0.00 3.00 A 3.00 3.00 0 0 0 0.00 -3.00" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="0" y1="-7" x2="0" y2="-3" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="3" x2="0" y2="7" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

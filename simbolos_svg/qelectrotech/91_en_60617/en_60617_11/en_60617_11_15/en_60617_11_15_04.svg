@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -10.0 60.0 20.0" width="60.0" height="20.0">
-  <title>Luminaria, símbolo general; Lámpara fluorescente, símbolo general</title>
-  <line x1="-20" y1="0" x2="30" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-20" y1="-5" x2="-20" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="30" y1="-5" x2="30" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

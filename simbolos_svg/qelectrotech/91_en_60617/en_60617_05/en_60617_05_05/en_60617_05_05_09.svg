@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -10.0 50.0 40.0" width="50.0" height="40.0">
-  <title>Transistor de efecto de campo de unión con canal de tipo N</title>
-  <line x1="30" y1="0" x2="10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="10" y1="-5" x2="10" y2="25" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="30" y1="20" x2="-10" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="0,15 5,20 0,25" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

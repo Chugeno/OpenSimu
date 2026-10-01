@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -25.0 50.0 50.0" width="50.0" height="50.0">
-  <title>Arrancador con autotransformador</title>
-  <rect x="-20" y="-20" width="40" height="40" stroke="black" stroke-width="1" fill="none"/>
-  <polyline points="-20,-20 0,-10 20,-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="0.0" cy="0.0" rx="5.0" ry="5.0" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-10" y1="0" x2="-5" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="10" y1="0" x2="15" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="2" y1="5" x2="10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

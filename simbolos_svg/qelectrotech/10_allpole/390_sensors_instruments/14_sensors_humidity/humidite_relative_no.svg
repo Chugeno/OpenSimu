@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-41.0 -31.0 50.0 60.0" width="50.0" height="60.0">
-  <title>Accionado por humedad relativa NA</title>
-  <rect x="-34" y="-7" width="22" height="14" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-12" y1="0" x2="-3" y2="0" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="-5,-10 0,10 0,20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="-20" x2="0" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="-16.0" cy="4.0" rx="1.0" ry="1.0" stroke="black" stroke-width="1" fill="#000000"/>
-</svg>

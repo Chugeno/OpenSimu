@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40.0 -50.0 50.0 80.0" width="50.0" height="80.0">
-  <title>Interruptor, accionamiento manual, símbolo general</title>
-  <line x1="-35" y1="-10" x2="-4" y2="-10" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="-20" x2="0" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-35" y1="-15" x2="-35" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="0" x2="0" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="0" x2="-8" y2="-23" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

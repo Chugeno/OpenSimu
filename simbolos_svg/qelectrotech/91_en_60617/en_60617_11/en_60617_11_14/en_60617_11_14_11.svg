@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -25.0 30.0 30.0" width="30.0" height="30.0">
-  <title>Pulsador con lámpara indicadora</title>
-  <ellipse cx="-10.0" cy="-10.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" fill="none"/>
-  <ellipse cx="-10.0" cy="-10.0" rx="5.0" ry="5.0" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-13" y1="-13" x2="-7" y2="-7" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-7" y1="-13" x2="-13" y2="-7" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

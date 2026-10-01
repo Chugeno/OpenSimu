@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-23.0 -47.0 50.0 50.0" width="50.0" height="50.0">
-  <title>Interruptor limitador de periodo, unipolar</title>
-  <ellipse cx="-10.0" cy="-10.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="10" y1="-45" x2="-5" y2="-19" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="10" y1="-45" x2="20" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

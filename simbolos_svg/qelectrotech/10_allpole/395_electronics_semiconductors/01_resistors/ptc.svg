@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20.0 -30.0 30.0 60.0" width="30.0" height="60.0">
-  <title>PTC</title>
-  <line x1="0" y1="20" x2="0" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-11" y1="-4" x2="-11" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-8" y1="-4" x2="-8" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="-4" y="-10" width="8" height="20" stroke="black" stroke-width="1" fill="#ffffff"/>
-</svg>

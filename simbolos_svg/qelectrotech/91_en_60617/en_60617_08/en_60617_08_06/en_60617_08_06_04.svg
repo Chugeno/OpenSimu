@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40.0 -50.0 80.0 60.0" width="80.0" height="60.0">
-  <title>Termopar con elemento térmico no aislado</title>
-  <ellipse cx="0.0" cy="0.0" rx="2.0" ry="2.0" stroke="black" stroke-width="1" fill="#000000"/>
-  <polyline points="-10,-40 -10,-15 0,0 10,-15 10,-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-31.5" y1="0" x2="31.5" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

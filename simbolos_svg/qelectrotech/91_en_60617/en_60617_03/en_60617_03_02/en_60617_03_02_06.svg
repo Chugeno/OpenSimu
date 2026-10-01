@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40.0 -50.0 80.0 60.0" width="80.0" height="60.0">
-  <title>Doble empalme de conductores</title>
-  <line x1="-30" y1="-20" x2="30" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-10" y1="-40" x2="-10" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="15" y1="-20" x2="15" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

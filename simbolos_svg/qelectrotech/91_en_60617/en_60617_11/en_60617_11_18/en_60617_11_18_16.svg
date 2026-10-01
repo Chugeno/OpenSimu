@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.0 -45.0 50.0 50.0" width="50.0" height="50.0">
-  <title>Indicador de dirección del viento</title>
-  <rect x="-40" y="-40" width="40" height="40" stroke="black" stroke-width="1" fill="none"/>
-  <polyline points="-10,-10 -10,-30 -30,-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.0 -45.0 50.0 50.0" width="50.0" height="50.0">
-  <title>Convertidor, por ejemplo:
-- de energia
-- de una señal
-- de una medición</title>
-  <line x1="-40" y1="0" x2="0" y2="-40" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

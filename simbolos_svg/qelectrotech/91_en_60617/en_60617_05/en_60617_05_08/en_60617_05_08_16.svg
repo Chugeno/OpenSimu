@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-35.0 -25.0 80.0 40.0" width="80.0" height="40.0">
-  <title>Electrodo de almacenamiento con emisión secundaria en la dirección de la flecha</title>
-  <line x1="40" y1="10" x2="-30" y2="10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="30" y="0" width="10" height="10" stroke="black" stroke-width="1" fill="#000000"/>
-  <line x1="0" y1="10" x2="0" y2="-18" stroke="black" stroke-width="1" fill="#000000" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M -10.00 -10.00 A 10.00 10.00 0 0 0 10.00 -10.00" stroke="black" stroke-width="1" fill="none"/>
-  <polyline points="2,-14 -2,-14 0,-20" stroke="black" stroke-width="1" fill="#000000" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

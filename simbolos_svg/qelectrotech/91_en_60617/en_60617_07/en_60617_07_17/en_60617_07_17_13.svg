@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-65.0 -65.0 70.0 70.0" width="70.0" height="70.0">
-  <title>Relé detector de rotor bloqueado</title>
-  <path d="M -26.50 -42.00 A 2.50 1.50 0 0 0 -31.50 -42.00" stroke="black" stroke-width="1" fill="none"/>
-  <rect x="-60" y="-60" width="60" height="60" stroke="black" stroke-width="1" fill="none"/>
-  <path d="M -36.50 -42.00 A 2.50 1.50 0 0 0 -31.50 -42.00" stroke="black" stroke-width="1" fill="none"/>
-  <path d="M -26.50 -45.00 A 2.50 1.50 0 0 0 -31.50 -45.00" stroke="black" stroke-width="1" fill="none"/>
-  <path d="M -36.50 -45.00 A 2.50 1.50 0 0 0 -31.50 -45.00" stroke="black" stroke-width="1" fill="none"/>
-</svg>

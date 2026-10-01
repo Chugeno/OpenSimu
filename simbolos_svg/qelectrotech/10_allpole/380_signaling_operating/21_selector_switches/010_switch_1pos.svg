@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10.0 -30.0 20.0 60.0" width="20.0" height="60.0">
-  <title>Interruptor</title>
-  <ellipse cx="0.0" cy="10.0" rx="1.75" ry="1.75" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="0" y1="-20" x2="0" y2="-12.5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="0.0" cy="-10.0" rx="1.75" ry="1.75" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-5" y1="-10" x2="-0.7" y2="8" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="12" x2="0" y2="17" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

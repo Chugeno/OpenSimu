@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-110.0 -25.0 120.0 50.0" width="120.0" height="50.0">
-  <title>Cámara de acceso con cable con dispositivo anticorrosión</title>
-  <line x1="-94" y1="-10" x2="-74" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-89" y1="-15" x2="-89" y2="-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M -76.00 -5.00 A 2.50 5.00 0 0 0 -76.00 -15.00" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-100" y1="0" x2="0" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="-60" y="-20" width="40" height="40" stroke="black" stroke-width="1" fill="none"/>
-</svg>

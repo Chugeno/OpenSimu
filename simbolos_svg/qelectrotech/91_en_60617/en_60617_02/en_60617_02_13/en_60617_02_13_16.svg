@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -15.0 40.0 30.0" width="40.0" height="30.0">
-  <title>Accionado por levas</title>
-  <line x1="-10" y1="0" x2="7" y2="0" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-19" y1="-9" x2="-19" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M -19.00 -9.00 A 9.00 9.00 0 1 0 -10.00 0.00" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-19" y1="0" x2="-11" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

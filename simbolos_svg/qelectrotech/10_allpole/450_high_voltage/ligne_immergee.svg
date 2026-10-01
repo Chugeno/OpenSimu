@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20.0 -10.0 60.0 20.0" width="60.0" height="20.0">
-  <title>Línea sumergida</title>
-  <path d="M 3.46 -4.46 A 5.00 5.00 0 0 0 10.54 -4.46" stroke="black" stroke-width="1" fill="none"/>
-  <path d="M 10.46 -4.46 A 5.00 5.00 0 0 0 17.54 -4.46" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-10" y1="0" x2="30" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

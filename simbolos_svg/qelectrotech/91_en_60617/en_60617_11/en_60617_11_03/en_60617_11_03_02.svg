@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-150.0 -12.0 160.0 20.0" width="160.0" height="20.0">
-  <title>Línea submarina</title>
-  <line x1="0" y1="0" x2="-140" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M -80.00 -10.00 A 5.00 2.50 0 0 0 -70.00 -10.00" stroke="black" stroke-width="1" fill="none"/>
-  <path d="M -70.00 -10.00 A 5.00 2.50 0 0 0 -60.00 -10.00" stroke="black" stroke-width="1" fill="none"/>
-</svg>

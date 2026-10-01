@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-9.0 -5.0 20.0 10.0" width="20.0" height="10.0">
-  <title>Tránsito de energía en ambas direcciones</title>
-  <line x1="-6" y1="0" x2="6" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="0" x2="7" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-6" y1="-2" x2="-6" y2="2" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

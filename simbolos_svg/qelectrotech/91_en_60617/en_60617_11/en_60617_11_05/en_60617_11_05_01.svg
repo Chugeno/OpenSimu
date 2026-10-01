@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.0 -75.0 70.0 80.0" width="70.0" height="80.0">
-  <title>Cabecera con antena local</title>
-  <ellipse cx="-20.0" cy="-50.0" rx="20.0" ry="20.0" stroke="black" stroke-width="1" fill="none"/>
-  <polyline points="-37,-60 -3,-60 -20,-30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-20" y1="-60" x2="-20" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-4" y1="-37" x2="20" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

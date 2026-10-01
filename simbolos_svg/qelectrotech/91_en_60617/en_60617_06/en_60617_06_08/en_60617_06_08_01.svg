@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-65.0 -87.0 70.0 90.0" width="70.0" height="90.0">
-  <title>Motor de inducción, trifásico, jaula de ardilla</title>
-  <ellipse cx="-30.0" cy="-30.0" rx="30.0" ry="30.0" stroke="black" stroke-width="1" fill="none"/>
-  <path d="M -25.00 -20.00 A 5.00 2.50 0 0 0 -35.00 -20.00" stroke="black" stroke-width="1" fill="none"/>
-  <path d="M -25.00 -20.00 A 5.00 2.50 0 0 0 -15.00 -20.00" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-30" y1="-80" x2="-30" y2="-60" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-50" y1="-80" x2="-50" y2="-53" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-10" y1="-80" x2="-10" y2="-53" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

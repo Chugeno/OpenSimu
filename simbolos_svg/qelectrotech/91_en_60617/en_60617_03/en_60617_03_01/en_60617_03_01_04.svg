@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50.0 -28.0 100.0 40.0" width="100.0" height="40.0">
-  <title>Circuito de corriente continua</title>
-  <line x1="-40" y1="0" x2="40" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-15" y1="-7" x2="-8" y2="-7" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-15" y1="-5" x2="-8" y2="-5" stroke="black" stroke-width="1" stroke-dasharray="1,2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

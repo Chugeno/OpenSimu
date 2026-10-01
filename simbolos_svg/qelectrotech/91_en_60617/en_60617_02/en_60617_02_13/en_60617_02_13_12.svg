@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-28.0 -10.0 40.0 20.0" width="40.0" height="20.0">
-  <title>Accionado por mango extraíble</title>
-  <line x1="-10" y1="0" x2="7" y2="0" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="-24,0 -17,7 -10,0 -17,-7" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

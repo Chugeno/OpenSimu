@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8.0 -33.0 30.0 60.0" width="30.0" height="60.0">
-  <title>Time-delay contact</title>
-  <polyline points="5,-10 10,10 10,20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="10" y1="-20" x2="10" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="7" y1="0" x2="3" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M -2.00 5.00 A 5.00 5.00 0 0 0 -2.00 -5.00" stroke="black" stroke-width="1" fill="none"/>
-</svg>

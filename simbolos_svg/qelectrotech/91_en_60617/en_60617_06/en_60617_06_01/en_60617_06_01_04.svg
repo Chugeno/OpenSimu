@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-12.0 -3.0 50.0 30.0" width="50.0" height="30.0">
-  <title>Devanado trifásico, fases no interconectadas</title>
-  <line x1="0" y1="0" x2="0" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-10" y1="0" x2="-10" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-5" y1="0" x2="-5" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 25.00 10.00 A 5.00 2.50 0 0 0 15.00 10.00" stroke="black" stroke-width="1" fill="none"/>
-  <path d="M 25.00 10.00 A 5.00 2.50 0 0 0 35.00 10.00" stroke="black" stroke-width="1" fill="none"/>
-</svg>

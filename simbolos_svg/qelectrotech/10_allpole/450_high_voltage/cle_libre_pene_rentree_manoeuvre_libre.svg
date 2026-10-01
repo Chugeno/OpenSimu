@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -15.0 50.0 30.0" width="50.0" height="30.0">
-  <title>Llave de enclavamiento libre, maniobra de entrada libre</title>
-  <line x1="-8" y1="-7" x2="9" y2="8" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="19" y="-8" width="4" height="15" stroke="black" stroke-width="1" fill="#000000"/>
-  <rect x="-10" y="-10" width="40" height="20" stroke="black" stroke-width="1" fill="none"/>
-  <ellipse cx="0.0" cy="0.0" rx="7.07" ry="7.07" stroke="black" stroke-width="1" fill="none"/>
-</svg>

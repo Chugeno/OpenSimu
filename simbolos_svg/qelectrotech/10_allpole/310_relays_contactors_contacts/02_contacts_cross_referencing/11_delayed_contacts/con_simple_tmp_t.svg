@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20.0 -30.0 30.0 60.0" width="30.0" height="60.0">
-  <title>Contactor simple (tiempo retardado de encendido)</title>
-  <polyline points="-5,-10 0,10 0,20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-14.8" y1="1.5" x2="-3" y2="1.5" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-14.8" y1="-1.5" x2="-3" y2="-1.5" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M -10.00 -5.00 A 5.00 5.00 0 0 0 -10.00 5.00" stroke="black" stroke-width="0.5" fill="none"/>
-  <line x1="0" y1="-20" x2="0" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

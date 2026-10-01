@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-86.0 -134.0 90.0 160.0" width="90.0" height="160.0">
-  <title>Autotransformador, símbolo general</title>
-  <ellipse cx="-30.0" cy="-30.0" rx="30.0" ry="30.0" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-30" y1="-110" x2="-30" y2="-90" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-30" y1="0" x2="-30" y2="20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 0.00 -30.00 A 30.00 60.00 0 0 0 -30.00 -90.00" stroke="black" stroke-width="1" fill="none"/>
-</svg>

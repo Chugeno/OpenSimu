@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-22.0 -30.0 30.0 60.0" width="30.0" height="60.0">
-  <title>Final de carrera</title>
-  <polyline points="-16,10 -16,-1 -17,-4 -17,-12 -19,-12 -19,10" stroke="black" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="-15.0" cy="-3.0" rx="1.5" ry="1.5" stroke="black" stroke-width="0.5" fill="none"/>
-  <polyline points="-5,-10 0,10 0,20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="-20" x2="0" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-13.5" y1="-3" x2="-4" y2="-3" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10.0 -40.0 20.0 80.0" width="20.0" height="80.0">
-  <title>Fusible</title>
-  <line x1="0" y1="-30" x2="0" y2="30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="-5" y="-15" width="10" height="30" stroke="black" stroke-width="1" fill="none"/>
-  <rect x="-5" y="-15" width="10" height="5" stroke="black" stroke-width="1" fill="#000000"/>
-</svg>

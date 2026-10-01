@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -27.0 60.0 60.0" width="60.0" height="60.0">
-  <title>Motormonofásico</title>
-  <polyline points="20,-20 20,9 15,9" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="-20,-20 -20,10 -15,10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="0.0" cy="10.0" rx="15.0" ry="15.0" stroke="black" stroke-width="1" fill="none"/>
-</svg>

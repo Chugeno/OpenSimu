@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20.0 -10.0 40.0 20.0" width="40.0" height="20.0">
-  <title>teclado</title>
-  <ellipse cx="-10.0" cy="0.0" rx="4.0" ry="4.0" stroke="black" stroke-width="1" fill="#000000"/>
-  <ellipse cx="10.0" cy="0.0" rx="4.0" ry="4.0" stroke="black" stroke-width="1" fill="#000000"/>
-</svg>

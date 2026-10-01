@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40.0 -40.0 80.0 60.0" width="80.0" height="60.0">
-  <title>Motor paso a paso</title>
-  <ellipse cx="0.0" cy="0.0" rx="15.0" ry="15.0" stroke="black" stroke-width="1" fill="none"/>
-  <polyline points="-6,8 -6,5 6,5 6,2" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="-10,-30 -10,-20 -7,-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="10,-30 10,-20 7,-14" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="30,-30 30,-20 13,-8" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="-30,-30 -30,-20 -13,-8" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

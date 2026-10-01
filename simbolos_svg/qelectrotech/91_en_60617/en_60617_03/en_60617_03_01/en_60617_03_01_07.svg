@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50.0 -15.0 100.0 30.0" width="100.0" height="30.0">
-  <title>Conductor apantallado</title>
-  <line x1="-40" y1="0" x2="40" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="0.0" cy="0.0" rx="10.0" ry="10.0" stroke="black" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
-</svg>

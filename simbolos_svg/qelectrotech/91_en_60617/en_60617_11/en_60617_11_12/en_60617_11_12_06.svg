@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -65.0 30.0 70.0" width="30.0" height="70.0">
-  <title>Borne de consumidor, equipo de acometida</title>
-  <line x1="-10" y1="-60" x2="-10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="-20" y="-40" width="20" height="20" stroke="black" stroke-width="1" fill="none"/>
-  <ellipse cx="-10.0" cy="-30.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#000000"/>
-</svg>

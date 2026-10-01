@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.0 -7.0 50.0 20.0" width="50.0" height="20.0">
-  <title>Corriente alterna 3/N 400/230v 50hz</title>
-  <path d="M -2.04 -2.07 A 3.50 2.50 0 0 0 -7.50 -0.00" stroke="black" stroke-width="1" fill="none"/>
-  <path d="M 2.94 2.02 A 3.50 2.50 0 0 0 8.50 0.09" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-2" y1="-2" x2="3" y2="2" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

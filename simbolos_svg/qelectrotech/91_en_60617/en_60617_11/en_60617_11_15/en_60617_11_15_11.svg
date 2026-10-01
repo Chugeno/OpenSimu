@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -25.0 30.0 30.0" width="30.0" height="30.0">
-  <title>Luminaria de alumbrado de emergencia en circuito especial</title>
-  <line x1="-20" y1="-20" x2="0" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-20" y1="0" x2="0" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="-10.0" cy="-10.0" rx="2.5" ry="2.5" stroke="black" stroke-width="1" fill="#000000"/>
-</svg>

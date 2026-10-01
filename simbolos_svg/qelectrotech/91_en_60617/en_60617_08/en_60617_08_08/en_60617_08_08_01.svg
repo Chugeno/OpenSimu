@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -45.0 50.0 50.0" width="50.0" height="50.0">
-  <title>Reloj, símbolo general</title>
-  <ellipse cx="0.0" cy="-20.0" rx="20.0" ry="20.0" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-14" y1="-20" x2="0" y2="-20" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="-20" x2="0" y2="-36" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

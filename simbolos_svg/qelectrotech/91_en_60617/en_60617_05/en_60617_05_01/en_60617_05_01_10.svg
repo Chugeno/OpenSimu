@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15.0 -10.0 30.0 20.0" width="30.0" height="20.0">
-  <title>Unión que influye en una capa semiconductora, región N que influye en una P</title>
-  <line x1="-10" y1="0" x2="10" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="10" y1="-5" x2="10" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="5,-5 0,0 5,5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

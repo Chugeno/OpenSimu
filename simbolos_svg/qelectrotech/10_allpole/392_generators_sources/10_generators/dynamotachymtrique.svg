@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-23.0 -40.0 40.0 80.0" width="40.0" height="80.0">
-  <title>Dinamo tacómetro</title>
-  <line x1="0" y1="-30" x2="0" y2="30" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="-5" y="-15" width="10" height="30" stroke="black" stroke-width="1" fill="#ffffff"/>
-  <ellipse cx="0.0" cy="0.0" rx="12.5" ry="12.5" stroke="black" stroke-width="1" fill="#ffffff"/>
-</svg>

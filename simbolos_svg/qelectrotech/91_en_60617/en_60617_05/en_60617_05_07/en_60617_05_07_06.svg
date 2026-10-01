@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.0 -75.0 50.0 80.0" width="50.0" height="80.0">
-  <title>Cátodo caliente, calentamiento directo; Calentador para cátodo caliente, calentamiento indirecto; Calentador</title>
-  <path d="M 0.00 -50.00 A 20.00 20.00 0 0 0 -40.00 -50.00" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="-40" y1="-50" x2="-40" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="-50" x2="0" y2="0" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

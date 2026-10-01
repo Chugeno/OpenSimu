@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -30.0 30.0 40.0" width="30.0" height="40.0">
-  <title>Tipo de conductividad del canal, canal de tipo N sobre sustrato de tipo P</title>
-  <line x1="-20" y1="-10" x2="0" y2="-10" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="-20" y1="-25" x2="-20" y2="5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="-10,-15 -15,-10 -10,-5" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

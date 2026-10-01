@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.0 -40.0 50.0 80.0" width="50.0" height="80.0">
-  <title>Piezoceramic transducer</title>
-  <ellipse cx="0.0" cy="0.0" rx="20.0" ry="20.0" stroke="black" stroke-width="1" fill="none"/>
-  <ellipse cx="0.0" cy="0.0" rx="16.0" ry="16.0" stroke="black" stroke-width="1" fill="none"/>
-  <line x1="0" y1="8" x2="0" y2="28" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="0" y1="-29" x2="0" y2="-18" stroke="black" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
