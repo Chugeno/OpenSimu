@@ -182,11 +182,46 @@ export class CadeSimuParser {
         continue;
       }
 
-      // Ignorar cajetín/formato (código 20000) por ahora
-      if (code === '20000') continue;
+      // Ignorar cajetín/formato (código 20000) o formas gráficas sin componente (código 2)
+      if (code === '20000' || code === '2') continue;
+
+      // Textos y anotaciones (código 8)
+      if (code === '8') {
+        let textContent = tag;
+        if (!textContent && parts.length > 2) {
+          textContent = parts.slice(0, parts.length - 2).join('*');
+        }
+        textContent = (textContent || '').trim();
+        if (textContent) {
+          const compX = this.coordToOpenSimu(x1);
+          const compY = this.coordToOpenSimu(y1);
+          const comp: CircuitComponent = {
+            id: `c_cad_${Date.now()}_${components.length}`,
+            type: 'text_label',
+            tag: textContent,
+            x: compX,
+            y: compY,
+            rotation: 0,
+            mirrorH: false,
+            mirrorV: false,
+            terminals: [],
+            state: {
+              width: Math.max(80, textContent.length * 10 + 20),
+              height: 32,
+            },
+          };
+          components.push(comp);
+        }
+        continue;
+      }
 
       // Componentes
-      const mappedType = this.CODE_MAP[code] || 'source_l';
+      const mappedType = this.CODE_MAP[code];
+      if (!mappedType) {
+        // Si el código no está mapeado, no crear un borne de fase fantasma
+        continue;
+      }
+
       const def = COMPONENT_DEFINITIONS[mappedType];
       const compX = this.coordToOpenSimu(x1);
       const compY = this.coordToOpenSimu(y1);
