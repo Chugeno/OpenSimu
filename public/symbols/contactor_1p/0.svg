@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 60 80" width="60" height="80">
+  <defs>
+    <style>
+      .st_wire {
+        stroke: #1e293b;
+        stroke-width: 1.8px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+      .st_term {
+        fill: #1e293b;
+      }
+      .st_tie {
+        stroke: #94a3b8;
+        stroke-width: 1.2px;
+        stroke-dasharray: 3 2;
+        fill: none;
+      }
+    </style>
+  </defs>
+  <circle id="terminal_1" class="st_term" cx="0" cy="0" r="2.5" />
+  <circle id="terminal_2" class="st_term" cx="0" cy="80" r="2.5" />
+  
+  <g>
+    <line class="st_wire" x1="0" y1="0" x2="0" y2="28" />
+    <path class="st_wire" d="M0,24 A4,4 0 0,0 0,32" />
+    <line class="st_wire" x1="0" y1="52" x2="0" y2="80" />
+    <line class="st_wire" x1="0" y1="52" x2="-10" y2="28" />
+  </g>
+</svg>

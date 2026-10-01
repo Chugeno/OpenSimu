@@ -358,7 +358,23 @@ export class SymbolRenderer {
       case 'contactor_1p':
       case 'contactor_2p':
       case 'contactor_3p':
-      case 'contactor_4p':
+      case 'contactor_4p': {
+        const isClosed = Boolean(comp.state.closed || comp.state.energized);
+        const stateIdx = (isSimulation && isClosed) ? 1 : 0;
+        const svgPath = `/symbols/${comp.type}/${stateIdx}.svg`;
+        const poles = comp.state.poles || (comp.type === 'contactor_4p' ? 4 : comp.type === 'contactor_3p' ? 3 : comp.type === 'contactor_2p' ? 2 : 1);
+        const vbW = poles * 40 + 20;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: -20, minY: 0, width: vbW, height: 80 },
+          () => this.renderPowerContactor(ctx, comp, isSimulation),
+          isClosed
+        );
+        break;
+      }
       case 'contact_no_2p':
       case 'contact_no_3p':
       case 'contact_no_4p':
@@ -1011,8 +1027,8 @@ export class SymbolRenderer {
       ctx.strokeStyle = '#94a3b8';
       ctx.lineWidth = 1.2;
       ctx.beginPath();
-      ctx.moveTo(0, 32);
-      ctx.lineTo((poles - 1) * 40, 32);
+      ctx.moveTo(0, 40);
+      ctx.lineTo((poles - 1) * 40, 40);
       ctx.stroke();
       ctx.restore();
     }
@@ -1028,31 +1044,30 @@ export class SymbolRenderer {
       ctx.fillStyle = strokeColor;
       ctx.beginPath();
       ctx.arc(offsetX, 0, 2.5, 0, Math.PI * 2);
-      ctx.arc(offsetX, 60, 2.5, 0, Math.PI * 2);
+      ctx.arc(offsetX, 80, 2.5, 0, Math.PI * 2);
       ctx.fill();
 
       // Lead lines
       ctx.beginPath();
       ctx.moveTo(offsetX, 0);
-      ctx.lineTo(offsetX, 22);
-      ctx.moveTo(offsetX, 42);
-      ctx.lineTo(offsetX, 60);
+      ctx.lineTo(offsetX, 28);
+      ctx.moveTo(offsetX, 52);
+      ctx.lineTo(offsetX, 80);
       ctx.stroke();
 
       // IEC 60617 Power contact semicircular arc ("botita") at TOP fixed terminal
-      // Curves to the LEFT forming the boot/lowercase d shape
       ctx.beginPath();
-      ctx.arc(offsetX, 18, 4, Math.PI / 2, -Math.PI / 2, false);
+      ctx.arc(offsetX, 24, 4, Math.PI / 2, -Math.PI / 2, false);
       ctx.stroke();
 
-      // Blade: hinged at bottom (offsetX, 42), tilting up-left
+      // Blade: hinged at bottom (offsetX, 52), tilting up-left
       ctx.beginPath();
       if (isClosed) {
-        ctx.moveTo(offsetX, 42);
-        ctx.lineTo(offsetX, 22);
+        ctx.moveTo(offsetX, 52);
+        ctx.lineTo(offsetX, 28);
       } else {
-        ctx.moveTo(offsetX, 42);
-        ctx.lineTo(offsetX - 10, 22);
+        ctx.moveTo(offsetX, 52);
+        ctx.lineTo(offsetX - 10, 28);
       }
       ctx.stroke();
 
@@ -1063,14 +1078,14 @@ export class SymbolRenderer {
       const topNum = comp.terminals[p * 2]?.name ?? `${p * 2 + 1}`;
       const botNum = comp.terminals[p * 2 + 1]?.name ?? `${p * 2 + 2}`;
       ctx.fillText(topNum, offsetX + 4, 10);
-      ctx.fillText(botNum, offsetX + 4, 54);
+      ctx.fillText(botNum, offsetX + 4, 74);
     }
 
     // Tag to the LEFT of Pole 1
     ctx.font = 'bold 11px sans-serif';
     ctx.fillStyle = '#0f172a';
     ctx.textAlign = 'right';
-    ctx.fillText(comp.tag, -14, 32);
+    ctx.fillText(comp.tag, -14, 40);
   }
 
   private static renderContactNONC(
