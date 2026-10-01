@@ -1,9 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 80 60" width="80" height="60">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 80 80" width="80" height="80">
   
   <circle id="terminal_1" cx="0" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_2" cx="0" cy="60" r="2.5" fill="#1e293b" />
+  <circle id="terminal_2" cx="0" cy="80" r="2.5" fill="#1e293b" />
   <circle id="terminal_3" cx="40" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_4" cx="40" cy="60" r="2.5" fill="#1e293b" />
+  <circle id="terminal_4" cx="40" cy="80" r="2.5" fill="#1e293b" />
+  <line x1="0" y1="0" x2="0" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="40" y1="0" x2="40" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="0" y1="70" x2="0" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="40" y1="70" x2="40" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
+  <g transform="translate(0, 10)">
+
   <line x1="-5" y1="33" x2="35" y2="33" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3 2" stroke-linecap="round" />
   <g stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
     
@@ -35,5 +41,6 @@
     <!-- Disparo magnético: flecha Radica -->
     <line x1="36.64" y1="36.61" x2="32.19" y2="37.64" stroke-width="1.8" />
     <path d="M31.77,35.91 L26.27,39.05 L32.59,39.45 Z" fill="#0f172a" stroke="none" />
+  </g>
   </g>
 </svg>

@@ -48,6 +48,7 @@ export class CadeSimuParser {
     '8009': 'switch_nc',
     '8015': 'switch_changeover',
     '8014': 'switch_no_nc',
+    '8020': 'switch_I_0_II',
     '8010': 'limit_no',
     '8011': 'limit_nc',
     '8012': 'limit_no_nc',
@@ -55,7 +56,7 @@ export class CadeSimuParser {
 
     // Bobinas
     '9000': 'coil',
-    '9001': 'coil',
+    '9001': 'bistable_coil',
     '2000': 'coil',
     '2008': 'contactor_3p',
 
@@ -248,6 +249,24 @@ export class CadeSimuParser {
             poles: def.poles || 1,
           },
         };
+
+        const cadTermNames = [
+          tokens[i + 3],
+          tokens[i + 4],
+          tokens[i + 5],
+          tokens[i + 6],
+          tokens[i + 7],
+          tokens[i + 8],
+        ].map((t) => (t || '').trim()).filter(Boolean);
+
+        if (cadTermNames.length > 0) {
+          comp.terminals.forEach((term, idx) => {
+            if (cadTermNames[idx]) {
+              term.name = cadTermNames[idx];
+            }
+          });
+        }
+
         updateComponentTerminals(comp);
         components.push(comp);
       }
@@ -319,6 +338,8 @@ export class CadeSimuParser {
       transformer: '3012',
       transformer_III: '3017',
       switch_changeover: '8015',
+      switch_I_0_II: '8020',
+      bistable_coil: '9001',
       buzzer: '9011',
       ring: '9011',
       pilot_light: '9008',

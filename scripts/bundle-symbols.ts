@@ -6,12 +6,13 @@ function walk(dir: string): string[] {
   if (!fs.existsSync(dir)) return results;
   const list = fs.readdirSync(dir);
   list.forEach((file) => {
-    file = path.join(dir, file);
-    const stat = fs.statSync(file);
+    if (file === '60px' || file.startsWith('.')) return;
+    const fullPath = path.join(dir, file);
+    const stat = fs.statSync(fullPath);
     if (stat && stat.isDirectory()) {
-      results = results.concat(walk(file));
+      results = results.concat(walk(fullPath));
     } else if (file.endsWith('.svg')) {
-      results.push(file);
+      results.push(fullPath);
     }
   });
   return results;

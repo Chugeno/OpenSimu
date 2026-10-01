@@ -1,13 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 160 60" width="160" height="60">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 160 80" width="160" height="80">
   
   <circle id="terminal_1" cx="0" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_2" cx="0" cy="60" r="2.5" fill="#1e293b" />
+  <circle id="terminal_2" cx="0" cy="80" r="2.5" fill="#1e293b" />
   <circle id="terminal_3" cx="40" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_4" cx="40" cy="60" r="2.5" fill="#1e293b" />
+  <circle id="terminal_4" cx="40" cy="80" r="2.5" fill="#1e293b" />
   <circle id="terminal_5" cx="80" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_6" cx="80" cy="60" r="2.5" fill="#1e293b" />
+  <circle id="terminal_6" cx="80" cy="80" r="2.5" fill="#1e293b" />
   <circle id="terminal_n" cx="120" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_n2" cx="120" cy="60" r="2.5" fill="#1e293b" />
+  <circle id="terminal_n2" cx="120" cy="80" r="2.5" fill="#1e293b" />
+  <line x1="0" y1="0" x2="0" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="40" y1="0" x2="40" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="80" y1="0" x2="80" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="120" y1="0" x2="120" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="0" y1="70" x2="0" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="40" y1="70" x2="40" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="80" y1="70" x2="80" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="120" y1="70" x2="120" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
+  <g transform="translate(0, 10)">
+
   <line x1="0" y1="33" x2="120" y2="33" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3 2" stroke-linecap="round" />
   <g stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
     
@@ -60,5 +70,6 @@
     <line x1="116.5" y1="22" x2="123.5" y2="22" />
     <!-- Cuchilla móvil -->
     <line x1="120" y1="44" x2="120" y2="22" />
+  </g>
   </g>
 </svg>

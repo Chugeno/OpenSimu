@@ -79,7 +79,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 40, height: 60 },
+          { minX: 0, minY: 0, width: 40, height: 80 },
           () => this.renderSwitchNO(ctx, comp, isSimulation),
           isClosed
         );
@@ -105,7 +105,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 40, height: 60 },
+          { minX: 0, minY: 0, width: 40, height: 80 },
           () => this.renderSwitchNC(ctx, comp, isSimulation),
           isActuated
         );
@@ -124,7 +124,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 80, height: 60 },
+          { minX: 0, minY: 0, width: 80, height: 80 },
           () => this.renderContactNONC(ctx, comp, isSimulation),
           isActuated
         );
@@ -143,7 +143,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 80, height: 60 },
+          { minX: 0, minY: 0, width: 80, height: 80 },
           () => this.renderContactChangeover(ctx, comp, isSimulation),
           isActuated
         );
@@ -159,7 +159,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 80, height: 60 },
+          { minX: 0, minY: 0, width: 80, height: 80 },
           () => this.renderContactChangeover(ctx, comp, isSimulation),
           isActuated
         );
@@ -175,7 +175,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 80, height: 60 },
+          { minX: 0, minY: 0, width: 80, height: 80 },
           () => this.renderContactNONC(ctx, comp, isSimulation),
           isActuated
         );
@@ -191,7 +191,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 80, height: 60 },
+          { minX: 0, minY: 0, width: 80, height: 80 },
           () => this.renderContactChangeover(ctx, comp, isSimulation),
           isActuated
         );
@@ -208,7 +208,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 40, height: 60 },
+          { minX: 0, minY: 0, width: 40, height: 80 },
           () => this.renderCoil(ctx, comp, isSimulation),
           energized
         );
@@ -226,7 +226,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 40, height: 60 },
+          { minX: 0, minY: 0, width: 40, height: 80 },
           () => this.renderCoil(ctx, comp, isSimulation),
           energized
         );
@@ -308,7 +308,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 40, height: 60 },
+          { minX: 0, minY: 0, width: 40, height: 80 },
           () => this.renderCoil(ctx, comp, isSimulation),
           isActuated
         );
@@ -348,7 +348,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 40, height: 60 },
+          { minX: 0, minY: 0, width: 40, height: 80 },
           () => this.renderCoil(ctx, comp, isSimulation),
           isActuated
         );
@@ -377,7 +377,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 40, height: 60 },
+          { minX: 0, minY: 0, width: 40, height: 80 },
           () => this.renderPilotLight(ctx, comp, isSimulation)
         );
         break;
@@ -393,7 +393,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: -10, minY: 0, width: 50, height: 60 },
+          { minX: -10, minY: 0, width: 50, height: 80 },
           () => this.renderPilotLight(ctx, comp, isSimulation),
           energized
         );
@@ -413,7 +413,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: -20, minY: 0, width: 80, height: 60 },
+          { minX: -20, minY: 0, width: 80, height: 80 },
           () => this.renderProtectionBreaker(ctx, comp, isSimulation),
           isClosed
         );
@@ -429,7 +429,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 40, height: 60 },
+          { minX: 0, minY: 0, width: 40, height: 80 },
           () => this.renderProtectionBreaker(ctx, comp, isSimulation),
           isOpen
         );
@@ -470,7 +470,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: -40, minY: 0, width: 140, height: 60 },
+          { minX: -40, minY: 0, width: 140, height: 80 },
           () => this.renderProtectionBreaker(ctx, comp, isSimulation),
           isClosed
         );
@@ -486,7 +486,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 120, height: 60 },
+          { minX: 0, minY: 0, width: 120, height: 80 },
           () => this.renderThermalRelay(ctx, comp, isSimulation),
           isTripped
         );
@@ -502,7 +502,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width, height: 60 },
+          { minX: 0, minY: 0, width, height: 80 },
           () => this.renderSurgeArrester(ctx, comp, isSimulation),
           false
         );
@@ -518,7 +518,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: -20, minY: 0, width: 40, height: 60 },
+          { minX: -20, minY: 0, width: 40, height: 80 },
           () => this.renderSwitchNC(ctx, comp, isSimulation),
           isTripped
         );
@@ -534,7 +534,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: -20, minY: 0, width: 40, height: 60 },
+          { minX: -20, minY: 0, width: 40, height: 80 },
           () => this.renderSwitchNO(ctx, comp, isSimulation),
           isTripped
         );
@@ -550,7 +550,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 80, height: 60 },
+          { minX: 0, minY: 0, width: 80, height: 80 },
           () => this.renderContactNONC(ctx, comp, isSimulation),
           isTripped
         );
@@ -566,7 +566,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 80, height: 60 },
+          { minX: 0, minY: 0, width: 80, height: 80 },
           () => this.renderContactChangeover(ctx, comp, isSimulation),
           isTripped
         );
@@ -583,7 +583,7 @@ export class SymbolRenderer {
           comp,
           isSimulation,
           svgPath,
-          { minX: 0, minY: 0, width: 52, height: 60 },
+          { minX: 0, minY: 0, width: 52, height: 80 },
           () => this.renderSwitchNO(ctx, comp, isSimulation),
           isActuated
         );
@@ -2452,7 +2452,7 @@ export class SymbolRenderer {
       .catch(() => {
         this.svgMetadataCache.set(svgPath, {
           terminals: new Map(),
-          viewBox: { minX: 0, minY: 0, width: 40, height: 60 },
+          viewBox: { minX: 0, minY: 0, width: 40, height: 80 },
         });
       });
   }

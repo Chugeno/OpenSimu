@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 0 180 80" width="180" height="80">
+  
+  <circle id="terminal_1" cx="0" cy="0" r="2.5" fill="#1e293b" />
+  <circle id="terminal_2" cx="0" cy="80" r="2.5" fill="#1e293b" />
+  <circle id="terminal_3" cx="40" cy="0" r="2.5" fill="#1e293b" />
+  <circle id="terminal_4" cx="40" cy="80" r="2.5" fill="#1e293b" />
+  <circle id="terminal_5" cx="80" cy="0" r="2.5" fill="#1e293b" />
+  <circle id="terminal_6" cx="80" cy="80" r="2.5" fill="#1e293b" />
+  <circle id="terminal_n" cx="120" cy="0" r="2.5" fill="#1e293b" />
+  <circle id="terminal_n2" cx="120" cy="80" r="2.5" fill="#1e293b" />
+  
+  <!-- Palanca manual T a la izquierda -->
+  <line x1="-34" y1="24" x2="-34" y2="32" stroke="#0f172a" stroke-width="1.5" stroke-linecap="round" />
+  <line x1="-34" y1="28" x2="-26" y2="28" stroke="#64748b" stroke-width="1.2" stroke-dasharray="3 2" />
+  
+  <!-- Cuadradito blanco con cruz -->
+  <rect x="-26" y="22" width="12" height="12" fill="#ffffff" stroke="#0f172a" stroke-width="1.5" />
+  <line x1="-20" y1="22" x2="-20" y2="34" stroke="#0f172a" stroke-width="1.5" />
+  <line x1="-26" y1="28" x2="-14" y2="28" stroke="#0f172a" stroke-width="1.5" />
+  
+  <!-- Barra de acoplamiento de cuchillas a Y = 28 -->
+  <line x1="-14" y1="28" x2="120" y2="28" stroke="#64748b" stroke-width="1.2" stroke-dasharray="3 2" />
+  
+  <rect x="-10" y="38" width="140" height="14" fill="#ffffff" stroke="#0f172a" stroke-width="1.5" />
+  <rect x="-10" y="52" width="140" height="14" fill="#ffffff" stroke="#0f172a" stroke-width="1.5" />
+  <line x1="-20" y1="34" x2="-20" y2="59" stroke="#64748b" stroke-width="1.2" stroke-dasharray="3 2" />
+  <line x1="-20" y1="45" x2="-10" y2="45" stroke="#64748b" stroke-width="1.2" stroke-dasharray="3 2" />
+  <line x1="-20" y1="59" x2="-10" y2="59" stroke="#64748b" stroke-width="1.2" stroke-dasharray="3 2" />
+    
+  <g stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    
+    <!-- Polo 1 -->
+    <line x1="0" y1="0" x2="0" y2="20" />
+    <line x1="-2.5" y1="12.5" x2="2.5" y2="17.5" />
+    <line x1="2.5" y1="12.5" x2="-2.5" y2="17.5" />
+    <line x1="-3.5" y1="20" x2="3.5" y2="20" />
+    <line x1="0" y1="36" x2="-10" y2="20" />
+    <line x1="0" y1="36" x2="0" y2="38" />
+    <path d="M0,38 L0,41 L5.5,41 L5.5,49 L0,49 L0,52" />
+    <!-- Magnético I >> -->
+    <line x1="-6" y1="56.5" x2="-6" y2="61.5" />
+    <line x1="-7.5" y1="56.5" x2="-4.5" y2="56.5" />
+    <line x1="-7.5" y1="61.5" x2="-4.5" y2="61.5" />
+    <path d="M-2,56.5 L1,59 L-2,61.5" />
+    <path d="M3.5,56.5 L6.5,59 L3.5,61.5" />
+    <line x1="0" y1="66" x2="0" y2="80" />
+    <!-- Polo 2 -->
+    <line x1="40" y1="0" x2="40" y2="20" />
+    <line x1="37.5" y1="12.5" x2="42.5" y2="17.5" />
+    <line x1="42.5" y1="12.5" x2="37.5" y2="17.5" />
+    <line x1="36.5" y1="20" x2="43.5" y2="20" />
+    <line x1="40" y1="36" x2="30" y2="20" />
+    <line x1="40" y1="36" x2="40" y2="38" />
+    <path d="M40,38 L40,41 L45.5,41 L45.5,49 L40,49 L40,52" />
+    <!-- Magnético I >> -->
+    <line x1="34" y1="56.5" x2="34" y2="61.5" />
+    <line x1="32.5" y1="56.5" x2="35.5" y2="56.5" />
+    <line x1="32.5" y1="61.5" x2="35.5" y2="61.5" />
+    <path d="M38,56.5 L41,59 L38,61.5" />
+    <path d="M43.5,56.5 L46.5,59 L43.5,61.5" />
+    <line x1="40" y1="66" x2="40" y2="80" />
+    <!-- Polo 3 -->
+    <line x1="80" y1="0" x2="80" y2="20" />
+    <line x1="77.5" y1="12.5" x2="82.5" y2="17.5" />
+    <line x1="82.5" y1="12.5" x2="77.5" y2="17.5" />
+    <line x1="76.5" y1="20" x2="83.5" y2="20" />
+    <line x1="80" y1="36" x2="70" y2="20" />
+    <line x1="80" y1="36" x2="80" y2="38" />
+    <path d="M80,38 L80,41 L85.5,41 L85.5,49 L80,49 L80,52" />
+    <!-- Magnético I >> -->
+    <line x1="74" y1="56.5" x2="74" y2="61.5" />
+    <line x1="72.5" y1="56.5" x2="75.5" y2="56.5" />
+    <line x1="72.5" y1="61.5" x2="75.5" y2="61.5" />
+    <path d="M78,56.5 L81,59 L78,61.5" />
+    <path d="M83.5,56.5 L86.5,59 L83.5,61.5" />
+    <line x1="80" y1="66" x2="80" y2="80" />
+    <!-- Polo 4 -->
+    <line x1="120" y1="0" x2="120" y2="20" />
+    <line x1="117.5" y1="12.5" x2="122.5" y2="17.5" />
+    <line x1="122.5" y1="12.5" x2="117.5" y2="17.5" />
+    <line x1="116.5" y1="20" x2="123.5" y2="20" />
+    <line x1="120" y1="36" x2="110" y2="20" />
+    <line x1="120" y1="36" x2="120" y2="80" />
+  </g>
+</svg>

@@ -889,7 +889,11 @@ fileInput.onchange = (e) => {
       alert('Error al leer el archivo.');
     }
   };
-  reader.readAsText(file);
+  if (isCad) {
+    reader.readAsText(file, 'windows-1252');
+  } else {
+    reader.readAsText(file, 'utf-8');
+  }
   fileInput.value = '';
 };
 
