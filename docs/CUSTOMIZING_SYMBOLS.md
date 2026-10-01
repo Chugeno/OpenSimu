@@ -55,16 +55,6 @@ El compilador de OpenSimu detecta automáticamente dónde deben conectarse los c
   - `id="terminal_x1"`
   - `id="terminal_x2"`
 
-### Elementos admitidos para bornes:
-Puedes definir el borne con un `<circle>`, `<line>` o `<rect>`:
-```xml
-<!-- Círculo de borne superior en (20, 0) -->
-<circle id="terminal_13" cx="20" cy="0" r="2.5" fill="#1e293b" />
-
-<!-- Círculo de borne inferior en (20, 80) -->
-<circle id="terminal_14" cx="20" cy="80" r="2.5" fill="#1e293b" />
-```
-
 > [!IMPORTANT]
 > Las coordenadas `cx`/`cy` del elemento con `id="terminal_..."` determinan el punto exacto de conexión eléctrica del cable. Asegúrate de que caigan exactamente en la coordenada deseada (por ejemplo `Y = 0` o `Y = 80`).
 
