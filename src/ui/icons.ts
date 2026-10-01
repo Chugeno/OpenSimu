@@ -962,6 +962,24 @@ export const COMPONENT_ICONS: Record<string, string> = {
       <line x1="11" y1="21" x2="21" y2="11" stroke="#22c55e" stroke-width="1.6" />
     </svg>`,
 
+  buzzer: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.6">
+      <line x1="10" y1="4" x2="10" y2="13" />
+      <line x1="10" y1="13" x2="18" y2="13" />
+      <line x1="18" y1="19" x2="10" y2="19" />
+      <line x1="10" y1="19" x2="10" y2="28" />
+      <path d="M 23 10 A 6 6 0 0 0 23 22 Z" fill="#93c5fd" stroke="#3b82f6" stroke-width="1.5" />
+    </svg>`,
+
+  ring: `
+    <svg viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.6">
+      <line x1="10" y1="4" x2="10" y2="13" />
+      <line x1="10" y1="13" x2="16" y2="13" />
+      <line x1="16" y1="19" x2="10" y2="19" />
+      <line x1="10" y1="19" x2="10" y2="28" />
+      <path d="M 16 10 A 6 6 0 0 1 16 22 Z" fill="#93c5fd" stroke="#3b82f6" stroke-width="1.5" />
+    </svg>`,
+
   junction: `
     <svg viewBox="0 0 32 32" fill="none">
       <line x1="16" y1="4" x2="16" y2="28" stroke="#94a3b8" stroke-width="2" />

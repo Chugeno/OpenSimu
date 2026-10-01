@@ -285,6 +285,7 @@ export class CadeSimuParser {
       transformer_III: '3017',
       switch_changeover: '8015',
       buzzer: '9011',
+      ring: '9011',
       pilot_light: '9008',
     };
 

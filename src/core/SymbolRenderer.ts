@@ -383,6 +383,23 @@ export class SymbolRenderer {
         break;
       }
 
+      case 'buzzer':
+      case 'ring': {
+        const energized = Boolean(isSimulation && comp.state.energized);
+        const stateIdx = energized ? 1 : 0;
+        const svgPath = `/symbols/${comp.type}/${stateIdx}.svg`;
+        this.renderSvgWithFallback(
+          ctx,
+          comp,
+          isSimulation,
+          svgPath,
+          { minX: -10, minY: 0, width: 50, height: 60 },
+          () => this.renderPilotLight(ctx, comp, isSimulation),
+          energized
+        );
+        break;
+      }
+
       case 'mcb_1p':
       case 'mcb_1p_n':
       case 'mcb_2p':

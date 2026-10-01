@@ -1139,6 +1139,32 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
       { id: 'X2', name: 'X2', relX: 0, relY: 60 },
     ],
   },
+  buzzer: {
+    type: 'buzzer',
+    category: 'signaling',
+    name: 'Zumbador / Avisador Acústico (-H)',
+    defaultTag: '-H',
+    width: 40,
+    height: 60,
+    manualAction: 'none',
+    terminals: [
+      { id: 'X1', name: 'X1', relX: 0, relY: 0 },
+      { id: 'X2', name: 'X2', relX: 0, relY: 60 },
+    ],
+  },
+  ring: {
+    type: 'ring',
+    category: 'signaling',
+    name: 'Timbre / Campanilla Acústica (-H)',
+    defaultTag: '-H',
+    width: 40,
+    height: 60,
+    manualAction: 'none',
+    terminals: [
+      { id: 'X1', name: 'X1', relX: 0, relY: 0 },
+      { id: 'X2', name: 'X2', relX: 0, relY: 60 },
+    ],
+  },
 
   // MOTORES ELÉCTRICOS (TRIFÁSICOS Y MONOFÁSICOS)
   motor_3p: {

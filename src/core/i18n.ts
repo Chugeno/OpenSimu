@@ -146,6 +146,7 @@ export const TRANSLATIONS: Record<SupportedLocale, Record<string, string>> = {
     'comp.motor_1p_4w': 'Motor Monofásico 4 Hilos (U1-V1, U2-V2, PE)',
     'comp.pilot_light': 'Lámpara de Señalización (-H)',
     'comp.buzzer': 'Avisador Acústico / Chicharra (-H)',
+    'comp.ring': 'Timbre / Campanilla Acústica (-H)',
 
     // Contactores y Auxiliares
     'comp.contactor_1p': 'Contactor 1 Polo (1-2)',
@@ -331,6 +332,7 @@ export const TRANSLATIONS: Record<SupportedLocale, Record<string, string>> = {
     'comp.motor_1p_4w': 'Motor Monofásico 4 Hilos (U1-V1, U2-V2, PE)',
     'comp.pilot_light': 'Piloto de Señalización (-H)',
     'comp.buzzer': 'Zumbador / Avisador Acústico (-H)',
+    'comp.ring': 'Timbre / Campanilla Acústica (-H)',
 
     // Contactores y Auxiliares
     'comp.contactor_1p': 'Contactor 1 Polo (1-2)',
@@ -516,6 +518,7 @@ export const TRANSLATIONS: Record<SupportedLocale, Record<string, string>> = {
     'comp.motor_1p_4w': '1-Phase Motor 4-Wire (U1-V1, U2-V2, PE)',
     'comp.pilot_light': 'Pilot Light (-H)',
     'comp.buzzer': 'Acoustic Alarm / Buzzer (-H)',
+    'comp.ring': 'Electric Bell / Acoustic Chime (-H)',
 
     // Contactores y Auxiliares
     'comp.contactor_1p': '1-Pole Contactor (1-2)',

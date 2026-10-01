@@ -295,7 +295,7 @@ export class SimulationEngine {
               }
             }
           }
-        } else if (comp.type === 'pilot_light') {
+        } else if (comp.type === 'pilot_light' || comp.type === 'buzzer' || comp.type === 'ring') {
           const t1 = comp.terminals.find((t) => t.id === 'X1');
           const t2 = comp.terminals.find((t) => t.id === 'X2');
           if (t1 && t2) {
