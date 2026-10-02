@@ -1185,3 +1185,117 @@ function loadDemoCircuit() {
 // Initial translations, category icons, palette render & default demo circuit
 applyTranslations();
 loadDemoCircuit();
+
+// ==========================================================================
+// CHASCARRILLO & HOMENAJE: CADe_SIMU ACCESS KEYPAD (4962)
+// ==========================================================================
+function initCadesimuKeypad() {
+  const cadesimuModal = document.getElementById('cadesimu-modal') as HTMLDivElement | null;
+  const cadesimuDisplay = document.getElementById('cadesimu-display') as HTMLDivElement | null;
+  const cadesimuOk = document.getElementById('cadesimu-ok') as HTMLButtonElement | null;
+  const cadesimuCnl = document.getElementById('cadesimu-cnl') as HTMLButtonElement | null;
+  const numBtns = document.querySelectorAll<HTMLButtonElement>('.cadesimu-btn[data-key]');
+
+  const tributeModal = document.getElementById('cadesimu-tribute-modal') as HTMLDivElement | null;
+  const tributeDesc = document.getElementById('tribute-desc') as HTMLParagraphElement | null;
+  const btnTributeDisable = document.getElementById('btn-tribute-disable') as HTMLButtonElement | null;
+  const btnTributeAccept = document.getElementById('btn-tribute-accept') as HTMLButtonElement | null;
+
+  if (!cadesimuModal || !cadesimuDisplay) return;
+
+  // Comprobar si se desactivó por hack en HTML o por localStorage
+  const isHackDisabled = (window as any).CADESIMU_KEY_REQUIRED === false;
+  const isStorageDisabled = localStorage.getItem('opensimu_cadesimu_key_disabled') === 'true';
+
+  if (isHackDisabled || isStorageDisabled) {
+    cadesimuModal.style.display = 'none';
+    return;
+  }
+
+  // Estado del teclado (sólo mouse, bloquea teclado físico)
+  let currentPin = '';
+  cadesimuModal.style.display = 'flex';
+
+  const updateDisplay = () => {
+    cadesimuDisplay.textContent = '*'.repeat(currentPin.length);
+  };
+
+  numBtns.forEach((btn) => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      const val = btn.dataset.key;
+      if (val && currentPin.length < 8) {
+        currentPin += val;
+        updateDisplay();
+      }
+    };
+  });
+
+  if (cadesimuCnl) {
+    cadesimuCnl.onclick = (e) => {
+      e.stopPropagation();
+      currentPin = '';
+      updateDisplay();
+    };
+  }
+
+  const handleValidation = () => {
+    cadesimuModal.style.display = 'none';
+    const isMasterCode = currentPin === '4962';
+
+    if (tributeModal) {
+      if (isMasterCode) {
+        if (tributeDesc) {
+          tributeDesc.innerHTML = '¡Has ingresado el legendario código <code>4962</code>! El acceso maestro original de CADe_SIMU.';
+        }
+        if (btnTributeDisable) {
+          btnTributeDisable.style.display = 'inline-block';
+        }
+      } else {
+        if (tributeDesc) {
+          tributeDesc.innerHTML = 'En CADe_SIMU original el código exigido era <code>4962</code>. ¡Aquí en OpenSimu eres libre y puedes continuar con cualquier clave!';
+        }
+        if (btnTributeDisable) {
+          // Si no puso 4962, no se ofrece el botón directo de desactivar, debe usar el hack de Bloc de Notas o ingresar 4962
+          btnTributeDisable.style.display = 'none';
+        }
+      }
+      tributeModal.style.display = 'flex';
+    }
+  };
+
+  if (cadesimuOk) {
+    cadesimuOk.onclick = (e) => {
+      e.stopPropagation();
+      handleValidation();
+    };
+  }
+
+  // Bloqueo estricto del teclado físico en el modal de la calculadora (sólo mouse)
+  window.addEventListener(
+    'keydown',
+    (e) => {
+      if (cadesimuModal.style.display === 'flex') {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    },
+    true
+  );
+
+  // Acciones del modal de homenaje
+  if (btnTributeDisable) {
+    btnTributeDisable.onclick = () => {
+      localStorage.setItem('opensimu_cadesimu_key_disabled', 'true');
+      if (tributeModal) tributeModal.style.display = 'none';
+    };
+  }
+
+  if (btnTributeAccept) {
+    btnTributeAccept.onclick = () => {
+      if (tributeModal) tributeModal.style.display = 'none';
+    };
+  }
+}
+
+initCadesimuKeypad();

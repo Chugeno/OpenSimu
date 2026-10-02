@@ -1079,3 +1079,163 @@ button {
     height: 100vh !important;
   }
 }
+
+/* ==========================================================================
+   RETRO CADe_SIMU ACCESS KEYPAD (CHASCARRILLO CLÁSICO 4962)
+   Estilo fiel a Windows 98 / 2000 / CADe_SIMU Clásico
+   ========================================================================== */
+.cadesimu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(11, 18, 32, 0.78);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.cadesimu-window {
+  background: #ece9d8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 2px 2px 0px #000000, 0 20px 40px rgba(0, 0, 0, 0.6);
+  padding: 18px 24px 22px;
+  width: 250px;
+  font-family: 'Tahoma', 'MS Sans Serif', 'Segoe UI', sans-serif;
+  color: #000000;
+}
+
+.cadesimu-title {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #000000;
+  letter-spacing: -0.2px;
+}
+
+.cadesimu-keypad-box {
+  background: #ece9d8;
+  border: 1px solid;
+  border-color: #9c9a91 #ffffff #ffffff #9c9a91;
+  padding: 16px 14px;
+}
+
+.cadesimu-display {
+  background: #ffffff;
+  border: 2px solid;
+  border-color: #7f9db9 #ffffff #ffffff #7f9db9;
+  height: 32px;
+  margin-bottom: 14px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  font-family: 'Courier New', monospace;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  color: #000000;
+  overflow: hidden;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.cadesimu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.cadesimu-btn {
+  height: 36px;
+  background: #ece9d8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 1px 1px 0px #404040;
+  font-family: 'Tahoma', 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  transition: none;
+}
+
+.cadesimu-btn:hover {
+  background: #f5f4ea;
+}
+
+.cadesimu-btn:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+  box-shadow: inset 1px 1px 0px #000000;
+  padding-top: 2px;
+  padding-left: 2px;
+}
+
+.cadesimu-btn.cadesimu-action {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Modal Homenaje CADe_SIMU */
+.modal-tribute {
+  max-width: 520px;
+  background: #1e293b;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+.tribute-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 6px 0 16px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #cbd5e1;
+}
+
+.tribute-content p strong {
+  color: #60a5fa;
+}
+
+.tribute-content code {
+  background: rgba(96, 165, 250, 0.15);
+  color: #93c5fd;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+.tribute-guide-box {
+  display: flex;
+  gap: 12px;
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(96, 165, 250, 0.25);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-top: 4px;
+}
+
+.tribute-guide-box .guide-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.tribute-guide-box .guide-text strong {
+  display: block;
+  color: #f8fafc;
+  margin-bottom: 4px;
+  font-size: 12.5px;
+}
+
+.tribute-guide-box .guide-text p {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.45;
+  margin: 0;
+}

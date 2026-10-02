@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
+    <!-- ==========================================================================
+         HACK / CHASCARRILLO: ACCESO CLÁSICO ESTILO CADe_SIMU (4962)
+         Para desactivar el teclado numérico de inicio al abrir el archivo en Bloc de Notas,
+         cambia 'true' por 'false' en la siguiente línea:
+         ========================================================================== -->
+    <script>
+      window.CADESIMU_KEY_REQUIRED = true;
+    </script>
+
     <div id="app" class="app-shell">
       <!-- TOPBAR: Brand, Archivo First, Deshacer/Rehacer, Girar/Espejo, Spacer, Idioma, SIMULAR Last -->
       <header class="topbar">
@@ -383,6 +392,56 @@
           <div id="short-circuit-coords" class="short-circuit-coords">📍 Ubicación del corto: X: 0, Y: 0</div>
           <div class="modal-actions">
             <button id="btn-short-circuit-dismiss" class="btn btn-alert" data-i18n="modal.short.dismiss">Aceptar y Corregir</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RETRO CADe_SIMU ACCESS KEYPAD MODAL -->
+      <div id="cadesimu-modal" class="cadesimu-backdrop" style="display: none">
+        <div class="cadesimu-window">
+          <div class="cadesimu-title">Enter the password</div>
+          <div class="cadesimu-keypad-box">
+            <div id="cadesimu-display" class="cadesimu-display" aria-label="Pantalla de contraseña"></div>
+            <div class="cadesimu-grid">
+              <button type="button" class="cadesimu-btn" data-key="1">1</button>
+              <button type="button" class="cadesimu-btn" data-key="2">2</button>
+              <button type="button" class="cadesimu-btn" data-key="3">3</button>
+              <button type="button" class="cadesimu-btn" data-key="4">4</button>
+              <button type="button" class="cadesimu-btn" data-key="5">5</button>
+              <button type="button" class="cadesimu-btn" data-key="6">6</button>
+              <button type="button" class="cadesimu-btn" data-key="7">7</button>
+              <button type="button" class="cadesimu-btn" data-key="8">8</button>
+              <button type="button" class="cadesimu-btn" data-key="9">9</button>
+              <button type="button" class="cadesimu-btn cadesimu-action" id="cadesimu-ok">OK</button>
+              <button type="button" class="cadesimu-btn" data-key="0">0</button>
+              <button type="button" class="cadesimu-btn cadesimu-action" id="cadesimu-cnl">Cnl</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRIBUTE & EASTER EGG INFO MODAL -->
+      <div id="cadesimu-tribute-modal" class="modal-backdrop" style="display: none">
+        <div class="modal modal-tribute">
+          <div class="modal-header">
+            <h3 id="tribute-title">Homenaje a CADe_SIMU</h3>
+            <span class="badge badge-normal">4962</span>
+          </div>
+          <div class="tribute-content">
+            <p><strong>OpenSimu</strong> nace con una profunda admiración y respeto por el mítico software <strong>CADe_SIMU</strong>, desarrollado por <strong>Juan Luis Villanueva Montoto</strong>.</p>
+            <p>Durante décadas, CADe_SIMU fue y sigue siendo la herramienta fundamental con la que generaciones de estudiantes, técnicos e ingenieros electricistas de habla hispana aprendieron a diseñar y simular esquemas de mando y potencia.</p>
+            <p id="tribute-desc">El clásico código <code>4962</code> es el emblema histórico que todo electricista recuerda al abrir el simulador.</p>
+            <div id="tribute-guide-box" class="tribute-guide-box">
+              <span class="guide-icon">💡</span>
+              <div class="guide-text">
+                <strong>¿Quieres desactivar este cartel al inicio?</strong>
+                <p>Puedes desactivarlo permanentemente desde el botón de abajo, o abriendo este archivo <code>OpenSimu.html</code> con el Bloc de Notas y cambiando <code>window.CADESIMU_KEY_REQUIRED = true;</code> a <code>false;</code>.</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-actions" id="tribute-actions">
+            <button id="btn-tribute-disable" class="btn btn-secondary">Desactivar código permanentemente</button>
+            <button id="btn-tribute-accept" class="btn btn-primary">Aceptar y Continuar</button>
           </div>
         </div>
       </div>
