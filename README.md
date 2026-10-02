@@ -5,7 +5,10 @@
 
 [![License](https://img.shields.io/badge/license-Non--Commercial-blue.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-active%20development-orange.svg)]()
-[![Single File HTML](https://img.shields.io/badge/dist-OpenSimu.html-success.svg)]()
+[![PWA Ready](https://img.shields.io/badge/PWA-Installable%20%26%20Offline-success.svg)]()
+[![Live Demo](https://img.shields.io/badge/web-Probar%20Online-brightgreen.svg)](https://chugeno.github.io/OpenSimu/)
+
+👉 **[Probar OpenSimu Online en vivo](https://chugeno.github.io/OpenSimu/)** (o instalar como App en PC/Móvil)
 
 ---
 
