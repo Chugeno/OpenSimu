@@ -3,38 +3,43 @@
   <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
   <defs>
     <style>
-      .st0 {
-        fill: #fef08a;
+      .st0, .st1 {
         stroke: #ca8a04;
         stroke-width: 2.2px;
       }
 
-      .st0, .st1 {
+      .st0, .st1, .st2 {
         stroke-linejoin: round;
       }
 
-      .st2 {
-        fill: #1b293d;
-      }
-
-      .st3 {
-        fill: #ca8a04;
+      .st0, .st2 {
+        fill: none;
       }
 
       .st1 {
-        fill: none;
+        fill: #fef08a;
+      }
+
+      .st3 {
+        fill: #1b293d;
+      }
+
+      .st4 {
+        fill: #ca8a04;
+      }
+
+      .st2 {
         stroke: #1b293d;
         stroke-linecap: round;
         stroke-width: 1.8px;
       }
     </style>
   </defs>
-  <circle id="terminal_a1" class="st2" cx="40" r="2.5"/>
-  <circle id="terminal_a2" class="st2" cx="40" cy="80" r="2.5"/>
-  <line class="st1" x1="40" x2="40" y2="25"/>
-  <line class="st1" x1="40" y1="55" x2="40" y2="80"/>
-  <rect class="st0" x="10" y="25" width="60" height="30"/>
-  <rect class="st3" x="20" y="25" width="10" height="30"/>
-  <line class="st0" x1="10.5" y1="25" x2="20.5" y2="55"/>
-  <line class="st0" x1="10.5" y1="55" x2="20.5" y2="25"/>
+  <circle id="terminal_a1" class="st3" cx="40" r="2.5"/>
+  <circle id="terminal_a2" class="st3" cx="40" cy="80" r="2.5"/>
+  <line class="st2" x1="40" x2="40" y2="27.5"/>
+  <line class="st2" x1="40" y1="52.5" x2="40" y2="80"/>
+  <rect class="st1" x="15" y="27.5" width="50" height="25"/>
+  <rect class="st4" x="23.3" y="27.5" width="8.3" height="25"/>
+  <polyline class="st0" points="15 27.5 23.3 52.5 23.3 27.5 15 52.5"/>
 </svg>

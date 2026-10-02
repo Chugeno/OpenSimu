@@ -1,4 +1,4 @@
-import { CanvasView, type ToolType } from './ui/CanvasView';
+import { CanvasView } from './ui/CanvasView';
 import { COMPONENT_DEFINITIONS } from './core/ComponentRegistry';
 import type { CircuitComponent, ComponentCategory } from './core/types';
 import { CadeSimuParser } from './core/CadeSimuParser';
@@ -15,9 +15,57 @@ const canvasEl = document.getElementById('circuit-canvas') as HTMLCanvasElement;
 const canvasView = new CanvasView(canvasEl);
 
 // State
-let currentCategory: ComponentCategory | 'cables' = 'power';
+let currentCategory: ComponentCategory = 'power';
 let activeCompType: string | null = null;
 let editingComponent: CircuitComponent | null = null;
+
+// Direct Wire & Junction Tool Buttons
+const btnToolWire = document.getElementById('btn-tool-wire') as HTMLButtonElement | null;
+const btnToolJunction = document.getElementById('btn-tool-junction') as HTMLButtonElement | null;
+
+// Floating Canvas Tool Banner
+const floatingToolBanner = document.getElementById('canvas-floating-tool') as HTMLDivElement | null;
+const floatingToolLabel = document.getElementById('floating-tool-label') as HTMLSpanElement | null;
+const btnFloatingCancel = document.getElementById('btn-floating-cancel') as HTMLButtonElement | null;
+
+// Mobile FAB Stack Elements
+const btnFabUndo = document.getElementById('btn-fab-undo') as HTMLButtonElement | null;
+const btnFabCopy = document.getElementById('btn-fab-copy') as HTMLButtonElement | null;
+const btnFabPaste = document.getElementById('btn-fab-paste') as HTMLButtonElement | null;
+const btnFabDelete = document.getElementById('btn-fab-delete') as HTMLButtonElement | null;
+const btnFabTransform = document.getElementById('btn-fab-transform') as HTMLButtonElement | null;
+const mobileTransformFlyout = document.getElementById('mobile-transform-flyout') as HTMLDivElement | null;
+const btnFabRotateCcw = document.getElementById('btn-fab-rotate-ccw') as HTMLButtonElement | null;
+const btnFabRotateCw = document.getElementById('btn-fab-rotate-cw') as HTMLButtonElement | null;
+const btnFabMirrorH = document.getElementById('btn-fab-mirror-h') as HTMLButtonElement | null;
+const btnFabMirrorV = document.getElementById('btn-fab-mirror-v') as HTMLButtonElement | null;
+const btnFabWire = document.getElementById('btn-fab-wire') as HTMLButtonElement | null;
+const btnFabNode = document.getElementById('btn-fab-node') as HTMLButtonElement | null;
+const btnFabAdd = document.getElementById('btn-fab-add') as HTMLButtonElement | null;
+
+// Mobile Catalog Sheet (Drawer) Elements
+const mobileCatalogDrawer = document.getElementById('mobile-catalog-drawer') as HTMLDivElement | null;
+const mobileCatalogBackdrop = document.getElementById('mobile-catalog-backdrop') as HTMLDivElement | null;
+const mobileCatalogBack = document.getElementById('mobile-catalog-back') as HTMLButtonElement | null;
+const mobileCatalogTitle = document.getElementById('mobile-catalog-title') as HTMLHeadingElement | null;
+const mobileCatalogClose = document.getElementById('mobile-catalog-close') as HTMLButtonElement | null;
+const mobileCategoriesView = document.getElementById('mobile-categories-view') as HTMLDivElement | null;
+const mobileComponentsView = document.getElementById('mobile-components-view') as HTMLDivElement | null;
+
+// Mobile File Menu Drawer (Archivo) Elements
+const btnMobileMenu = document.getElementById('btn-mobile-menu') as HTMLButtonElement | null;
+const mobileFileDrawer = document.getElementById('mobile-file-drawer') as HTMLDivElement | null;
+const mobileFileBackdrop = document.getElementById('mobile-file-backdrop') as HTMLDivElement | null;
+const mobileFileClose = document.getElementById('mobile-file-close') as HTMLButtonElement | null;
+
+const mobileBtnClear = document.getElementById('mobile-btn-clear') as HTMLButtonElement | null;
+const mobileBtnLoad = document.getElementById('mobile-btn-load') as HTMLButtonElement | null;
+const mobileBtnSave = document.getElementById('mobile-btn-save') as HTMLButtonElement | null;
+const mobileBtnExportCad = document.getElementById('mobile-btn-export-cad') as HTMLButtonElement | null;
+const mobileBtnPrint = document.getElementById('mobile-btn-print') as HTMLButtonElement | null;
+const mobileBtnDemo = document.getElementById('mobile-btn-demo') as HTMLButtonElement | null;
+const mobileBtnFullscreen = document.getElementById('mobile-btn-fullscreen') as HTMLButtonElement | null;
+const mobileBtnInstallApp = document.getElementById('mobile-btn-install-app') as HTMLButtonElement | null;
 
 // Elements: TopBar
 const btnFile = document.getElementById('btn-file') as HTMLButtonElement | null;
@@ -26,8 +74,11 @@ const btnLoad = document.getElementById('btn-load') as HTMLButtonElement | null;
 const btnSave = document.getElementById('btn-save') as HTMLButtonElement | null;
 const btnExportCad = document.getElementById('btn-export-cad') as HTMLButtonElement | null;
 const btnPrint = document.getElementById('btn-print') as HTMLButtonElement | null;
+const btnFullscreen = document.getElementById('btn-fullscreen') as HTMLButtonElement | null;
 const btnDemo = document.getElementById('btn-demo') as HTMLButtonElement | null;
 const btnClear = document.getElementById('btn-clear') as HTMLButtonElement | null;
+const btnInstallApp = document.getElementById('btn-install-app') as HTMLButtonElement | null;
+const sepInstall = document.getElementById('sep-install') as HTMLDivElement | null;
 const fileInput = document.getElementById('file-input') as HTMLInputElement;
 
 const btnUndo = document.getElementById('btn-undo') as HTMLButtonElement | null;
@@ -169,6 +220,12 @@ I18n.onLocaleChange(() => {
 // Dropdown Menus Management
 function closeAllMenus() {
   document.querySelectorAll<HTMLElement>('.menu').forEach((m) => m.classList.remove('open'));
+  if (mobileTransformFlyout) {
+    mobileTransformFlyout.classList.add('hidden');
+  }
+  if (mobileFileDrawer && mobileFileDrawer.style.display !== 'none') {
+    mobileFileDrawer.style.display = 'none';
+  }
 }
 
 function setupDropdown(btn: HTMLElement | null, menu: HTMLElement | null) {
@@ -289,6 +346,7 @@ canvasView.onStatusUpdate = (status) => {
 // Tool Change Callback (from Esc or Right-Click cancel)
 canvasView.onToolChange = (_tool, compType) => {
   activeCompType = compType;
+  updateToolButtonsState();
   renderPalette();
 };
 
@@ -835,6 +893,7 @@ if (btnMirrorV) {
 canvasView.onHistoryChange = (canUndo, canRedo) => {
   if (btnUndo) btnUndo.disabled = !canUndo;
   if (btnRedo) btnRedo.disabled = !canRedo;
+  if (btnFabUndo) btnFabUndo.disabled = !canUndo;
 };
 
 // Clipboard Actions (Copy, Cut, Paste)
@@ -892,7 +951,8 @@ if (btnDemo) {
 if (btnClear) {
   btnClear.onclick = () => {
     closeAllMenus();
-    if (confirm('¿Limpiar todo el circuito del lienzo?')) {
+    const msg = t('confirm.clear') || '¿Crear un circuito nuevo? Se borrará el lienzo actual.';
+    if (confirm(msg)) {
       canvasView.clearCircuit();
       canvasView.render();
     }
@@ -906,12 +966,459 @@ if (btnPrint) {
   };
 }
 
+if (btnFullscreen) {
+  const fsText = document.getElementById('fullscreen-text');
+  btnFullscreen.onclick = () => {
+    closeAllMenus();
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
+  };
+
+  document.addEventListener('fullscreenchange', () => {
+    if (fsText) {
+      fsText.textContent = document.fullscreenElement ? 'Salir Pantalla Completa' : 'Pantalla Completa';
+    }
+  });
+}
+
+function updateToolButtonsState() {
+  if (btnToolWire) {
+    btnToolWire.classList.toggle('active', canvasView.activeTool.startsWith('wire_'));
+  }
+  if (btnToolJunction) {
+    btnToolJunction.classList.toggle('active', canvasView.activeTool === 'junction');
+  }
+  if (btnFabWire) {
+    btnFabWire.classList.toggle('active', canvasView.activeTool.startsWith('wire_'));
+  }
+  if (btnFabNode) {
+    btnFabNode.classList.toggle('active', canvasView.activeTool === 'junction');
+  }
+
+  // Actualizar banner flotante en el lienzo
+  if (floatingToolBanner && floatingToolLabel) {
+    if (canvasView.activeTool === 'select') {
+      floatingToolBanner.classList.add('hidden');
+    } else {
+      floatingToolBanner.classList.remove('hidden');
+      if (canvasView.activeTool.startsWith('wire_')) {
+        floatingToolLabel.textContent = '⚡ Modo Cable Activo';
+      } else if (canvasView.activeTool === 'junction') {
+        floatingToolLabel.textContent = '⚪ Modo Nodo Activo';
+      } else if (canvasView.activeTool === 'place_component') {
+        floatingToolLabel.textContent = '📍 Colocar Componente';
+      } else {
+        floatingToolLabel.textContent = `Herramienta: ${canvasView.activeTool}`;
+      }
+    }
+  }
+}
+
+if (btnFloatingCancel) {
+  btnFloatingCancel.onclick = () => {
+    canvasView.cancelAction();
+    activeCompType = null;
+    updateToolButtonsState();
+    renderPalette();
+  };
+}
+
+if (btnToolWire) {
+  btnToolWire.onclick = () => {
+    if (canvasView.activeTool.startsWith('wire_')) {
+      canvasView.setTool('select');
+    } else {
+      activeCompType = null;
+      canvasView.setTool('wire_phase');
+    }
+    updateToolButtonsState();
+    renderPalette();
+  };
+  btnToolWire.onmouseenter = () => {
+    statusHint.textContent = 'Cable (Conductor): Arrastrá en la cuadrícula para trazar el cable.';
+  };
+}
+
+if (btnToolJunction) {
+  btnToolJunction.onclick = () => {
+    if (canvasView.activeTool === 'junction') {
+      canvasView.setTool('select');
+    } else {
+      activeCompType = null;
+      canvasView.setTool('junction');
+    }
+    updateToolButtonsState();
+    renderPalette();
+  };
+  btnToolJunction.onmouseenter = () => {
+    statusHint.textContent = 'Nodo / Conexión: Clic para crear un nodo de unión donde no hay, o clic sobre un nodo para borrarlo.';
+  };
+}
+
+// ==========================================================================
+// MOBILE FLOATING ACTION BUTTONS (FAB) & CATALOG SHEET LOGIC
+// ==========================================================================
+
+const MOBILE_CATEGORIES: { id: ComponentCategory; nameKey: string; defaultName: string; desc: string }[] = [
+  { id: 'power', nameKey: 'cat.power', defaultName: 'Alimentación', desc: 'Alimentaciones CA y CC' },
+  { id: 'protections', nameKey: 'cat.protections', defaultName: 'Protecciones', desc: 'Termomagnéticas y Guardamotores' },
+  { id: 'control', nameKey: 'cat.control', defaultName: 'Accionamientos', desc: 'Pulsadores e Interruptores' },
+  { id: 'contactors', nameKey: 'cat.contactors', defaultName: 'Contactores', desc: 'Contactores de Potencia (1P - 4P)' },
+  { id: 'motors', nameKey: 'cat.motors', defaultName: 'Motores', desc: 'Motores Trifásicos y Monofásicos' },
+  { id: 'coils', nameKey: 'cat.coils', defaultName: 'Bobinas', desc: 'Bobinas de Mando y Relés' },
+  { id: 'contacts', nameKey: 'cat.contacts', defaultName: 'Contactos Aux.', desc: 'Contactos NA, NC y Conmutados' },
+  { id: 'signaling', nameKey: 'cat.signaling', defaultName: 'Señalización', desc: 'Pilotos e Indicadores' },
+  { id: 'sensors', nameKey: 'cat.sensors', defaultName: 'Sensores', desc: 'Detectores y Sensores' },
+];
+
+// 1. FAB Deshacer
+if (btnFabUndo) {
+  btnFabUndo.onclick = () => {
+    canvasView.undo();
+  };
+}
+
+// 2. FAB Copiar
+if (btnFabCopy) {
+  btnFabCopy.onclick = () => {
+    canvasView.copy();
+  };
+}
+
+// 3. FAB Pegar
+if (btnFabPaste) {
+  btnFabPaste.onclick = () => {
+    canvasView.paste();
+  };
+}
+
+// FAB Borrar (Aparece dinámicamente cuando hay un elemento seleccionado en móvil)
+if (btnFabDelete) {
+  btnFabDelete.onclick = () => {
+    canvasView.deleteSelected();
+  };
+}
+
+canvasView.onSelectionChange = (hasSelection) => {
+  if (btnFabDelete) {
+    if (hasSelection) {
+      btnFabDelete.classList.remove('hidden');
+    } else {
+      btnFabDelete.classList.add('hidden');
+    }
+  }
+};
+
+// 4. FAB Rotar / Espejo con Menú Desplegable (Flyout)
+if (btnFabTransform && mobileTransformFlyout) {
+  btnFabTransform.onclick = (e) => {
+    e.stopPropagation();
+    mobileTransformFlyout.classList.toggle('hidden');
+  };
+}
+
+if (btnFabRotateCcw) {
+  btnFabRotateCcw.onclick = (e) => {
+    e.stopPropagation();
+    canvasView.rotateSelected(-90);
+    if (mobileTransformFlyout) mobileTransformFlyout.classList.add('hidden');
+  };
+}
+
+if (btnFabRotateCw) {
+  btnFabRotateCw.onclick = (e) => {
+    e.stopPropagation();
+    canvasView.rotateSelected(90);
+    if (mobileTransformFlyout) mobileTransformFlyout.classList.add('hidden');
+  };
+}
+
+if (btnFabMirrorH) {
+  btnFabMirrorH.onclick = (e) => {
+    e.stopPropagation();
+    canvasView.mirrorSelectedHorizontal();
+    if (mobileTransformFlyout) mobileTransformFlyout.classList.add('hidden');
+  };
+}
+
+if (btnFabMirrorV) {
+  btnFabMirrorV.onclick = (e) => {
+    e.stopPropagation();
+    canvasView.mirrorSelectedVertical();
+    if (mobileTransformFlyout) mobileTransformFlyout.classList.add('hidden');
+  };
+}
+
+// 5. FAB Cable
+if (btnFabWire) {
+  btnFabWire.onclick = () => {
+    if (canvasView.activeTool.startsWith('wire_')) {
+      canvasView.setTool('select');
+    } else {
+      activeCompType = null;
+      canvasView.setTool('wire_phase');
+    }
+    updateToolButtonsState();
+    renderPalette();
+  };
+}
+
+// 6. FAB Nodo
+if (btnFabNode) {
+  btnFabNode.onclick = () => {
+    if (canvasView.activeTool === 'junction') {
+      canvasView.setTool('select');
+    } else {
+      activeCompType = null;
+      canvasView.setTool('junction');
+    }
+    updateToolButtonsState();
+    renderPalette();
+  };
+}
+
+// 7. FAB Agregar Componente (+)
+if (btnFabAdd) {
+  btnFabAdd.onclick = () => {
+    openMobileCatalog();
+  };
+}
+
+function openMobileCatalog() {
+  if (!mobileCatalogDrawer) return;
+  if (mobileTransformFlyout) mobileTransformFlyout.classList.add('hidden');
+  mobileCatalogDrawer.style.display = 'flex';
+  showMobileCategoriesView();
+}
+
+function closeMobileCatalog() {
+  if (!mobileCatalogDrawer) return;
+  mobileCatalogDrawer.style.display = 'none';
+}
+
+function showMobileCategoriesView() {
+  if (!mobileCategoriesView || !mobileComponentsView || !mobileCatalogBack || !mobileCatalogTitle) return;
+  mobileCategoriesView.style.display = 'grid';
+  mobileComponentsView.style.display = 'none';
+  mobileCatalogBack.style.visibility = 'hidden';
+  mobileCatalogTitle.textContent = 'Componentes';
+  renderMobileCategories();
+}
+
+function showMobileComponentsView(catId: ComponentCategory) {
+  if (!mobileCategoriesView || !mobileComponentsView || !mobileCatalogBack || !mobileCatalogTitle) return;
+  currentCategory = catId;
+  catTabs.forEach((t) => t.classList.toggle('active', t.dataset.cat === catId));
+  renderPalette();
+
+  const meta = MOBILE_CATEGORIES.find((c) => c.id === catId);
+  mobileCatalogTitle.textContent = meta ? (t(meta.nameKey) || meta.defaultName) : catId;
+  mobileCatalogBack.style.visibility = 'visible';
+  mobileCategoriesView.style.display = 'none';
+  mobileComponentsView.style.display = 'grid';
+  renderMobileComponents(catId);
+}
+
+function renderMobileCategories() {
+  if (!mobileCategoriesView) return;
+  mobileCategoriesView.innerHTML = '';
+
+  MOBILE_CATEGORIES.forEach((cat) => {
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'mobile-category-card';
+    const localizedName = t(cat.nameKey) || cat.defaultName;
+    const iconSvg = CATEGORY_ICONS[cat.id] || '⚡';
+
+    card.innerHTML = `
+      <div class="mobile-cat-icon">${iconSvg}</div>
+      <div class="mobile-cat-name">${localizedName}</div>
+      <div class="mobile-cat-desc">${cat.desc}</div>
+    `;
+
+    card.onclick = () => {
+      showMobileComponentsView(cat.id);
+    };
+
+    mobileCategoriesView.appendChild(card);
+  });
+}
+
+function renderMobileComponents(catId: ComponentCategory) {
+  if (!mobileComponentsView) return;
+  mobileComponentsView.innerHTML = '';
+
+  const defs = Object.values(COMPONENT_DEFINITIONS).filter((d) => d.category === catId && !d.hidden);
+
+  if (defs.length === 0) {
+    mobileComponentsView.innerHTML = '<p style="color:#94a3b8;grid-column:1/-1;text-align:center;padding:24px;">No hay componentes en esta categoría.</p>';
+    return;
+  }
+
+  defs.forEach((def) => {
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'mobile-component-card';
+    const localizedName = t(def.type) || def.name;
+    const svgIcon = COMPONENT_ICONS[def.type] || '⚡';
+
+    card.innerHTML = `
+      <div class="mobile-comp-icon">${svgIcon}</div>
+      <div class="mobile-comp-name">${localizedName}</div>
+      <span class="mobile-comp-tag">${def.defaultTag || ''}</span>
+    `;
+
+    card.onclick = () => {
+      // Inserción directa en el centro visible para pantalla táctil / móvil
+      canvasView.placeComponentAtVisibleCenter(def.type);
+      canvasView.setTool('select');
+      activeCompType = null;
+      updateToolButtonsState();
+      renderPalette();
+      closeMobileCatalog();
+    };
+
+    mobileComponentsView.appendChild(card);
+  });
+}
+
+if (mobileCatalogBack) {
+  mobileCatalogBack.onclick = () => {
+    showMobileCategoriesView();
+  };
+}
+
+if (mobileCatalogClose) {
+  mobileCatalogClose.onclick = () => {
+    closeMobileCatalog();
+  };
+}
+
+if (mobileCatalogBackdrop) {
+  mobileCatalogBackdrop.onclick = () => {
+    closeMobileCatalog();
+  };
+}
+
+// Global click outside to dismiss flyout
+document.addEventListener('click', (e) => {
+  if (mobileTransformFlyout && !mobileTransformFlyout.classList.contains('hidden')) {
+    if (!mobileTransformFlyout.contains(e.target as Node) && !(btnFabTransform && btnFabTransform.contains(e.target as Node))) {
+      mobileTransformFlyout.classList.add('hidden');
+    }
+  }
+});
+
+// Escape key to close mobile dialogs
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (mobileCatalogDrawer && mobileCatalogDrawer.style.display !== 'none') {
+      closeMobileCatalog();
+    }
+    if (mobileFileDrawer && mobileFileDrawer.style.display !== 'none') {
+      closeMobileFileDrawer();
+    }
+    if (mobileTransformFlyout && !mobileTransformFlyout.classList.contains('hidden')) {
+      mobileTransformFlyout.classList.add('hidden');
+    }
+  }
+});
+
+// ==========================================================================
+// MOBILE FILE MENU DRAWER (ARCHIVO) LOGIC
+// ==========================================================================
+function openMobileFileDrawer() {
+  if (!mobileFileDrawer) return;
+  closeAllMenus();
+  if (mobileCatalogDrawer) mobileCatalogDrawer.style.display = 'none';
+  mobileFileDrawer.style.display = 'flex';
+}
+
+function closeMobileFileDrawer() {
+  if (!mobileFileDrawer) return;
+  mobileFileDrawer.style.display = 'none';
+}
+
+if (btnMobileMenu) {
+  btnMobileMenu.onclick = (e) => {
+    e.stopPropagation();
+    openMobileFileDrawer();
+  };
+}
+
+if (mobileFileClose) {
+  mobileFileClose.onclick = () => closeMobileFileDrawer();
+}
+
+if (mobileFileBackdrop) {
+  mobileFileBackdrop.onclick = () => closeMobileFileDrawer();
+}
+
+if (mobileBtnClear) {
+  mobileBtnClear.onclick = () => {
+    closeMobileFileDrawer();
+    btnClear?.click();
+  };
+}
+
+if (mobileBtnLoad) {
+  mobileBtnLoad.onclick = () => {
+    closeMobileFileDrawer();
+    btnLoad?.click();
+  };
+}
+
+if (mobileBtnSave) {
+  mobileBtnSave.onclick = () => {
+    closeMobileFileDrawer();
+    btnSave?.click();
+  };
+}
+
+if (mobileBtnExportCad) {
+  mobileBtnExportCad.onclick = () => {
+    closeMobileFileDrawer();
+    btnExportCad?.click();
+  };
+}
+
+if (mobileBtnPrint) {
+  mobileBtnPrint.onclick = () => {
+    closeMobileFileDrawer();
+    btnPrint?.click();
+  };
+}
+
+if (mobileBtnDemo) {
+  mobileBtnDemo.onclick = () => {
+    closeMobileFileDrawer();
+    btnDemo?.click();
+  };
+}
+
+if (mobileBtnFullscreen) {
+  mobileBtnFullscreen.onclick = () => {
+    closeMobileFileDrawer();
+    btnFullscreen?.click();
+  };
+}
+
+if (mobileBtnInstallApp) {
+  mobileBtnInstallApp.onclick = () => {
+    closeMobileFileDrawer();
+    btnInstallApp?.click();
+  };
+}
+
 // Category Tabs Switching
 catTabs.forEach((tab) => {
   tab.onclick = () => {
     catTabs.forEach((t) => t.classList.remove('active'));
     tab.classList.add('active');
-    currentCategory = tab.dataset.cat as any;
+    currentCategory = tab.dataset.cat as ComponentCategory;
     renderPalette();
   };
 });
@@ -919,44 +1426,7 @@ catTabs.forEach((tab) => {
 // Render Palette Items (SVG vector icons + tooltip hint)
 function renderPalette() {
   paletteContainer.innerHTML = '';
-
-  if (currentCategory === 'cables') {
-    const cables = [
-      { id: 'junction', key: 'wire.junction' },
-      { id: 'wire_3phase', key: 'wire.3phase' },
-      { id: 'wire_phase_l1', key: 'wire.l1' },
-      { id: 'wire_phase_l2', key: 'wire.l2' },
-      { id: 'wire_phase_l3', key: 'wire.l3' },
-      { id: 'wire_neutral', key: 'wire.neutral' },
-      { id: 'wire_pe', key: 'wire.pe' },
-      { id: 'wire_dc_pos', key: 'wire.dc_pos' },
-      { id: 'wire_dc_neg', key: 'wire.dc_neg' },
-    ];
-
-    cables.forEach((c) => {
-      const btn = document.createElement('button');
-      const localizedName = t(c.key);
-      btn.className = `palette-item ${canvasView.activeTool === c.id ? 'active' : ''}`;
-      btn.title = localizedName;
-      btn.innerHTML = COMPONENT_ICONS[c.id] || '〰️';
-
-      btn.onmouseenter = () => {
-        if (c.id === 'junction') {
-          statusHint.textContent = `${localizedName}: Clic para crear un nodo de unión donde no hay, o clic sobre un nodo para borrarlo.`;
-        } else {
-          statusHint.textContent = `${localizedName}: Arrastrá en la cuadrícula para trazar el cable recto.`;
-        }
-      };
-
-      btn.onclick = () => {
-        canvasView.setTool(c.id as ToolType);
-        activeCompType = null;
-        renderPalette();
-      };
-      paletteContainer.appendChild(btn);
-    });
-    return;
-  }
+  updateToolButtonsState();
 
   // Filter definitions for current category
   const defs = Object.values(COMPONENT_DEFINITIONS).filter((d) => d.category === currentCategory && !d.hidden);
@@ -981,10 +1451,31 @@ function renderPalette() {
       statusHint.textContent = `${localizedName} [Tag: ${def.defaultTag}] — Bornas: [${termNames}]`;
     };
 
-    btn.onclick = () => {
-      activeCompType = def.type;
-      canvasView.setTool('place_component', def.type);
-      renderPalette();
+    btn.onclick = (e) => {
+      const isTouch =
+        (e as PointerEvent).pointerType === 'touch' ||
+        DeviceDetector.getInfo().isMobile ||
+        DeviceDetector.getInfo().isTablet;
+
+      if (isTouch) {
+        // En pantalla táctil / móvil: colocar directamente en el centro visible del canvas
+        canvasView.placeComponentAtVisibleCenter(def.type);
+        canvasView.setTool('select');
+        activeCompType = null;
+        updateToolButtonsState();
+        renderPalette();
+      } else {
+        // En escritorio con mouse: clic de nuevo cancela/toggle a select, o activa estampilla
+        if (canvasView.activeTool === 'place_component' && activeCompType === def.type) {
+          canvasView.setTool('select');
+          activeCompType = null;
+        } else {
+          activeCompType = def.type;
+          canvasView.setTool('place_component', def.type);
+        }
+        updateToolButtonsState();
+        renderPalette();
+      }
     };
     paletteContainer.appendChild(btn);
   });
@@ -1031,6 +1522,60 @@ if (btnLoad) {
     fileInput.click();
   };
 }
+
+// ==========================================================================
+// PWA INSTALLATION & SERVICE WORKER
+// ==========================================================================
+let deferredInstallPrompt: any = null;
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('./sw.js')
+      .then((reg) => {
+        console.log('[OpenSimu PWA] Service Worker registrado correctamente:', reg.scope);
+      })
+      .catch((err) => {
+        console.warn('[OpenSimu PWA] Service Worker no registrado (modo no-https o local):', err);
+      });
+  });
+}
+
+window.addEventListener('beforeinstallprompt', (e: Event) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  if (btnInstallApp) btnInstallApp.style.display = 'block';
+  if (mobileBtnInstallApp) mobileBtnInstallApp.style.display = 'flex';
+  if (sepInstall) sepInstall.style.display = 'block';
+  console.log('[OpenSimu PWA] Aplicación lista para instalarse.');
+});
+
+if (btnInstallApp) {
+  btnInstallApp.onclick = async () => {
+    closeAllMenus();
+    if (!deferredInstallPrompt) {
+      alert('Para instalar OpenSimu, abrí el menú de tu navegador (los tres puntos ⋮) y tocá "Instalar aplicación" o "Agregar a la pantalla principal".');
+      return;
+    }
+    deferredInstallPrompt.prompt();
+    const { outcome } = await deferredInstallPrompt.userChoice;
+    console.log('[OpenSimu PWA] Elección del usuario:', outcome);
+    deferredInstallPrompt = null;
+    if (btnInstallApp) btnInstallApp.style.display = 'none';
+    if (mobileBtnInstallApp) mobileBtnInstallApp.style.display = 'none';
+    if (sepInstall) sepInstall.style.display = 'none';
+  };
+}
+
+window.addEventListener('appinstalled', () => {
+  console.log('[OpenSimu PWA] ¡OpenSimu instalado con éxito!');
+  if (btnInstallApp) btnInstallApp.style.display = 'none';
+  if (mobileBtnInstallApp) mobileBtnInstallApp.style.display = 'none';
+  if (sepInstall) sepInstall.style.display = 'none';
+  if (statusHint) {
+    statusHint.textContent = '¡OpenSimu instalado correctamente como aplicación!';
+  }
+});
 
 fileInput.onchange = (e) => {
   const file = (e.target as HTMLInputElement).files?.[0];

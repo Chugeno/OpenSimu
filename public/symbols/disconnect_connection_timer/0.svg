@@ -4,31 +4,23 @@
   <defs>
     <style>
       .st0 {
-        stroke-miterlimit: 10;
-      }
-
-      .st0, .st1 {
         fill: #1b293d;
       }
 
-      .st0, .st2 {
-        stroke: #1b293d;
-      }
-
-      .st2 {
+      .st1 {
         fill: none;
+        stroke: #1b293d;
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: 1.8px;
       }
     </style>
   </defs>
-  <circle id="terminal_a1" class="st1" cx="40" r="2.5"/>
-  <circle id="terminal_a2" class="st1" cx="40" cy="80" r="2.5"/>
-  <line class="st2" x1="40" x2="40" y2="25"/>
-  <line class="st2" x1="40" y1="55" x2="40" y2="80"/>
-  <rect class="st2" x="10" y="25" width="60" height="30"/>
-  <rect class="st0" x="20" y="25" width="10" height="30"/>
-  <line class="st2" x1="10.2" y1="25" x2="20.2" y2="55"/>
-  <line class="st2" x1="10.2" y1="55" x2="20.2" y2="25"/>
+  <circle id="terminal_a1" class="st0" cx="40" r="2.5"/>
+  <circle id="terminal_a2" class="st0" cx="40" cy="80" r="2.5"/>
+  <line class="st1" x1="40" x2="40" y2="27.5"/>
+  <line class="st1" x1="40" y1="52.5" x2="40" y2="80"/>
+  <rect class="st1" x="15" y="27.5" width="50" height="25"/>
+  <rect class="st0" x="23.3" y="27.5" width="8.3" height="25"/>
+  <polyline class="st1" points="15 27.5 23.3 52.5 23.3 27.5 15 52.5"/>
 </svg>

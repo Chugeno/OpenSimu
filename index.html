@@ -2,8 +2,25 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>OpenSimu - Simulador Electrotécnico Libre</title>
+
+    <!-- PWA & Mobile Web App Meta -->
+    <meta name="description" content="Simulador electrotécnico y CAD libre compatible con esquemas de CADe_SIMU." />
+    <meta name="theme-color" content="#0b101b" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="OpenSimu" />
+    <meta name="application-name" content="OpenSimu" />
+
+    <!-- Icons & Manifest -->
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
@@ -79,6 +96,14 @@
                   <span>Imprimir / PDF</span>
                 </span>
               </button>
+              <button id="btn-fullscreen" type="button">
+                <span class="menu-item-content">
+                  <svg class="menu-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                  </svg>
+                  <span id="fullscreen-text">Pantalla Completa</span>
+                </span>
+              </button>
               <div class="menu-separator"></div>
               <button id="btn-demo" type="button">
                 <span class="menu-item-content">
@@ -88,14 +113,27 @@
                   <span>Cargar Demo Marcha / Paro</span>
                 </span>
               </button>
-              <div class="menu-separator"></div>
-              <button id="btn-clear" type="button" class="danger-item">
+              <div id="sep-install" class="menu-separator" style="display: none"></div>
+              <button id="btn-install-app" type="button" style="display: none">
                 <span class="menu-item-content">
                   <svg class="menu-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="3 6 5 6 21 6"/>
-                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
                   </svg>
-                  <span>Limpiar lienzo</span>
+                  <span>📲 Instalar Aplicación (PWA)</span>
+                </span>
+              </button>
+              <div class="menu-separator"></div>
+              <button id="btn-clear" type="button">
+                <span class="menu-item-content">
+                  <svg class="menu-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="12" y1="18" x2="12" y2="12"/>
+                    <line x1="9" y1="15" x2="15" y2="15"/>
+                  </svg>
+                  <span>Nuevo</span>
                 </span>
               </button>
             </div>
@@ -314,9 +352,37 @@
           <span class="category-icon" data-cat-icon="signaling"></span>
           <span class="category-label" data-i18n="cat.signaling">Señalización</span>
         </button>
-        <button class="category-tab" data-cat="cables" data-i18n-title="cat.cables.title" title="Cables y Bornas de Conexión">
-          <span class="category-icon" data-cat-icon="cables"></span>
-          <span class="category-label" data-i18n="cat.cables">Cables</span>
+        <button class="category-tab" data-cat="sensors" data-i18n-title="cat.sensors.title" title="Detectores y Sensores">
+          <span class="category-icon" data-cat-icon="sensors"></span>
+          <span class="category-label" data-i18n="cat.sensors">Sensores</span>
+        </button>
+
+        <div class="categorybar-separator"></div>
+
+        <button id="btn-tool-wire" class="categorybar-tool-btn" type="button" title="Dibujar Cable (Conductor)">
+          <span class="categorybar-tool-icon">
+            <svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 32 32">
+              <defs>
+                <style>
+                  .st0 { fill: currentColor; }
+                  .st1 { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px; }
+                </style>
+              </defs>
+              <circle class="st0" cx="4" cy="16" r="2.5"/>
+              <circle class="st0" cx="28" cy="16" r="2.5"/>
+              <line class="st1" x1="4" y1="16" x2="28" y2="16"/>
+            </svg>
+          </span>
+        </button>
+        <button id="btn-tool-junction" class="categorybar-tool-btn" type="button" title="Nodo / Conexión (Punto de Unión)">
+          <span class="categorybar-tool-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <line x1="16" y1="4" x2="16" y2="28" stroke="currentColor" stroke-width="2" />
+              <line x1="4" y1="16" x2="28" y2="16" stroke="currentColor" stroke-width="2" />
+              <circle cx="16" cy="16" r="5" fill="#f8fafc" stroke="#0284c7" stroke-width="2" />
+              <circle cx="16" cy="16" r="3" fill="#0284c7" />
+            </svg>
+          </span>
         </button>
       </nav>
 
@@ -331,6 +397,129 @@
       <main class="canvas-wrap">
         <div class="canvas-container">
           <canvas id="circuit-canvas"></canvas>
+
+          <!-- MOBILE HAMBURGER MENU BUTTON (ARCHIVO - TOP LEFT BELOW LOGO) -->
+          <button id="btn-mobile-menu" class="mobile-menu-btn" type="button" title="Menú Archivo" aria-label="Menú Archivo">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+
+          <div id="canvas-floating-tool" class="canvas-floating-tool hidden">
+            <span id="floating-tool-label">Modo Cable Activo</span>
+            <button id="btn-floating-cancel" class="btn-floating-cancel" type="button" title="Volver a Modo Selección">✕ Salir a Selección</button>
+          </div>
+
+          <!-- MOBILE FLOATING ACTION BUTTONS (FAB STACK) -->
+          <div id="mobile-fab-container" class="mobile-fab-container" aria-label="Acciones rápidas móviles">
+            <!-- 1. Deshacer (Bottom-most) -->
+            <button id="btn-fab-undo" class="mobile-fab-btn" type="button" title="Deshacer (Ctrl+Z)" aria-label="Deshacer">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7v6h6"/>
+                <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/>
+              </svg>
+            </button>
+
+            <!-- 2. Copiar -->
+            <button id="btn-fab-copy" class="mobile-fab-btn" type="button" title="Copiar componente (Ctrl+C)" aria-label="Copiar">
+              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+            </button>
+
+            <!-- 3. Pegar -->
+            <button id="btn-fab-paste" class="mobile-fab-btn" type="button" title="Pegar (Ctrl+V)" aria-label="Pegar">
+              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+              </svg>
+            </button>
+
+            <!-- Borrar (Aparece dinámicamente cuando hay un elemento seleccionado en móvil) -->
+            <button id="btn-fab-delete" class="mobile-fab-btn mobile-fab-danger hidden" type="button" title="Borrar elemento seleccionado" aria-label="Borrar">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                <line x1="10" y1="11" x2="10" y2="17"/>
+                <line x1="14" y1="11" x2="14" y2="17"/>
+              </svg>
+            </button>
+
+            <!-- 4. Rotar / Espejo con Menú Desplegable -->
+            <div class="mobile-fab-transform-group">
+              <button id="btn-fab-transform" class="mobile-fab-btn" type="button" title="Rotar o Espejar" aria-label="Rotar o Espejar">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 12v-3a9 9 0 0 1 15.36-6.36L21 4"/>
+                  <path d="M21 1v4h-4"/>
+                  <path d="M20 12v3a9 9 0 0 1-15.36 6.36L3 20"/>
+                  <path d="M3 23v-4h4"/>
+                  <line x1="12" y1="8" x2="12" y2="16" stroke-dasharray="2 2"/>
+                </svg>
+              </button>
+              <div id="mobile-transform-flyout" class="mobile-transform-flyout hidden">
+                <button id="btn-fab-rotate-ccw" class="mobile-flyout-btn" type="button" title="Girar -90° antihorario">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                    <path d="M3 3v5h5"/>
+                  </svg>
+                </button>
+                <button id="btn-fab-rotate-cw" class="mobile-flyout-btn" type="button" title="Girar +90° horario">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/>
+                    <path d="M21 3v5h-5"/>
+                  </svg>
+                </button>
+                <button id="btn-fab-mirror-h" class="mobile-flyout-btn" type="button" title="Espejo horizontal">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="3" x2="12" y2="21" stroke-dasharray="2 2" stroke-width="1.8"/>
+                    <path d="M7 8l-4 4 4 4"/>
+                    <path d="M3 12h5"/>
+                    <path d="M17 8l4 4-4 4"/>
+                    <path d="M21 12h-5"/>
+                  </svg>
+                </button>
+                <button id="btn-fab-mirror-v" class="mobile-flyout-btn" type="button" title="Espejo vertical">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12" stroke-dasharray="2 2" stroke-width="1.8"/>
+                    <path d="M8 7l4-4 4 4"/>
+                    <path d="M12 3v5"/>
+                    <path d="M8 17l4 4 4-4"/>
+                    <path d="M12 21v-5"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 5. Cable -->
+            <button id="btn-fab-wire" class="mobile-fab-btn" type="button" title="Trazar Cable (Fase)" aria-label="Cable">
+              <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+                <circle cx="5" cy="16" r="3" fill="currentColor"/>
+                <circle cx="27" cy="16" r="3" fill="currentColor"/>
+                <line x1="5" y1="16" x2="27" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+
+            <!-- 6. Nodo -->
+            <button id="btn-fab-node" class="mobile-fab-btn" type="button" title="Nodo / Conexión" aria-label="Nodo">
+              <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+                <line x1="16" y1="4" x2="16" y2="28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="4" y1="16" x2="28" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="16" cy="16" r="5.5" fill="#f8fafc" stroke="#0284c7" stroke-width="2"/>
+                <circle cx="16" cy="16" r="3" fill="#0284c7"/>
+              </svg>
+            </button>
+
+            <!-- 7. Agregar Componente (+) (Top-most) -->
+            <button id="btn-fab-add" class="mobile-fab-btn mobile-fab-primary" type="button" title="Agregar Componente" aria-label="Agregar Componente">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+          </div>
         </div>
       </main>
 
@@ -444,6 +633,117 @@
             <button id="btn-tribute-accept" class="btn btn-primary">Aceptar y Continuar</button>
           </div>
         </div>
+      </div>
+
+      <!-- MOBILE COMPONENT CATALOG DRAWER (SHEET) -->
+      <div id="mobile-catalog-drawer" class="mobile-catalog-drawer" style="display: none;">
+        <div class="mobile-catalog-backdrop" id="mobile-catalog-backdrop"></div>
+        <div class="mobile-catalog-sheet">
+          <div class="mobile-catalog-handle-bar">
+            <div class="mobile-catalog-handle"></div>
+          </div>
+          <div class="mobile-catalog-header">
+            <button id="mobile-catalog-back" class="mobile-catalog-back-btn" type="button" style="visibility: hidden;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              <span>Categorías</span>
+            </button>
+            <h3 id="mobile-catalog-title" class="mobile-catalog-title">Componentes</h3>
+            <button id="mobile-catalog-close" class="mobile-catalog-close-btn" type="button" title="Cerrar">✕</button>
+          </div>
+          <div class="mobile-catalog-content">
+            <!-- View 1: Categories -->
+            <div id="mobile-categories-view" class="mobile-categories-grid"></div>
+            <!-- View 2: Components in category -->
+            <div id="mobile-components-view" class="mobile-components-grid" style="display: none;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOBILE FILE MENU DRAWER (ARCHIVO) -->
+      <div id="mobile-file-drawer" class="mobile-file-drawer" style="display: none;">
+        <div id="mobile-file-backdrop" class="mobile-file-backdrop"></div>
+        <aside class="mobile-file-sheet">
+          <div class="mobile-file-header">
+            <div class="mobile-file-title-wrap">
+              <span class="mobile-file-icon">📁</span>
+              <h3 class="mobile-file-title">Archivo</h3>
+            </div>
+            <button id="mobile-file-close" class="mobile-file-close-btn" type="button" title="Cerrar">✕</button>
+          </div>
+          <div class="mobile-file-content">
+            <button id="mobile-btn-clear" class="mobile-file-item" type="button">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="12" y1="18" x2="12" y2="12"/>
+                <line x1="9" y1="15" x2="15" y2="15"/>
+              </svg>
+              <span>Nuevo Circuito</span>
+            </button>
+
+            <button id="mobile-btn-load" class="mobile-file-item" type="button">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+              </svg>
+              <span>Abrir (.json o .cad)</span>
+            </button>
+
+            <button id="mobile-btn-save" class="mobile-file-item" type="button">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                <polyline points="17 21 17 13 7 13 7 21"/>
+                <polyline points="7 3 7 8 15 8"/>
+              </svg>
+              <span>Guardar JSON</span>
+            </button>
+
+            <button id="mobile-btn-export-cad" class="mobile-file-item" type="button">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="12" y1="18" x2="12" y2="12"/>
+                <polyline points="9 15 12 12 15 15"/>
+              </svg>
+              <span>Exportar CADe_SIMU (.cad)</span>
+            </button>
+
+            <div class="mobile-file-separator"></div>
+
+            <button id="mobile-btn-print" class="mobile-file-item" type="button">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 6 2 18 2 18 9"/>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                <rect x="6" y="14" width="12" height="8"/>
+              </svg>
+              <span>Imprimir / PDF</span>
+            </button>
+
+            <button id="mobile-btn-demo" class="mobile-file-item" type="button">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+              <span>Cargar Demo Marcha / Paro</span>
+            </button>
+
+            <button id="mobile-btn-fullscreen" class="mobile-file-item" type="button">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+              </svg>
+              <span id="mobile-fullscreen-text">Pantalla Completa</span>
+            </button>
+
+            <button id="mobile-btn-install-app" class="mobile-file-item" type="button" style="display: none;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span>📲 Instalar Aplicación (PWA)</span>
+            </button>
+          </div>
+        </aside>
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>

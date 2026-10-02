@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 80 80" height="80" width="80">
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 80 80">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
   <defs>
     <style>
       .st0 {
@@ -8,53 +9,54 @@
         stroke-width: 1.5px;
       }
 
-      .st0, .st1, .st2 {
+      .st0, .st1, .st2, .st3 {
         stroke-linecap: round;
       }
 
-      .st0, .st2 {
+      .st0, .st3 {
         stroke-linejoin: round;
       }
 
       .st1 {
-        stroke: #94a3b8;
         stroke-dasharray: 3 2;
-        stroke-width: 1.2px;
       }
 
       .st1, .st2 {
+        stroke: #94a3b8;
+        stroke-width: 1.2px;
+      }
+
+      .st1, .st2, .st3 {
         fill: none;
       }
 
       .st2 {
-        stroke: #1e293b;
-        stroke-width: 1.8px;
+        stroke-dasharray: 2 2;
+      }
+
+      .st4 {
+        fill: #1b293d;
       }
 
       .st3 {
-        fill: #1e293b;
+        stroke: #1b293d;
+        stroke-width: 1.8px;
       }
     </style>
   </defs>
-  <circle id="terminal_11" class="st3" cx="32" cy="0" r="2.5" />
-  <circle id="terminal_12" class="st3" cx="32" cy="80" r="2.5" />
-  <circle id="terminal_13" class="st3" cx="72" cy="0" r="2.5" />
-  <circle id="terminal_14" class="st3" cx="72" cy="80" r="2.5" />
-  <line x1="32" y1="0" x2="32" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="72" y1="0" x2="72" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="32" y1="70" x2="32" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="72" y1="70" x2="72" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <g transform="translate(0, 10)">
-    <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
-
-  <line class="st1" x1="29.5" y1="32" x2="72" y2="32"/>
-  <line class="st2" x1="32" y1="0" x2="32" y2="20"/>
-  <line class="st2" x1="32" y1="20" x2="42" y2="20"/>
-  <line class="st2" x1="32" y1="42" x2="32" y2="60"/>
-  <line class="st2" x1="32" y1="42" x2="48" y2="22"/>
-  <line class="st2" x1="72" y1="0" x2="72" y2="20"/>
-  <line class="st2" x1="72" y1="42" x2="72" y2="60"/>
-  <line class="st2" x1="72" y1="42" x2="72" y2="20"/>
-  <path class="st0" d="M27,27c-2.8,0-5,2.2-5,5s2.2,5,5,5v-10Z"/>
+  <line class="st1" x1="36.8" y1="42" x2="63.2" y2="42"/>
+  <g>
+    <circle id="terminal_22" class="st4" cx="70" cy="80" r="2.5"/>
+    <circle id="terminal_21" class="st4" cx="70" r="2.5"/>
+    <line class="st3" x1="70" x2="70" y2="20"/>
+    <polyline class="st3" points="55 20 70 60 70 80"/>
   </g>
+  <g>
+    <circle id="terminal_14" class="st4" cx="30" cy="80" r="2.5"/>
+    <circle id="terminal_13" class="st4" cx="30" r="2.5"/>
+    <polyline class="st3" points="30 0 30 25 47.5 25"/>
+    <polyline class="st3" points="45 20 30 60 30 80"/>
+  </g>
+  <line class="st2" x1="34.3" y1="42" x2="26.6" y2="42"/>
+  <path class="st0" d="M25.9,35.5c-3.6,0-6.5,2.9-6.5,6.5s2.9,6.5,6.5,6.5v-13Z"/>
 </svg>

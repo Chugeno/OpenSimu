@@ -53,7 +53,8 @@ export type ComponentCategory =
   | 'motors'
   | 'coils' 
   | 'contacts' 
-  | 'signaling';
+  | 'signaling'
+  | 'sensors';
 
 export type ManualActionType = 'none' | 'toggle' | 'momentary';
 

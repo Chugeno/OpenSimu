@@ -4,25 +4,37 @@
   <defs>
     <style>
       .st0 {
-        fill: none;
         stroke: #1e293b;
-        stroke-linecap: round;
-        stroke-linejoin: round;
         stroke-width: 1.8px;
       }
 
-      .st1 {
+      .st0, .st1 {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .st2 {
+        fill: #1b293d;
+      }
+
+      .st3 {
         fill: #1e293b;
+      }
+
+      .st1 {
+        stroke: #1b293d;
+        stroke-width: 1.8px;
       }
     </style>
   </defs>
-  <circle id="terminal_a1" class="st1" cx="20" r="2.5"/>
-  <circle id="terminal_b1" class="st1" cx="60" r="2.5"/>
-  <circle id="terminal_a2" class="st1" cx="40" cy="80" r="2.5"/>
-  <line class="st0" x1="20" x2="20" y2="25"/>
-  <line class="st0" x1="60" x2="60" y2="25"/>
-  <line class="st0" x1="40" y1="55" x2="40" y2="80"/>
-  <rect class="st0" x="10" y="25" width="60" height="30"/>
-  <line class="st0" x1="20" y1="55" x2="30" y2="25"/>
-  <line class="st0" x1="50" y1="25" x2="60" y2="55"/>
+  <circle id="terminal_b1" class="st3" cx="60" r="2.5"/>
+  <line class="st0" x1="60" x2="60" y2="27.5"/>
+  <circle id="terminal_a1" class="st2" cx="20" r="2.5"/>
+  <circle id="terminal_a2" class="st2" cx="40" cy="80" r="2.5"/>
+  <line class="st1" x1="20" x2="20" y2="27.5"/>
+  <line class="st1" x1="40" y1="52.5" x2="40" y2="80"/>
+  <rect class="st1" x="15" y="27.5" width="50" height="25"/>
+  <line class="st1" x1="23.3" y1="52.5" x2="31.7" y2="27.5"/>
+  <line class="st1" x1="48.3" y1="27.5" x2="56.7" y2="52.5"/>
 </svg>

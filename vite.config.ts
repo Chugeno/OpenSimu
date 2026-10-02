@@ -3,6 +3,10 @@ import { viteSingleFile } from 'vite-plugin-singlefile';
 
 export default defineConfig({
   plugins: [viteSingleFile()],
+  server: {
+    host: true,
+    port: 5173,
+  },
   build: {
     target: 'esnext',
     assetsInlineLimit: 100000000,

@@ -1,18 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 80" width="40" height="80">
-  
-  <circle id="terminal_13" cx="20" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_14" cx="20" cy="80" r="2.5" fill="#1e293b" />
-  <line x1="20" y1="0" x2="20" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="20" y1="70" x2="20" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <g transform="translate(0, 10)">
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 80 80">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #fee2e2;
+        stroke: #dc2626;
+        stroke-width: 1.5px;
+      }
 
-  <line x1="20" y1="32" x2="13" y2="32" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2 2" stroke-linecap="round" />
-  <g stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <line x1="20" y1="0" x2="20" y2="20" />
-    <line x1="20" y1="42" x2="20" y2="60" />
-    <line x1="20" y1="42" x2="20" y2="20" />
-    <path d="M13,27 A5,5 0 0,0 13,37 Z" stroke="#dc2626" stroke-width="1.5" fill="#fee2e2" />
+      .st0, .st1, .st2 {
+        stroke-linecap: round;
+      }
+
+      .st0, .st2 {
+        stroke-linejoin: round;
+      }
+
+      .st1 {
+        stroke: #94a3b8;
+        stroke-dasharray: 2 2;
+        stroke-width: 1.2px;
+      }
+
+      .st1, .st2 {
+        fill: none;
+      }
+
+      .st3 {
+        fill: #1b293d;
+      }
+
+      .st2 {
+        stroke: #1b293d;
+        stroke-width: 1.8px;
+      }
+    </style>
+  </defs>
+  <g>
+    <circle id="terminal_14" class="st3" cx="40" cy="80" r="2.5"/>
+    <circle id="terminal_13" class="st3" cx="40" r="2.5"/>
+    <polyline class="st2" points="40 0 40 25 57.5 25"/>
+    <polyline class="st2" points="55 20 40 60 40 80"/>
   </g>
-  </g>
+  <line class="st1" x1="45" y1="40" x2="37.3" y2="40"/>
+  <path class="st0" d="M36.5,33.5c-3.6,0-6.5,2.9-6.5,6.5s2.9,6.5,6.5,6.5v-13Z"/>
 </svg>

@@ -732,13 +732,12 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
   // 5. Detectores / Sensores de proximidad
   inductive_detector_no: {
     type: 'inductive_detector_no',
-    category: 'control',
+    category: 'sensors',
     name: 'Detector Inductivo NA (A1-A2)',
     defaultTag: '-B',
     width: 52,
     height: 80,
     manualAction: 'toggle',
-    dividerBefore: true,
     terminals: [
       { id: 'A1', name: 'A1', relX: 0, relY: 0 },
       { id: 'A2', name: 'A2', relX: 0, relY: 80 },
@@ -746,7 +745,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
   },
   inductive_detector_nc: {
     type: 'inductive_detector_nc',
-    category: 'control',
+    category: 'sensors',
     name: 'Detector Inductivo NC (A1-A2)',
     defaultTag: '-B',
     width: 52,

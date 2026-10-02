@@ -37,8 +37,8 @@
   <circle id="terminal_a2" class="st6" cx="40" cy="80" r="2.5"/>
   <line class="st3" x1="40" x2="40" y2="10"/>
   <line class="st3" x1="40" y1="70" x2="40" y2="80"/>
-  <line class="st3" x1="40" y1="2.5" x2="40" y2="21.2"/>
-  <line class="st3" x1="40" y1="60" x2="40" y2="77.5"/>
+  <line class="st3" x1="40" y1="2.5" x2="40" y2="22.5"/>
+  <line class="st3" x1="40" y1="57.5" x2="40" y2="77.5"/>
   <g>
     <rect class="st5" x="5" y="22.5" width="70" height="35"/>
     <rect class="st2" x="31.8" y="31.8" width="16.5" height="16.5" transform="translate(-16.6 40) rotate(-45)"/>

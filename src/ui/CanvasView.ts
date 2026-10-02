@@ -22,7 +22,7 @@ export type ToolType =
 export class CanvasView {
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
-  private grid: Grid;
+  public grid: Grid;
 
   public components: CircuitComponent[] = [];
   public wires: Wire[] = [];
@@ -80,6 +80,23 @@ export class CanvasView {
   private panStart: Point = { x: 0, y: 0 };
   private spacePressed: boolean = false;
 
+  // Touch & Multi-touch gesture states
+  private activePointers: Map<number, Point> = new Map();
+  private isPinching: boolean = false;
+  private pinchStartDistance: number = 0;
+  private pinchStartCenter: Point = { x: 0, y: 0 };
+  private pinchStartWorldCenter: Point = { x: 0, y: 0 };
+  private pinchStartZoom: number = 1.0;
+  public selectedTerminal: {
+    point: Point;
+    terminal: {
+      name: string;
+      componentTag: string;
+      component: CircuitComponent;
+    };
+  } | null = null;
+  public onTerminalTouch?: (terminal: { name: string; componentTag: string; component: CircuitComponent }, worldPt: Point) => void;
+
   // Group drag state
   private isDraggingGroup: boolean = false;
   private dragStartWorld: Point = { x: 0, y: 0 };
@@ -92,6 +109,17 @@ export class CanvasView {
   private boxSelectCurrent: Point = { x: 0, y: 0 };
   private baseSelectedComponents: Set<CircuitComponent> = new Set();
   private baseSelectedWires: Set<Wire> = new Set();
+
+  // Long-press to box select (Touchscreens)
+  private longPressActive: boolean = false;
+  private longPressTriggered: boolean = false;
+  private longPressProgress: number = 0;
+  private longPressPulseProgress: number = 0;
+  private longPressStartScreen: Point = { x: 0, y: 0 };
+  private longPressStartWorld: Point = { x: 0, y: 0 };
+  private longPressRafId: number | null = null;
+  private readonly LONG_PRESS_DURATION: number = 300;
+  private lastPointerType: string = 'mouse';
 
   // Wire drawing state (Click-and-drag or Click-to-click CADe_SIMU style)
   private isDrawingWire: boolean = false;
@@ -121,6 +149,12 @@ export class CanvasView {
   public onTagEditRequest?: (comp: CircuitComponent) => void;
   public onShortCircuit?: (result: SimulationResult) => void;
   public onToolChange?: (tool: ToolType, compType: string | null) => void;
+  public onSelectionChange?: (hasSelection: boolean, selectedCompsCount: number, selectedWiresCount: number) => void;
+
+  private lastSelectedCompCount: number = -1;
+  private lastSelectedWireCount: number = -1;
+  private lastSelectedFirstComp: CircuitComponent | null = null;
+  private lastSelectedFirstWire: Wire | null = null;
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
@@ -129,6 +163,14 @@ export class CanvasView {
 
     this.setupEvents();
     SymbolRenderer.onRedrawNeeded = () => this.requestRender();
+
+    if (typeof ResizeObserver !== 'undefined') {
+      const ro = new ResizeObserver(() => {
+        this.resize();
+      });
+      ro.observe(this.canvas);
+    }
+
     this.resize();
     this.render();
   }
@@ -166,11 +208,15 @@ export class CanvasView {
     this.hoveredSnapTarget = null;
     this.hoveredJunctionNode = null;
     this.updateCursor(this.currentMouseWorld);
+    if (this.onToolChange) {
+      this.onToolChange(tool, compType);
+    }
     this.render();
     this.notifyStatus();
   }
 
   public cancelAction() {
+    this.cancelLongPress();
     this.isDrawingWire = false;
     this.wireStartPoint = null;
     this.isPointerDownForWire = false;
@@ -258,6 +304,147 @@ export class CanvasView {
     }
 
     return bestSnap;
+  }
+
+  public findSnapTargetAtScreen(screenPos: Point, tolerancePx: number = 24): {
+    point: Point;
+    terminal?: {
+      name: string;
+      componentTag: string;
+      component: CircuitComponent;
+    };
+    isWire?: boolean;
+    isWireEndpoint?: boolean;
+  } | null {
+    let bestDist = tolerancePx;
+    let bestHit: {
+      point: Point;
+      terminal?: {
+        name: string;
+        componentTag: string;
+        component: CircuitComponent;
+      };
+      isWire?: boolean;
+      isWireEndpoint?: boolean;
+    } | null = null;
+
+    // 1. Bornas / Terminales de componentes (prioridad 1)
+    for (const comp of this.components) {
+      for (const term of comp.terminals) {
+        const tx = comp.x + term.relX;
+        const ty = comp.y + term.relY;
+        const termScreen = this.grid.worldToScreen(tx, ty);
+        const d = Math.hypot(screenPos.x - termScreen.x, screenPos.y - termScreen.y);
+        if (d < bestDist) {
+          bestDist = d;
+          bestHit = {
+            point: { x: tx, y: ty },
+            terminal: {
+              name: term.name,
+              componentTag: comp.tag,
+              component: comp,
+            },
+          };
+        }
+      }
+    }
+
+    if (bestHit) return bestHit;
+
+    // 2. Extremos y vértices de cables existentes (inicio/fin de cualquier cable para continuar dibujando)
+    for (const wire of this.wires) {
+      for (const pt of wire.points) {
+        const ptScreen = this.grid.worldToScreen(pt.x, pt.y);
+        const d = Math.hypot(screenPos.x - ptScreen.x, screenPos.y - ptScreen.y);
+        if (d < bestDist) {
+          bestDist = d;
+          bestHit = {
+            point: { x: pt.x, y: pt.y },
+            isWire: true,
+            isWireEndpoint: true,
+          };
+        }
+      }
+    }
+
+    if (bestHit) return bestHit;
+
+    // 3. Nodos de unión activos
+    for (const j of this.getActiveJunctionNodes()) {
+      const jScreen = this.grid.worldToScreen(j.x, j.y);
+      const d = Math.hypot(screenPos.x - jScreen.x, screenPos.y - jScreen.y);
+      if (d < bestDist) {
+        bestDist = d;
+        bestHit = {
+          point: { x: j.x, y: j.y },
+          isWire: true,
+        };
+      }
+    }
+
+    if (bestHit) return bestHit;
+
+    // 4. Puntos sobre segmentos de cables existentes para derivaciones en T
+    const worldPos = this.grid.screenToWorld(screenPos.x, screenPos.y);
+    const worldTol = tolerancePx / this.grid.zoom;
+    for (const wire of this.wires) {
+      for (let i = 0; i < wire.points.length - 1; i++) {
+        const p1 = wire.points[i];
+        const p2 = wire.points[i + 1];
+        const dist = Grid.pointToSegmentDistance(worldPos, p1, p2);
+        if (dist < worldTol) {
+          const snapped = Grid.snapPoint(worldPos);
+          if (Grid.pointToSegmentDistance(snapped, p1, p2) < 4) {
+            return {
+              point: snapped,
+              isWire: true,
+            };
+          }
+        }
+      }
+    }
+
+    return bestHit;
+  }
+
+  public findTerminalAtScreen(screenPos: Point, tolerancePx: number = 24): {
+    point: Point;
+    terminal: {
+      name: string;
+      componentTag: string;
+      component: CircuitComponent;
+    };
+  } | null {
+    let bestDist = tolerancePx;
+    let bestHit: {
+      point: Point;
+      terminal: {
+        name: string;
+        componentTag: string;
+        component: CircuitComponent;
+      };
+    } | null = null;
+
+    for (const comp of this.components) {
+      for (const term of comp.terminals) {
+        const tx = comp.x + term.relX;
+        const ty = comp.y + term.relY;
+        const termScreen = this.grid.worldToScreen(tx, ty);
+        const d = Math.hypot(screenPos.x - termScreen.x, screenPos.y - termScreen.y);
+        if (d < bestDist) {
+          bestDist = d;
+          bestHit = {
+            point: { x: tx, y: ty },
+            terminal: {
+              name: term.name,
+              componentTag: comp.tag,
+              component: comp,
+            },
+          };
+        }
+      }
+    }
+    return bestHit;
   }
 
   public updateCursor(worldPos: Point) {
@@ -830,8 +1017,9 @@ export class CanvasView {
   }
 
   public zoomIn() {
-    const cx = this.canvas.width / 2;
-    const cy = this.canvas.height / 2;
+    const rect = this.canvas.getBoundingClientRect();
+    const cx = rect.width > 0 ? rect.width / 2 : (this.canvas.clientWidth / 2 || window.innerWidth / 2);
+    const cy = rect.height > 0 ? rect.height / 2 : (this.canvas.clientHeight / 2 || 300);
     const worldCenter = this.grid.screenToWorld(cx, cy);
     const newZoom = Math.min(4.0, this.grid.zoom * 1.25);
     this.grid.zoom = newZoom;
@@ -842,8 +1030,9 @@ export class CanvasView {
   }
 
   public zoomOut() {
-    const cx = this.canvas.width / 2;
-    const cy = this.canvas.height / 2;
+    const rect = this.canvas.getBoundingClientRect();
+    const cx = rect.width > 0 ? rect.width / 2 : (this.canvas.clientWidth / 2 || window.innerWidth / 2);
+    const cy = rect.height > 0 ? rect.height / 2 : (this.canvas.clientHeight / 2 || 300);
     const worldCenter = this.grid.screenToWorld(cx, cy);
     const newZoom = Math.max(0.2, this.grid.zoom / 1.25);
     this.grid.zoom = newZoom;
@@ -853,7 +1042,58 @@ export class CanvasView {
     this.notifyStatus();
   }
 
-  private notifyStatus() {
+  public getVisibleCenterSnapped(): Point {
+    const rect = this.canvas.getBoundingClientRect();
+    const visibleLeft = Math.max(0, rect.left);
+    const visibleRight = Math.min(window.innerWidth, rect.right > 0 ? rect.right : window.innerWidth);
+    const visibleTop = Math.max(0, rect.top);
+    const visibleBottom = Math.min(window.innerHeight, rect.bottom > 0 ? rect.bottom : window.innerHeight);
+
+    const screenCenterX = visibleRight > visibleLeft
+      ? (visibleLeft + visibleRight) / 2
+      : window.innerWidth / 2;
+    const screenCenterY = visibleBottom > visibleTop
+      ? (visibleTop + visibleBottom) / 2
+      : rect.top + (rect.height > 0 ? rect.height / 2 : 250);
+
+    const canvasLocalX = screenCenterX - rect.left;
+    const canvasLocalY = screenCenterY - rect.top;
+    return Grid.snapPoint(this.grid.screenToWorld(canvasLocalX, canvasLocalY));
+  }
+
+  public placeComponentAtVisibleCenter(type: string): CircuitComponent | null {
+    const def = COMPONENT_DEFINITIONS[type];
+    if (!def) return null;
+
+    const rect = this.canvas.getBoundingClientRect();
+    const visibleLeft = Math.max(0, rect.left);
+    const visibleRight = Math.min(window.innerWidth, rect.right > 0 ? rect.right : window.innerWidth);
+    const visibleTop = Math.max(0, rect.top);
+    const visibleBottom = Math.min(window.innerHeight, rect.bottom > 0 ? rect.bottom : window.innerHeight);
+
+    const screenCenterX = visibleRight > visibleLeft
+      ? (visibleLeft + visibleRight) / 2
+      : window.innerWidth / 2;
+    const screenCenterY = visibleBottom > visibleTop
+      ? (visibleTop + visibleBottom) / 2
+      : rect.top + (rect.height > 0 ? rect.height / 2 : 250);
+
+    const canvasLocalX = screenCenterX - rect.left;
+    const canvasLocalY = screenCenterY - rect.top;
+    const worldCenter = this.grid.screenToWorld(canvasLocalX, canvasLocalY);
+
+    const compW = def.width || 40;
+    const compH = def.height || 60;
+    const posX = Grid.snap(worldCenter.x - compW / 2);
+    const posY = Grid.snap(worldCenter.y - compH / 2);
+
+    this.placeComponent(type, { x: posX, y: posY });
+    this.render();
+    this.notifyStatus();
+    return this.selectedComponent;
+  }
+
+  public notifyStatus() {
     if (!this.onStatusUpdate) return;
     let simMsg = 'Modo Edición';
     if (this.isSimulation) {
@@ -974,9 +1214,18 @@ export class CanvasView {
       }
     });
 
-    // Suppress context menu on canvas and trigger cancelAction
+    // Suppress context menu on canvas and trigger cancelAction only on desktop right-click
     this.canvas.addEventListener('contextmenu', (e) => {
       e.preventDefault();
+      if (
+        this.lastPointerType === 'touch' ||
+        this.longPressActive ||
+        this.longPressTriggered ||
+        this.isBoxSelecting ||
+        this.activePointers.size > 0
+      ) {
+        return;
+      }
       this.cancelAction();
     });
 
@@ -1025,10 +1274,56 @@ export class CanvasView {
     this.canvas.addEventListener('pointerdown', (e) => this.handlePointerDown(e));
     this.canvas.addEventListener('pointermove', (e) => this.handlePointerMove(e));
     this.canvas.addEventListener('pointerup', (e) => this.handlePointerUp(e));
+    this.canvas.addEventListener('pointercancel', (e) => this.handlePointerCancel(e));
     this.canvas.addEventListener('dblclick', (e) => this.handleDoubleClick(e));
   }
 
   private handlePointerDown(e: PointerEvent) {
+    this.lastPointerType = e.pointerType;
+    if (e.pointerType === 'touch') {
+      e.preventDefault();
+    }
+    try {
+      this.canvas.setPointerCapture(e.pointerId);
+    } catch {}
+
+    const rect = this.canvas.getBoundingClientRect();
+    const sx = e.clientX - rect.left;
+    const sy = e.clientY - rect.top;
+    this.activePointers.set(e.pointerId, { x: sx, y: sy });
+
+    // Multi-touch: 2 o más dedos -> Pinch to Zoom & Pan simultáneo
+    if (this.activePointers.size >= 2) {
+      if (this.isDraggingGroup) {
+        // Revertir arrastre de componentes para evitar desplazamientos accidentales con 2 dedos
+        for (const [comp, initPos] of this.initialCompPositions.entries()) {
+          comp.x = initPos.x;
+          comp.y = initPos.y;
+        }
+        for (const [wire, initPts] of this.initialWirePositions.entries()) {
+          wire.points = initPts.map((p) => ({ ...p }));
+        }
+        this.isDraggingGroup = false;
+        this.initialCompPositions.clear();
+        this.initialWirePositions.clear();
+        this.preDragSnapshot = null;
+      }
+      this.cancelLongPress();
+      this.isBoxSelecting = false;
+      this.isPanning = false;
+      this.isDrawingWire = false;
+      this.wireStartPoint = null;
+
+      const pts = Array.from(this.activePointers.values());
+      this.isPinching = true;
+      this.pinchStartDistance = Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y);
+      this.pinchStartCenter = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 };
+      this.pinchStartWorldCenter = this.grid.screenToWorld(this.pinchStartCenter.x, this.pinchStartCenter.y);
+      this.pinchStartZoom = this.grid.zoom;
+      this.requestRender();
+      return;
+    }
+
     // Right click (CADe_SIMU style: cancels placement/tool, liberates mouse)
     if (e.button === 2) {
       e.preventDefault();
@@ -1036,9 +1331,6 @@ export class CanvasView {
       return;
     }
 
-    const rect = this.canvas.getBoundingClientRect();
-    const sx = e.clientX - rect.left;
-    const sy = e.clientY - rect.top;
     const world = this.grid.screenToWorld(sx, sy);
     const snapped = Grid.snapPoint(world);
 
@@ -1117,23 +1409,36 @@ export class CanvasView {
     // Edit Mode Actions
     if (this.activeTool === 'place_component' && this.pendingComponentType) {
       this.placeComponent(this.pendingComponentType, snapped);
+      if (e.pointerType === 'touch') {
+        this.activeTool = 'select';
+        this.pendingComponentType = null;
+        if (this.onToolChange) {
+          this.onToolChange('select', null);
+        }
+      }
       this.render();
       return;
     }
 
     if (this.activeTool === 'junction') {
-      this.toggleJunctionNode(world);
+      const isTouch = e.pointerType === 'touch';
+      this.toggleJunctionNode(world, isTouch ? { x: sx, y: sy } : undefined);
       const activeNodes = this.getActiveJunctionNodes();
+      const tol = isTouch ? 26 : 14;
       this.hoveredJunctionNode =
-        activeNodes.find(
-          (n) => Grid.pointsEqual(n, snapped, 8) || Math.hypot(world.x - n.x, world.y - n.y) < 8
-        ) || null;
+        activeNodes.find((n) => {
+          const s = this.grid.worldToScreen(n.x, n.y);
+          return Math.hypot(s.x - sx, s.y - sy) <= tol || Grid.pointsEqual(n, snapped, 8);
+        }) || null;
       this.updateCursor(world);
       return;
     }
 
     if (this.activeTool.startsWith('wire_')) {
-      const snapPt = this.hoveredSnapTarget ? this.hoveredSnapTarget.point : snapped;
+      const isTouch = e.pointerType === 'touch';
+      const snapTarget = this.findSnapTargetAtScreen({ x: sx, y: sy }, isTouch ? 28 : 16);
+      const snapPt = snapTarget ? snapTarget.point : snapped;
+      this.hoveredSnapTarget = snapTarget || null;
 
       if (this.wireStartPoint && !this.isPointerDownForWire) {
         // Second click of click-click mode: commit wire segment
@@ -1175,11 +1480,22 @@ export class CanvasView {
     }
 
     if (this.activeTool === 'select') {
-      const comp = this.findComponentAt(world);
-      const wire = !comp ? this.findWireAt(world) : null;
+      const isTouch = e.pointerType === 'touch';
       const isMultiModifier = e.shiftKey || e.ctrlKey || e.metaKey;
 
+      // En modo selección: NO interceptamos el borne de forma exclusiva para bloquear el arrastre.
+      // Si toca sobre el componente o cerca de cualquiera de sus bornas, seleccionamos el componente y permitimos arrastrarlo inmediatamente.
+      let comp = this.findComponentAt(world);
+      if (!comp) {
+        const termHit = this.findTerminalAtScreen({ x: sx, y: sy }, isTouch ? 26 : 14);
+        if (termHit) {
+          comp = termHit.terminal.component;
+        }
+      }
+      const wire = !comp ? this.findWireAt(world) : null;
+
       if (comp) {
+        this.selectedTerminal = null;
         if (isMultiModifier) {
           if (this.selectedComponents.has(comp)) {
             this.selectedComponents.delete(comp);
@@ -1206,6 +1522,7 @@ export class CanvasView {
       }
 
       if (wire) {
+        this.selectedTerminal = null;
         if (isMultiModifier) {
           if (this.selectedWires.has(wire)) {
             this.selectedWires.delete(wire);
@@ -1229,7 +1546,17 @@ export class CanvasView {
         return;
       }
 
-      // Clicked on empty space: start Box / Marquee Selection
+      // Toque en fondo vacío
+      this.selectedTerminal = null;
+      if (isTouch) {
+        // En pantalla táctil: iniciar pulsación larga para Selección por Caja (Marquee CAD)
+        this.startLongPress(sx, sy, world, isMultiModifier);
+        this.panStart = { x: sx - this.grid.panX, y: sy - this.grid.panY };
+        this.render();
+        return;
+      }
+
+      // En escritorio con mouse: selección por caja (Marquee CAD)
       this.isBoxSelecting = true;
       this.boxSelectStart = { ...world };
       this.boxSelectCurrent = { ...world };
@@ -1251,10 +1578,26 @@ export class CanvasView {
     const sx = e.clientX - rect.left;
     const sy = e.clientY - rect.top;
 
-    if (this.isPanning) {
-      this.grid.panX = sx - this.panStart.x;
-      this.grid.panY = sy - this.panStart.y;
-      this.requestRender();
+    if (this.activePointers.has(e.pointerId)) {
+      this.activePointers.set(e.pointerId, { x: sx, y: sy });
+    }
+
+    // 1. Pinch to Zoom & Pan multitáctil (2 dedos)
+    if (this.isPinching && this.activePointers.size >= 2) {
+      this.cancelLongPress();
+      const pts = Array.from(this.activePointers.values());
+      const currentDist = Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y);
+      const currentCenter = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 };
+
+      if (this.pinchStartDistance > 0) {
+        const scale = currentDist / this.pinchStartDistance;
+        const newZoom = Math.max(0.2, Math.min(4.0, this.pinchStartZoom * scale));
+        this.grid.zoom = newZoom;
+        this.grid.panX = currentCenter.x - this.pinchStartWorldCenter.x * newZoom;
+        this.grid.panY = currentCenter.y - this.pinchStartWorldCenter.y * newZoom;
+        this.requestRender();
+        this.notifyStatus();
+      }
       return;
     }
 
@@ -1262,9 +1605,39 @@ export class CanvasView {
     const snapped = Grid.snapPoint(world);
     this.currentMouseWorld = world;
 
+    // 2. CAD Box Selection (prioridad inmediata para arrastre con dedo tras pulsación larga o con mouse)
+    if (this.isBoxSelecting && !this.isSimulation) {
+      this.boxSelectCurrent = { ...world };
+      this.updateBoxSelection(e.shiftKey || e.ctrlKey || e.metaKey);
+      this.requestRender();
+      return;
+    }
+
+    // 3. Si hay pulsación larga activa antes de dispararse y el usuario mueve el dedo:
+    // umbral de tolerancia táctil (14px) para no cancelar por micro-temblor involuntario
+    if (this.longPressActive && !this.longPressTriggered) {
+      const moveDist = Math.hypot(sx - this.longPressStartScreen.x, sy - this.longPressStartScreen.y);
+      if (moveDist > 14) {
+        this.cancelLongPress();
+        if (!e.shiftKey && !e.ctrlKey && !e.metaKey) {
+          this.clearSelection();
+        }
+        this.isPanning = true;
+      }
+    }
+
+    if (this.isPanning) {
+      this.grid.panX = sx - this.panStart.x;
+      this.grid.panY = sy - this.panStart.y;
+      this.requestRender();
+      this.notifyStatus();
+      return;
+    }
+
     // Detectar snap para cables (bornas, vértices de cables o nodos)
     if (this.activeTool.startsWith('wire_') && !this.isSimulation) {
-      this.hoveredSnapTarget = this.findSnapTarget(world, 14);
+      const isTouch = e.pointerType === 'touch';
+      this.hoveredSnapTarget = this.findSnapTargetAtScreen({ x: sx, y: sy }, isTouch ? 28 : 16);
     } else {
       this.hoveredSnapTarget = null;
     }
@@ -1272,10 +1645,13 @@ export class CanvasView {
     // Detectar nodo existente para herramienta junction
     if (this.activeTool === 'junction' && !this.isSimulation) {
       const activeNodes = this.getActiveJunctionNodes();
+      const isTouch = e.pointerType === 'touch';
+      const tol = isTouch ? 26 : 14;
       this.hoveredJunctionNode =
-        activeNodes.find(
-          (n) => Grid.pointsEqual(n, snapped, 8) || Math.hypot(world.x - n.x, world.y - n.y) < 8
-        ) || null;
+        activeNodes.find((n) => {
+          const s = this.grid.worldToScreen(n.x, n.y);
+          return Math.hypot(s.x - sx, s.y - sy) <= tol || Grid.pointsEqual(n, snapped, 8);
+        }) || null;
     } else {
       this.hoveredJunctionNode = null;
     }
@@ -1298,13 +1674,6 @@ export class CanvasView {
       return;
     }
 
-    if (this.isBoxSelecting && !this.isSimulation) {
-      this.boxSelectCurrent = { ...world };
-      this.updateBoxSelection(e.shiftKey || e.ctrlKey || e.metaKey);
-      this.requestRender();
-      return;
-    }
-
     // Redibujar en tiempo real si hay herramienta interactiva activa (vista previa/fantasma)
     if (
       this.isDrawingWire ||
@@ -1318,7 +1687,37 @@ export class CanvasView {
   }
 
   private handlePointerUp(e: PointerEvent) {
-    if (this.isPanning) {
+    try {
+      this.canvas.releasePointerCapture(e.pointerId);
+    } catch {}
+    this.activePointers.delete(e.pointerId);
+
+    if (this.isPinching) {
+      if (this.activePointers.size < 2) {
+        this.isPinching = false;
+        // Si aún queda 1 dedo en pantalla, reanclar suavemente el paneo para evitar saltos
+        if (this.activePointers.size === 1) {
+          const remainingPt = Array.from(this.activePointers.values())[0];
+          this.isPanning = true;
+          this.panStart = { x: remainingPt.x - this.grid.panX, y: remainingPt.y - this.grid.panY };
+        }
+      }
+      this.requestRender();
+      return;
+    }
+
+    if (this.longPressActive) {
+      if (!this.longPressTriggered) {
+        this.cancelLongPress();
+        if (!e.shiftKey && !e.ctrlKey && !e.metaKey) {
+          this.clearSelection();
+        }
+      } else {
+        this.cancelLongPress();
+      }
+    }
+
+    if (this.isPanning && this.activePointers.size === 0) {
       this.isPanning = false;
     }
 
@@ -1355,10 +1754,12 @@ export class CanvasView {
       const rw = Math.abs(this.boxSelectCurrent.x - this.boxSelectStart.x);
       const rh = Math.abs(this.boxSelectCurrent.y - this.boxSelectStart.y);
       this.isBoxSelecting = false;
+      this.cancelLongPress();
       if (rw < 4 && rh < 4 && !e.shiftKey && !e.ctrlKey && !e.metaKey) {
         this.clearSelection();
       }
       this.render();
+      return;
     }
 
     if (this.isDrawingWire && this.wireStartPoint && this.isPointerDownForWire) {
@@ -1366,7 +1767,9 @@ export class CanvasView {
       const sx = e.clientX - rect.left;
       const sy = e.clientY - rect.top;
       const world = this.grid.screenToWorld(sx, sy);
-      const snapPt = this.hoveredSnapTarget ? this.hoveredSnapTarget.point : world;
+      const isTouch = e.pointerType === 'touch';
+      const snapTarget = this.hoveredSnapTarget || this.findSnapTargetAtScreen({ x: sx, y: sy }, isTouch ? 28 : 16);
+      const snapPt = snapTarget ? snapTarget.point : world;
       const end = this.getOrthogonalEnd(this.wireStartPoint, snapPt);
 
       if (Grid.distance(this.wireStartPoint, end) >= Grid.STEP) {
@@ -1417,6 +1820,21 @@ export class CanvasView {
     }
   }
 
+  private handlePointerCancel(e: PointerEvent) {
+    try {
+      this.canvas.releasePointerCapture(e.pointerId);
+    } catch {}
+    this.activePointers.delete(e.pointerId);
+    this.cancelLongPress();
+    if (this.activePointers.size === 0) {
+      this.isPanning = false;
+      this.isPinching = false;
+      this.isDraggingGroup = false;
+      this.isBoxSelecting = false;
+    }
+    this.requestRender();
+  }
+
   private getOrthogonalEnd(start: Point, current: Point): Point {
     const target = this.hoveredSnapTarget ? this.hoveredSnapTarget.point : Grid.snapPoint(current);
     const dx = Math.abs(target.x - start.x);
@@ -1464,6 +1882,147 @@ export class CanvasView {
     }
 
     this.invalidateJunctionCache();
+  }
+
+  private startLongPress(sx: number, sy: number, world: Point, isMultiModifier: boolean = false) {
+    this.cancelLongPress();
+    this.longPressActive = true;
+    this.longPressTriggered = false;
+    this.longPressProgress = 0;
+    this.longPressPulseProgress = 0;
+    this.longPressStartScreen = { x: sx, y: sy };
+    this.longPressStartWorld = { x: world.x, y: world.y };
+
+    if (isMultiModifier) {
+      this.baseSelectedComponents = new Set(this.selectedComponents);
+      this.baseSelectedWires = new Set(this.selectedWires);
+    } else {
+      this.baseSelectedComponents = new Set();
+      this.baseSelectedWires = new Set();
+    }
+
+    const startTime = performance.now();
+    const updateProgress = () => {
+      if (!this.longPressActive || this.longPressTriggered) return;
+      const elapsed = performance.now() - startTime;
+      this.longPressProgress = Math.min(1.0, elapsed / this.LONG_PRESS_DURATION);
+      this.requestRender();
+
+      if (this.longPressProgress >= 1.0) {
+        this.triggerLongPressBoxSelect();
+      } else {
+        this.longPressRafId = requestAnimationFrame(updateProgress);
+      }
+    };
+    this.longPressRafId = requestAnimationFrame(updateProgress);
+  }
+
+  private triggerLongPressBoxSelect() {
+    this.longPressTriggered = true;
+    this.longPressProgress = 0;
+    this.isPanning = false;
+    this.isBoxSelecting = true;
+    this.boxSelectStart = { ...this.longPressStartWorld };
+    this.boxSelectCurrent = { ...this.longPressStartWorld };
+
+    // Vibración háptica suave si el dispositivo lo soporta
+    if (typeof navigator !== 'undefined' && navigator.vibrate) {
+      try {
+        navigator.vibrate(35);
+      } catch {}
+    }
+
+    const pulseStart = performance.now();
+    const pulseDuration = 220;
+    const updatePulse = () => {
+      const elapsed = performance.now() - pulseStart;
+      this.longPressPulseProgress = Math.min(1.0, elapsed / pulseDuration);
+      this.requestRender();
+      if (this.longPressPulseProgress < 1.0 && this.longPressActive) {
+        requestAnimationFrame(updatePulse);
+      }
+    };
+    requestAnimationFrame(updatePulse);
+  }
+
+  private cancelLongPress() {
+    if (this.longPressRafId !== null) {
+      cancelAnimationFrame(this.longPressRafId);
+      this.longPressRafId = null;
+    }
+    this.longPressActive = false;
+    this.longPressTriggered = false;
+    this.longPressProgress = 0;
+    this.longPressPulseProgress = 0;
+  }
+
+  private renderLongPressFeedback(ctx: CanvasRenderingContext2D) {
+    const { x, y } = this.longPressStartScreen;
+    ctx.save();
+
+    // Pulso expansivo al activarse el modo selección
+    if (this.longPressPulseProgress > 0) {
+      const alpha = Math.max(0, 1.0 - this.longPressPulseProgress);
+      const pulseRadius = 32 + this.longPressPulseProgress * 22;
+      ctx.strokeStyle = `rgba(56, 189, 248, ${alpha * 0.9})`;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(x, y, pulseRadius, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.strokeStyle = `rgba(34, 197, 94, ${alpha * 0.7})`;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(x, y, pulseRadius - 8, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.fillStyle = `rgba(56, 189, 248, ${alpha})`;
+      ctx.beginPath();
+      ctx.arc(x, y, 4, 0, Math.PI * 2);
+      ctx.fill();
+    } else if (this.longPressProgress > 0) {
+      const radius = 32;
+      const progress = this.longPressProgress;
+
+      // 1. Fondo oscuro circular translúcido para alto contraste sobre lienzo blanco
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.55)';
+      ctx.beginPath();
+      ctx.arc(x, y, radius + 8, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 2. Anillo de guía tenue
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+      ctx.lineWidth = 3.5;
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // 3. Arco de progreso que se va llenando en sentido horario desde las 12h
+      const startAngle = -Math.PI / 2;
+      const endAngle = startAngle + progress * Math.PI * 2;
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 4;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.arc(x, y, radius, startAngle, endAngle);
+      ctx.stroke();
+
+      // 4. Perla brillante indicadora en la punta del arco
+      const dotX = x + radius * Math.cos(endAngle);
+      const dotY = y + radius * Math.sin(endAngle);
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.arc(dotX, dotY, 3.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 5. Punto central de enfoque
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+      ctx.beginPath();
+      ctx.arc(x, y, 2.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.restore();
   }
 
   private handleDoubleClick(e: MouseEvent) {
@@ -1520,6 +2079,30 @@ export class CanvasView {
   public clearSelection() {
     this.selectedComponents.clear();
     this.selectedWires.clear();
+    this.selectedTerminal = null;
+    this.notifySelectionChange();
+  }
+
+  public notifySelectionChange() {
+    const compCount = this.selectedComponents.size;
+    const wireCount = this.selectedWires.size;
+    const firstComp = compCount > 0 ? Array.from(this.selectedComponents)[0] : null;
+    const firstWire = wireCount > 0 ? Array.from(this.selectedWires)[0] : null;
+
+    if (
+      compCount !== this.lastSelectedCompCount ||
+      wireCount !== this.lastSelectedWireCount ||
+      firstComp !== this.lastSelectedFirstComp ||
+      firstWire !== this.lastSelectedFirstWire
+    ) {
+      this.lastSelectedCompCount = compCount;
+      this.lastSelectedWireCount = wireCount;
+      this.lastSelectedFirstComp = firstComp;
+      this.lastSelectedFirstWire = firstWire;
+      if (this.onSelectionChange) {
+        this.onSelectionChange(compCount > 0 || wireCount > 0, compCount, wireCount);
+      }
+    }
   }
 
   private recordInitialPositions() {
@@ -1971,7 +2554,41 @@ export class CanvasView {
       ctx.restore();
     }
 
+    // 9. Highlight selected terminal (tapped on touchscreen or clicked)
+    if (this.selectedTerminal && !this.isSimulation) {
+      const tp = this.selectedTerminal.point;
+      ctx.save();
+      ctx.strokeStyle = '#38bdf8';
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.25)';
+      ctx.lineWidth = 2.5 / this.grid.zoom;
+      ctx.beginPath();
+      ctx.arc(tp.x, tp.y, 8, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Floating label badge
+      const t = this.selectedTerminal.terminal;
+      const text = `${t.componentTag} : ${t.name}`;
+      ctx.font = 'bold 11px sans-serif';
+      const tw = ctx.measureText(text).width;
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.9)';
+      ctx.fillRect(tp.x + 12, tp.y - 20, tw + 10, 18);
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(tp.x + 12, tp.y - 20, tw + 10, 18);
+      ctx.fillStyle = '#7dd3fc';
+      ctx.fillText(text, tp.x + 17, tp.y - 7);
+      ctx.restore();
+    }
+
     ctx.restore();
+
+    // 10. Long-Press Box Selection Visual Feedback (Screen Space)
+    if (this.longPressActive && (this.longPressProgress > 0 || (this.longPressPulseProgress > 0 && this.longPressPulseProgress < 1.0))) {
+      this.renderLongPressFeedback(ctx);
+    }
+
+    this.notifySelectionChange();
   }
 
   private renderGrid(w: number, h: number) {
@@ -2119,27 +2736,33 @@ export class CanvasView {
     return junctions;
   }
 
-  public toggleJunctionNode(worldPos: Point) {
+  public toggleJunctionNode(worldPos: Point, screenPos?: Point) {
     this.saveSnapshot();
     const snapped = Grid.snapPoint(worldPos);
     const activeNodes = this.getActiveJunctionNodes();
-    const existingIndex = activeNodes.findIndex((n) => Grid.pointsEqual(n, snapped, 6));
+    const existingIndex = activeNodes.findIndex((n) => {
+      if (screenPos) {
+        const s = this.grid.worldToScreen(n.x, n.y);
+        if (Math.hypot(s.x - screenPos.x, s.y - screenPos.y) <= 26) return true;
+      }
+      return Math.hypot(n.x - worldPos.x, n.y - worldPos.y) <= 14 || Grid.pointsEqual(n, snapped, 8);
+    });
 
     if (existingIndex >= 0) {
       // Junction exists -> DELETE IT (User clicks on node to remove it)
       const existing = activeNodes[existingIndex];
-      const manualIdx = this.manualNodes.findIndex((mn) => Grid.pointsEqual(mn, existing, 6));
+      const manualIdx = this.manualNodes.findIndex((mn) => Grid.pointsEqual(mn, existing, 8));
       if (manualIdx >= 0) {
         this.manualNodes.splice(manualIdx, 1);
       } else {
         // It's an auto-detected junction, suppress it
-        if (!this.suppressedNodes.some((sn) => Grid.pointsEqual(sn, snapped, 4))) {
-          this.suppressedNodes.push({ ...snapped });
+        if (!this.suppressedNodes.some((sn) => Grid.pointsEqual(sn, existing, 6))) {
+          this.suppressedNodes.push({ ...existing });
         }
       }
     } else {
       // Junction does NOT exist -> CREATE IT (User clicks where there's no node)
-      const suppIdx = this.suppressedNodes.findIndex((sn) => Grid.pointsEqual(sn, snapped, 6));
+      const suppIdx = this.suppressedNodes.findIndex((sn) => Grid.pointsEqual(sn, snapped, 8));
       if (suppIdx >= 0) {
         // If it was suppressed, un-suppress it
         this.suppressedNodes.splice(suppIdx, 1);
