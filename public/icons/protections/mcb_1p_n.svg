@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.5">
+      <line x1="10" y1="4" x2="10" y2="11" />
+      <line x1="10" y1="21" x2="10" y2="28" />
+      <line x1="10" y1="21" x2="6" y2="11" />
+      <path d="M7.5,16 A1.5,1.5 0 0,0 4.5,16" stroke="#38bdf8" stroke-width="1.2" />
+      <line x1="22" y1="4" x2="22" y2="11" />
+      <line x1="22" y1="21" x2="22" y2="28" />
+      <line x1="22" y1="21" x2="18" y2="11" />
+      <line x1="10" y1="16" x2="22" y2="16" stroke-dasharray="2,1" stroke="#94a3b8" />
+      <text x="26" y="27" font-size="5" font-weight="bold" fill="#0284c7" text-anchor="middle">N</text>
+      <text x="16" y="29" font-size="4.5" font-weight="bold" fill="#38bdf8" text-anchor="middle">1P+N</text>
+    </svg>

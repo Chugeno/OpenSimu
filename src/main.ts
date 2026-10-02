@@ -2,7 +2,7 @@ import { CanvasView, type ToolType } from './ui/CanvasView';
 import { COMPONENT_DEFINITIONS } from './core/ComponentRegistry';
 import type { CircuitComponent, ComponentCategory } from './core/types';
 import { CadeSimuParser } from './core/CadeSimuParser';
-import { COMPONENT_ICONS } from './ui/icons';
+import { COMPONENT_ICONS, CATEGORY_ICONS } from './ui/EmbeddedIcons';
 import { I18n, t, type SupportedLocale } from './core/i18n';
 import { DeviceDetector, type DeviceInfo } from './core/DeviceDetector';
 
@@ -146,6 +146,14 @@ function applyTranslations() {
     const key = el.dataset.i18nTitle;
     if (key) {
       el.title = t(key);
+    }
+  });
+
+  // Render Category Tab Icons
+  document.querySelectorAll<HTMLElement>('[data-cat-icon]').forEach((el) => {
+    const cat = el.dataset.catIcon;
+    if (cat && CATEGORY_ICONS[cat]) {
+      el.innerHTML = CATEGORY_ICONS[cat];
     }
   });
 
@@ -1174,6 +1182,6 @@ function loadDemoCircuit() {
   canvasView.resetZoom();
 }
 
-// Initial palette render & default demo circuit
-renderPalette();
+// Initial translations, category icons, palette render & default demo circuit
+applyTranslations();
 loadDemoCircuit();

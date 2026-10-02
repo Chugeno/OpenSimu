@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.8">
+      <line x1="16" y1="4" x2="16" y2="11" />
+      <line x1="16" y1="21" x2="16" y2="28" />
+      <line x1="16" y1="21" x2="11" y2="11" />
+      <!-- Disparo térmico y magnético -->
+      <path d="M12,14 L10,18" stroke="#f59e0b" stroke-width="1.5" />
+      <path d="M10,13 L14,13" stroke="#ef4444" stroke-width="1.5" />
+      <text x="24" y="18" font-size="6" font-weight="bold" fill="#38bdf8" text-anchor="middle">1P</text>
+    </svg>

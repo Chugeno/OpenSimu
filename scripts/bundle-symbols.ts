@@ -107,3 +107,35 @@ export const EMBEDDED_SYMBOLS_META: Record<string, {
 
 fs.writeFileSync('src/core/EmbeddedSymbols.ts', tsContent);
 console.log(`[bundle-symbols] Pre-compiled ${Object.keys(map).length} symbols with metadata into src/core/EmbeddedSymbols.ts`);
+
+// 2. Bundle UI Icons from public/icons (Category tabs & Component palette)
+const iconFiles = walk('public/icons');
+const componentIconsMap: Record<string, string> = {};
+const categoryIconsMap: Record<string, string> = {};
+
+iconFiles.forEach((f) => {
+  const rel = f.replace(/^public\/icons\//, '');
+  const content = fs.readFileSync(f, 'utf8').trim();
+  const parts = rel.split(path.sep);
+  if (parts.length === 2) {
+    const [cat, file] = parts;
+    const id = file.replace(/\.svg$/, '');
+    if (cat === 'categories') {
+      categoryIconsMap[id] = content;
+    } else {
+      componentIconsMap[id] = content;
+    }
+  }
+});
+
+const iconsTsContent = `// Auto-generated bundle of UI SVG icons for Categories and Component Palettes.
+// Generated automatically during build from public/icons/.
+// Can be edited directly as SVG files in public/icons/<category>/<id>.svg
+
+export const CATEGORY_ICONS: Record<string, string> = ${JSON.stringify(categoryIconsMap, null, 2)};
+
+export const COMPONENT_ICONS: Record<string, string> = ${JSON.stringify(componentIconsMap, null, 2)};
+`;
+
+fs.writeFileSync('src/ui/EmbeddedIcons.ts', iconsTsContent);
+console.log(`[bundle-symbols] Pre-compiled ${Object.keys(categoryIconsMap).length} category icons and ${Object.keys(componentIconsMap).length} component icons into src/ui/EmbeddedIcons.ts`);

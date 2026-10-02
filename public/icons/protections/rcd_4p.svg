@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.2">
+      <ellipse cx="16" cy="16" rx="13" ry="8" stroke="#38bdf8" stroke-width="1.8" stroke-dasharray="4,2" />
+      <line x1="6" y1="4" x2="6" y2="28" />
+      <line x1="12" y1="4" x2="12" y2="28" />
+      <line x1="18" y1="4" x2="18" y2="28" />
+      <line x1="24" y1="4" x2="24" y2="28" />
+      <rect x="14" y="13.5" width="4" height="4" fill="#f59e0b" />
+      <text x="16" y="16.8" font-size="3.5" font-weight="bold" fill="#0f172a" text-anchor="middle">T</text>
+      <text x="16" y="29" font-size="5" font-weight="bold" fill="#38bdf8" text-anchor="middle">ΔI 4P</text>
+    </svg>
