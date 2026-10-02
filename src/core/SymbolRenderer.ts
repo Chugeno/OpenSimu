@@ -2531,6 +2531,12 @@ export class SymbolRenderer {
       });
     }
 
+    // Store calibrated local artboard bounds so tag labels align directly to the left edge of the SVG artboard
+    (comp as any)._artboardLeft = drawOffsetX;
+    (comp as any)._artboardTop = drawOffsetY;
+    (comp as any)._artboardWidth = vb.width;
+    (comp as any)._artboardHeight = vb.height;
+
     // SVG loaded successfully -> Draw image mapped to calibrated coordinates
     ctx.drawImage(img, drawOffsetX, drawOffsetY, vb.width, vb.height);
 
@@ -2569,8 +2575,27 @@ export class SymbolRenderer {
     const localCenterX = def?.poles ? (def.poles - 1) * 20 : w / 2;
     const localCenterY = isPower ? 0 : h / 2;
 
-    // 2. Ancla local de la etiqueta (Tag)
-    const localTagX = isThermal ? -34 : isMotorBreaker ? -36 : hasHead ? -22 : (isPower ? -12 : -8);
+    // 2. Ancla local de la etiqueta (Tag):
+    // El límite izquierdo del lienzo del SVG (artboard en Illustrator) determina la posición del Tag.
+    // El texto se alinea a la derecha justo antes de dicho límite, de modo que nunca pisa el símbolo.
+    // Si el usuario edita el lienzo en Illustrator (haciéndolo más ancho o más estrecho a la izquierda),
+    // el Tag se desplaza automáticamente sin necesidad de tocar código.
+    let artboardLeft = (comp as any)._artboardLeft;
+    if (artboardLeft === undefined) {
+      const normalizedFolder = comp.type === 'contact_no_1p' ? 'contact_no'
+        : comp.type === 'contact_nc_1p' ? 'contact_nc'
+        : comp.type === 'motor_breaker_mag_3p' ? 'motor_breaker_3p'
+        : comp.type;
+      const meta = EMBEDDED_SYMBOLS_META[`/symbols/${normalizedFolder}/0.svg`];
+      if (meta) {
+        const refX = meta.refTerminal ? meta.refTerminal.x : 0;
+        artboardLeft = meta.viewBox.minX - refX;
+      } else {
+        artboardLeft = isThermal ? -34 : isMotorBreaker ? -36 : hasHead ? -22 : -20;
+      }
+    }
+
+    const localTagX = isPower ? -12 : artboardLeft;
     const localTagY = isPower ? 0 : h / 2;
 
     const center = transformLocalPoint({ x: localCenterX, y: localCenterY }, rot, mH, mV);
@@ -2583,22 +2608,24 @@ export class SymbolRenderer {
 
       let drawX = tagAnchor.x;
       let drawY = tagAnchor.y;
-      let align: CanvasTextAlign = 'center';
+      let align: CanvasTextAlign = 'right';
       let baseline: CanvasTextBaseline = 'middle';
 
       if (Math.abs(dx) >= Math.abs(dy)) {
-        if (dx < 0) {
+        if (dx <= 0) {
           align = 'right';
-          drawX -= 2;
+          drawX -= 3;
         } else {
           align = 'left';
-          drawX += 2;
+          drawX += 3;
         }
       } else {
         if (dy < 0) {
+          align = 'center';
           baseline = 'bottom';
           drawY -= 3;
         } else {
+          align = 'center';
           baseline = 'top';
           drawY += 3;
         }

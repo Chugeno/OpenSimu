@@ -19,37 +19,51 @@ let currentCategory: ComponentCategory | 'cables' = 'power';
 let activeCompType: string | null = null;
 let editingComponent: CircuitComponent | null = null;
 
-// Elements
-const btnEdit = document.getElementById('btn-edit') as HTMLButtonElement;
-const btnSimulate = document.getElementById('btn-simulate') as HTMLButtonElement;
-const btnStop = document.getElementById('btn-stop') as HTMLButtonElement;
-const btnSelect = document.getElementById('btn-select') as HTMLButtonElement;
-const btnDelete = document.getElementById('btn-delete') as HTMLButtonElement;
+// Elements: TopBar
+const btnFile = document.getElementById('btn-file') as HTMLButtonElement | null;
+const fileMenu = document.getElementById('file-menu') as HTMLDivElement | null;
+const btnLoad = document.getElementById('btn-load') as HTMLButtonElement | null;
+const btnSave = document.getElementById('btn-save') as HTMLButtonElement | null;
+const btnExportCad = document.getElementById('btn-export-cad') as HTMLButtonElement | null;
+const btnPrint = document.getElementById('btn-print') as HTMLButtonElement | null;
+const btnDemo = document.getElementById('btn-demo') as HTMLButtonElement | null;
+const btnClear = document.getElementById('btn-clear') as HTMLButtonElement | null;
+const fileInput = document.getElementById('file-input') as HTMLInputElement;
+
 const btnUndo = document.getElementById('btn-undo') as HTMLButtonElement | null;
 const btnRedo = document.getElementById('btn-redo') as HTMLButtonElement | null;
-const btnRotateCw = document.getElementById('btn-rotate-cw') as HTMLButtonElement | null;
+
+const btnCopy = document.getElementById('btn-copy') as HTMLButtonElement | null;
+const btnCut = document.getElementById('btn-cut') as HTMLButtonElement | null;
+const btnPaste = document.getElementById('btn-paste') as HTMLButtonElement | null;
+
 const btnRotateCcw = document.getElementById('btn-rotate-ccw') as HTMLButtonElement | null;
+const btnRotateCw = document.getElementById('btn-rotate-cw') as HTMLButtonElement | null;
 const btnMirrorH = document.getElementById('btn-mirror-h') as HTMLButtonElement | null;
 const btnMirrorV = document.getElementById('btn-mirror-v') as HTMLButtonElement | null;
-const btnClear = document.getElementById('btn-clear') as HTMLButtonElement;
-const btnDemo = document.getElementById('btn-demo') as HTMLButtonElement;
-const btnSave = document.getElementById('btn-save') as HTMLButtonElement;
-const btnExportCad = document.getElementById('btn-export-cad') as HTMLButtonElement;
-const btnLoad = document.getElementById('btn-load') as HTMLButtonElement;
-const fileInput = document.getElementById('file-input') as HTMLInputElement;
-const btnResetZoom = document.getElementById('btn-reset-zoom') as HTMLButtonElement;
 
+const btnZoomIn = document.getElementById('btn-zoom-in') as HTMLButtonElement | null;
+const btnZoomOut = document.getElementById('btn-zoom-out') as HTMLButtonElement | null;
+const btnZoomReset = document.getElementById('btn-zoom-reset') as HTMLButtonElement | null;
+
+const btnLang = document.getElementById('btn-lang') as HTMLButtonElement | null;
+const langMenu = document.getElementById('lang-menu') as HTMLDivElement | null;
+const langCurrentLabel = document.getElementById('lang-current-label') as HTMLSpanElement | null;
 const langSelect = document.getElementById('lang-select') as HTMLSelectElement | null;
-const deviceBadge = document.getElementById('device-badge');
 
+const btnSimulateToggle = document.getElementById('btn-simulate-toggle') as HTMLButtonElement | null;
+
+// Workspace & Status
 const paletteContainer = document.getElementById('component-palette') as HTMLDivElement;
-const catTabs = document.querySelectorAll<HTMLButtonElement>('.cat-tab');
-
+const catTabs = document.querySelectorAll<HTMLButtonElement>('.category-tab');
 const statusMode = document.getElementById('status-mode') as HTMLSpanElement;
 const statusCoords = document.getElementById('status-coords') as HTMLSpanElement;
 const statusZoom = document.getElementById('status-zoom') as HTMLSpanElement;
 const statusHint = document.getElementById('status-hint') as HTMLSpanElement;
+const deviceBadge = document.getElementById('device-badge');
+const btnResetZoom = document.getElementById('btn-reset-zoom') as HTMLButtonElement | null;
 
+// Modals
 const tagModal = document.getElementById('tag-modal') as HTMLDivElement;
 const tagInput = document.getElementById('tag-input') as HTMLInputElement;
 const modalCompTitle = document.getElementById('modal-comp-title') as HTMLHeadingElement;
@@ -88,13 +102,36 @@ function updateDeviceBadge(info: DeviceInfo) {
 updateDeviceBadge(DeviceDetector.getInfo());
 DeviceDetector.onDeviceChange(updateDeviceBadge);
 
-// Language Selector Handler
-if (langSelect) {
-  langSelect.value = I18n.getLocale();
-  langSelect.onchange = (e) => {
-    const newLocale = (e.target as HTMLSelectElement).value as SupportedLocale;
-    I18n.setLocale(newLocale);
-  };
+// Language display helper
+const localeLabels: Record<string, string> = {
+  'es-AR': 'AR',
+  'es-ES': 'ES',
+  en: 'EN',
+};
+
+function updateLangDisplay(locale: SupportedLocale) {
+  if (langCurrentLabel) {
+    langCurrentLabel.textContent = localeLabels[locale] || 'AR';
+  }
+  if (langSelect) {
+    langSelect.value = locale;
+  }
+}
+updateLangDisplay(I18n.getLocale());
+
+// Language Dropdown Setup
+if (langMenu) {
+  langMenu.querySelectorAll<HTMLButtonElement>('[data-locale]').forEach((btn) => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      const newLocale = btn.dataset.locale as SupportedLocale;
+      if (newLocale) {
+        I18n.setLocale(newLocale);
+        updateLangDisplay(newLocale);
+      }
+      closeAllMenus();
+    };
+  });
 }
 
 function applyTranslations() {
@@ -113,6 +150,7 @@ function applyTranslations() {
   });
 
   renderPalette();
+  updateSimulationButton(canvasView.isSimulation);
 }
 
 I18n.onLocaleChange(() => {
@@ -120,13 +158,83 @@ I18n.onLocaleChange(() => {
   canvasView.render();
 });
 
+// Dropdown Menus Management
+function closeAllMenus() {
+  document.querySelectorAll<HTMLElement>('.menu').forEach((m) => m.classList.remove('open'));
+}
+
+function setupDropdown(btn: HTMLElement | null, menu: HTMLElement | null) {
+  if (!btn || !menu) return;
+  btn.onclick = (e) => {
+    e.stopPropagation();
+    const wasOpen = menu.classList.contains('open');
+    closeAllMenus();
+    if (!wasOpen) {
+      menu.classList.add('open');
+    }
+  };
+}
+
+setupDropdown(btnFile, fileMenu);
+setupDropdown(btnLang, langMenu);
+
+document.addEventListener('click', () => {
+  closeAllMenus();
+});
+
+// SIMULATION TOGGLE LOGIC
+function updateSimulationButton(isSimulating: boolean) {
+  if (!btnSimulateToggle) return;
+  btnSimulateToggle.classList.toggle('simulating', isSimulating);
+  const icon = btnSimulateToggle.querySelector('.icon');
+  const text = btnSimulateToggle.querySelector('.btn-text');
+
+  if (isSimulating) {
+    if (icon) {
+      icon.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>`;
+    }
+    if (text) text.textContent = 'Detener';
+    btnSimulateToggle.title = 'Detener Simulación Eléctrica';
+    if (statusMode) {
+      statusMode.className = 'status-pill simulating';
+      statusMode.textContent = t('status.sim_mode') || 'Simulación activa';
+    }
+  } else {
+    if (icon) {
+      icon.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
+    }
+    if (text) text.textContent = 'Simular';
+    btnSimulateToggle.title = 'Iniciar Simulación Eléctrica';
+    if (statusMode) {
+      statusMode.className = 'status-pill';
+      statusMode.textContent = t('status.edit_mode') || 'Modo Edición';
+    }
+  }
+}
+
+function setSimulationMode(simulating: boolean) {
+  if (simulating) {
+    activeCompType = null;
+    renderPalette();
+    canvasView.startSimulation();
+    updateSimulationButton(true);
+  } else {
+    canvasView.stopSimulation();
+    canvasView.setTool('select');
+    updateSimulationButton(false);
+  }
+}
+
+if (btnSimulateToggle) {
+  btnSimulateToggle.onclick = () => {
+    setSimulationMode(!canvasView.isSimulation);
+  };
+}
+
+// Short Circuit Dismiss
 btnShortCircuitDismiss.onclick = () => {
   shortCircuitModal.style.display = 'none';
-  canvasView.stopSimulation();
-  btnEdit.classList.add('active');
-  btnSimulate.classList.remove('active');
-  canvasView.setTool('select');
-  updateToolButtons();
+  setSimulationMode(false);
 };
 
 canvasView.onShortCircuit = (result) => {
@@ -142,22 +250,22 @@ canvasView.onShortCircuit = (result) => {
 
 // Status Updates from Canvas
 canvasView.onStatusUpdate = (status) => {
-  statusCoords.textContent = `X: ${status.x}, Y: ${status.y}`;
+  statusCoords.textContent = `X: ${status.x}  Y: ${status.y}`;
   statusZoom.textContent = `Zoom: ${status.zoom}%`;
 
   if (canvasView.isSimulation) {
     if (canvasView.simulationResult.shortCircuit) {
-      statusMode.className = 'badge badge-alert';
-      statusMode.textContent = t('status.short_circuit_warn');
+      statusMode.className = 'status-pill alert';
+      statusMode.textContent = t('status.short_circuit_warn') || '¡Cortocircuito!';
       statusHint.textContent = canvasView.simulationResult.shortCircuitMessage || t('status.short_circuit_warn');
     } else {
-      statusMode.className = 'badge badge-sim';
-      statusMode.textContent = t('status.sim_mode');
+      statusMode.className = 'status-pill simulating';
+      statusMode.textContent = t('status.sim_mode') || 'Simulación activa';
       statusHint.textContent = t('status.hint_sim');
     }
   } else {
-    statusMode.className = 'badge badge-normal';
-    statusMode.textContent = t('status.edit_mode');
+    statusMode.className = 'status-pill';
+    statusMode.textContent = t('status.edit_mode') || 'Modo Edición';
     if (canvasView.activeTool.startsWith('wire_')) {
       statusHint.textContent = t('status.hint_wire');
     } else if (canvasView.activeTool === 'place_component') {
@@ -173,7 +281,6 @@ canvasView.onStatusUpdate = (status) => {
 // Tool Change Callback (from Esc or Right-Click cancel)
 canvasView.onToolChange = (_tool, compType) => {
   activeCompType = compType;
-  updateToolButtons();
   renderPalette();
 };
 
@@ -189,7 +296,7 @@ canvasView.onTagEditRequest = (comp) => {
   }
   tagInput.value = comp.tag;
 
-  // Opciones extra dinámicas (Colores de pilotos, Tipo de guardamotor)
+  // Extra options (pilot colors, motor breaker types, emergency latching, timers)
   if (modalExtraOptions && modalExtraLabel && modalExtraContent) {
     modalExtraContent.innerHTML = '';
     if (comp.type === 'pilot_light') {
@@ -290,12 +397,12 @@ canvasView.onTagEditRequest = (comp) => {
         {
           key: false,
           title: '🔘 Sin retención (Pulsador)',
-          desc: 'Accionamiento momentáneo. Vuelve automáticamente a reposo al soltar (o arrastrar fuera para enclavar).',
+          desc: 'Accionamiento momentáneo. Vuelve automáticamente a reposo al soltar.',
         },
         {
           key: true,
           title: '🔒 Con retención (Enclavamiento)',
-          desc: 'Enclavamiento mecánico biestable. Un clic enclava el pulsador, otro clic lo desenclava.',
+          desc: 'Enclavamiento mecánico biestable. Un clic enclava, otro desenclava.',
         },
       ];
 
@@ -337,7 +444,6 @@ canvasView.onTagEditRequest = (comp) => {
       weeklyBox.style.gap = '12px';
       weeklyBox.style.marginTop = '8px';
 
-      // 1. Selector de días de la semana
       const daysTitle = document.createElement('span');
       daysTitle.textContent = 'Días de Funcionamiento:';
       daysTitle.style.fontSize = '12px';
@@ -363,23 +469,22 @@ canvasView.onTagEditRequest = (comp) => {
         const dayBtn = document.createElement('button');
         dayBtn.type = 'button';
         dayBtn.textContent = d.name;
-        dayBtn.className = `btn btn-sm ${tempSelectedDays.includes(d.id) ? 'btn-primary' : 'btn-secondary'}`;
+        dayBtn.className = `btn ${tempSelectedDays.includes(d.id) ? 'btn-primary' : 'btn-secondary'}`;
         dayBtn.style.padding = '4px 8px';
         dayBtn.style.fontSize = '12px';
         dayBtn.style.fontWeight = 'bold';
         dayBtn.onclick = () => {
           if (tempSelectedDays.includes(d.id)) {
             tempSelectedDays = tempSelectedDays.filter((x) => x !== d.id);
-            dayBtn.className = 'btn btn-sm btn-secondary';
+            dayBtn.className = 'btn btn-secondary';
           } else {
             tempSelectedDays.push(d.id);
-            dayBtn.className = 'btn btn-sm btn-primary';
+            dayBtn.className = 'btn btn-primary';
           }
         };
         daysContainer.appendChild(dayBtn);
       });
 
-      // 2. Horarios ON / OFF
       const timeRow = document.createElement('div');
       timeRow.style.display = 'flex';
       timeRow.style.alignItems = 'center';
@@ -422,7 +527,6 @@ canvasView.onTagEditRequest = (comp) => {
       timeRow.appendChild(onCol);
       timeRow.appendChild(offCol);
 
-      // 3. Forzar activación para prueba en simulación
       const testRow = document.createElement('label');
       testRow.style.display = 'flex';
       testRow.style.alignItems = 'center';
@@ -503,10 +607,9 @@ canvasView.onTagEditRequest = (comp) => {
     }
   }
 
-  // Generar inputs dinámicos para cada borne de conexión
+  // Generate dynamic terminal inputs
   if (terminalsContainer && terminalsSection) {
     terminalsContainer.innerHTML = '';
-    // Eliminar cualquier selector de décadas previo si existiera
     const existingDecadeSelector = terminalsSection.querySelector('.decade-selector-container');
     if (existingDecadeSelector) {
       existingDecadeSelector.remove();
@@ -517,8 +620,6 @@ canvasView.onTagEditRequest = (comp) => {
     } else {
       terminalsSection.style.display = 'block';
 
-      // Botonera de selección rápida de decenas para contactos auxiliares NA y NC comunes (CADe_SIMU style)
-      // Excluye conmutadores (contact_changeover, contact_no_nc) y contactos temporizados
       if (comp.type === 'contact_no' || comp.type === 'contact_nc') {
         const isNC = comp.type === 'contact_nc';
         const decadeBox = document.createElement('div');
@@ -541,7 +642,6 @@ canvasView.onTagEditRequest = (comp) => {
           const termIn = isNC ? (dec + 1).toString() : (dec + 3).toString();
           const termOut = isNC ? (dec + 2).toString() : (dec + 4).toString();
 
-          // Si coincide con los valores actuales, resaltar
           if (comp.terminals && comp.terminals[0]?.name === termIn && comp.terminals[1]?.name === termOut) {
             btn.classList.add('active');
           }
@@ -561,7 +661,6 @@ canvasView.onTagEditRequest = (comp) => {
 
         decadeBox.appendChild(decTitle);
         decadeBox.appendChild(grid);
-        // Insertar antes del contenedor de bornes
         terminalsSection.insertBefore(decadeBox, terminalsContainer);
       }
 
@@ -583,7 +682,6 @@ canvasView.onTagEditRequest = (comp) => {
         input.value = (t.name || '').toUpperCase();
         input.dataset.index = idx.toString();
 
-        // Forzar mayúsculas automáticamente en tiempo real
         input.addEventListener('input', () => {
           input.value = input.value.toUpperCase();
         });
@@ -619,7 +717,6 @@ modalSave.onclick = () => {
     if (tagInput.value.trim()) {
       editingComponent.tag = tagInput.value.trim().toUpperCase();
     }
-    // Guardar opciones extra (color de piloto, tipo de protección guardamotor)
     if (editingComponent.type === 'pilot_light') {
       editingComponent.state = editingComponent.state || {};
       editingComponent.state.color = tempSelectedColor;
@@ -661,7 +758,6 @@ modalSave.onclick = () => {
         editingComponent.state.timeUnit = unitEl.value as any;
       }
     }
-    // Guardar numeración de bornes personalizada
     if (terminalsContainer) {
       const inputs = terminalsContainer.querySelectorAll<HTMLInputElement>('.terminal-input');
       inputs.forEach((inp) => {
@@ -680,7 +776,6 @@ modalSave.onclick = () => {
   editingComponent = null;
 };
 
-// Forzar mayúsculas automáticamente en tagInput al escribir
 tagInput.addEventListener('input', () => {
   tagInput.value = tagInput.value.toUpperCase();
 });
@@ -691,47 +786,7 @@ tagInput.onkeydown = (e) => {
   if (e.key === 'Escape') modalCancel.click();
 };
 
-// Mode Buttons
-btnEdit.onclick = () => {
-  canvasView.stopSimulation();
-  btnEdit.classList.add('active');
-  btnSimulate.classList.remove('active');
-  canvasView.setTool('select');
-  updateToolButtons();
-};
-
-btnSimulate.onclick = () => {
-  canvasView.startSimulation();
-  btnSimulate.classList.add('active');
-  btnEdit.classList.remove('active');
-  updateToolButtons();
-};
-
-btnStop.onclick = () => {
-  btnEdit.click();
-};
-
-// Tools
-btnSelect.onclick = () => {
-  canvasView.setTool('select');
-  activeCompType = null;
-  updateToolButtons();
-  renderPalette();
-};
-
-btnDelete.onclick = () => {
-  canvasView.setTool('delete');
-  activeCompType = null;
-  updateToolButtons();
-  renderPalette();
-};
-
-btnClear.onclick = () => {
-  if (confirm('¿Limpiar todo el circuito?')) {
-    canvasView.clearCircuit();
-  }
-};
-
+// Toolbar Buttons: Undo, Redo
 if (btnUndo) {
   btnUndo.onclick = () => {
     canvasView.undo();
@@ -744,6 +799,7 @@ if (btnRedo) {
   };
 }
 
+// Rotation & Mirror (Direct topbar buttons)
 if (btnRotateCw) {
   btnRotateCw.onclick = () => {
     canvasView.rotateSelected(90);
@@ -773,16 +829,76 @@ canvasView.onHistoryChange = (canUndo, canRedo) => {
   if (btnRedo) btnRedo.disabled = !canRedo;
 };
 
-btnResetZoom.onclick = () => {
-  canvasView.resetZoom();
-};
+// Clipboard Actions (Copy, Cut, Paste)
+if (btnCopy) {
+  btnCopy.onclick = () => {
+    canvasView.copy();
+  };
+}
 
-// Demo Circuit: Marcha / Paro con Autoenclavamiento
-btnDemo.onclick = () => {
-  loadDemoCircuit();
-};
+if (btnCut) {
+  btnCut.onclick = () => {
+    canvasView.cut();
+  };
+}
 
-// Category Switching
+if (btnPaste) {
+  btnPaste.onclick = () => {
+    canvasView.paste();
+  };
+}
+
+// Zoom Actions (Zoom +, Zoom -, Reset Zoom)
+if (btnZoomIn) {
+  btnZoomIn.onclick = () => {
+    canvasView.zoomIn();
+  };
+}
+
+if (btnZoomOut) {
+  btnZoomOut.onclick = () => {
+    canvasView.zoomOut();
+  };
+}
+
+if (btnZoomReset) {
+  btnZoomReset.onclick = () => {
+    canvasView.resetZoom();
+  };
+}
+
+if (btnResetZoom) {
+  btnResetZoom.onclick = () => {
+    canvasView.resetZoom();
+  };
+}
+
+// File Menu Actions
+if (btnDemo) {
+  btnDemo.onclick = () => {
+    loadDemoCircuit();
+    closeAllMenus();
+  };
+}
+
+if (btnClear) {
+  btnClear.onclick = () => {
+    closeAllMenus();
+    if (confirm('¿Limpiar todo el circuito del lienzo?')) {
+      canvasView.clearCircuit();
+      canvasView.render();
+    }
+  };
+}
+
+if (btnPrint) {
+  btnPrint.onclick = () => {
+    closeAllMenus();
+    window.print();
+  };
+}
+
+// Category Tabs Switching
 catTabs.forEach((tab) => {
   tab.onclick = () => {
     catTabs.forEach((t) => t.classList.remove('active'));
@@ -792,12 +908,7 @@ catTabs.forEach((tab) => {
   };
 });
 
-function updateToolButtons() {
-  btnSelect.classList.toggle('active', canvasView.activeTool === 'select');
-  btnDelete.classList.toggle('active', canvasView.activeTool === 'delete');
-}
-
-// Render Palette Items (Botones cuadrados CADe_SIMU con iconos vectoriales SVG)
+// Render Palette Items (SVG vector icons + tooltip hint)
 function renderPalette() {
   paletteContainer.innerHTML = '';
 
@@ -817,7 +928,7 @@ function renderPalette() {
     cables.forEach((c) => {
       const btn = document.createElement('button');
       const localizedName = t(c.key);
-      btn.className = `comp-btn ${canvasView.activeTool === c.id ? 'active' : ''}`;
+      btn.className = `palette-item ${canvasView.activeTool === c.id ? 'active' : ''}`;
       btn.title = localizedName;
       btn.innerHTML = COMPONENT_ICONS[c.id] || '〰️';
 
@@ -825,14 +936,13 @@ function renderPalette() {
         if (c.id === 'junction') {
           statusHint.textContent = `${localizedName}: Clic para crear un nodo de unión donde no hay, o clic sobre un nodo para borrarlo.`;
         } else {
-          statusHint.textContent = `${localizedName}: Arrastrá en la cuadrícula para trazar el cable recto (CADe_SIMU style).`;
+          statusHint.textContent = `${localizedName}: Arrastrá en la cuadrícula para trazar el cable recto.`;
         }
       };
 
       btn.onclick = () => {
         canvasView.setTool(c.id as ToolType);
         activeCompType = null;
-        updateToolButtons();
         renderPalette();
       };
       paletteContainer.appendChild(btn);
@@ -846,12 +956,12 @@ function renderPalette() {
   defs.forEach((def) => {
     if (def.dividerBefore) {
       const sep = document.createElement('div');
-      sep.className = 'palette-sep';
+      sep.className = 'palette-divider';
       paletteContainer.appendChild(sep);
     }
     const btn = document.createElement('button');
     const isActive = canvasView.activeTool === 'place_component' && activeCompType === def.type;
-    btn.className = `comp-btn ${isActive ? 'active' : ''}`;
+    btn.className = `palette-item ${isActive ? 'active' : ''}`;
     const localizedName = t(`comp.${def.type}`, undefined, def.name);
     btn.title = `${localizedName} (${def.defaultTag})`;
 
@@ -866,7 +976,6 @@ function renderPalette() {
     btn.onclick = () => {
       activeCompType = def.type;
       canvasView.setTool('place_component', def.type);
-      updateToolButtons();
       renderPalette();
     };
     paletteContainer.appendChild(btn);
@@ -874,37 +983,46 @@ function renderPalette() {
 }
 
 // JSON Save & Load
-btnSave.onclick = () => {
-  const data = {
-    version: '1.0.0',
-    name: 'OpenSimu Circuit',
-    created: new Date().toISOString(),
-    components: canvasView.components,
-    wires: canvasView.wires,
+if (btnSave) {
+  btnSave.onclick = () => {
+    closeAllMenus();
+    const data = {
+      version: '1.0.0',
+      name: 'OpenSimu Circuit',
+      created: new Date().toISOString(),
+      components: canvasView.components,
+      wires: canvasView.wires,
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `circuito_opensimu_${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
   };
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `circuito_opensimu_${Date.now()}.json`;
-  a.click();
-  URL.revokeObjectURL(url);
-};
+}
 
-btnExportCad.onclick = () => {
-  const cadContent = CadeSimuParser.exportToCad(canvasView.components, canvasView.wires);
-  const blob = new Blob([cadContent], { type: 'text/plain' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `circuito_cadesimu_${Date.now()}.cad`;
-  a.click();
-  URL.revokeObjectURL(url);
-};
+if (btnExportCad) {
+  btnExportCad.onclick = () => {
+    closeAllMenus();
+    const cadContent = CadeSimuParser.exportToCad(canvasView.components, canvasView.wires);
+    const blob = new Blob([cadContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `circuito_cadesimu_${Date.now()}.cad`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+}
 
-btnLoad.onclick = () => {
-  fileInput.click();
-};
+if (btnLoad) {
+  btnLoad.onclick = () => {
+    closeAllMenus();
+    fileInput.click();
+  };
+}
 
 fileInput.onchange = (e) => {
   const file = (e.target as HTMLInputElement).files?.[0];
@@ -917,7 +1035,6 @@ fileInput.onchange = (e) => {
       const text = event.target?.result as string;
 
       if (isCad) {
-        // Importar formato .CAD de CADe_SIMU
         const result = CadeSimuParser.parse(text);
         canvasView.clearCircuit();
         canvasView.components = result.components;
@@ -925,7 +1042,6 @@ fileInput.onchange = (e) => {
         canvasView.render();
         canvasView.resetZoom();
       } else {
-        // Importar formato .JSON nativo
         const data = JSON.parse(text);
         if (Array.isArray(data.components) && Array.isArray(data.wires)) {
           canvasView.clearCircuit();
@@ -954,9 +1070,7 @@ function loadDemoCircuit() {
   canvasView.clearCircuit();
 
   // 1. Sources
-  // L at (100, 40)
   canvasView.placeComponent('source_l', { x: 100, y: 40 });
-  // N at (100, 360)
   canvasView.placeComponent('source_n', { x: 100, y: 360 });
 
   // 2. Parada NC -S0 at (100, 80)
@@ -981,8 +1095,7 @@ function loadDemoCircuit() {
   pilot.tag = '-H1';
   pilot.state.color = '#22c55e'; // Green
 
-  // 7. Wires (Fase L - Segmentos rectos ortogonales de 2 puntos)
-  // L (100, 40) -> -S0 terminal 11 (100, 80)
+  // 7. Wires (Fase L)
   canvasView.wires.push({
     id: 'w1',
     type: 'phase',
@@ -990,7 +1103,6 @@ function loadDemoCircuit() {
     points: [{ x: 100, y: 40 }, { x: 100, y: 80 }],
   });
 
-  // -S0 terminal 12 (100, 140) -> -S1 terminal 13 (100, 180)
   canvasView.wires.push({
     id: 'w2',
     type: 'phase',
@@ -998,7 +1110,6 @@ function loadDemoCircuit() {
     points: [{ x: 100, y: 140 }, { x: 100, y: 180 }],
   });
 
-  // Rama de retención superior: (100, 160) -> (180, 160) -> (180, 180 borna 13)
   canvasView.wires.push({
     id: 'w3_a',
     type: 'phase',
@@ -1012,7 +1123,6 @@ function loadDemoCircuit() {
     points: [{ x: 180, y: 160 }, { x: 180, y: 180 }],
   });
 
-  // -S1 terminal 14 (100, 240) -> -KM1 coil A1 (100, 260)
   canvasView.wires.push({
     id: 'w4',
     type: 'phase',
@@ -1020,7 +1130,6 @@ function loadDemoCircuit() {
     points: [{ x: 100, y: 240 }, { x: 100, y: 260 }],
   });
 
-  // Rama de retención inferior: borna 14 (180, 240) -> (100, 240)
   canvasView.wires.push({
     id: 'w5',
     type: 'phase',
@@ -1028,7 +1137,6 @@ function loadDemoCircuit() {
     points: [{ x: 180, y: 240 }, { x: 100, y: 240 }],
   });
 
-  // Paralelo piloto: (100, 240) -> (240, 240) -> (240, 260 borna X1)
   canvasView.wires.push({
     id: 'w6_a',
     type: 'phase',
@@ -1043,7 +1151,6 @@ function loadDemoCircuit() {
   });
 
   // 8. Wires (Neutro N)
-  // -KM1 bobina A2 (100, 320) -> N fuente (100, 360)
   canvasView.wires.push({
     id: 'w7',
     type: 'neutral',
@@ -1051,7 +1158,6 @@ function loadDemoCircuit() {
     points: [{ x: 100, y: 320 }, { x: 100, y: 360 }],
   });
 
-  // Piloto X2 (240, 320) -> (240, 340) -> (100, 340)
   canvasView.wires.push({
     id: 'w8_a',
     type: 'neutral',

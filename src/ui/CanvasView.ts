@@ -649,6 +649,18 @@ export class CanvasView {
     }
   }
 
+  public deleteSelected(): void {
+    if (this.isSimulation) return;
+    if (this.selectedComponents.size > 0 || this.selectedWires.size > 0) {
+      this.saveSnapshot();
+      this.components = this.components.filter((c) => !this.selectedComponents.has(c));
+      this.wires = this.wires.filter((w) => !this.selectedWires.has(w));
+      this.clearSelection();
+      this.invalidateJunctionCache();
+      this.render();
+    }
+  }
+
   // --- PORTAPAPELES (COPIAR / CORTAR / PEGAR / DUPLICAR / SELECCIONAR TODO) ---
   public selectAll() {
     if (this.isSimulation) return;
@@ -813,6 +825,30 @@ export class CanvasView {
     this.grid.zoom = 1.0;
     this.grid.panX = 60;
     this.grid.panY = 60;
+    this.render();
+    this.notifyStatus();
+  }
+
+  public zoomIn() {
+    const cx = this.canvas.width / 2;
+    const cy = this.canvas.height / 2;
+    const worldCenter = this.grid.screenToWorld(cx, cy);
+    const newZoom = Math.min(4.0, this.grid.zoom * 1.25);
+    this.grid.zoom = newZoom;
+    this.grid.panX = cx - worldCenter.x * newZoom;
+    this.grid.panY = cy - worldCenter.y * newZoom;
+    this.render();
+    this.notifyStatus();
+  }
+
+  public zoomOut() {
+    const cx = this.canvas.width / 2;
+    const cy = this.canvas.height / 2;
+    const worldCenter = this.grid.screenToWorld(cx, cy);
+    const newZoom = Math.max(0.2, this.grid.zoom / 1.25);
+    this.grid.zoom = newZoom;
+    this.grid.panX = cx - worldCenter.x * newZoom;
+    this.grid.panY = cy - worldCenter.y * newZoom;
     this.render();
     this.notifyStatus();
   }

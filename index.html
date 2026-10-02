@@ -7,123 +7,312 @@
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <div id="app">
-      <!-- TOPBAR: Brand, Language, Mobile & Main Controls -->
+    <div id="app" class="app-shell">
+      <!-- TOPBAR: Brand, Archivo First, Deshacer/Rehacer, Girar/Espejo, Spacer, Idioma, SIMULAR Last -->
       <header class="topbar">
-        <div class="brand">
-          <span class="brand-icon">⚡</span>
-          <span class="brand-title">OpenSimu</span>
-          <span class="brand-badge">Fase 0 Core</span>
-        </div>
-
-        <div class="sim-controls">
-          <button id="btn-edit" class="btn btn-mode active" data-i18n="btn.edit" data-i18n-title="btn.edit.title" title="Modo Edición (Diseño)">
-            ✏️ Edición
-          </button>
-          <button id="btn-simulate" class="btn btn-play" data-i18n="btn.simulate" data-i18n-title="btn.simulate.title" title="Iniciar Simulación Eléctrica">
-            ▶️ Simular
-          </button>
-          <button id="btn-stop" class="btn btn-stop" data-i18n="btn.stop" data-i18n-title="btn.stop.title" title="Detener Simulación">
-            ⏹ Detener
-          </button>
-        </div>
-
-        <div class="quick-tools">
-          <button id="btn-select" class="btn btn-tool active" data-i18n="btn.select" data-i18n-title="btn.select.title" title="Herramienta de Selección (V)">
-            👆 Seleccionar
-          </button>
-          <button id="btn-delete" class="btn btn-tool" data-i18n="btn.delete" data-i18n-title="btn.delete.title" title="Herramienta Borrar elemento">
-            🗑️ Borrar
-          </button>
-          <div class="divider"></div>
-          <button id="btn-undo" class="btn btn-secondary" data-i18n="btn.undo" data-i18n-title="btn.undo.title" title="Deshacer (Ctrl+Z)" disabled>
-            ↩️ Deshacer
-          </button>
-          <button id="btn-redo" class="btn btn-secondary" data-i18n="btn.redo" data-i18n-title="btn.redo.title" title="Rehacer (Ctrl+Y)" disabled>
-            ↪️ Rehacer
-          </button>
-          <div class="divider"></div>
-          <button id="btn-rotate-cw" class="btn btn-secondary" data-i18n="btn.rotate_cw" data-i18n-title="btn.rotate_cw.title" title="Girar 90° horario (R)">
-            ↻ Girar 90°
-          </button>
-          <button id="btn-rotate-ccw" class="btn btn-secondary" data-i18n="btn.rotate_ccw" data-i18n-title="btn.rotate_ccw.title" title="Girar 90° antihorario (Shift+R)">
-            ↺ Girar -90°
-          </button>
-          <button id="btn-mirror-h" class="btn btn-secondary" data-i18n="btn.mirror_h" data-i18n-title="btn.mirror_h.title" title="Espejar horizontal (H)">
-            ⇄ Espejar H
-          </button>
-          <button id="btn-mirror-v" class="btn btn-secondary" data-i18n="btn.mirror_v" data-i18n-title="btn.mirror_v.title" title="Espejar vertical (Shift+H / Y)">
-            ⇅ Espejar V
-          </button>
-          <div class="divider"></div>
-          <button id="btn-demo" class="btn btn-secondary" data-i18n="btn.demo" data-i18n-title="btn.demo.title" title="Cargar Circuito Demo de Marcha y Paro">
-            ⚡ Marcha / Paro
-          </button>
-          <button id="btn-clear" class="btn btn-secondary" data-i18n="btn.clear" data-i18n-title="btn.clear.title" title="Limpiar Lienzo">
-            🧹 Limpiar
-          </button>
-          <div class="divider"></div>
-          <button id="btn-save" class="btn btn-secondary" data-i18n="btn.save" data-i18n-title="btn.save.title" title="Guardar circuito como JSON">
-            💾 Guardar JSON
-          </button>
-          <button id="btn-export-cad" class="btn btn-secondary" data-i18n="btn.export_cad" data-i18n-title="btn.export_cad.title" title="Exportar circuito en formato .CAD para CADe_SIMU">
-            📄 Exportar .CAD
-          </button>
-          <button id="btn-load" class="btn btn-secondary" data-i18n="btn.load" data-i18n-title="btn.load.title" title="Cargar circuito (.json o .cad de CADe_SIMU)">
-            📂 Abrir
-          </button>
-          <input type="file" id="file-input" accept=".json,.cad" style="display: none" />
-          <button id="btn-reset-zoom" class="btn btn-secondary" data-i18n="btn.zoom_reset" data-i18n-title="btn.zoom_reset.title" title="Centrar / Zoom 100%">
-            🔍 1:1
-          </button>
-          <div class="divider"></div>
-
-          <!-- Language Selector -->
-          <div class="lang-selector-container">
-            <select id="lang-select" class="lang-dropdown" title="Seleccionar idioma / dialecto técnico">
-              <option value="es-AR" selected>🇦🇷 AR (Termomagnética)</option>
-              <option value="es-ES">🇪🇸 ES (Magnetotérmico)</option>
-              <option value="en">🇬🇧 EN (Circuit Breaker)</option>
-            </select>
+        <div class="brand-group">
+          <div class="brand">
+            <span class="brand-icon">⚡</span>
+            <span class="brand-title">OpenSimu</span>
+            <span class="version">v1.2.4</span>
           </div>
         </div>
+
+        <!-- 1. FILE MENU GROUP (FIRST BUTTON) -->
+        <div class="toolbar-group">
+          <div class="menu-wrap">
+            <button id="btn-file" class="tool-button" type="button" title="Menú de Archivo">
+              <span class="icon svg-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                </svg>
+              </span>
+              <span class="btn-text">Archivo</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div id="file-menu" class="menu file-menu">
+              <button id="btn-load" type="button">
+                <span class="menu-item-content">
+                  <svg class="menu-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                  </svg>
+                  <span>Abrir (.json o .cad)</span>
+                </span>
+              </button>
+              <button id="btn-save" type="button">
+                <span class="menu-item-content">
+                  <svg class="menu-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                    <polyline points="17 21 17 13 7 13 7 21"/>
+                    <polyline points="7 3 7 8 15 8"/>
+                  </svg>
+                  <span>Guardar JSON</span>
+                </span>
+              </button>
+              <button id="btn-export-cad" type="button">
+                <span class="menu-item-content">
+                  <svg class="menu-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="12" y1="18" x2="12" y2="12"/>
+                    <polyline points="9 15 12 12 15 15"/>
+                  </svg>
+                  <span>CADe_SIMU (.cad)</span>
+                </span>
+              </button>
+              <button id="btn-print" type="button">
+                <span class="menu-item-content">
+                  <svg class="menu-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 6 2 18 2 18 9"/>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                    <rect x="6" y="14" width="12" height="8"/>
+                  </svg>
+                  <span>Imprimir / PDF</span>
+                </span>
+              </button>
+              <div class="menu-separator"></div>
+              <button id="btn-demo" type="button">
+                <span class="menu-item-content">
+                  <svg class="menu-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                  </svg>
+                  <span>Cargar Demo Marcha / Paro</span>
+                </span>
+              </button>
+              <div class="menu-separator"></div>
+              <button id="btn-clear" type="button" class="danger-item">
+                <span class="menu-item-content">
+                  <svg class="menu-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"/>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                  </svg>
+                  <span>Limpiar lienzo</span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <input type="file" id="file-input" accept=".json,.cad" style="display: none" />
+
+        <!-- 2. HISTORY GROUP (Deshacer, Rehacer) -->
+        <div class="toolbar-group">
+          <button id="btn-undo" class="tool-button" type="button" title="Deshacer (Ctrl+Z)" disabled>
+            <span class="icon svg-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 14L4 9l5-5"/>
+                <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11"/>
+              </svg>
+            </span>
+            <span class="btn-text">Deshacer</span>
+          </button>
+          <button id="btn-redo" class="tool-button" type="button" title="Rehacer (Ctrl+Y)" disabled>
+            <span class="icon svg-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 14l5-5-5-5"/>
+                <path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13"/>
+              </svg>
+            </span>
+            <span class="btn-text">Rehacer</span>
+          </button>
+        </div>
+
+        <!-- 3. CLIPBOARD GROUP (Copiar, Cortar, Pegar) -->
+        <div class="toolbar-group">
+          <button id="btn-copy" class="tool-button" type="button" title="Copiar selección (Ctrl+C)">
+            <span class="icon svg-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+            </span>
+            <span class="btn-text">Copiar</span>
+          </button>
+          <button id="btn-cut" class="tool-button" type="button" title="Cortar selección (Ctrl+X)">
+            <span class="icon svg-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="6" r="3"/>
+                <circle cx="6" cy="18" r="3"/>
+                <line x1="20" y1="4" x2="8.12" y2="15.88"/>
+                <line x1="14.47" y1="14.48" x2="20" y2="20"/>
+                <line x1="8.12" y1="8.12" x2="12" y2="12"/>
+              </svg>
+            </span>
+            <span class="btn-text">Cortar</span>
+          </button>
+          <button id="btn-paste" class="tool-button" type="button" title="Pegar del portapapeles (Ctrl+V)">
+            <span class="icon svg-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+              </svg>
+            </span>
+            <span class="btn-text">Pegar</span>
+          </button>
+        </div>
+
+        <!-- 4. TRANSFORMATION GROUP (Girar -90°, Girar +90°, Espejo H, Espejo V) -->
+        <div class="toolbar-group">
+          <button id="btn-rotate-ccw" class="tool-button" type="button" title="Girar -90° antihorario (Shift+R)">
+            <span class="icon svg-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+              </svg>
+            </span>
+            <span class="btn-text">Girar -90°</span>
+          </button>
+          <button id="btn-rotate-cw" class="tool-button" type="button" title="Girar +90° horario (R)">
+            <span class="icon svg-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/>
+                <path d="M21 3v5h-5"/>
+              </svg>
+            </span>
+            <span class="btn-text">Girar +90°</span>
+          </button>
+          <button id="btn-mirror-h" class="tool-button" type="button" title="Espejar horizontal (H)">
+            <span class="icon svg-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="3" x2="12" y2="21" stroke-dasharray="2 2" stroke-width="1.8"/>
+                <path d="M7 8l-4 4 4 4"/>
+                <path d="M3 12h5"/>
+                <path d="M17 8l4 4-4 4"/>
+                <path d="M21 12h-5"/>
+              </svg>
+            </span>
+            <span class="btn-text">Espejo H</span>
+          </button>
+          <button id="btn-mirror-v" class="tool-button" type="button" title="Espejar vertical (Shift+H / Y)">
+            <span class="icon svg-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12" stroke-dasharray="2 2" stroke-width="1.8"/>
+                <path d="M8 7l4-4 4 4"/>
+                <path d="M12 3v5"/>
+                <path d="M8 17l4 4 4-4"/>
+                <path d="M12 21v-5"/>
+              </svg>
+            </span>
+            <span class="btn-text">Espejo V</span>
+          </button>
+        </div>
+
+        <!-- 5. ZOOM GROUP (Zoom +, Zoom -, Resetear Zoom) -->
+        <div class="toolbar-group">
+          <button id="btn-zoom-in" class="tool-button" type="button" title="Acercar zoom (+)">
+            <span class="icon svg-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                <line x1="11" y1="8" x2="11" y2="14"/>
+                <line x1="8" y1="11" x2="14" y2="11"/>
+              </svg>
+            </span>
+            <span class="btn-text">Zoom +</span>
+          </button>
+          <button id="btn-zoom-out" class="tool-button" type="button" title="Alejar zoom (-)">
+            <span class="icon svg-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                <line x1="8" y1="11" x2="14" y2="11"/>
+              </svg>
+            </span>
+            <span class="btn-text">Zoom -</span>
+          </button>
+          <button id="btn-zoom-reset" class="tool-button" type="button" title="Resetear Zoom al 100%">
+            <span class="icon svg-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M9 9h6v6H9z"/>
+              </svg>
+            </span>
+            <span class="btn-text">Reset Zoom</span>
+          </button>
+        </div>
+
+        <!-- 6. SIMULATION TOGGLE GROUP (Último botón de la barra de herramientas) -->
+        <div class="toolbar-group simulation-group">
+          <button id="btn-simulate-toggle" class="tool-button primary" type="button" title="Iniciar Simulación Eléctrica">
+            <span class="icon svg-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+            </span>
+            <span class="btn-text">Simular</span>
+          </button>
+        </div>
+
+        <div class="spacer"></div>
+
+        <!-- 5. LANGUAGE SELECTOR (Al extremo derecho de la pantalla) -->
+        <div class="menu-wrap">
+          <button id="btn-lang" class="lang-button" type="button" title="Seleccionar dialecto o idioma">
+            <span class="icon svg-icon">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </span>
+            <span id="lang-current-label">AR</span>
+            <span class="chevron">⌄</span>
+          </button>
+          <div id="lang-menu" class="menu lang-menu">
+            <button type="button" data-locale="es-AR"><span>🇦🇷 AR (Termomagnética)</span></button>
+            <button type="button" data-locale="es-ES"><span>🇪🇸 ES (Magnetotérmico)</span></button>
+            <button type="button" data-locale="en"><span>🇬🇧 EN (Circuit Breaker)</span></button>
+          </div>
+        </div>
+        <select id="lang-select" style="display: none">
+          <option value="es-AR" selected>es-AR</option>
+          <option value="es-ES">es-ES</option>
+          <option value="en">en</option>
+        </select>
       </header>
 
-      <!-- CATEGORY TABS (CADe_SIMU style) -->
-      <nav class="category-bar">
-        <button class="cat-tab active" data-cat="power" data-i18n="cat.power" data-i18n-title="cat.power.title" title="Alimentaciones CA y CC">⚡ Alimentación</button>
-        <button class="cat-tab" data-cat="protections" data-i18n="cat.protections" data-i18n-title="cat.protections.title" title="Termomagnéticas, Guardamotores y Diferenciales">🛡️ Protecciones</button>
-        <button class="cat-tab" data-cat="control" data-i18n="cat.control" data-i18n-title="cat.control.title" title="Pulsadores e Interruptores de Mando">🔘 Accionamientos</button>
-        <button class="cat-tab" data-cat="contactors" data-i18n="cat.contactors" data-i18n-title="cat.contactors.title" title="Contactores de Potencia / Fuerza (1P - 4P)">⚡ Contactores</button>
-        <button class="cat-tab" data-cat="motors" data-i18n="cat.motors" data-i18n-title="cat.motors.title" title="Motores Eléctricos (Trifásicos y Monofásicos)">⚙️ Motores</button>
-        <button class="cat-tab" data-cat="coils" data-i18n="cat.coils" data-i18n-title="cat.coils.title" title="Bobinas de Contactores y Relés">🧲 Bobinas</button>
-        <button class="cat-tab" data-cat="contacts" data-i18n="cat.contacts" data-i18n-title="cat.contacts.title" title="Contactos Auxiliares (NA, NC, Dobles, Conmutados)">🔌 Contactos Aux</button>
-        <button class="cat-tab" data-cat="signaling" data-i18n="cat.signaling" data-i18n-title="cat.signaling.title" title="Pilotos de Señalización">💡 Señalización</button>
-        <button class="cat-tab" data-cat="cables" data-i18n="cat.cables" data-i18n-title="cat.cables.title" title="Cables y Bornas de Conexión">〰️ Cables</button>
+      <!-- CATEGORY TABS -->
+      <nav id="category-bar" class="categorybar">
+        <button class="category-tab active" data-cat="power" data-i18n="cat.power" title="Alimentaciones CA y CC">⚡ Alimentación</button>
+        <button class="category-tab" data-cat="protections" data-i18n="cat.protections" title="Termomagnéticas, Guardamotores y Diferenciales">🛡️ Protecciones</button>
+        <button class="category-tab" data-cat="control" data-i18n="cat.control" title="Pulsadores e Interruptores de Mando">🔘 Accionamientos</button>
+        <button class="category-tab" data-cat="contactors" data-i18n="cat.contactors" title="Contactores de Potencia / Fuerza (1P - 4P)">⚡ Contactores</button>
+        <button class="category-tab" data-cat="motors" data-i18n="cat.motors" title="Motores Eléctricos (Trifásicos y Monofásicos)">⚙️ Motores</button>
+        <button class="category-tab" data-cat="coils" data-i18n="cat.coils" title="Bobinas de Contactores y Relés">🧲 Bobinas</button>
+        <button class="category-tab" data-cat="contacts" data-i18n="cat.contacts" title="Contactos Auxiliares (NA, NC, Dobles, Conmutados)">🔌 Contactos Aux.</button>
+        <button class="category-tab" data-cat="signaling" data-i18n="cat.signaling" title="Pilotos de Señalización">💡 Señalización</button>
+        <button class="category-tab" data-cat="cables" data-i18n="cat.cables" title="Cables y Bornas de Conexión">〰️ Cables</button>
       </nav>
 
       <!-- PALETTE / COMPONENT TOOLBAR -->
-      <div id="component-palette" class="palette-bar">
-        <!-- Injected dynamically by main.ts -->
-      </div>
+      <section class="palettebar">
+        <div id="component-palette" class="palette-scroll">
+          <!-- Injected dynamically by main.ts -->
+        </div>
+      </section>
 
-      <!-- MAIN WORKSPACE -->
-      <main class="canvas-container">
-        <canvas id="circuit-canvas"></canvas>
+      <!-- MAIN WORKSPACE (DETAIL CARD REMOVED AS REQUESTED) -->
+      <main class="canvas-wrap">
+        <div class="canvas-container">
+          <canvas id="circuit-canvas"></canvas>
+        </div>
       </main>
 
       <!-- STATUS BAR -->
       <footer class="statusbar">
-        <div class="status-section">
-          <span id="status-mode" class="badge badge-normal">Modo Edición</span>
-          <span id="status-hint">Tip: Haz clic en un cable o componente para colocarlo en la cuadrícula.</span>
+        <div class="status-left">
+          <span id="status-mode" class="status-pill">Modo Edición</span>
+          <span class="status-separator"></span>
+          <span id="status-hint" class="status-hint">Tip: Haz clic en un cable o componente para colocarlo en la cuadrícula.</span>
         </div>
-        <div class="status-section">
-          <span id="device-badge" class="badge badge-secondary" title="Detección de dispositivo para interfaz móvil / escritorio">💻 Desktop</span>
-          <span class="sep">|</span>
-          <span id="status-coords">X: 0, Y: 0</span>
-          <span class="sep">|</span>
-          <span id="status-zoom">Zoom: 100%</span>
+        <div class="status-right">
+          <span id="device-badge" class="device-pill">💻 Desktop</span>
+          <span class="status-separator"></span>
+          <span id="status-coords">X: 0  Y: 0</span>
+          <span class="status-separator"></span>
+          <button id="btn-reset-zoom" class="status-zoom-btn" title="Centrar / Zoom 100%">
+            <span id="status-zoom">🔍 Zoom: 100%</span>
+          </button>
         </div>
       </footer>
 
