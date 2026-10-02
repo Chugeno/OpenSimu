@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "npx tsx scripts/bundle-symbols.ts && tsc && vite build && node scripts/post-build.js",
+    "deploy": "npm run build && node scripts/deploy-gh-pages.js",
     "preview": "vite preview"
   },
   "devDependencies": {
