@@ -2277,13 +2277,28 @@ export class CanvasView {
         else if (this.activeTool === 'wire_dc_pos') wireColor = '#dc2626';
         else if (this.activeTool === 'wire_dc_neg') wireColor = '#1e3a8a';
 
-        ctx.strokeStyle = wireColor;
-        ctx.lineWidth = 2.5;
-        ctx.setLineDash([4, 4]);
-        ctx.beginPath();
-        ctx.moveTo(this.wireStartPoint.x, this.wireStartPoint.y);
-        ctx.lineTo(end.x, end.y);
-        ctx.stroke();
+        if (this.activeTool === 'wire_pe') {
+          // Vista previa punteada Verde y Amarillo
+          ctx.strokeStyle = '#16a34a';
+          ctx.lineWidth = 2.5;
+          ctx.setLineDash([6, 6]);
+          ctx.beginPath();
+          ctx.moveTo(this.wireStartPoint.x, this.wireStartPoint.y);
+          ctx.lineTo(end.x, end.y);
+          ctx.stroke();
+
+          ctx.strokeStyle = '#eab308';
+          ctx.lineDashOffset = 6;
+          ctx.stroke();
+        } else {
+          ctx.strokeStyle = wireColor;
+          ctx.lineWidth = 2.5;
+          ctx.setLineDash([4, 4]);
+          ctx.beginPath();
+          ctx.moveTo(this.wireStartPoint.x, this.wireStartPoint.y);
+          ctx.lineTo(end.x, end.y);
+          ctx.stroke();
+        }
 
         // Start and end indicator points
         ctx.fillStyle = wireColor;
@@ -2667,7 +2682,20 @@ export class CanvasView {
         if (i === 0) ctx.moveTo(pt.x, pt.y);
         else ctx.lineTo(pt.x, pt.y);
       }
-      ctx.stroke();
+
+      if (w.type === 'pe' && !isSelected && !this.isSimulation) {
+        // Cable de Protección PE: punteado bimetálico/normativo Verde y Amarillo alternado
+        ctx.strokeStyle = '#16a34a'; // Verde base
+        ctx.lineWidth = lineWidth;
+        ctx.setLineDash([7, 7]);
+        ctx.stroke();
+
+        ctx.strokeStyle = '#eab308'; // Amarillo alternado
+        ctx.lineDashOffset = 7;
+        ctx.stroke();
+      } else {
+        ctx.stroke();
+      }
 
       if (isSelected) {
         ctx.fillStyle = '#2563eb';

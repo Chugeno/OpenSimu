@@ -1026,14 +1026,7 @@ function updateToolButtonsState() {
     } else {
       floatingToolBanner.classList.remove('hidden');
       if (canvasView.activeTool.startsWith('wire_')) {
-        let wireName = 'L1 (Marrón)';
-        if (canvasView.activeTool === 'wire_phase_l2') wireName = 'L2 (Negro)';
-        else if (canvasView.activeTool === 'wire_phase_l3') wireName = 'L3 (Rojo)';
-        else if (canvasView.activeTool === 'wire_neutral') wireName = 'Neutro N (Celeste)';
-        else if (canvasView.activeTool === 'wire_pe') wireName = 'Protección PE (Verde)';
-        else if (canvasView.activeTool === 'wire_dc_pos') wireName = 'Positivo CC (+) (Rojo)';
-        else if (canvasView.activeTool === 'wire_dc_neg') wireName = 'Negativo CC (-) (Azul)';
-        floatingToolLabel.textContent = `⚡ Modo Cable: ${wireName}`;
+        floatingToolLabel.textContent = '⚡ Modo Cable Activo';
       } else if (canvasView.activeTool === 'junction') {
         floatingToolLabel.textContent = '⚪ Modo Nodo Activo';
       } else if (canvasView.activeTool === 'place_component') {
