@@ -710,56 +710,49 @@ button {
   line-height: 1;
 }
 
-.wire-toolbar-close {
+/* FLOATING CANCEL PILL (REDDISH) */
+.canvas-floating-tool {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: rgba(148, 163, 184, 0.12);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  color: #94a3b8;
-  font-size: 12px;
+  gap: 8px;
+  background: rgba(185, 28, 28, 0.32);
+  border: 1px solid rgba(239, 68, 68, 0.7);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 14px rgba(239, 68, 68, 0.28);
+  padding: 8px 18px;
+  min-height: 40px;
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 55;
+  color: #fecaca;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
-  flex-shrink: 0;
-  margin-left: 2px;
-  transition: all 0.15s ease;
-  line-height: 1;
-}
-
-.wire-toolbar-close:hover {
-  background: rgba(239, 68, 68, 0.25);
-  color: #fca5a5;
-  border-color: rgba(239, 68, 68, 0.5);
-  transform: scale(1.08);
-}
-
-.wire-toolbar-close:active {
-  transform: scale(0.92);
-}
-
-.canvas-floating-tool {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(15, 23, 42, 0.94);
-  border: 1px solid rgba(56, 189, 248, 0.45);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
-  padding: 8px 16px;
-  border-radius: 9999px;
-  backdrop-filter: blur(10px);
-  z-index: 40;
-  color: #f8fafc;
-  font-size: 13px;
-  font-weight: 600;
-  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.15s ease, border-color 0.15s ease;
   pointer-events: auto;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+}
+
+.canvas-floating-tool:hover {
+  background: rgba(220, 38, 38, 0.48);
+  border-color: #ef4444;
+  color: #ffffff;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.65), 0 0 18px rgba(239, 68, 68, 0.45);
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.canvas-floating-tool:active {
+  transform: translateX(-50%) scale(0.95);
+  background: rgba(220, 38, 38, 0.58);
 }
 
 .canvas-floating-tool.hidden {
@@ -768,25 +761,12 @@ button {
   transform: translateX(-50%) translateY(14px);
 }
 
-.btn-floating-cancel {
-  background: rgba(239, 68, 68, 0.25);
-  color: #fca5a5;
-  border: 1px solid rgba(239, 68, 68, 0.5);
-  padding: 4px 12px;
-  border-radius: 9999px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: all 0.15s ease;
-}
-
-.btn-floating-cancel:hover, .btn-floating-cancel:active {
-  background: rgba(239, 68, 68, 0.5);
-  color: #ffffff;
-  transform: scale(1.04);
+.floating-tool-icon {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  flex-shrink: 0;
 }
 
 /* ==========================================================================
@@ -2035,16 +2015,25 @@ button {
     flex-shrink: 0;
   }
 
-  .wire-toolbar-close {
-    width: 28px;
-    height: 28px;
-    font-size: 13px;
-    flex-shrink: 0;
-    margin-left: 2px;
+  .canvas-floating-tool {
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    left: calc(50% - 20px);
+    transform: translateX(-50%);
+    max-width: calc(100vw - 84px);
+    padding: 8px 16px;
+    font-size: 12.5px;
+    min-height: 38px;
+    z-index: 55;
   }
 
-  .canvas-floating-tool {
-    display: none !important;
+  .canvas-floating-tool:active {
+    transform: translateX(-50%) scale(0.94);
+  }
+
+  .canvas-floating-tool.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(14px);
   }
   .statusbar {
     font-size: 11px;

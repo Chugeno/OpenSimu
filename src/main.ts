@@ -23,15 +23,14 @@ let editingComponent: CircuitComponent | null = null;
 const btnToolWire = document.getElementById('btn-tool-wire') as HTMLButtonElement | null;
 const btnToolJunction = document.getElementById('btn-tool-junction') as HTMLButtonElement | null;
 
-// Floating Canvas Tool Banner
-const floatingToolBanner = document.getElementById('canvas-floating-tool') as HTMLDivElement | null;
+// Floating Canvas Tool Banner (Reddish cancel pill)
+const floatingToolBanner = document.getElementById('canvas-floating-tool') as HTMLButtonElement | null;
 const floatingToolLabel = document.getElementById('floating-tool-label') as HTMLSpanElement | null;
 const btnFloatingCancel = document.getElementById('btn-floating-cancel') as HTMLButtonElement | null;
 
 // Floating Wire Color Picker Toolbar
 const wireColorToolbar = document.getElementById('wire-color-toolbar') as HTMLDivElement | null;
 const wireChipBtns = document.querySelectorAll<HTMLButtonElement>('.wire-chip-btn');
-const btnWireToolbarClose = document.getElementById('btn-wire-toolbar-close') as HTMLButtonElement | null;
 let lastSelectedWireTool: ToolType = 'wire_phase';
 
 // Mobile FAB Stack Elements
@@ -1022,20 +1021,20 @@ function updateToolButtonsState() {
     }
   }
 
-  // Actualizar banner flotante en el lienzo
+  // Actualizar banner flotante en el lienzo (Píldora rojiza de cancelación)
   if (floatingToolBanner && floatingToolLabel) {
     if (canvasView.activeTool === 'select') {
       floatingToolBanner.classList.add('hidden');
     } else {
       floatingToolBanner.classList.remove('hidden');
       if (canvasView.activeTool.startsWith('wire_')) {
-        floatingToolLabel.textContent = '⚡ Modo Cable Activo';
+        floatingToolLabel.textContent = 'Salir del modo cable';
       } else if (canvasView.activeTool === 'junction') {
-        floatingToolLabel.textContent = '⚪ Modo Nodo Activo';
+        floatingToolLabel.textContent = 'Salir del modo nodo';
       } else if (canvasView.activeTool === 'place_component') {
-        floatingToolLabel.textContent = '📍 Colocar Componente';
+        floatingToolLabel.textContent = 'Cancelar colocación';
       } else {
-        floatingToolLabel.textContent = `Herramienta: ${canvasView.activeTool}`;
+        floatingToolLabel.textContent = `Salir de ${canvasView.activeTool}`;
       }
     }
   }
@@ -1055,23 +1054,27 @@ wireChipBtns.forEach((btn) => {
   };
 });
 
-if (btnWireToolbarClose) {
-  btnWireToolbarClose.onclick = (e) => {
+if (wireColorToolbar) {
+  wireColorToolbar.addEventListener('pointerdown', (e) => e.stopPropagation());
+  wireColorToolbar.addEventListener('touchstart', (e) => e.stopPropagation(), { passive: true });
+}
+
+// Píldora flotante para cancelar modo activo (Modo Cable, Nodo, etc.)
+if (floatingToolBanner) {
+  floatingToolBanner.onclick = (e) => {
     e.stopPropagation();
     canvasView.cancelAction();
     activeCompType = null;
     updateToolButtonsState();
     renderPalette();
   };
-}
-
-if (wireColorToolbar) {
-  wireColorToolbar.addEventListener('pointerdown', (e) => e.stopPropagation());
-  wireColorToolbar.addEventListener('touchstart', (e) => e.stopPropagation(), { passive: true });
+  floatingToolBanner.addEventListener('pointerdown', (e) => e.stopPropagation());
+  floatingToolBanner.addEventListener('touchstart', (e) => e.stopPropagation(), { passive: true });
 }
 
 if (btnFloatingCancel) {
-  btnFloatingCancel.onclick = () => {
+  btnFloatingCancel.onclick = (e) => {
+    e.stopPropagation();
     canvasView.cancelAction();
     activeCompType = null;
     updateToolButtonsState();
