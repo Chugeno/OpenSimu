@@ -28,6 +28,10 @@ const floatingToolBanner = document.getElementById('canvas-floating-tool') as HT
 const floatingToolLabel = document.getElementById('floating-tool-label') as HTMLSpanElement | null;
 const btnFloatingCancel = document.getElementById('btn-floating-cancel') as HTMLButtonElement | null;
 
+// Floating Wire Color Picker Toolbar
+const wireColorToolbar = document.getElementById('wire-color-toolbar') as HTMLDivElement | null;
+const wireChipBtns = document.querySelectorAll<HTMLButtonElement>('.wire-chip-btn');
+
 // Mobile FAB Stack Elements
 const btnFabUndo = document.getElementById('btn-fab-undo') as HTMLButtonElement | null;
 const btnFabCopy = document.getElementById('btn-fab-copy') as HTMLButtonElement | null;
@@ -1000,6 +1004,21 @@ function updateToolButtonsState() {
     btnFabNode.classList.toggle('active', canvasView.activeTool === 'junction');
   }
 
+  // Actualizar selector de color de cable flotante en la parte superior del lienzo
+  if (wireColorToolbar) {
+    if (canvasView.activeTool.startsWith('wire_')) {
+      wireColorToolbar.classList.remove('hidden');
+      wireChipBtns.forEach((btn) => {
+        const wireTool = btn.dataset.wireTool;
+        const isActive = wireTool === canvasView.activeTool || 
+          (wireTool === 'wire_phase' && (canvasView.activeTool === 'wire_phase' || canvasView.activeTool === 'wire_phase_l1'));
+        btn.classList.toggle('active', Boolean(isActive));
+      });
+    } else {
+      wireColorToolbar.classList.add('hidden');
+    }
+  }
+
   // Actualizar banner flotante en el lienzo
   if (floatingToolBanner && floatingToolLabel) {
     if (canvasView.activeTool === 'select') {
@@ -1007,7 +1026,14 @@ function updateToolButtonsState() {
     } else {
       floatingToolBanner.classList.remove('hidden');
       if (canvasView.activeTool.startsWith('wire_')) {
-        floatingToolLabel.textContent = '⚡ Modo Cable Activo';
+        let wireName = 'L1 (Marrón)';
+        if (canvasView.activeTool === 'wire_phase_l2') wireName = 'L2 (Negro)';
+        else if (canvasView.activeTool === 'wire_phase_l3') wireName = 'L3 (Rojo)';
+        else if (canvasView.activeTool === 'wire_neutral') wireName = 'Neutro N (Celeste)';
+        else if (canvasView.activeTool === 'wire_pe') wireName = 'Protección PE (Verde)';
+        else if (canvasView.activeTool === 'wire_dc_pos') wireName = 'Positivo CC (+) (Rojo)';
+        else if (canvasView.activeTool === 'wire_dc_neg') wireName = 'Negativo CC (-) (Azul)';
+        floatingToolLabel.textContent = `⚡ Modo Cable: ${wireName}`;
       } else if (canvasView.activeTool === 'junction') {
         floatingToolLabel.textContent = '⚪ Modo Nodo Activo';
       } else if (canvasView.activeTool === 'place_component') {
@@ -1018,6 +1044,18 @@ function updateToolButtonsState() {
     }
   }
 }
+
+// Configurar clics en los botones de chips de colores de cables
+wireChipBtns.forEach((btn) => {
+  btn.onclick = () => {
+    const targetTool = btn.dataset.wireTool as any;
+    if (targetTool) {
+      activeCompType = null;
+      canvasView.setTool(targetTool);
+      updateToolButtonsState();
+    }
+  };
+});
 
 if (btnFloatingCancel) {
   btnFloatingCancel.onclick = () => {

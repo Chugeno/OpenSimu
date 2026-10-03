@@ -416,6 +416,41 @@
             </svg>
           </button>
 
+          <!-- FLOATING WIRE COLOR PICKER (TOP CENTER OF CANVAS) -->
+          <div id="wire-color-toolbar" class="wire-color-toolbar hidden" aria-label="Selector de tipo y color de cable">
+            <span class="wire-color-label">Cable:</span>
+            <div class="wire-color-options">
+              <button type="button" class="wire-chip-btn active" data-wire-tool="wire_phase" data-color="#854d0e" title="Fase L1 (Marrón)">
+                <span class="wire-chip-dot" style="background-color: #854d0e;"></span>
+                <span class="wire-chip-text">L1</span>
+              </button>
+              <button type="button" class="wire-chip-btn" data-wire-tool="wire_phase_l2" data-color="#0f172a" title="Fase L2 (Negro)">
+                <span class="wire-chip-dot" style="background-color: #0f172a; border: 1px solid #475569;"></span>
+                <span class="wire-chip-text">L2</span>
+              </button>
+              <button type="button" class="wire-chip-btn" data-wire-tool="wire_phase_l3" data-color="#dc2626" title="Fase L3 (Rojo)">
+                <span class="wire-chip-dot" style="background-color: #dc2626;"></span>
+                <span class="wire-chip-text">L3</span>
+              </button>
+              <button type="button" class="wire-chip-btn" data-wire-tool="wire_neutral" data-color="#0284c7" title="Neutro N (Azul Celeste)">
+                <span class="wire-chip-dot" style="background-color: #0284c7;"></span>
+                <span class="wire-chip-text">N</span>
+              </button>
+              <button type="button" class="wire-chip-btn" data-wire-tool="wire_pe" data-color="#16a34a" title="Protección PE (Verde / Amarillo)">
+                <span class="wire-chip-dot" style="background: repeating-linear-gradient(45deg, #16a34a, #16a34a 3px, #eab308 3px, #eab308 6px);"></span>
+                <span class="wire-chip-text">PE</span>
+              </button>
+              <button type="button" class="wire-chip-btn" data-wire-tool="wire_dc_pos" data-color="#dc2626" title="Positivo CC (+) (Rojo)">
+                <span class="wire-chip-dot" style="background-color: #dc2626;"></span>
+                <span class="wire-chip-text">+</span>
+              </button>
+              <button type="button" class="wire-chip-btn" data-wire-tool="wire_dc_neg" data-color="#1e3a8a" title="Negativo CC (-) (Azul Oscuro)">
+                <span class="wire-chip-dot" style="background-color: #1e3a8a;"></span>
+                <span class="wire-chip-text">-</span>
+              </button>
+            </div>
+          </div>
+
           <div id="canvas-floating-tool" class="canvas-floating-tool hidden">
             <span id="floating-tool-label">Modo Cable Activo</span>
             <button id="btn-floating-cancel" class="btn-floating-cancel" type="button" title="Volver a Modo Selección">✕ Salir a Selección</button>

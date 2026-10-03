@@ -620,6 +620,96 @@ button {
   user-select: none;
 }
 
+/* WIRE COLOR PICKER TOOLBAR (TOP CENTER OF CANVAS) */
+.wire-color-toolbar {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.94);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+  z-index: 40;
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 600;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: auto;
+  user-select: none;
+}
+
+.wire-color-toolbar.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-14px);
+}
+
+.wire-color-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #38bdf8;
+  margin-right: 2px;
+}
+
+.wire-color-options {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wire-chip-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  color: #cbd5e1;
+  padding: 4px 9px;
+  border-radius: 9999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.wire-chip-btn:hover {
+  background: rgba(51, 65, 85, 0.95);
+  color: #ffffff;
+  border-color: rgba(56, 189, 248, 0.6);
+  transform: translateY(-1px);
+}
+
+.wire-chip-btn:active {
+  transform: translateY(0);
+}
+
+.wire-chip-btn.active {
+  background: rgba(2, 132, 199, 0.35);
+  border-color: #38bdf8;
+  color: #f8fafc;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
+}
+
+.wire-chip-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.wire-chip-text {
+  line-height: 1;
+}
+
 .canvas-floating-tool {
   position: absolute;
   bottom: 20px;
@@ -1827,6 +1917,23 @@ button {
     height: 100%;
     position: relative;
     overflow: hidden;
+  }
+  .wire-color-toolbar {
+    top: 10px;
+    max-width: calc(100vw - 32px);
+    overflow-x: auto;
+    padding: 4px 8px;
+    gap: 5px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .wire-color-toolbar::-webkit-scrollbar {
+    display: none;
+  }
+  .wire-chip-btn {
+    padding: 3px 7px;
+    font-size: 11px;
+    white-space: nowrap;
   }
   .statusbar {
     font-size: 11px;
