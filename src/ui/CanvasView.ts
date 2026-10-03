@@ -23,6 +23,7 @@ export class CanvasView {
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
   public grid: Grid;
+  public showGrid: boolean = true;
 
   public components: CircuitComponent[] = [];
   public wires: Wire[] = [];
@@ -2211,7 +2212,9 @@ export class CanvasView {
     ctx.clearRect(0, 0, rect.width, rect.height);
 
     // 1. Draw Grid
-    this.renderGrid(rect.width, rect.height);
+    if (this.showGrid) {
+      this.renderGrid(rect.width, rect.height);
+    }
 
     // 2. Setup World Matrix
     ctx.save();

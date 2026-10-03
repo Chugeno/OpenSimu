@@ -1305,7 +1305,7 @@ export function getComponentBounds(comp: CircuitComponent): Rect {
   } else if (isPower) {
     padLeft = 32;
     padRight = 20;
-    padTop = 22;
+    padTop = 38;
     padBottom = 12;
   } else if (hasPushbuttonHead) {
     padLeft = 56;

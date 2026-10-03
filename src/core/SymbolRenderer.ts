@@ -701,7 +701,7 @@ export class SymbolRenderer {
       return;
     }
 
-    // Dibujar cada borna de alimentación
+    // Dibujar cada borna de alimentación con línea vertical extendida 20px (1 unidad de grilla)
     for (const t of comp.terminals) {
       let color = '#854d0e'; // Marrón para Fase por defecto
       if (t.name === 'N') color = '#0284c7'; // Celeste
@@ -713,15 +713,15 @@ export class SymbolRenderer {
       ctx.strokeStyle = color;
       ctx.fillStyle = color;
 
-      // Línea vertical hacia la borna
+      // Línea vertical hacia la borna (20px de longitud para separar del borne)
       ctx.beginPath();
-      ctx.moveTo(t.relX, -6);
+      ctx.moveTo(t.relX, -20);
       ctx.lineTo(t.relX, 0);
       ctx.stroke();
 
       // Círculo de alimentación
       ctx.beginPath();
-      ctx.arc(t.relX, -6, 3.5, 0, Math.PI * 2);
+      ctx.arc(t.relX, -20, 3.5, 0, Math.PI * 2);
       ctx.stroke();
 
       ctx.restore();
@@ -2595,8 +2595,8 @@ export class SymbolRenderer {
       }
     }
 
-    const localTagX = isPower ? -12 : artboardLeft;
-    const localTagY = isPower ? 0 : h / 2;
+    const localTagX = isPower ? -14 : artboardLeft;
+    const localTagY = isPower ? -20 : h / 2;
 
     const center = transformLocalPoint({ x: localCenterX, y: localCenterY }, rot, mH, mV);
     const tagAnchor = transformLocalPoint({ x: localTagX, y: localTagY }, rot, mH, mV);
@@ -2646,8 +2646,17 @@ export class SymbolRenderer {
       ctx.font = 'bold 10px sans-serif';
       for (const t of comp.terminals) {
         if (!t.name || t.name.trim() === '') continue;
-        const outDir = transformLocalPoint({ x: 0, y: -14 }, rot, mH, mV);
-        ctx.fillStyle = t.name === 'PE' ? '#16a34a' : t.name === 'N' ? '#0284c7' : '#854d0e';
+        const outDir = transformLocalPoint({ x: 0, y: -30 }, rot, mH, mV);
+        ctx.fillStyle =
+          t.name === 'PE'
+            ? '#16a34a'
+            : t.name === 'N'
+            ? '#0284c7'
+            : t.name === '+'
+            ? '#dc2626'
+            : t.name === '-'
+            ? '#1e3a8a'
+            : '#854d0e';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(t.name, t.relX + outDir.x, t.relY + outDir.y);

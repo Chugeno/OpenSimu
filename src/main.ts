@@ -64,6 +64,7 @@ const mobileBtnSave = document.getElementById('mobile-btn-save') as HTMLButtonEl
 const mobileBtnExportCad = document.getElementById('mobile-btn-export-cad') as HTMLButtonElement | null;
 const mobileBtnPrint = document.getElementById('mobile-btn-print') as HTMLButtonElement | null;
 const mobileBtnDemo = document.getElementById('mobile-btn-demo') as HTMLButtonElement | null;
+const mobileBtnOptions = document.getElementById('mobile-btn-options') as HTMLButtonElement | null;
 const mobileBtnFullscreen = document.getElementById('mobile-btn-fullscreen') as HTMLButtonElement | null;
 const mobileBtnInstallApp = document.getElementById('mobile-btn-install-app') as HTMLButtonElement | null;
 
@@ -76,6 +77,7 @@ const btnExportCad = document.getElementById('btn-export-cad') as HTMLButtonElem
 const btnPrint = document.getElementById('btn-print') as HTMLButtonElement | null;
 const btnFullscreen = document.getElementById('btn-fullscreen') as HTMLButtonElement | null;
 const btnDemo = document.getElementById('btn-demo') as HTMLButtonElement | null;
+const btnOptions = document.getElementById('btn-options') as HTMLButtonElement | null;
 const btnClear = document.getElementById('btn-clear') as HTMLButtonElement | null;
 const btnInstallApp = document.getElementById('btn-install-app') as HTMLButtonElement | null;
 const sepInstall = document.getElementById('sep-install') as HTMLDivElement | null;
@@ -1399,6 +1401,13 @@ if (mobileBtnDemo) {
   };
 }
 
+if (mobileBtnOptions) {
+  mobileBtnOptions.onclick = () => {
+    closeMobileFileDrawer();
+    btnOptions?.click();
+  };
+}
+
 if (mobileBtnFullscreen) {
   mobileBtnFullscreen.onclick = () => {
     closeMobileFileDrawer();
@@ -1732,6 +1741,147 @@ applyTranslations();
 loadDemoCircuit();
 
 // ==========================================================================
+// PREFERENCIAS Y OPCIONES (SETTINGS / LOCAL STORAGE)
+// ==========================================================================
+interface AppSettings {
+  hideGrid: boolean;
+  showCursorGuide: boolean;
+  showTitleBlock: boolean;
+  sheetSize: string;
+  cadesimuEnabled: boolean;
+}
+
+const DEFAULT_SETTINGS: AppSettings = {
+  hideGrid: false,
+  showCursorGuide: false,
+  showTitleBlock: false,
+  sheetSize: 'A4_horizontal',
+  cadesimuEnabled: true,
+};
+
+function loadSettings(): AppSettings {
+  try {
+    const raw = localStorage.getItem('opensimu_settings');
+    const parsed = raw ? JSON.parse(raw) : {};
+    const legacyDisabled = localStorage.getItem('opensimu_cadesimu_key_disabled') === 'true';
+    return {
+      ...DEFAULT_SETTINGS,
+      ...parsed,
+      cadesimuEnabled: parsed.cadesimuEnabled !== undefined ? parsed.cadesimuEnabled : !legacyDisabled,
+    };
+  } catch {
+    return { ...DEFAULT_SETTINGS };
+  }
+}
+
+function saveSettings(settings: AppSettings) {
+  try {
+    localStorage.setItem('opensimu_settings', JSON.stringify(settings));
+    if (settings.cadesimuEnabled) {
+      localStorage.removeItem('opensimu_cadesimu_key_disabled');
+    } else {
+      localStorage.setItem('opensimu_cadesimu_key_disabled', 'true');
+    }
+  } catch (err) {
+    console.error('Error al guardar ajustes en localStorage:', err);
+  }
+}
+
+function applySettings(settings: AppSettings) {
+  canvasView.showGrid = !settings.hideGrid;
+  canvasView.render();
+}
+
+// Elementos del Modal de Opciones
+const optionsModal = document.getElementById('options-modal') as HTMLDivElement | null;
+const btnOptionsClose = document.getElementById('btn-options-close') as HTMLButtonElement | null;
+const btnOptionsCancel = document.getElementById('btn-options-cancel') as HTMLButtonElement | null;
+const btnOptionsSave = document.getElementById('btn-options-save') as HTMLButtonElement | null;
+
+const optHideGrid = document.getElementById('opt-hide-grid') as HTMLInputElement | null;
+const optCursorGuide = document.getElementById('opt-cursor-guide') as HTMLInputElement | null;
+const optTitleBlock = document.getElementById('opt-title-block') as HTMLInputElement | null;
+const optSheetSize = document.getElementById('opt-sheet-size') as HTMLSelectElement | null;
+const optCadesimu = document.getElementById('opt-cadesimu') as HTMLInputElement | null;
+const optionItemCadesimu = document.getElementById('option-item-cadesimu') as HTMLElement | null;
+const cadesimuLockedHint = document.getElementById('cadesimu-locked-hint') as HTMLDivElement | null;
+
+function openOptionsModal() {
+  closeAllMenus();
+  const settings = loadSettings();
+  const isCadesimuUnlocked = localStorage.getItem('opensimu_cadesimu_unlocked') === 'true';
+
+  if (optHideGrid) optHideGrid.checked = settings.hideGrid;
+  if (optCursorGuide) optCursorGuide.checked = settings.showCursorGuide;
+  if (optTitleBlock) optTitleBlock.checked = settings.showTitleBlock;
+  if (optSheetSize) optSheetSize.value = settings.sheetSize || 'A4_horizontal';
+
+  if (optCadesimu) {
+    optCadesimu.checked = settings.cadesimuEnabled;
+    if (isCadesimuUnlocked) {
+      // DESBLOQUEADO: El usuario puede activarlo o desactivarlo libremente
+      optCadesimu.disabled = false;
+      if (optionItemCadesimu) optionItemCadesimu.classList.remove('disabled');
+      if (cadesimuLockedHint) cadesimuLockedHint.style.display = 'none';
+    } else {
+      // BLOQUEADO: Se muestra la opción pero está bloqueada
+      optCadesimu.disabled = true;
+      if (optionItemCadesimu) optionItemCadesimu.classList.add('disabled');
+      if (cadesimuLockedHint) cadesimuLockedHint.style.display = 'block';
+    }
+  }
+
+  if (optionsModal) optionsModal.style.display = 'flex';
+}
+
+function closeOptionsModal() {
+  if (optionsModal) optionsModal.style.display = 'none';
+}
+
+if (btnOptions) {
+  btnOptions.onclick = () => openOptionsModal();
+}
+
+if (btnOptionsClose) {
+  btnOptionsClose.onclick = () => closeOptionsModal();
+}
+
+if (btnOptionsCancel) {
+  btnOptionsCancel.onclick = () => closeOptionsModal();
+}
+
+if (btnOptionsSave) {
+  btnOptionsSave.onclick = () => {
+    const isCadesimuUnlocked = localStorage.getItem('opensimu_cadesimu_unlocked') === 'true';
+    const current = loadSettings();
+
+    const newSettings: AppSettings = {
+      hideGrid: optHideGrid ? optHideGrid.checked : current.hideGrid,
+      showCursorGuide: optCursorGuide ? optCursorGuide.checked : current.showCursorGuide,
+      showTitleBlock: optTitleBlock ? optTitleBlock.checked : current.showTitleBlock,
+      sheetSize: optSheetSize ? optSheetSize.value : current.sheetSize,
+      cadesimuEnabled: isCadesimuUnlocked && optCadesimu ? optCadesimu.checked : current.cadesimuEnabled,
+    };
+
+    saveSettings(newSettings);
+    applySettings(newSettings);
+    closeOptionsModal();
+  };
+}
+
+if (optionsModal) {
+  optionsModal.onclick = (e) => {
+    if (e.target === optionsModal) {
+      closeOptionsModal();
+    }
+  };
+}
+
+// Cargar y aplicar configuración inicial
+const initialSettings = loadSettings();
+applySettings(initialSettings);
+
+// ==========================================================================
 // CHASCARRILLO & HOMENAJE: CADe_SIMU ACCESS KEYPAD (4962)
 // ==========================================================================
 function initCadesimuKeypad() {
@@ -1743,14 +1893,16 @@ function initCadesimuKeypad() {
 
   const tributeModal = document.getElementById('cadesimu-tribute-modal') as HTMLDivElement | null;
   const tributeDesc = document.getElementById('tribute-desc') as HTMLParagraphElement | null;
-  const btnTributeDisable = document.getElementById('btn-tribute-disable') as HTMLButtonElement | null;
+  const tributeWebRow = document.getElementById('tribute-web-row') as HTMLParagraphElement | null;
+  const tributeGuideBox = document.getElementById('tribute-guide-box') as HTMLDivElement | null;
   const btnTributeAccept = document.getElementById('btn-tribute-accept') as HTMLButtonElement | null;
 
   if (!cadesimuModal || !cadesimuDisplay) return;
 
-  // Comprobar si se desactivó por hack en HTML o por localStorage
+  // Comprobar si se desactivó por hack en HTML o por configuración / localStorage
+  const currentSettings = loadSettings();
   const isHackDisabled = (window as any).CADESIMU_KEY_REQUIRED === false;
-  const isStorageDisabled = localStorage.getItem('opensimu_cadesimu_key_disabled') === 'true';
+  const isStorageDisabled = !currentSettings.cadesimuEnabled || localStorage.getItem('opensimu_cadesimu_key_disabled') === 'true';
 
   if (isHackDisabled || isStorageDisabled) {
     cadesimuModal.style.display = 'none';
@@ -1790,19 +1942,28 @@ function initCadesimuKeypad() {
 
     if (tributeModal) {
       if (isMasterCode) {
+        // Desbloquear permanentemente el ajuste para desactivar el código desde Opciones
+        localStorage.setItem('opensimu_cadesimu_unlocked', 'true');
+
         if (tributeDesc) {
           tributeDesc.innerHTML = '¡Has ingresado el legendario código <code>4962</code>! El acceso maestro original de CADe_SIMU.';
         }
-        if (btnTributeDisable) {
-          btnTributeDisable.style.display = 'inline-block';
+        if (tributeWebRow) {
+          tributeWebRow.style.display = 'block';
+        }
+        if (tributeGuideBox) {
+          tributeGuideBox.style.display = 'flex';
         }
       } else {
+        // Clave libre: permite entrar al simulador pero NO desbloquea la opción de desactivarlo
         if (tributeDesc) {
           tributeDesc.innerHTML = 'En CADe_SIMU original el código exigido era <code>4962</code>. ¡Aquí en OpenSimu eres libre y puedes continuar con cualquier clave!';
         }
-        if (btnTributeDisable) {
-          // Si no puso 4962, no se ofrece el botón directo de desactivar, debe usar el hack de Bloc de Notas o ingresar 4962
-          btnTributeDisable.style.display = 'none';
+        if (tributeWebRow) {
+          tributeWebRow.style.display = 'none';
+        }
+        if (tributeGuideBox) {
+          tributeGuideBox.style.display = 'none';
         }
       }
       tributeModal.style.display = 'flex';
@@ -1827,14 +1988,6 @@ function initCadesimuKeypad() {
     },
     true
   );
-
-  // Acciones del modal de homenaje
-  if (btnTributeDisable) {
-    btnTributeDisable.onclick = () => {
-      localStorage.setItem('opensimu_cadesimu_key_disabled', 'true');
-      if (tributeModal) tributeModal.style.display = 'none';
-    };
-  }
 
   if (btnTributeAccept) {
     btnTributeAccept.onclick = () => {
