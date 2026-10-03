@@ -1,4 +1,4 @@
-import { CanvasView } from './ui/CanvasView';
+import { CanvasView, type ToolType } from './ui/CanvasView';
 import { COMPONENT_DEFINITIONS } from './core/ComponentRegistry';
 import type { CircuitComponent, ComponentCategory } from './core/types';
 import { CadeSimuParser } from './core/CadeSimuParser';
@@ -31,6 +31,8 @@ const btnFloatingCancel = document.getElementById('btn-floating-cancel') as HTML
 // Floating Wire Color Picker Toolbar
 const wireColorToolbar = document.getElementById('wire-color-toolbar') as HTMLDivElement | null;
 const wireChipBtns = document.querySelectorAll<HTMLButtonElement>('.wire-chip-btn');
+const btnWireToolbarClose = document.getElementById('btn-wire-toolbar-close') as HTMLButtonElement | null;
+let lastSelectedWireTool: ToolType = 'wire_phase';
 
 // Mobile FAB Stack Elements
 const btnFabUndo = document.getElementById('btn-fab-undo') as HTMLButtonElement | null;
@@ -1007,6 +1009,7 @@ function updateToolButtonsState() {
   // Actualizar selector de color de cable flotante en la parte superior del lienzo
   if (wireColorToolbar) {
     if (canvasView.activeTool.startsWith('wire_')) {
+      lastSelectedWireTool = canvasView.activeTool as ToolType;
       wireColorToolbar.classList.remove('hidden');
       wireChipBtns.forEach((btn) => {
         const wireTool = btn.dataset.wireTool;
@@ -1040,15 +1043,32 @@ function updateToolButtonsState() {
 
 // Configurar clics en los botones de chips de colores de cables
 wireChipBtns.forEach((btn) => {
-  btn.onclick = () => {
-    const targetTool = btn.dataset.wireTool as any;
+  btn.onclick = (e) => {
+    e.stopPropagation();
+    const targetTool = btn.dataset.wireTool as ToolType;
     if (targetTool) {
+      lastSelectedWireTool = targetTool;
       activeCompType = null;
       canvasView.setTool(targetTool);
       updateToolButtonsState();
     }
   };
 });
+
+if (btnWireToolbarClose) {
+  btnWireToolbarClose.onclick = (e) => {
+    e.stopPropagation();
+    canvasView.cancelAction();
+    activeCompType = null;
+    updateToolButtonsState();
+    renderPalette();
+  };
+}
+
+if (wireColorToolbar) {
+  wireColorToolbar.addEventListener('pointerdown', (e) => e.stopPropagation());
+  wireColorToolbar.addEventListener('touchstart', (e) => e.stopPropagation(), { passive: true });
+}
 
 if (btnFloatingCancel) {
   btnFloatingCancel.onclick = () => {
@@ -1065,7 +1085,7 @@ if (btnToolWire) {
       canvasView.setTool('select');
     } else {
       activeCompType = null;
-      canvasView.setTool('wire_phase');
+      canvasView.setTool(lastSelectedWireTool);
     }
     updateToolButtonsState();
     renderPalette();
@@ -1192,7 +1212,7 @@ if (btnFabWire) {
       canvasView.setTool('select');
     } else {
       activeCompType = null;
-      canvasView.setTool('wire_phase');
+      canvasView.setTool(lastSelectedWireTool);
     }
     updateToolButtonsState();
     renderPalette();
