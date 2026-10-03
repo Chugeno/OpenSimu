@@ -83,13 +83,133 @@ function parseSvgSync(xmlText: string): SvgMeta {
   };
 }
 
+/**
+ * Inlines CSS rules from <style> blocks (e.g. Adobe Illustrator .st0, .st1, etc.)
+ * directly into style="..." attributes on matching SVG elements.
+ * This completely isolates each SVG icon so that class names never collide globally.
+ */
+export function inlineSvgStyles(xmlText: string): string {
+  // 1. Remove XML declaration and comments
+  let result = xmlText.replace(/<\?xml[^>]*\?>/gi, '').replace(/<!--[\s\S]*?-->/g, '').trim();
+
+  // 2. Extract and parse all <style> blocks
+  const styleRegex = /<style[^>]*>([\s\S]*?)<\/style>/gi;
+  let styleMatch: RegExpExecArray | null;
+  const classStyles: Record<string, Record<string, string>> = {};
+
+  while ((styleMatch = styleRegex.exec(result)) !== null) {
+    const css = styleMatch[1];
+    const ruleRegex = /([^{]+)\{([^}]+)\}/g;
+    let ruleMatch: RegExpExecArray | null;
+    while ((ruleMatch = ruleRegex.exec(css)) !== null) {
+      const selectorGroup = ruleMatch[1];
+      const declarationsStr = ruleMatch[2];
+
+      const declarations: Record<string, string> = {};
+      declarationsStr.split(';').forEach((decl) => {
+        const colonIdx = decl.indexOf(':');
+        if (colonIdx > 0) {
+          const prop = decl.substring(0, colonIdx).trim().toLowerCase();
+          const val = decl.substring(colonIdx + 1).trim();
+          if (prop && val) {
+            declarations[prop] = val;
+          }
+        }
+      });
+
+      const selectors = selectorGroup.split(',');
+      for (const sel of selectors) {
+        const cleanSel = sel.trim();
+        if (cleanSel.startsWith('.')) {
+          const className = cleanSel.substring(1);
+          if (!classStyles[className]) {
+            classStyles[className] = {};
+          }
+          Object.assign(classStyles[className], declarations);
+        }
+      }
+    }
+  }
+
+  // 3. Remove all <style>...</style> blocks
+  result = result.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');
+  result = result.replace(/<defs>\s*<\/defs>/gi, '');
+
+  // 4. If no class styles were defined, return sanitized result
+  if (Object.keys(classStyles).length === 0) {
+    return result.replace(/^\s*[\r\n]/gm, '').trim();
+  }
+
+  // 5. Replace class attributes on SVG elements with inlined styles
+  result = result.replace(/<([a-zA-Z0-9]+)\b([^>]*?)>/g, (fullTag, tagName, rawAttrs) => {
+    if (tagName.toLowerCase() === 'svg') return fullTag;
+
+    const classMatch = rawAttrs.match(/\bclass=[\"']([^\"']+)[\"']/i);
+    if (!classMatch) return fullTag;
+
+    const isSelfClosing = /\/\s*$/.test(rawAttrs);
+    let attrs = rawAttrs.replace(/\/\s*$/, '');
+
+    const classList = classMatch[1].trim().split(/\s+/);
+    const inlinedProps: Record<string, string> = {};
+    const remainingClasses: string[] = [];
+
+    for (const cls of classList) {
+      if (classStyles[cls]) {
+        Object.assign(inlinedProps, classStyles[cls]);
+      } else {
+        remainingClasses.push(cls);
+      }
+    }
+
+    if (Object.keys(inlinedProps).length === 0) return fullTag;
+
+    const styleMatch = attrs.match(/\bstyle=[\"']([^\"']+)[\"']/i);
+    if (styleMatch) {
+      styleMatch[1].split(';').forEach((decl: string) => {
+        const colonIdx = decl.indexOf(':');
+        if (colonIdx > 0) {
+          const prop = decl.substring(0, colonIdx).trim().toLowerCase();
+          const val = decl.substring(colonIdx + 1).trim();
+          if (prop && val) {
+            inlinedProps[prop] = val;
+          }
+        }
+      });
+    }
+
+    const styleStr = Object.entries(inlinedProps)
+      .map(([k, v]) => `${k}: ${v}`)
+      .join('; ');
+
+    let newAttrs = attrs;
+    if (remainingClasses.length > 0) {
+      newAttrs = newAttrs.replace(/\bclass=[\"'][^\"']+[\"']/i, `class="${remainingClasses.join(' ')}"`);
+    } else {
+      newAttrs = newAttrs.replace(/\s*\bclass=[\"'][^\"']+[\"']/i, '');
+    }
+
+    if (styleMatch) {
+      newAttrs = newAttrs.replace(/\bstyle=[\"'][^\"']+[\"']/i, `style="${styleStr}"`);
+    } else {
+      newAttrs = `${newAttrs} style="${styleStr}"`;
+    }
+
+    return `<${tagName}${newAttrs}${isSelfClosing ? '/>' : '>'}`;
+  });
+
+  return result.replace(/^\s*[\r\n]/gm, '').trim();
+}
+
+// 1. Bundle Canvas Symbols from public/symbols
 const files = walk('public/symbols');
 const map: Record<string, string> = {};
 const metaMap: Record<string, SvgMeta> = {};
 
 files.forEach((f) => {
   const rel = f.replace(/^public/, '');
-  const content = fs.readFileSync(f, 'utf8');
+  const rawContent = fs.readFileSync(f, 'utf8');
+  const content = inlineSvgStyles(rawContent);
   map[rel] = content;
   metaMap[rel] = parseSvgSync(content);
 });
@@ -115,7 +235,8 @@ const categoryIconsMap: Record<string, string> = {};
 
 iconFiles.forEach((f) => {
   const rel = f.replace(/^public\/icons\//, '');
-  const content = fs.readFileSync(f, 'utf8').trim();
+  const rawContent = fs.readFileSync(f, 'utf8').trim();
+  const content = inlineSvgStyles(rawContent);
   const parts = rel.split(path.sep);
   if (parts.length === 2) {
     const [cat, file] = parts;

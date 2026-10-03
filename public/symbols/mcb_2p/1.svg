@@ -1,47 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 80 80" width="80" height="80">
-  
-  <circle id="terminal_1" cx="0" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_2" cx="0" cy="80" r="2.5" fill="#1e293b" />
-  <circle id="terminal_3" cx="40" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_4" cx="40" cy="80" r="2.5" fill="#1e293b" />
-  <line x1="0" y1="0" x2="0" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="40" y1="0" x2="40" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="0" y1="70" x2="0" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="40" y1="70" x2="40" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <g transform="translate(0, 10)">
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 80 80">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
+  <defs>
+    <style>
+      .st0 {
+        stroke: #94a3b8;
+        stroke-dasharray: 3 2;
+        stroke-width: 1.2px;
+      }
 
-  <line x1="0" y1="33" x2="40" y2="33" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3 2" stroke-linecap="round" />
-  <g stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    
-    <!-- Polo 1 (Fase) -->
-    <line x1="0" y1="0" x2="0" y2="22" />
-    <line x1="0" y1="44" x2="0" y2="60" />
-    <!-- Línea horizontal de seccionador -->
-    <line x1="-3.5" y1="22" x2="3.5" y2="22" />
-    <!-- Cuchilla móvil -->
-    <line x1="0" y1="44" x2="0" y2="22" />
-    <line x1="-2.5" y1="13.5" x2="2.5" y2="18.5" />
-    <line x1="2.5" y1="13.5" x2="-2.5" y2="18.5" />
-    <!-- Bimetálico escalonado exacto Radica -->
-    <path d="M0.00,31.85 L-3.32,32.71 L-4.24,29.40 L-7.56,30.26 L-6.65,33.57 L-9.97,34.43" stroke-width="1.8" />
-    <!-- Disparo magnético: flecha Radica -->
-    <line x1="0.00" y1="36.61" x2="-4.45" y2="37.64" stroke-width="1.8" />
-    <path d="M-4.87,35.91 L-10.37,39.05 L-4.05,39.45 Z" fill="#0f172a" stroke="none" />
-    <!-- Polo 2 (Fase) -->
-    <line x1="40" y1="0" x2="40" y2="22" />
-    <line x1="40" y1="44" x2="40" y2="60" />
-    <!-- Línea horizontal de seccionador -->
-    <line x1="36.5" y1="22" x2="43.5" y2="22" />
-    <!-- Cuchilla móvil -->
-    <line x1="40" y1="44" x2="40" y2="22" />
-    <line x1="37.5" y1="13.5" x2="42.5" y2="18.5" />
-    <line x1="42.5" y1="13.5" x2="37.5" y2="18.5" />
-    <!-- Bimetálico escalonado exacto Radica -->
-    <path d="M40.00,31.85 L36.68,32.71 L35.76,29.40 L32.44,30.26 L33.35,33.57 L30.03,34.43" stroke-width="1.8" />
-    <!-- Disparo magnético: flecha Radica -->
-    <line x1="40.00" y1="36.61" x2="35.55" y2="37.64" stroke-width="1.8" />
-    <path d="M35.13,35.91 L29.63,39.05 L35.95,39.45 Z" fill="#0f172a" stroke="none" />
-  </g>
-  </g>
+      .st0, .st1, .st2 {
+        fill: none;
+        stroke-linecap: round;
+      }
+
+      .st1 {
+        stroke-linejoin: round;
+      }
+
+      .st1, .st2 {
+        stroke: #1e293b;
+        stroke-width: 1.8px;
+      }
+
+      .st3 {
+        fill: #0f172a;
+      }
+
+      .st4 {
+        fill: #1e293b;
+      }
+    </style>
+  </defs>
+  <line class="st0" x1="20" y1="43" x2="60" y2="43"/>
+  <circle id="terminal_1" class="st4" cx="20" cy="0" r="2.5"/>
+  <circle id="terminal_2" class="st4" cx="20" cy="80" r="2.5"/>
+  <line class="st2" x1="20" y1="0" x2="20" y2="80"/>
+  <line class="st1" x1="16.5" y1="20" x2="23.5" y2="20"/>
+  <line class="st1" x1="17.5" y1="11.5" x2="22.5" y2="16.5"/>
+  <line class="st1" x1="22.5" y1="11.5" x2="17.5" y2="16.5"/>
+  <path class="st1" d="M20,37.2l-3.3.9-.9-3.3-3.3.9.9,3.3-3.3.9"/>
+  <line class="st1" x1="20" y1="42" x2="15.5" y2="43"/>
+  <path class="st3" d="M15.1,41.3l-5.5,3.1,6.3.4-.8-3.5Z"/>
+  <circle id="terminal_3" class="st4" cx="60" cy="0" r="2.5"/>
+  <circle id="terminal_4" class="st4" cx="60" cy="80" r="2.5"/>
+  <line class="st2" x1="60" y1="0" x2="60" y2="80"/>
+  <line class="st1" x1="56.5" y1="20" x2="63.5" y2="20"/>
+  <line class="st1" x1="57.5" y1="11.5" x2="62.5" y2="16.5"/>
+  <line class="st1" x1="62.5" y1="11.5" x2="57.5" y2="16.5"/>
+  <path class="st1" d="M60,37.2l-3.3.9-.9-3.3-3.3.9.9,3.3-3.3.9"/>
+  <line class="st1" x1="60" y1="42" x2="55.5" y2="43"/>
+  <path class="st3" d="M55.1,41.3l-5.5,3.1,6.3.4-.8-3.5Z"/>
 </svg>

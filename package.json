@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "npx tsx scripts/bundle-symbols.ts && vite --host",
+    "bundle": "npx tsx scripts/bundle-symbols.ts",
     "build": "npx tsx scripts/bundle-symbols.ts && tsc && vite build && node scripts/post-build.js",
     "deploy": "npm run build && node scripts/deploy-gh-pages.js",
     "preview": "vite preview"
