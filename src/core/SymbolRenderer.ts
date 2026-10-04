@@ -399,7 +399,7 @@ export class SymbolRenderer {
       case 'pilot_light': {
         const energized = Boolean(isSimulation && comp.state.energized);
         const stateIdx = energized ? 1 : 0;
-        const colorKey = comp.state.color || 'green';
+        const colorKey = this.normalizePilotLightColor(comp.state.color);
         const svgPath = stateIdx === 1
           ? `/symbols/pilot_light/${colorKey}_1.svg`
           : `/symbols/pilot_light/0.svg`;
@@ -2358,6 +2358,36 @@ export class SymbolRenderer {
       if (this.onRedrawNeeded) this.onRedrawNeeded();
     } catch {
       // Ignore parsing error
+    }
+  }
+
+  public static normalizePilotLightColor(color?: string): 'green' | 'red' | 'yellow' | 'blue' | 'white' {
+    if (!color) return 'green';
+    const c = color.toLowerCase().trim();
+    if (c === 'green' || c === '#22c55e' || c === '#16a34a' || c === '0') return 'green';
+    if (c === 'red' || c === '#ef4444' || c === '#dc2626' || c === '1') return 'red';
+    if (c === 'yellow' || c === '#eab308' || c === '#ca8a04' || c === '2') return 'yellow';
+    if (c === 'blue' || c === '#3b82f6' || c === '#2563eb' || c === '3') return 'blue';
+    if (c === 'white' || c === '#ffffff' || c === '#f8fafc' || c === '#94a3b8' || c === '#e2e8f0' || c === '4') return 'white';
+    return 'green';
+  }
+
+  public static preloadAllSymbols(): void {
+    if (typeof window === 'undefined' || typeof Image === 'undefined') return;
+    for (const svgPath of Object.keys(EMBEDDED_SYMBOLS)) {
+      if (!this.svgImageCache.has(svgPath)) {
+        const srcUrl = this.getSvgSourceUrl(svgPath);
+        const img = new Image();
+        img.onload = () => {
+          if (this.onRedrawNeeded) this.onRedrawNeeded();
+        };
+        img.onerror = () => {
+          (img as any)._failed = true;
+        };
+        img.src = srcUrl;
+        this.svgImageCache.set(svgPath, img);
+      }
+      this.parseSvgMetadata(svgPath);
     }
   }
 

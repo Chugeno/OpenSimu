@@ -1,5 +1,6 @@
 import { CanvasView, type ToolType } from './ui/CanvasView';
-import { COMPONENT_DEFINITIONS } from './core/ComponentRegistry';
+import { COMPONENT_DEFINITIONS, updateComponentTerminals } from './core/ComponentRegistry';
+import { SymbolRenderer } from './core/SymbolRenderer';
 import type { CircuitComponent, ComponentCategory } from './core/types';
 import { CadeSimuParser } from './core/CadeSimuParser';
 import { COMPONENT_ICONS, CATEGORY_ICONS } from './ui/EmbeddedIcons';
@@ -375,7 +376,7 @@ canvasView.onTagEditRequest = (comp) => {
     if (comp.type === 'pilot_light') {
       modalExtraOptions.style.display = 'block';
       modalExtraLabel.textContent = 'Color de Señalización:';
-      tempSelectedColor = (comp.state?.color as any) || 'green';
+      tempSelectedColor = SymbolRenderer.normalizePilotLightColor(comp.state?.color);
 
       const colorGrid = document.createElement('div');
       colorGrid.className = 'color-picker-grid';
@@ -1663,6 +1664,12 @@ fileInput.onchange = (e) => {
           canvasView.clearCircuit();
           canvasView.components = data.components;
           canvasView.wires = data.wires;
+          for (const c of canvasView.components) {
+            updateComponentTerminals(c);
+            if (c.type === 'pilot_light' && c.state) {
+              c.state.color = SymbolRenderer.normalizePilotLightColor(c.state.color);
+            }
+          }
           canvasView.render();
           canvasView.resetZoom();
         } else {
@@ -1682,116 +1689,232 @@ fileInput.onchange = (e) => {
 };
 
 // DEMO CIRCUIT: Marcha y Paro con Autoenclavamiento
+const DEMO_CIRCUIT_DATA = {
+  components: [
+    {
+      id: 'c_demo_source_l',
+      type: 'source_l',
+      tag: 'L1',
+      x: 100,
+      y: 20,
+      rotation: 0,
+      mirrorH: false,
+      mirrorV: false,
+      terminals: [
+        { id: 'L', name: 'L', relX: 0, relY: 0, potential: 'L1' as const },
+      ],
+      state: {
+        pressed: false,
+        closed: false,
+        energized: false,
+        poles: 1,
+      },
+    },
+    {
+      id: 'c_demo_source_n',
+      type: 'source_n',
+      tag: 'N',
+      x: 20,
+      y: 400,
+      rotation: 270,
+      mirrorH: false,
+      mirrorV: false,
+      terminals: [
+        { id: 'N', name: 'N', relX: 0, relY: 0, potential: 'N' as const },
+      ],
+      state: {
+        pressed: false,
+        closed: false,
+        energized: false,
+        poles: 1,
+      },
+    },
+    {
+      id: 'c_demo_s0',
+      type: 'pushbutton_nc',
+      tag: '-S0',
+      x: 100,
+      y: 60,
+      rotation: 0,
+      mirrorH: false,
+      mirrorV: false,
+      terminals: [
+        { id: '1', name: '1', relX: 0, relY: 0, potential: 'L1' as const },
+        { id: '2', name: '2', relX: 0, relY: 80, potential: 'L1' as const },
+      ],
+      state: {
+        pressed: false,
+        closed: true,
+        energized: false,
+        poles: 1,
+      },
+    },
+    {
+      id: 'c_demo_s1',
+      type: 'pushbutton_no',
+      tag: '-S1',
+      x: 100,
+      y: 180,
+      rotation: 0,
+      mirrorH: false,
+      mirrorV: false,
+      terminals: [
+        { id: '3', name: '3', relX: 0, relY: 0, potential: 'L1' as const },
+        { id: '4', name: '4', relX: 0, relY: 80, potential: 'NONE' as const },
+      ],
+      state: {
+        pressed: false,
+        closed: false,
+        energized: false,
+        poles: 1,
+      },
+    },
+    {
+      id: 'c_demo_km1_contact',
+      type: 'contact_no',
+      tag: '-KM1',
+      x: 180,
+      y: 180,
+      rotation: 0,
+      mirrorH: false,
+      mirrorV: false,
+      terminals: [
+        { id: '13', name: '13', relX: 0, relY: 0, potential: 'L1' as const },
+        { id: '14', name: '14', relX: 0, relY: 80, potential: 'NONE' as const },
+      ],
+      state: {
+        pressed: false,
+        closed: false,
+        energized: false,
+        poles: 1,
+      },
+    },
+    {
+      id: 'c_demo_km1_coil',
+      type: 'coil',
+      tag: '-KM1',
+      x: 100,
+      y: 300,
+      rotation: 0,
+      mirrorH: false,
+      mirrorV: false,
+      terminals: [
+        { id: 'A1', name: 'A1', relX: 0, relY: 0, potential: 'NONE' as const },
+        { id: 'A2', name: 'A2', relX: 0, relY: 80, potential: 'N' as const },
+      ],
+      state: {
+        pressed: false,
+        closed: false,
+        energized: false,
+        poles: 1,
+      },
+    },
+    {
+      id: 'c_demo_h1',
+      type: 'pilot_light',
+      tag: '-H1',
+      x: 180,
+      y: 300,
+      rotation: 0,
+      mirrorH: false,
+      mirrorV: false,
+      terminals: [
+        { id: 'X1', name: 'X1', relX: 0, relY: 0, potential: 'NONE' as const },
+        { id: 'X2', name: 'X2', relX: 0, relY: 80, potential: 'N' as const },
+      ],
+      state: {
+        pressed: false,
+        closed: false,
+        energized: false,
+        poles: 1,
+        color: 'green',
+      },
+    },
+  ],
+  wires: [
+    {
+      id: 'w_demo_1',
+      type: 'phase' as const,
+      potential: 'NONE' as const,
+      points: [{ x: 100, y: 240 }, { x: 100, y: 260 }],
+    },
+    {
+      id: 'w_demo_2',
+      type: 'phase' as const,
+      potential: 'NONE' as const,
+      points: [{ x: 100, y: 20 }, { x: 100, y: 60 }],
+    },
+    {
+      id: 'w_demo_3',
+      type: 'phase' as const,
+      potential: 'NONE' as const,
+      points: [{ x: 100, y: 140 }, { x: 100, y: 180 }],
+    },
+    {
+      id: 'w_demo_4',
+      type: 'phase' as const,
+      potential: 'NONE' as const,
+      points: [{ x: 100, y: 260 }, { x: 100, y: 300 }],
+    },
+    {
+      id: 'w_demo_5',
+      type: 'phase' as const,
+      potential: 'NONE' as const,
+      points: [{ x: 180, y: 260 }, { x: 180, y: 300 }],
+    },
+    {
+      id: 'w_demo_6',
+      type: 'phase' as const,
+      potential: 'NONE' as const,
+      points: [{ x: 180, y: 280 }, { x: 100, y: 280 }],
+    },
+    {
+      id: 'w_demo_7',
+      type: 'phase' as const,
+      potential: 'NONE' as const,
+      points: [{ x: 180, y: 180 }, { x: 180, y: 160 }],
+    },
+    {
+      id: 'w_demo_8',
+      type: 'phase' as const,
+      potential: 'NONE' as const,
+      points: [{ x: 180, y: 160 }, { x: 100, y: 160 }],
+    },
+    {
+      id: 'w_demo_9',
+      type: 'neutral' as const,
+      potential: 'NONE' as const,
+      points: [{ x: 180, y: 380 }, { x: 180, y: 400 }],
+    },
+    {
+      id: 'w_demo_10',
+      type: 'neutral' as const,
+      potential: 'NONE' as const,
+      points: [{ x: 180, y: 400 }, { x: 20, y: 400 }],
+    },
+    {
+      id: 'w_demo_11',
+      type: 'neutral' as const,
+      potential: 'NONE' as const,
+      points: [{ x: 100, y: 380 }, { x: 100, y: 400 }],
+    },
+  ],
+};
+
 function loadDemoCircuit() {
   canvasView.clearCircuit();
-
-  // 1. Sources
-  canvasView.placeComponent('source_l', { x: 100, y: 40 });
-  canvasView.placeComponent('source_n', { x: 100, y: 360 });
-
-  // 2. Parada NC -S0 at (100, 80)
-  canvasView.placeComponent('pushbutton_nc', { x: 100, y: 80 });
-  canvasView.components[canvasView.components.length - 1].tag = '-S0';
-
-  // 3. Marcha NA -S1 at (100, 180)
-  canvasView.placeComponent('pushbutton_no', { x: 100, y: 180 });
-  canvasView.components[canvasView.components.length - 1].tag = '-S1';
-
-  // 4. Contacto Auxiliar NA -KM1 en paralelo con -S1 a (180, 180)
-  canvasView.placeComponent('contact_no', { x: 180, y: 180 });
-  canvasView.components[canvasView.components.length - 1].tag = '-KM1';
-
-  // 5. Bobina -KM1 a (100, 260)
-  canvasView.placeComponent('coil', { x: 100, y: 260 });
-  canvasView.components[canvasView.components.length - 1].tag = '-KM1';
-
-  // 6. Piloto de marcha -H1 a (240, 260) en paralelo con bobina
-  canvasView.placeComponent('pilot_light', { x: 240, y: 260 });
-  const pilot = canvasView.components[canvasView.components.length - 1];
-  pilot.tag = '-H1';
-  pilot.state.color = '#22c55e'; // Green
-
-  // 7. Wires (Fase L)
-  canvasView.wires.push({
-    id: 'w1',
-    type: 'phase',
-    potential: 'NONE',
-    points: [{ x: 100, y: 40 }, { x: 100, y: 80 }],
-  });
-
-  canvasView.wires.push({
-    id: 'w2',
-    type: 'phase',
-    potential: 'NONE',
-    points: [{ x: 100, y: 140 }, { x: 100, y: 180 }],
-  });
-
-  canvasView.wires.push({
-    id: 'w3_a',
-    type: 'phase',
-    potential: 'NONE',
-    points: [{ x: 100, y: 160 }, { x: 180, y: 160 }],
-  });
-  canvasView.wires.push({
-    id: 'w3_b',
-    type: 'phase',
-    potential: 'NONE',
-    points: [{ x: 180, y: 160 }, { x: 180, y: 180 }],
-  });
-
-  canvasView.wires.push({
-    id: 'w4',
-    type: 'phase',
-    potential: 'NONE',
-    points: [{ x: 100, y: 240 }, { x: 100, y: 260 }],
-  });
-
-  canvasView.wires.push({
-    id: 'w5',
-    type: 'phase',
-    potential: 'NONE',
-    points: [{ x: 180, y: 240 }, { x: 100, y: 240 }],
-  });
-
-  canvasView.wires.push({
-    id: 'w6_a',
-    type: 'phase',
-    potential: 'NONE',
-    points: [{ x: 100, y: 240 }, { x: 240, y: 240 }],
-  });
-  canvasView.wires.push({
-    id: 'w6_b',
-    type: 'phase',
-    potential: 'NONE',
-    points: [{ x: 240, y: 240 }, { x: 240, y: 260 }],
-  });
-
-  // 8. Wires (Neutro N)
-  canvasView.wires.push({
-    id: 'w7',
-    type: 'neutral',
-    potential: 'NONE',
-    points: [{ x: 100, y: 320 }, { x: 100, y: 360 }],
-  });
-
-  canvasView.wires.push({
-    id: 'w8_a',
-    type: 'neutral',
-    potential: 'NONE',
-    points: [{ x: 240, y: 320 }, { x: 240, y: 340 }],
-  });
-  canvasView.wires.push({
-    id: 'w8_b',
-    type: 'neutral',
-    potential: 'NONE',
-    points: [{ x: 240, y: 340 }, { x: 100, y: 340 }],
-  });
-
+  canvasView.components = JSON.parse(JSON.stringify(DEMO_CIRCUIT_DATA.components));
+  canvasView.wires = JSON.parse(JSON.stringify(DEMO_CIRCUIT_DATA.wires));
+  for (const c of canvasView.components) {
+    updateComponentTerminals(c);
+  }
+  canvasView.render();
   canvasView.resetZoom();
 }
 
 // Initial translations, category icons, palette render & empty canvas
 applyTranslations();
+SymbolRenderer.preloadAllSymbols();
 canvasView.clearCircuit();
 canvasView.resetZoom();
 canvasView.render();
