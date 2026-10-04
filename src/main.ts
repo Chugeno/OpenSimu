@@ -1790,9 +1790,11 @@ function loadDemoCircuit() {
   canvasView.resetZoom();
 }
 
-// Initial translations, category icons, palette render & default demo circuit
+// Initial translations, category icons, palette render & empty canvas
 applyTranslations();
-loadDemoCircuit();
+canvasView.clearCircuit();
+canvasView.resetZoom();
+canvasView.render();
 
 // ==========================================================================
 // PREFERENCIAS Y OPCIONES (SETTINGS / LOCAL STORAGE)
