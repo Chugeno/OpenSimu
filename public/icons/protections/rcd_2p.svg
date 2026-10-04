@@ -1,9 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.5">
-      <!-- Toroide diferencial con botón Test -->
-      <circle cx="16" cy="16" r="9" stroke="#38bdf8" stroke-width="1.8" stroke-dasharray="4,2" />
-      <line x1="11" y1="4" x2="11" y2="28" />
-      <line x1="21" y1="4" x2="21" y2="28" />
-      <rect x="13.5" y="13.5" width="5" height="5" fill="#f59e0b" stroke="#f59e0b" />
-      <text x="16" y="17.5" font-size="4.5" font-weight="bold" fill="#0f172a" text-anchor="middle">T</text>
-      <text x="16" y="29" font-size="5" font-weight="bold" fill="#38bdf8" text-anchor="middle">ΔI</text>
-    </svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 32 32">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
+  <defs>
+    <style>
+      .st0 {
+        stroke: #38bdf8;
+        stroke-dasharray: 4 2;
+        stroke-width: 1.8px;
+      }
+
+      .st0, .st1, .st2 {
+        fill: none;
+      }
+
+      .st1 {
+        stroke: #e2e8f0;
+        stroke-width: 1.5px;
+      }
+
+      .st2 {
+        stroke: #f59e0b;
+      }
+    </style>
+  </defs>
+  <line class="st0" x1="8" y1="17.9" x2="29.7" y2="17.9"/>
+  <g>
+    <line class="st1" x1="15.9" y1="0" x2="15.9" y2="9.3"/>
+    <polyline class="st1" points="10.8 13.2 15.9 22.7 15.9 32"/>
+  </g>
+  <g>
+    <line class="st1" x1="26.8" y1="0" x2="26.8" y2="9.3"/>
+    <polyline class="st1" points="21.8 13.2 26.8 22.7 26.8 32"/>
+  </g>
+  <ellipse class="st0" cx="16.6" cy="26" rx="13.7" ry="3.1"/>
+  <rect class="st2" x="1.6" y="2.4" width="7.2" height="7.2"/>
+  <line class="st2" x1="5.2" y1="2.4" x2="5.2" y2="9.5"/>
+  <line class="st2" x1="1.6" y1="5.9" x2="8.8" y2="5.9"/>
+  <line class="st0" x1="5.2" y1="10.3" x2="5.2" y2="24.7"/>
+</svg>

@@ -14,17 +14,21 @@
         stroke-linecap: round;
       }
 
+      .st3 {
+        fill: #0f172a;
+        stroke-miterlimit: 10;
+      }
+
+      .st3, .st1, .st2 {
+        stroke: #ef4444;
+      }
+
       .st1 {
         stroke-linejoin: round;
       }
 
       .st1, .st2 {
-        stroke: #1e293b;
         stroke-width: 1.8px;
-      }
-
-      .st3 {
-        fill: #0f172a;
       }
 
       .st4 {
@@ -33,35 +37,31 @@
     </style>
   </defs>
   <line class="st0" x1="20" y1="43" x2="100" y2="43"/>
-  <circle id="terminal_1" class="st4" cx="20" cy="0" r="2.5"/>
+  <circle id="terminal_1" class="st4" cx="20" r="2.5"/>
   <circle id="terminal_2" class="st4" cx="20" cy="80" r="2.5"/>
-  <line class="st2" x1="20" y1="0" x2="20" y2="80"/>
+  <line class="st2" x1="20" x2="20" y2="80"/>
   <line class="st1" x1="16.5" y1="20" x2="23.5" y2="20"/>
   <line class="st1" x1="17.5" y1="11.5" x2="22.5" y2="16.5"/>
   <line class="st1" x1="22.5" y1="11.5" x2="17.5" y2="16.5"/>
   <path class="st1" d="M20,37.2l-3.3.9-.9-3.3-3.3.9.9,3.3-3.3.9"/>
   <line class="st1" x1="20" y1="42" x2="15.5" y2="43"/>
   <path class="st3" d="M15.1,41.3l-5.5,3.1,6.3.4-.8-3.5Z"/>
-  <g>
-    <circle id="terminal_3" class="st4" cx="60" cy="0" r="2.5"/>
-    <circle id="terminal_4" class="st4" cx="60" cy="80" r="2.5"/>
-    <line class="st2" x1="60" y1="0" x2="60" y2="80"/>
-    <line class="st1" x1="56.5" y1="20" x2="63.5" y2="20"/>
-    <line class="st1" x1="57.5" y1="11.5" x2="62.5" y2="16.5"/>
-    <line class="st1" x1="62.5" y1="11.5" x2="57.5" y2="16.5"/>
-    <path class="st1" d="M60,37.2l-3.3.9-.9-3.3-3.3.9.9,3.3-3.3.9"/>
-    <line class="st1" x1="60" y1="42" x2="55.5" y2="43"/>
-    <path class="st3" d="M55.1,41.3l-5.5,3.1,6.3.4-.8-3.5Z"/>
-  </g>
-  <g>
-    <circle id="terminal_5" class="st4" cx="100" cy="0" r="2.5"/>
-    <circle id="terminal_6" class="st4" cx="100" cy="80" r="2.5"/>
-    <line class="st2" x1="100" y1="0" x2="100" y2="80"/>
-    <line class="st1" x1="96.5" y1="20" x2="103.5" y2="20"/>
-    <line class="st1" x1="97.5" y1="11.5" x2="102.5" y2="16.5"/>
-    <line class="st1" x1="102.5" y1="11.5" x2="97.5" y2="16.5"/>
-    <path class="st1" d="M100,37.2l-3.3.9-.9-3.3-3.3.9.9,3.3-3.3.9"/>
-    <line class="st1" x1="100" y1="42" x2="95.5" y2="43"/>
-    <path class="st3" d="M95.1,41.3l-5.5,3.1,6.3.4-.8-3.5Z"/>
-  </g>
+  <circle id="terminal_3" class="st4" cx="60" r="2.5"/>
+  <circle id="terminal_4" class="st4" cx="60" cy="80" r="2.5"/>
+  <line class="st2" x1="60" x2="60" y2="80"/>
+  <line class="st1" x1="56.5" y1="20" x2="63.5" y2="20"/>
+  <line class="st1" x1="57.5" y1="11.5" x2="62.5" y2="16.5"/>
+  <line class="st1" x1="62.5" y1="11.5" x2="57.5" y2="16.5"/>
+  <path class="st1" d="M60,37.2l-3.3.9-.9-3.3-3.3.9.9,3.3-3.3.9"/>
+  <line class="st1" x1="60" y1="42" x2="55.5" y2="43"/>
+  <path class="st3" d="M55.1,41.3l-5.5,3.1,6.3.4-.8-3.5Z"/>
+  <circle id="terminal_5" class="st4" cx="100" r="2.5"/>
+  <circle id="terminal_6" class="st4" cx="100" cy="80" r="2.5"/>
+  <line class="st2" x1="100" x2="100" y2="80"/>
+  <line class="st1" x1="96.5" y1="20" x2="103.5" y2="20"/>
+  <line class="st1" x1="97.5" y1="11.5" x2="102.5" y2="16.5"/>
+  <line class="st1" x1="102.5" y1="11.5" x2="97.5" y2="16.5"/>
+  <path class="st1" d="M100,37.2l-3.3.9-.9-3.3-3.3.9.9,3.3-3.3.9"/>
+  <line class="st1" x1="100" y1="42" x2="95.5" y2="43"/>
+  <path class="st3" d="M95.1,41.3l-5.5,3.1,6.3.4-.8-3.5Z"/>
 </svg>

@@ -13,19 +13,19 @@
         stroke-linejoin: round;
       }
 
+      .st1 {
+        fill: none;
+        stroke: #ef4444;
+        stroke-linecap: round;
+        stroke-width: 1.8px;
+      }
+
       .st2 {
         fill: #1b293d;
       }
 
       .st3 {
         fill: #ca8a04;
-      }
-
-      .st1 {
-        fill: none;
-        stroke: #1b293d;
-        stroke-linecap: round;
-        stroke-width: 1.8px;
       }
     </style>
   </defs>

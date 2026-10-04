@@ -6,22 +6,21 @@
       .st0 {
         fill: #fef08a;
         stroke: #ca8a04;
-        stroke-width: 1.8px;
       }
 
       .st0, .st1 {
         stroke-linejoin: round;
-      }
-
-      .st2 {
-        fill: #1b293d;
+        stroke-width: 1.8px;
       }
 
       .st1 {
         fill: none;
-        stroke: #1b293d;
+        stroke: #ef4444;
         stroke-linecap: round;
-        stroke-width: 1.8px;
+      }
+
+      .st2 {
+        fill: #1b293d;
       }
     </style>
   </defs>

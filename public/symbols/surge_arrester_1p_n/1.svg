@@ -1,31 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
-  
-  <circle id="terminal_1" cx="20" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_2" cx="60" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_pe" cx="40" cy="80" r="2.5" fill="#1e293b" />
-  <line x1="20" y1="0" x2="20" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="60" y1="0" x2="60" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="40" y1="70" x2="40" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <g transform="translate(0, 10)">
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 80 80">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
+  <defs>
+    <style>
+      .st0 {
+        stroke-width: 1.8px;
+      }
 
-  <g stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    
-    <!-- Cartucho 1 -->
-    <line x1="20" y1="0" x2="20" y2="16" />
-    <rect x="13" y="16" width="14" height="22" fill="#f8fafc" stroke="#0f172a" stroke-width="1.4" />
-    <!-- Símbolo Varistor -->
-    <path d="M16,34 L24,20 L26,20" stroke="#0f172a" stroke-width="1.5" />
-    <line x1="20" y1="38" x2="20" y2="46" />
-    <!-- Cartucho 2 -->
-    <line x1="60" y1="0" x2="60" y2="16" />
-    <rect x="53" y="16" width="14" height="22" fill="#f8fafc" stroke="#0f172a" stroke-width="1.4" />
-    <!-- Símbolo Varistor -->
-    <path d="M56,34 L64,20 L66,20" stroke="#0f172a" stroke-width="1.5" />
-    <line x1="60" y1="38" x2="60" y2="46" />
-  <line x1="20" y1="46" x2="60" y2="46" />
-  <line x1="40" y1="46" x2="40" y2="60" />
-  
-  </g>
+      .st0, .st1, .st2 {
+        stroke: #ef4444;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .st0, .st2 {
+        fill: none;
+      }
+
+      .st1 {
+        fill: #f8fafc;
+        stroke-width: 1.4px;
+      }
+
+      .st2 {
+        stroke-width: 1.5px;
+      }
+
+      .st3 {
+        fill: #1e293b;
+      }
+    </style>
+  </defs>
+  <circle id="terminal_1" class="st3" cx="20" r="2.5"/>
+  <circle id="terminal_2" class="st3" cx="60" r="2.5"/>
+  <circle id="terminal_pe" class="st3" cx="40" cy="80" r="2.5"/>
+  <g>
+    <line class="st0" x1="20" x2="20" y2="26"/>
+    <rect class="st1" x="13" y="26" width="14" height="22"/>
+    <path class="st2" d="M16,44l8-14h2"/>
+    <line class="st0" x1="20" y1="48" x2="20" y2="56"/>
+    <line class="st0" x1="60" x2="60" y2="26"/>
+    <rect class="st1" x="53" y="26" width="14" height="22"/>
+    <path class="st2" d="M56,44l8-14h2"/>
+    <line class="st0" x1="60" y1="48" x2="60" y2="56"/>
+    <line class="st0" x1="20" y1="56" x2="60" y2="56"/>
+    <line class="st0" x1="40" y1="56" x2="40" y2="80"/>
   </g>
 </svg>

@@ -103,7 +103,7 @@ export class CadeSimuParser {
     '8016': 'thermal_contact_no',
     '8017': 'thermal_contact_nc',
     '8018': 'thermal_contact_no_nc',
-    '8019': 'thermal_contact_changeover',
+    '8019': 'thermal_contact_no_nc',
 
     // Señalización
     '9008': 'pilot_light',
@@ -366,7 +366,6 @@ export class CadeSimuParser {
       thermal_contact_no: '8016',
       thermal_contact_nc: '8017',
       thermal_contact_no_nc: '8018',
-      thermal_contact_changeover: '8019',
       contactor_1p: '5000',
       contactor_2p: '5002',
       contactor_3p: '5004',

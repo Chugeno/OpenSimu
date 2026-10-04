@@ -1,65 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 0 180 80" width="180" height="80">
-  
-  <circle id="terminal_1" cx="0" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_2" cx="0" cy="80" r="2.5" fill="#1e293b" />
-  <circle id="terminal_3" cx="40" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_4" cx="40" cy="80" r="2.5" fill="#1e293b" />
-  <circle id="terminal_5" cx="80" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_6" cx="80" cy="80" r="2.5" fill="#1e293b" />
-  <circle id="terminal_n" cx="120" cy="0" r="2.5" fill="#1e293b" />
-  <circle id="terminal_n2" cx="120" cy="80" r="2.5" fill="#1e293b" />
-  <line x1="0" y1="0" x2="0" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="40" y1="0" x2="40" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="80" y1="0" x2="80" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="120" y1="0" x2="120" y2="10" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="0" y1="70" x2="0" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="40" y1="70" x2="40" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="80" y1="70" x2="80" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="120" y1="70" x2="120" y2="80" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" />
-  <g transform="translate(0, 10)">
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 180 80">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #fff;
+      }
 
-  <!-- Actuador de Test -->
-  <rect x="-26" y="20" width="12" height="12" fill="#ffffff" stroke="#0f172a" stroke-width="1.5" />
-  <line x1="-20" y1="20" x2="-20" y2="32" stroke="#0f172a" stroke-width="1.5" />
-  <line x1="-26" y1="26" x2="-14" y2="26" stroke="#0f172a" stroke-width="1.5" />
-  <line x1="-34" y1="22" x2="-34" y2="30" stroke="#0f172a" stroke-width="1.5" />
-  <line x1="-34" y1="26" x2="-26" y2="26" stroke="#64748b" stroke-width="1.2" stroke-dasharray="3 2" />
-  <line x1="-14" y1="26" x2="120" y2="26" stroke="#64748b" stroke-width="1.2" stroke-dasharray="3 2" />
-  <path d="M-20,32 L-20,46 L-14,46" stroke="#64748b" stroke-width="1.2" stroke-dasharray="3 2" fill="none" />
-  <!-- Toroide celeste -->
-  <ellipse cx="60" cy="46" rx="74" ry="5.5" fill="none" stroke="#0284c7" stroke-width="1.8" stroke-dasharray="4 2" />
-  
-  <g stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    
-    <!-- Polo 1 -->
-    <line x1="0" y1="0" x2="0" y2="20" />
-    <line x1="-2.5" y1="12.5" x2="2.5" y2="17.5" />
-    <line x1="2.5" y1="12.5" x2="-2.5" y2="17.5" />
-    <line x1="-3.5" y1="20" x2="3.5" y2="20" />
-    <line x1="0" y1="36" x2="0" y2="20" />
-    <line x1="0" y1="36" x2="0" y2="60" />
-    <!-- Polo 2 -->
-    <line x1="40" y1="0" x2="40" y2="20" />
-    <line x1="37.5" y1="12.5" x2="42.5" y2="17.5" />
-    <line x1="42.5" y1="12.5" x2="37.5" y2="17.5" />
-    <line x1="36.5" y1="20" x2="43.5" y2="20" />
-    <line x1="40" y1="36" x2="40" y2="20" />
-    <line x1="40" y1="36" x2="40" y2="60" />
-    <!-- Polo 3 -->
-    <line x1="80" y1="0" x2="80" y2="20" />
-    <line x1="77.5" y1="12.5" x2="82.5" y2="17.5" />
-    <line x1="82.5" y1="12.5" x2="77.5" y2="17.5" />
-    <line x1="76.5" y1="20" x2="83.5" y2="20" />
-    <line x1="80" y1="36" x2="80" y2="20" />
-    <line x1="80" y1="36" x2="80" y2="60" />
-    <!-- Polo 4 -->
-    <line x1="120" y1="0" x2="120" y2="20" />
-    <line x1="117.5" y1="12.5" x2="122.5" y2="17.5" />
-    <line x1="122.5" y1="12.5" x2="117.5" y2="17.5" />
-    <line x1="116.5" y1="20" x2="123.5" y2="20" />
-    <line x1="120" y1="36" x2="120" y2="20" />
-    <line x1="120" y1="36" x2="120" y2="60" />
-  </g>
+      .st0, .st1, .st2, .st3 {
+        stroke: #ef4444;
+      }
+
+      .st0, .st2 {
+        stroke-width: 1.5px;
+      }
+
+      .st4 {
+        stroke: #0284c7;
+        stroke-dasharray: 4 2;
+      }
+
+      .st4, .st5, .st1, .st2, .st3 {
+        fill: none;
+      }
+
+      .st4, .st1, .st3 {
+        stroke-width: 1.8px;
+      }
+
+      .st5 {
+        stroke: #64748b;
+        stroke-dasharray: 3 2;
+        stroke-width: 1.2px;
+      }
+
+      .st1 {
+        stroke-linejoin: round;
+      }
+
+      .st1, .st3 {
+        stroke-linecap: round;
+      }
+
+      .st6 {
+        fill: #1e293b;
+      }
+    </style>
+  </defs>
+  <circle id="terminal_1" class="st6" cx="40" r="2.5"/>
+  <circle id="terminal_2" class="st6" cx="40" cy="80" r="2.5"/>
+  <circle id="terminal_3" class="st6" cx="80" r="2.5"/>
+  <circle id="terminal_4" class="st6" cx="80" cy="80" r="2.5"/>
+  <circle id="terminal_5" class="st6" cx="120" r="2.5"/>
+  <circle id="terminal_6" class="st6" cx="120" cy="80" r="2.5"/>
+  <circle id="terminal_n" class="st6" cx="160" r="2.5"/>
+  <circle id="terminal_n2" class="st6" cx="160" cy="80" r="2.5"/>
+  <line class="st5" x1="6" y1="36" x2="14" y2="36"/>
+  <line class="st5" x1="26" y1="36" x2="160" y2="36"/>
+  <path class="st5" d="M20,42v14h6"/>
+  <ellipse class="st4" cx="100" cy="56" rx="74" ry="5.5"/>
+  <line class="st3" x1="40" x2="40" y2="10"/>
+  <line class="st3" x1="80" x2="80" y2="10"/>
+  <line class="st3" x1="120" x2="120" y2="10"/>
+  <line class="st3" x1="160" x2="160" y2="10"/>
+  <line class="st3" x1="40" y1="70" x2="40" y2="80"/>
+  <line class="st3" x1="80" y1="70" x2="80" y2="80"/>
+  <line class="st3" x1="120" y1="70" x2="120" y2="80"/>
+  <line class="st3" x1="160" y1="70" x2="160" y2="80"/>
+  <rect class="st0" x="14" y="30" width="12" height="12"/>
+  <line class="st2" x1="20" y1="30" x2="20" y2="42"/>
+  <line class="st2" x1="14" y1="36" x2="26" y2="36"/>
+  <line class="st2" x1="6" y1="32" x2="6" y2="40"/>
+  <g>
+    <line class="st1" x1="40" y1="10" x2="40" y2="30"/>
+    <line class="st1" x1="37.5" y1="22.5" x2="42.5" y2="27.5"/>
+    <line class="st1" x1="42.5" y1="22.5" x2="37.5" y2="27.5"/>
+    <line class="st1" x1="36.5" y1="30" x2="43.5" y2="30"/>
+    <line class="st1" x1="40" y1="46" x2="40" y2="30"/>
+    <line class="st1" x1="40" y1="46" x2="40" y2="70"/>
+    <line class="st1" x1="80" y1="10" x2="80" y2="30"/>
+    <line class="st1" x1="77.5" y1="22.5" x2="82.5" y2="27.5"/>
+    <line class="st1" x1="82.5" y1="22.5" x2="77.5" y2="27.5"/>
+    <line class="st1" x1="76.5" y1="30" x2="83.5" y2="30"/>
+    <line class="st1" x1="80" y1="46" x2="80" y2="30"/>
+    <line class="st1" x1="80" y1="46" x2="80" y2="70"/>
+    <line class="st1" x1="120" y1="10" x2="120" y2="30"/>
+    <line class="st1" x1="117.5" y1="22.5" x2="122.5" y2="27.5"/>
+    <line class="st1" x1="122.5" y1="22.5" x2="117.5" y2="27.5"/>
+    <line class="st1" x1="116.5" y1="30" x2="123.5" y2="30"/>
+    <line class="st1" x1="120" y1="46" x2="120" y2="30"/>
+    <line class="st1" x1="120" y1="46" x2="120" y2="70"/>
+    <line class="st1" x1="160" y1="10" x2="160" y2="30"/>
+    <line class="st1" x1="157.5" y1="22.5" x2="162.5" y2="27.5"/>
+    <line class="st1" x1="162.5" y1="22.5" x2="157.5" y2="27.5"/>
+    <line class="st1" x1="156.5" y1="30" x2="163.5" y2="30"/>
+    <line class="st1" x1="160" y1="46" x2="160" y2="30"/>
+    <line class="st1" x1="160" y1="46" x2="160" y2="70"/>
   </g>
 </svg>

@@ -269,40 +269,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     ],
   },
 
-  // Grupo 2: Guardamotores (1P+N, 2P, 3P, 4P)
-  motor_breaker_1p_n: {
-    type: 'motor_breaker_1p_n',
-    category: 'protections',
-    name: 'Guardamotor 1P+N',
-    defaultTag: '-QM',
-    width: 60,
-    height: 80,
-    poles: 2,
-    manualAction: 'toggle',
-    dividerBefore: true,
-    terminals: [
-      { id: '1', name: '1', relX: 0, relY: 0 },
-      { id: '2', name: '2', relX: 0, relY: 80 },
-      { id: 'N', name: 'N', relX: 40, relY: 0 },
-      { id: 'N2', name: 'N', relX: 40, relY: 80 },
-    ],
-  },
-  motor_breaker_2p: {
-    type: 'motor_breaker_2p',
-    category: 'protections',
-    name: 'Guardamotor 2P',
-    defaultTag: '-QM',
-    width: 60,
-    height: 80,
-    poles: 2,
-    manualAction: 'toggle',
-    terminals: [
-      { id: '1', name: '1', relX: 0, relY: 0 },
-      { id: '2', name: '2', relX: 0, relY: 80 },
-      { id: '3', name: '3', relX: 40, relY: 0 },
-      { id: '4', name: '4', relX: 40, relY: 80 },
-    ],
-  },
+  // Grupo 2: Guardamotor (3P)
   motor_breaker_3p: {
     type: 'motor_breaker_3p',
     category: 'protections',
@@ -312,6 +279,7 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     height: 80,
     poles: 3,
     manualAction: 'toggle',
+    dividerBefore: true,
     terminals: [
       { id: '1', name: '1', relX: 0, relY: 0 },
       { id: '2', name: '2', relX: 0, relY: 80 },
@@ -319,42 +287,6 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
       { id: '4', name: '4', relX: 40, relY: 80 },
       { id: '5', name: '5', relX: 80, relY: 0 },
       { id: '6', name: '6', relX: 80, relY: 80 },
-    ],
-  },
-  motor_breaker_4p: {
-    type: 'motor_breaker_4p',
-    category: 'protections',
-    name: 'Guardamotor 4P (3P+N)',
-    defaultTag: '-QM',
-    width: 140,
-    height: 80,
-    poles: 4,
-    manualAction: 'toggle',
-    terminals: [
-      { id: '1', name: '1', relX: 0, relY: 0 },
-      { id: '2', name: '2', relX: 0, relY: 80 },
-      { id: '3', name: '3', relX: 40, relY: 0 },
-      { id: '4', name: '4', relX: 40, relY: 80 },
-      { id: '5', name: '5', relX: 80, relY: 0 },
-      { id: '6', name: '6', relX: 80, relY: 80 },
-      { id: 'N', name: 'N', relX: 120, relY: 0 },
-      { id: 'N2', name: 'N', relX: 120, relY: 80 },
-    ],
-  },
-  // Obsoletos / ocultos de la paleta
-  motor_breaker_1p: {
-    type: 'motor_breaker_1p',
-    category: 'protections',
-    name: 'Guardamotor 1P',
-    defaultTag: '-QM',
-    width: 60,
-    height: 80,
-    poles: 1,
-    manualAction: 'toggle',
-    hidden: true,
-    terminals: [
-      { id: '1', name: '1', relX: 0, relY: 0 },
-      { id: '2', name: '2', relX: 0, relY: 80 },
     ],
   },
   motor_breaker_mag_3p: {
@@ -983,15 +915,15 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
   ondelay_no: {
     type: 'ondelay_no',
     category: 'contacts',
-    name: 'Contacto Temporizado a la Conexión NA (67-68)',
+    name: 'Contacto Temporizado a la Conexión NA (57-58)',
     defaultTag: '-KM',
     width: 40,
     height: 80,
     manualAction: 'none',
     dividerBefore: true,
     terminals: [
-      { id: '67', name: '67', relX: 0, relY: 0 },
-      { id: '68', name: '68', relX: 0, relY: 80 },
+      { id: '57', name: '57', relX: 0, relY: 0 },
+      { id: '58', name: '58', relX: 0, relY: 80 },
     ],
   },
   ondelay_nc: {
@@ -1007,20 +939,34 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
       { id: '56', name: '56', relX: 0, relY: 80 },
     ],
   },
+  ondelay_changeover: {
+    type: 'ondelay_changeover',
+    category: 'contacts',
+    name: 'Contacto Temporizado a la Conexión Conmutado (55-56-58)',
+    defaultTag: '-KM',
+    width: 60,
+    height: 80,
+    manualAction: 'none',
+    terminals: [
+      { id: '55', name: '55', relX: 20, relY: 0 },
+      { id: '56', name: '56', relX: 0, relY: 80 },
+      { id: '58', name: '58', relX: 40, relY: 80 },
+    ],
+  },
 
   // CONTACTOS TEMPORIZADOS A LA DESCONEXIÓN (TOF)
   offdelay_no: {
     type: 'offdelay_no',
     category: 'contacts',
-    name: 'Contacto Temporizado a la Desconexión NA (67-68)',
+    name: 'Contacto Temporizado a la Desconexión NA (57-58)',
     defaultTag: '-KM',
     width: 40,
     height: 80,
     manualAction: 'none',
     dividerBefore: true,
     terminals: [
-      { id: '67', name: '67', relX: 0, relY: 0 },
-      { id: '68', name: '68', relX: 0, relY: 80 },
+      { id: '57', name: '57', relX: 0, relY: 0 },
+      { id: '58', name: '58', relX: 0, relY: 80 },
     ],
   },
   offdelay_nc: {
@@ -1036,20 +982,34 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
       { id: '56', name: '56', relX: 0, relY: 80 },
     ],
   },
+  offdelay_changeover: {
+    type: 'offdelay_changeover',
+    category: 'contacts',
+    name: 'Contacto Temporizado a la Desconexión Conmutado (55-56-58)',
+    defaultTag: '-KM',
+    width: 60,
+    height: 80,
+    manualAction: 'none',
+    terminals: [
+      { id: '55', name: '55', relX: 20, relY: 0 },
+      { id: '56', name: '56', relX: 0, relY: 80 },
+      { id: '58', name: '58', relX: 40, relY: 80 },
+    ],
+  },
 
   // CONTACTOS TEMPORIZADOS CONEXIÓN / DESCONEXIÓN (TON / TOF)
   on_offdelay_no: {
     type: 'on_offdelay_no',
     category: 'contacts',
-    name: 'Contacto Temporizado Conexión/Desconexión NA (67-68)',
+    name: 'Contacto Temporizado Conexión/Desconexión NA (57-58)',
     defaultTag: '-KM',
     width: 40,
     height: 80,
     manualAction: 'none',
     dividerBefore: true,
     terminals: [
-      { id: '67', name: '67', relX: 0, relY: 0 },
-      { id: '68', name: '68', relX: 0, relY: 80 },
+      { id: '57', name: '57', relX: 0, relY: 0 },
+      { id: '58', name: '58', relX: 0, relY: 80 },
     ],
   },
   on_offdelay_nc: {
@@ -1063,6 +1023,20 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
     terminals: [
       { id: '55', name: '55', relX: 0, relY: 0 },
       { id: '56', name: '56', relX: 0, relY: 80 },
+    ],
+  },
+  on_offdelay_changeover: {
+    type: 'on_offdelay_changeover',
+    category: 'contacts',
+    name: 'Contacto Temporizado Conexión/Desconexión Conmutado (55-56-58)',
+    defaultTag: '-KM',
+    width: 60,
+    height: 80,
+    manualAction: 'none',
+    terminals: [
+      { id: '55', name: '55', relX: 20, relY: 0 },
+      { id: '56', name: '56', relX: 0, relY: 80 },
+      { id: '58', name: '58', relX: 40, relY: 80 },
     ],
   },
 
@@ -1106,20 +1080,6 @@ export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
       { id: '95', name: '95', relX: 0, relY: 0 },
       { id: '96', name: '96', relX: 0, relY: 80 },
       { id: '97', name: '97', relX: 40, relY: 0 },
-      { id: '98', name: '98', relX: 40, relY: 80 },
-    ],
-  },
-  thermal_contact_changeover: {
-    type: 'thermal_contact_changeover',
-    category: 'contacts',
-    name: 'Contacto Térmico Conmutado (95-96-98)',
-    defaultTag: '-F',
-    width: 60,
-    height: 80,
-    manualAction: 'none',
-    terminals: [
-      { id: '95', name: '95', relX: 20, relY: 0 },
-      { id: '96', name: '96', relX: 0, relY: 80 },
       { id: '98', name: '98', relX: 40, relY: 80 },
     ],
   },

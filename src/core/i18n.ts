@@ -111,7 +111,6 @@ export const TRANSLATIONS: Record<SupportedLocale, Record<string, string>> = {
     'comp.thermal_contact_nc': 'Contacto Relevo Térmico NC (95-96)',
     'comp.thermal_contact_no': 'Contacto Relevo Térmico NA (97-98)',
     'comp.thermal_contact_no_nc': 'Contacto Térmico Doble (95-96 / 97-98)',
-    'comp.thermal_contact_changeover': 'Contacto Térmico Conmutado (95-96-98)',
 
     // Accionamientos
     'comp.pushbutton_no': 'Pulsador NA (3-4)',
@@ -159,12 +158,15 @@ export const TRANSLATIONS: Record<SupportedLocale, Record<string, string>> = {
     'comp.contact_nc': 'Contacto Auxiliar NC (21-22)',
     'comp.contact_no_nc': 'Contacto Doble NA+NC (13-14 / 21-22)',
     'comp.contact_changeover': 'Contacto Conmutado SPDT (11-12-14)',
-    'comp.ondelay_no': 'Contacto Temporizado a la Conexión NA (67-68)',
+    'comp.ondelay_no': 'Contacto Temporizado a la Conexión NA (57-58)',
     'comp.ondelay_nc': 'Contacto Temporizado a la Conexión NC (55-56)',
-    'comp.offdelay_no': 'Contacto Temporizado a la Desconexión NA (67-68)',
+    'comp.ondelay_changeover': 'Contacto Temporizado a la Conexión Conmutado (55-56-58)',
+    'comp.offdelay_no': 'Contacto Temporizado a la Desconexión NA (57-58)',
     'comp.offdelay_nc': 'Contacto Temporizado a la Desconexión NC (55-56)',
-    'comp.on_offdelay_no': 'Contacto Temporizado Conexión/Desconexión NA (67-68)',
+    'comp.offdelay_changeover': 'Contacto Temporizado a la Desconexión Conmutado (55-56-58)',
+    'comp.on_offdelay_no': 'Contacto Temporizado Conexión/Desconexión NA (57-58)',
     'comp.on_offdelay_nc': 'Contacto Temporizado Conexión/Desconexión NC (55-56)',
+    'comp.on_offdelay_changeover': 'Contacto Temporizado Conexión/Desconexión Conmutado (55-56-58)',
 
     // Cables y Nodos
     'wire.junction': 'Nodo / Conexión (Punto de Unión)',
@@ -299,7 +301,6 @@ export const TRANSLATIONS: Record<SupportedLocale, Record<string, string>> = {
     'comp.thermal_contact_nc': 'Contacto Relé Térmico NC (95-96)',
     'comp.thermal_contact_no': 'Contacto Relé Térmico NA (97-98)',
     'comp.thermal_contact_no_nc': 'Contacto Térmico Doble (95-96 / 97-98)',
-    'comp.thermal_contact_changeover': 'Contacto Térmico Conmutado (95-96-98)',
 
     // Accionamientos
     'comp.pushbutton_no': 'Pulsador NA (3-4)',
@@ -347,12 +348,15 @@ export const TRANSLATIONS: Record<SupportedLocale, Record<string, string>> = {
     'comp.contact_nc': 'Contacto Auxiliar NC (21-22)',
     'comp.contact_no_nc': 'Contacto Doble NA+NC (13-14 / 21-22)',
     'comp.contact_changeover': 'Contacto Conmutado (11-12-14)',
-    'comp.ondelay_no': 'Contacto Temporizado a la Conexión NA (67-68)',
+    'comp.ondelay_no': 'Contacto Temporizado a la Conexión NA (57-58)',
     'comp.ondelay_nc': 'Contacto Temporizado a la Conexión NC (55-56)',
-    'comp.offdelay_no': 'Contacto Temporizado a la Desconexión NA (67-68)',
+    'comp.ondelay_changeover': 'Contacto Temporizado a la Conexión Conmutado (55-56-58)',
+    'comp.offdelay_no': 'Contacto Temporizado a la Desconexión NA (57-58)',
     'comp.offdelay_nc': 'Contacto Temporizado a la Desconexión NC (55-56)',
-    'comp.on_offdelay_no': 'Contacto Temporizado Conexión/Desconexión NA (67-68)',
+    'comp.offdelay_changeover': 'Contacto Temporizado a la Desconexión Conmutado (55-56-58)',
+    'comp.on_offdelay_no': 'Contacto Temporizado Conexión/Desconexión NA (57-58)',
     'comp.on_offdelay_nc': 'Contacto Temporizado Conexión/Desconexión NC (55-56)',
+    'comp.on_offdelay_changeover': 'Contacto Temporizado Conexión/Desconexión Conmutado (55-56-58)',
 
     // Cables y Nodos
     'wire.junction': 'Punto de Conexión (Nodo)',
@@ -487,7 +491,6 @@ export const TRANSLATIONS: Record<SupportedLocale, Record<string, string>> = {
     'comp.thermal_contact_nc': 'Thermal Relay NC Contact (95-96)',
     'comp.thermal_contact_no': 'Thermal Relay NO Contact (97-98)',
     'comp.thermal_contact_no_nc': 'Thermal Relay Dual Contact (95-96 / 97-98)',
-    'comp.thermal_contact_changeover': 'Thermal Relay Changeover (95-96-98)',
 
     // Accionamientos
     'comp.pushbutton_no': 'NO Pushbutton (3-4)',
@@ -535,12 +538,15 @@ export const TRANSLATIONS: Record<SupportedLocale, Record<string, string>> = {
     'comp.contact_nc': 'Auxiliary Contact NC (21-22)',
     'comp.contact_no_nc': 'Dual Aux Contact NO+NC (13-14 / 21-22)',
     'comp.contact_changeover': 'Changeover Contact (11-12-14)',
-    'comp.ondelay_no': 'On-Delay Timed Contact NO (67-68)',
+    'comp.ondelay_no': 'On-Delay Timed Contact NO (57-58)',
     'comp.ondelay_nc': 'On-Delay Timed Contact NC (55-56)',
-    'comp.offdelay_no': 'Off-Delay Timed Contact NO (67-68)',
+    'comp.ondelay_changeover': 'On-Delay Timed Changeover Contact (55-56-58)',
+    'comp.offdelay_no': 'Off-Delay Timed Contact NO (57-58)',
     'comp.offdelay_nc': 'Off-Delay Timed Contact NC (55-56)',
-    'comp.on_offdelay_no': 'On/Off-Delay Timed Contact NO (67-68)',
+    'comp.offdelay_changeover': 'Off-Delay Timed Changeover Contact (55-56-58)',
+    'comp.on_offdelay_no': 'On/Off-Delay Timed Contact NO (57-58)',
     'comp.on_offdelay_nc': 'On/Off-Delay Timed Contact NC (55-56)',
+    'comp.on_offdelay_changeover': 'On/Off-Delay Timed Changeover Contact (55-56-58)',
 
     // Cables y Nodos
     'wire.junction': 'Junction Node (Connection Dot)',

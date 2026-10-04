@@ -34,8 +34,8 @@
     </style>
   </defs>
   <g>
-    <circle id="terminal_2" class="st3" cx="30" cy="80" r="2.5"/>
-    <circle id="terminal_1" class="st3" cx="30" r="2.5"/>
+    <circle id="terminal_96" class="st3" cx="30" cy="80" r="2.5"/>
+    <circle id="terminal_95" class="st3" cx="30" r="2.5"/>
     <polyline class="st2" points="30 0 30 25 47.5 25"/>
     <polyline class="st2" points="45 20 30 60 30 80"/>
   </g>

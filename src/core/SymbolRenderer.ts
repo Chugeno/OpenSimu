@@ -194,10 +194,13 @@ export class SymbolRenderer {
         break;
       }
 
-      case 'contact_changeover': {
+      case 'contact_changeover':
+      case 'ondelay_changeover':
+      case 'offdelay_changeover':
+      case 'on_offdelay_changeover': {
         const isActuated = Boolean(comp.state.energized || comp.state.pressed);
         const stateIdx = isActuated ? 1 : 0;
-        const svgPath = `/symbols/contact_changeover/${stateIdx}.svg`;
+        const svgPath = `/symbols/${comp.type}/${stateIdx}.svg`;
         this.renderSvgWithFallback(
           ctx,
           comp,
@@ -585,21 +588,6 @@ export class SymbolRenderer {
         break;
       }
 
-      case 'thermal_contact_changeover': {
-        const isTripped = Boolean(comp.state.pressed || comp.state.closed || comp.state.energized);
-        const stateIdx = isTripped ? 1 : 0;
-        const svgPath = `/symbols/thermal_contact_changeover/${stateIdx}.svg`;
-        this.renderSvgWithFallback(
-          ctx,
-          comp,
-          isSimulation,
-          svgPath,
-          { minX: 0, minY: 0, width: 80, height: 80 },
-          () => this.renderContactChangeover(ctx, comp, isSimulation),
-          isTripped
-        );
-        break;
-      }
 
       case 'inductive_detector_no':
       case 'inductive_detector_nc': {
@@ -1200,23 +1188,7 @@ export class SymbolRenderer {
     ctx.lineTo(naX - 10, 42);
     ctx.stroke();
 
-    const isThermal = comp.type === 'thermal_contact_changeover';
-    const bladeMidX = isActuated ? 30 : 13;
-    const L = 6;
-    const startX = bladeMidX - 8;
 
-    // 1. CAPA INFERIOR: Enlace mecánico en gris punteado (detrás de la cuchilla y de la omega)
-    if (isThermal) {
-      ctx.save();
-      ctx.setLineDash([2, 2]);
-      ctx.strokeStyle = '#94a3b8';
-      ctx.lineWidth = 1.2;
-      ctx.beginPath();
-      ctx.moveTo(bladeMidX, 30);
-      ctx.lineTo(startX, 30);
-      ctx.stroke();
-      ctx.restore();
-    }
 
     // 2. CAPA SUPERIOR: Cuchilla basculante en negro o rojo (pisa la línea gris)
     ctx.strokeStyle = strokeColor;
@@ -1233,21 +1205,7 @@ export class SymbolRenderer {
     }
     ctx.stroke();
 
-    // 3. CAPA SUPERIOR: Omega de relé térmico en negro (pisa la línea gris)
-    if (isThermal) {
-      ctx.save();
-      ctx.strokeStyle = '#0f172a';
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      // Omega cuadrada horizontal (IEC 60617) desplazada a la izquierda
-      ctx.moveTo(startX, 30);
-      ctx.lineTo(startX, 30 - L);
-      ctx.lineTo(startX - L, 30 - L);
-      ctx.lineTo(startX - L, 30);
-      ctx.lineTo(startX - L - 4, 30);
-      ctx.stroke();
-      ctx.restore();
-    }
+
   }
 
   private static renderPilotLight(ctx: CanvasRenderingContext2D, comp: CircuitComponent, isSim: boolean) {

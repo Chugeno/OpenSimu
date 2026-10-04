@@ -20,14 +20,14 @@
         fill: #fef08a;
       }
 
-      .st3 {
-        fill: #1b293d;
-      }
-
       .st2 {
-        stroke: #1b293d;
+        stroke: #ef4444;
         stroke-linecap: round;
         stroke-width: 1.8px;
+      }
+
+      .st3 {
+        fill: #1b293d;
       }
     </style>
   </defs>

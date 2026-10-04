@@ -5,44 +5,41 @@
     <style>
       .st0 {
         fill: #fee2e2;
-        stroke: #dc2626;
         stroke-width: 1.5px;
+      }
+
+      .st0, .st1 {
+        stroke: #ef4444;
+        stroke-linejoin: round;
       }
 
       .st0, .st1, .st2 {
         stroke-linecap: round;
       }
 
-      .st0, .st2 {
-        stroke-linejoin: round;
-      }
-
       .st1 {
-        stroke: #94a3b8;
-        stroke-dasharray: 2 2;
-        stroke-width: 1.2px;
+        stroke-width: 1.8px;
       }
 
       .st1, .st2 {
         fill: none;
       }
 
+      .st2 {
+        stroke: #94a3b8;
+        stroke-dasharray: 2 2;
+        stroke-width: 1.2px;
+      }
+
       .st3 {
         fill: #1b293d;
       }
-
-      .st2 {
-        stroke: #1b293d;
-        stroke-width: 1.8px;
-      }
     </style>
   </defs>
-  <g>
-    <circle id="terminal_12" class="st3" cx="40" cy="80" r="2.5"/>
-    <circle id="terminal_11" class="st3" cx="40" r="2.5"/>
-    <line class="st2" x1="40" x2="40" y2="20"/>
-    <polyline class="st2" points="25 20 40 60 40 80"/>
-  </g>
-  <line class="st1" x1="29.7" y1="40" x2="22" y2="40"/>
+  <circle id="terminal_12" class="st3" cx="40" cy="80" r="2.5"/>
+  <circle id="terminal_11" class="st3" cx="40" r="2.5"/>
+  <line class="st1" x1="40" x2="40" y2="20"/>
+  <polyline class="st1" points="25 20 40 60 40 80"/>
+  <line class="st2" x1="29.7" y1="40" x2="22" y2="40"/>
   <path class="st0" d="M21.2,33.5c-3.6,0-6.5,2.9-6.5,6.5s2.9,6.5,6.5,6.5v-13Z"/>
 </svg>

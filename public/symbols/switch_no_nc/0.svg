@@ -33,18 +33,18 @@
       }
     </style>
   </defs>
-  <line class="st0" x1="12.4" y1="40" x2="77.5" y2="40"/>
-  <path class="st1" d="M13.6,35h-3.5v10h-3.5"/>
+  <line class="st0" x1="25.5" y1="40" x2="62.5" y2="40"/>
+  <path class="st1" d="M25.5,35h-3.5v10h-3.5"/>
   <g>
-    <circle id="terminal_14" class="st3" cx="30" cy="80" r="2.5"/>
-    <circle id="terminal_13" class="st3" cx="30" r="2.5"/>
-    <line class="st2" x1="30" x2="30" y2="20"/>
-    <polyline class="st2" points="15 20 30 60 30 80"/>
+    <circle id="terminal_24" class="st3" cx="70" cy="80" r="2.5"/>
+    <circle id="terminal_23" class="st3" cx="70" cy="0" r="2.5"/>
+    <line class="st2" x1="70" y1="0" x2="70" y2="20"/>
+    <polyline class="st2" points="55 20 70 60 70 80"/>
   </g>
   <g>
-    <circle id="terminal_22" class="st3" cx="70" cy="80" r="2.5"/>
-    <circle id="terminal_21" class="st3" cx="70" r="2.5"/>
-    <polyline class="st2" points="70 0 70 25 86.5 25"/>
-    <polyline class="st2" points="85 20 70 60 70 80"/>
+    <circle id="terminal_12" class="st3" cx="30" cy="80" r="2.5"/>
+    <circle id="terminal_11" class="st3" cx="30" r="2.5"/>
+    <polyline class="st2" points="30 0 30 25 46.5 25"/>
+    <polyline class="st2" points="45 20 30 60 30 80"/>
   </g>
 </svg>

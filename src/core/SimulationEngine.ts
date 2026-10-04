@@ -627,17 +627,17 @@ export class SimulationEngine {
       } else if (comp.type.startsWith('thermal_contact_')) {
         const tagTripped = components.some((c) => c.tag === comp.tag && Boolean(c.state.tripped));
         comp.state.energized = isTripped || tagTripped;
-      } else if (comp.type === 'ondelay_no' || comp.type === 'ondelay_nc') {
+      } else if (comp.type === 'ondelay_no' || comp.type === 'ondelay_nc' || comp.type === 'ondelay_changeover') {
         const isActuated = components.some(
           (c) => c.tag === comp.tag && c.type === 'connection_timer' && Boolean(c.state.timerActive)
         ) || Boolean(comp.state.pressed);
         comp.state.energized = isActuated;
-      } else if (comp.type === 'offdelay_no' || comp.type === 'offdelay_nc') {
+      } else if (comp.type === 'offdelay_no' || comp.type === 'offdelay_nc' || comp.type === 'offdelay_changeover') {
         const isActuated = components.some(
           (c) => c.tag === comp.tag && c.type === 'disconnection_timer' && Boolean(c.state.timerActive)
         ) || Boolean(comp.state.pressed);
         comp.state.energized = isActuated;
-      } else if (comp.type === 'on_offdelay_no' || comp.type === 'on_offdelay_nc') {
+      } else if (comp.type === 'on_offdelay_no' || comp.type === 'on_offdelay_nc' || comp.type === 'on_offdelay_changeover') {
         const isActuated = components.some(
           (c) => c.tag === comp.tag && c.type === 'disconnect_connection_timer' && Boolean(c.state.timerActive)
         ) || Boolean(comp.state.pressed);
@@ -879,18 +879,7 @@ export class SimulationEngine {
             key({ x: comp.x + comp.terminals[3].relX, y: comp.y + comp.terminals[3].relY })
           );
         }
-      } else if (comp.type === 'thermal_contact_changeover') {
-        // Contacto térmico conmutado: 0 = 95 COM, 1 = 96 NC, 2 = 98 NA
-        const isTripped = trippedTags.has(comp.tag) || Boolean(comp.state.tripped) || Boolean(comp.state.pressed);
-        comp.state.energized = isTripped;
-        const comPt = { x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY };
-        if (isTripped && comp.terminals.length >= 3) {
-          const naPt = { x: comp.x + comp.terminals[2].relX, y: comp.y + comp.terminals[2].relY };
-          union(key(comPt), key(naPt));
-        } else if (!isTripped && comp.terminals.length >= 2) {
-          const ncPt = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };
-          union(key(comPt), key(ncPt));
-        }
+
       } else if (comp.type === 'contact_no' || comp.type === 'contact_no_1p') {
         const isClosed = isCoilActive || Boolean(comp.state.pressed) || Boolean(comp.state.closed);
         comp.state.energized = isCoilActive;
@@ -988,17 +977,37 @@ export class SimulationEngine {
             key({ x: comp.x + comp.terminals[3].relX, y: comp.y + comp.terminals[3].relY })
           );
         }
-      } else if (comp.type === 'contact_changeover') {
-        // 0 = COM 11 at (20, 0), 1 = NC 12 at (0, 60), 2 = NA 14 at (40, 60)
-        const isActuated = isCoilActive || Boolean(comp.state.pressed);
-        comp.state.energized = isCoilActive;
+      } else if (
+        comp.type === 'contact_changeover' ||
+        comp.type === 'ondelay_changeover' ||
+        comp.type === 'offdelay_changeover' ||
+        comp.type === 'on_offdelay_changeover'
+      ) {
+        // Changeover: 0 = COM (relX: 20, relY: 0), 1 = NC (relX: 0, relY: 80), 2 = NA (relX: 40, relY: 80)
+        let isActuated = false;
+        if (comp.type === 'ondelay_changeover') {
+          isActuated = components.some(
+            (c) => c.tag === comp.tag && c.type === 'connection_timer' && Boolean(c.state.timerActive)
+          ) || Boolean(comp.state.pressed);
+        } else if (comp.type === 'offdelay_changeover') {
+          isActuated = components.some(
+            (c) => c.tag === comp.tag && c.type === 'disconnection_timer' && Boolean(c.state.timerActive)
+          ) || Boolean(comp.state.pressed);
+        } else if (comp.type === 'on_offdelay_changeover') {
+          isActuated = components.some(
+            (c) => c.tag === comp.tag && c.type === 'disconnect_connection_timer' && Boolean(c.state.timerActive)
+          ) || Boolean(comp.state.pressed);
+        } else {
+          isActuated = isCoilActive || Boolean(comp.state.pressed);
+        }
+        comp.state.energized = isActuated;
         const comPt = { x: comp.x + comp.terminals[0].relX, y: comp.y + comp.terminals[0].relY };
         if (isActuated && comp.terminals.length >= 3) {
-          // Conectado 11 con 14 (NA cerrado)
+          // Conectado COM con NA
           const naPt = { x: comp.x + comp.terminals[2].relX, y: comp.y + comp.terminals[2].relY };
           union(key(comPt), key(naPt));
         } else if (!isActuated && comp.terminals.length >= 2) {
-          // Conectado 11 con 12 (NC cerrado en reposo)
+          // Conectado COM con NC
           const ncPt = { x: comp.x + comp.terminals[1].relX, y: comp.y + comp.terminals[1].relY };
           union(key(comPt), key(ncPt));
         }

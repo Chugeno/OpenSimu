@@ -1,16 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#e2e8f0" stroke-width="1.5">
-      <!-- Common Top -->
-      <line x1="16" y1="4" x2="16" y2="12" />
-      <!-- Terminal 12 (Left) -->
-      <line x1="8" y1="28" x2="8" y2="20" />
-      <line x1="8" y1="20" x2="12" y2="20" />
-      <!-- Terminal 14 (Right) -->
-      <line x1="24" y1="28" x2="24" y2="20" />
-      <line x1="24" y1="20" x2="20" y2="20" />
-      <!-- Blade straight vertical (Pos 0) -->
-      <line x1="16" y1="12" x2="16" y2="22" stroke="#38bdf8" />
-      <!-- Labels I - 0 - II -->
-      <text x="8" y="10" font-size="4" font-weight="bold" fill="#f59e0b" stroke="none" text-anchor="middle">I</text>
-      <text x="16" y="10" font-size="4" font-weight="bold" fill="#38bdf8" stroke="none" text-anchor="middle">0</text>
-      <text x="24" y="10" font-size="4" font-weight="bold" fill="#f59e0b" stroke="none" text-anchor="middle">II</text>
-    </svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 32 32">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
+  <defs>
+    <style>
+      .st0 {
+        stroke: #e2e8f0;
+        stroke-width: 1.6px;
+      }
+
+      .st0, .st1 {
+        fill: none;
+      }
+
+      .st1 {
+        stroke: #94a3b8;
+        stroke-dasharray: 2 1;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <line class="st1" x1="8.5" y1="12.5" x2="16" y2="12.5"/>
+  <polyline class="st0" points="2.9 16 6.4 16 6.4 9 9.9 9"/>
+  <g>
+    <polyline class="st0" points="12.8 22.7 6.4 22.7 6.4 32"/>
+    <polyline class="st0" points="19.2 22.7 25.6 22.7 25.6 32"/>
+    <line class="st0" x1="16" x2="16" y2="25.1"/>
+  </g>
+</svg>

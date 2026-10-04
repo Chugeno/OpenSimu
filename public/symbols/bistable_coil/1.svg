@@ -3,9 +3,9 @@
   <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
   <defs>
     <style>
-      .st0 {
-        stroke: #1e293b;
-        stroke-width: 1.8px;
+      .st0, .st1 {
+        stroke: #ca8a04;
+        stroke-width: 2.2px;
       }
 
       .st0, .st1, .st2 {
@@ -14,13 +14,16 @@
 
       .st0, .st2 {
         fill: none;
-        stroke-linecap: round;
       }
 
       .st1 {
         fill: #fef08a;
-        stroke: #ca8a04;
-        stroke-width: 2.2px;
+      }
+
+      .st2 {
+        stroke: #ef4444;
+        stroke-linecap: round;
+        stroke-width: 1.8px;
       }
 
       .st3 {
@@ -30,20 +33,15 @@
       .st4 {
         fill: #1e293b;
       }
-
-      .st2 {
-        stroke: #1b293d;
-        stroke-width: 1.8px;
-      }
     </style>
   </defs>
-  <circle id="terminal_b1" class="st4" cx="60" cy="0" r="2.5"/>
-  <line class="st0" x1="60" y1="0" x2="60" y2="27.5"/>
+  <circle id="terminal_b1" class="st4" cx="60" r="2.5"/>
+  <line class="st2" x1="60" x2="60" y2="27.5"/>
   <circle id="terminal_a1" class="st3" cx="20" r="2.5"/>
   <circle id="terminal_a2" class="st3" cx="40" cy="80" r="2.5"/>
   <line class="st2" x1="20" x2="20" y2="27.5"/>
   <line class="st2" x1="40" y1="52.5" x2="40" y2="80"/>
   <rect class="st1" x="15" y="27.5" width="50" height="25"/>
-  <line class="st1" x1="23.3" y1="52.5" x2="31.7" y2="27.5"/>
-  <line class="st1" x1="48.3" y1="27.5" x2="56.7" y2="52.5"/>
+  <line class="st0" x1="23.3" y1="52.5" x2="31.7" y2="27.5"/>
+  <line class="st0" x1="48.3" y1="27.5" x2="56.7" y2="52.5"/>
 </svg>
