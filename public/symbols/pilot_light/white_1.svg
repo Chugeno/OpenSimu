@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 40 80">
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 40 80">
   <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
   <defs>
     <style>
       .st0, .st1 {
-        stroke: #64748b;
+        stroke: #f2f5f9;
         stroke-width: 2.2px;
       }
 
@@ -13,7 +13,7 @@
       }
 
       .st1 {
-        fill: #f8fafc;
+        fill: #95a5ba;
       }
 
       .st2 {
@@ -23,17 +23,29 @@
       }
 
       .st3 {
+        fill: url(#Degradado_sin_nombre_13);
+      }
+
+      .st4 {
         fill: #1e293b;
       }
     </style>
+    <radialGradient id="Degradado_sin_nombre_13" data-name="Degradado sin nombre 13" cx="20" cy="40" fx="20" fy="40" r="20" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#95a5ba"/>
+      <stop offset=".2" stop-color="#98a7bc"/>
+      <stop offset=".4" stop-color="#a2b0c2"/>
+      <stop offset=".6" stop-color="#b3becd"/>
+      <stop offset=".8" stop-color="#cad2dd"/>
+      <stop offset=".9" stop-color="#e9ecf0"/>
+      <stop offset="1" stop-color="#fff"/>
+    </radialGradient>
   </defs>
-  <circle id="terminal_x1" class="st3" cx="20" r="2.5"/>
-  <circle id="terminal_x2" class="st3" cx="20" cy="80" r="2.5"/>
-  <line class="st2" x1="20" x2="20" y2="10"/>
-  <line class="st2" x1="20" y1="70" x2="20" y2="80"/>
+  <circle class="st3" cx="20" cy="40" r="20"/>
+  <circle id="terminal_x1" class="st4" cx="20" r="2.5"/>
+  <circle id="terminal_x2" class="st4" cx="20" cy="80" r="2.5"/>
   <g>
-    <line class="st2" x1="20" y1="10" x2="20" y2="28"/>
-    <line class="st2" x1="20" y1="52" x2="20" y2="70"/>
+    <line class="st2" x1="20" x2="20" y2="25"/>
+    <line class="st2" x1="20" y1="55" x2="20" y2="80"/>
     <circle class="st1" cx="20" cy="40" r="15"/>
     <line class="st0" x1="9.4" y1="29.4" x2="30.6" y2="50.6"/>
     <line class="st0" x1="9.4" y1="50.6" x2="30.6" y2="29.4"/>
