@@ -33,6 +33,7 @@ const pwaFiles = [
   'icon-maskable-192.png',
   'icon-maskable-512.png',
   'apple-touch-icon.png',
+  'CNAME',
 ];
 
 pwaFiles.forEach((file) => {
