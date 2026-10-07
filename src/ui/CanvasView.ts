@@ -2259,7 +2259,8 @@ export class CanvasView {
         ctx,
         comp,
         this.isSimulation,
-        this.selectedComponents.has(comp) && !this.isSimulation
+        this.selectedComponents.has(comp) && !this.isSimulation,
+        this.grid.zoom
       );
     }
 
@@ -2735,16 +2736,35 @@ export class CanvasView {
 
   private renderGrid(w: number, h: number) {
     const { ctx } = this;
-    const step = Grid.STEP * this.grid.zoom;
-    const startX = this.grid.panX % step;
-    const startY = this.grid.panY % step;
+    const baseStep = Grid.STEP * this.grid.zoom;
 
-    ctx.fillStyle = '#cbd5e1';
-    for (let x = startX; x < w; x += step) {
-      for (let y = startY; y < h; y += step) {
-        ctx.fillRect(x - 0.75, y - 0.75, 1.5, 1.5);
+    // Si el paso de puntos en pantalla es muy denso (< 14px), agrupamos de a múltiplos
+    // para mantener siempre entre 500 y 2.000 puntos visibles como máximo.
+    let multiplier = 1;
+    if (baseStep < 7) {
+      multiplier = 4;
+    } else if (baseStep < 14) {
+      multiplier = 2;
+    }
+
+    const effectiveStep = baseStep * multiplier;
+    const startX = this.grid.panX % effectiveStep;
+    const startY = this.grid.panY % effectiveStep;
+
+    // Dibujamos todos los puntos en un único trazado por lotes (1 sola llamada a fill() en GPU)
+    ctx.save();
+    ctx.fillStyle = multiplier > 1 ? '#94a3b8' : '#cbd5e1';
+    ctx.beginPath();
+
+    const dotRadius = multiplier > 1 ? 1.0 : 0.85;
+    for (let x = startX; x < w; x += effectiveStep) {
+      for (let y = startY; y < h; y += effectiveStep) {
+        ctx.rect(x - dotRadius, y - dotRadius, dotRadius * 2, dotRadius * 2);
       }
     }
+
+    ctx.fill();
+    ctx.restore();
   }
 
   private renderWires() {

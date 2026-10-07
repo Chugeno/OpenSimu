@@ -10,7 +10,8 @@ export class SymbolRenderer {
     ctx: CanvasRenderingContext2D,
     comp: CircuitComponent,
     isSimulation: boolean,
-    selected: boolean
+    selected: boolean,
+    zoom: number = 1.0
   ) {
     ctx.save();
     ctx.translate(comp.x, comp.y);
@@ -665,7 +666,7 @@ export class SymbolRenderer {
     this.renderTerminals(ctx, comp, isSimulation);
 
     // Draw Component Labels (Tag and Terminal Names) in unrotated, upright orientation
-    this.renderComponentLabels(ctx, comp);
+    this.renderComponentLabels(ctx, comp, zoom);
 
     ctx.restore();
   }
@@ -2559,7 +2560,7 @@ export class SymbolRenderer {
   /**
    * Renderiza el Tag del componente y los números/nombres de bornes en orientación siempre correcta (legible, sin rotar ni espejar)
    */
-  private static renderComponentLabels(ctx: CanvasRenderingContext2D, comp: CircuitComponent) {
+  private static renderComponentLabels(ctx: CanvasRenderingContext2D, comp: CircuitComponent, zoom: number = 1.0) {
     if (comp.type === 'text_label' || comp.type === 'svg_symbol') return;
 
     const def = COMPONENT_DEFINITIONS[comp.type];
@@ -2645,6 +2646,12 @@ export class SymbolRenderer {
     }
 
     // 3. Renderizar nombres de bornes
+    // En zoom muy alejado (< 0.45) los numeritos de bornes (13, 14, A1, A2) son microscópicos e ilegibles,
+    // por lo que omitir su cálculo y renderizado en miles de bornes acelera drásticamente el rendimiento móvil.
+    if (zoom < 0.45 && !isPower) {
+      return;
+    }
+
     if (isPower) {
       ctx.save();
       ctx.font = 'bold 10px sans-serif';
