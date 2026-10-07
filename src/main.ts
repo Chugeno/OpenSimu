@@ -1968,6 +1968,7 @@ function saveSettings(settings: AppSettings) {
 
 function applySettings(settings: AppSettings) {
   canvasView.showGrid = !settings.hideGrid;
+  canvasView.showCursorGuide = Boolean(settings.showCursorGuide);
   canvasView.render();
 }
 

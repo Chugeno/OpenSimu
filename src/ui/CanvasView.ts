@@ -24,6 +24,9 @@ export class CanvasView {
   private ctx: CanvasRenderingContext2D;
   public grid: Grid;
   public showGrid: boolean = true;
+  public showCursorGuide: boolean = false;
+  private isPointerInside: boolean = false;
+  private currentMouseScreen: Point | null = null;
 
   public components: CircuitComponent[] = [];
   public wires: Wire[] = [];
@@ -1272,11 +1275,32 @@ export class CanvasView {
       this.notifyStatus();
     }, { passive: false });
 
+    this.canvas.addEventListener('pointerenter', (e) => this.handlePointerEnter(e));
+    this.canvas.addEventListener('pointerleave', (e) => this.handlePointerLeave(e));
     this.canvas.addEventListener('pointerdown', (e) => this.handlePointerDown(e));
     this.canvas.addEventListener('pointermove', (e) => this.handlePointerMove(e));
     this.canvas.addEventListener('pointerup', (e) => this.handlePointerUp(e));
     this.canvas.addEventListener('pointercancel', (e) => this.handlePointerCancel(e));
     this.canvas.addEventListener('dblclick', (e) => this.handleDoubleClick(e));
+  }
+
+  private handlePointerEnter(e: PointerEvent) {
+    if (e.pointerType !== 'touch') {
+      this.isPointerInside = true;
+      const rect = this.canvas.getBoundingClientRect();
+      this.currentMouseScreen = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+      if (this.showCursorGuide) {
+        this.requestRender();
+      }
+    }
+  }
+
+  private handlePointerLeave(_e: PointerEvent) {
+    this.isPointerInside = false;
+    this.currentMouseScreen = null;
+    if (this.showCursorGuide) {
+      this.requestRender();
+    }
   }
 
   private handlePointerDown(e: PointerEvent) {
@@ -1605,6 +1629,10 @@ export class CanvasView {
     const world = this.grid.screenToWorld(sx, sy);
     const snapped = Grid.snapPoint(world);
     this.currentMouseWorld = world;
+    if (e.pointerType !== 'touch') {
+      this.isPointerInside = true;
+      this.currentMouseScreen = { x: sx, y: sy };
+    }
 
     // 2. CAD Box Selection (prioridad inmediata para arrastre con dedo tras pulsación larga o con mouse)
     if (this.isBoxSelecting && !this.isSimulation) {
@@ -1675,13 +1703,14 @@ export class CanvasView {
       return;
     }
 
-    // Redibujar en tiempo real si hay herramienta interactiva activa (vista previa/fantasma)
+    // Redibujar en tiempo real si hay herramienta interactiva activa o guía de cursor
     if (
       this.isDrawingWire ||
       this.activeTool.startsWith('wire_') ||
       this.activeTool === 'junction' ||
       this.activeTool === 'place_component' ||
-      this.activeTool === 'delete'
+      this.activeTool === 'delete' ||
+      this.showCursorGuide
     ) {
       this.requestRender();
     }
@@ -2606,7 +2635,102 @@ export class CanvasView {
       this.renderLongPressFeedback(ctx);
     }
 
+    // 11. Cursor Crosshair Guide (Screen Space)
+    if (this.showCursorGuide && this.isPointerInside && this.currentMouseScreen) {
+      this.renderCursorGuide(ctx, rect.width, rect.height);
+    }
+
     this.notifySelectionChange();
+  }
+
+  private renderCursorGuide(ctx: CanvasRenderingContext2D, width: number, height: number) {
+    if (!this.currentMouseScreen) return;
+
+    // 1. Obtener la coordenada de referencia imantada
+    // Prioridad 1: Si hay un objetivo de snap activo (ej: borna bajo el cursor al cablear)
+    // Prioridad 2: Borne superior izquierdo de componentes cercanos
+    // Prioridad 3: Cuadrícula de la hoja (Grid.snapPoint)
+    let guideWorld: Point = Grid.snapPoint(this.currentMouseWorld);
+    let isSnappedToTerminal = false;
+
+    if (this.hoveredSnapTarget?.point) {
+      guideWorld = { ...this.hoveredSnapTarget.point };
+      isSnappedToTerminal = Boolean(this.hoveredSnapTarget.terminal);
+    } else {
+      // Buscar el borne superior izquierdo del componente más cercano dentro del radio de atracción
+      const snapRadiusWorld = 20 / this.grid.zoom; // ~20px en pantalla
+      let closestDist = snapRadiusWorld;
+      let primaryTermPoint: Point | null = null;
+
+      for (const comp of this.components) {
+        if (!comp.terminals || comp.terminals.length === 0) continue;
+
+        // Encontrar el borne superior izquierdo (menor Y, y a igual Y, menor X)
+        let bestTerm = comp.terminals[0];
+        for (let i = 1; i < comp.terminals.length; i++) {
+          const t = comp.terminals[i];
+          if (t.relY < bestTerm.relY - 0.1 || (Math.abs(t.relY - bestTerm.relY) <= 0.1 && t.relX < bestTerm.relX)) {
+            bestTerm = t;
+          }
+        }
+
+        const tx = comp.x + bestTerm.relX;
+        const ty = comp.y + bestTerm.relY;
+        const dist = Math.hypot(this.currentMouseWorld.x - tx, this.currentMouseWorld.y - ty);
+
+        if (dist < closestDist) {
+          closestDist = dist;
+          primaryTermPoint = { x: tx, y: ty };
+        }
+      }
+
+      if (primaryTermPoint) {
+        guideWorld = primaryTermPoint;
+        isSnappedToTerminal = true;
+      }
+    }
+
+    // Convertir la coordenada imantada a espacio de pantalla para dibujar líneas nítidas de 1px
+    const guideScreen = this.grid.worldToScreen(guideWorld.x, guideWorld.y);
+    const gx = Math.round(guideScreen.x) + 0.5;
+    const gy = Math.round(guideScreen.y) + 0.5;
+
+    ctx.save();
+    ctx.strokeStyle = isSnappedToTerminal ? '#10b981' : '#38bdf8';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+
+    // Horizontal full-width guide line
+    ctx.beginPath();
+    ctx.moveTo(0, gy);
+    ctx.lineTo(width, gy);
+    ctx.stroke();
+
+    // Vertical full-height guide line
+    ctx.beginPath();
+    ctx.moveTo(gx, 0);
+    ctx.lineTo(gx, height);
+    ctx.stroke();
+
+    // Mira central en la intersección imantada
+    ctx.setLineDash([]);
+    ctx.strokeStyle = isSnappedToTerminal ? '#059669' : '#0284c7';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(gx - 5, gy);
+    ctx.lineTo(gx + 5, gy);
+    ctx.moveTo(gx, gy - 5);
+    ctx.lineTo(gx, gy + 5);
+    ctx.stroke();
+
+    if (isSnappedToTerminal) {
+      ctx.fillStyle = 'rgba(16, 185, 129, 0.25)';
+      ctx.beginPath();
+      ctx.arc(gx, gy, 5.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.restore();
   }
 
   private renderGrid(w: number, h: number) {

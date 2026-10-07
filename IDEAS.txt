@@ -1,0 +1,23 @@
+------------------
+CON QUE SEGUIMOS
+------------------
+
+
+- Guias del cursor, lineas verticales y horizontales.
+PROTECCIONES
+	Agregar una pequeña linea a modo de división entre los distintos aparatos. Termicas | Guardamotor | Diferencial	
+
+Señalizacion
+	Texto, poder hacer "enter" y agregar renglones
+
+Cables
+
+---------------   
+Ideas OPENSIMU
+---------------
+	Topográfico 2d con elementos reales y cableado, canaletas, tableros, etc... - Zoloda?
+	
+
+Interfaz
+	No se, pero mejorar. Pedir Botones a la vista y usar otras IA para hacer la interfaz.
+	Distintos pasos telerruptor? Sencillo, variantes 2p
