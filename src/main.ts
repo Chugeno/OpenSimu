@@ -6,10 +6,14 @@ import { CadeSimuParser } from './core/CadeSimuParser';
 import { COMPONENT_ICONS, CATEGORY_ICONS } from './ui/EmbeddedIcons';
 import { I18n, t, type SupportedLocale } from './core/i18n';
 import { DeviceDetector, type DeviceInfo } from './core/DeviceDetector';
+import { PrintModalController } from './ui/PrintModalController';
 
 // Initialize i18n and Device Detection
 I18n.init();
 DeviceDetector.init();
+
+// Initialize Print Modal Controller
+const printController = new PrintModalController();
 
 // Initialize Canvas
 const canvasEl = document.getElementById('circuit-canvas') as HTMLCanvasElement;
@@ -125,6 +129,9 @@ const btnResetZoom = document.getElementById('btn-reset-zoom') as HTMLButtonElem
 // Modals
 const tagModal = document.getElementById('tag-modal') as HTMLDivElement;
 const tagInput = document.getElementById('tag-input') as HTMLInputElement;
+const tagTextarea = document.getElementById('tag-textarea') as HTMLTextAreaElement | null;
+const tagInputLabel = document.getElementById('tag-input-label') as HTMLLabelElement | null;
+const tagInputHint = document.getElementById('tag-input-hint') as HTMLParagraphElement | null;
 const modalCompTitle = document.getElementById('modal-comp-title') as HTMLHeadingElement;
 const modalCompType = document.getElementById('modal-comp-type') as HTMLSpanElement;
 const terminalsSection = document.getElementById('terminals-section') as HTMLDivElement;
@@ -140,6 +147,7 @@ let tempSelectedProtectionType: 'mag' | 'mag_thermal' = 'mag';
 let tempSelectedDays: string[] = ['L', 'M', 'X', 'J', 'V'];
 let tempTimerManualTest: boolean = false;
 let tempSelectedLatching: boolean = false;
+let tempSelectedFontSize: number = 12;
 
 const shortCircuitModal = document.getElementById('short-circuit-modal') as HTMLDivElement;
 const shortCircuitMsg = document.getElementById('short-circuit-msg') as HTMLParagraphElement;
@@ -368,12 +376,59 @@ canvasView.onTagEditRequest = (comp) => {
   if (modalCompType) {
     modalCompType.textContent = comp.tag;
   }
-  tagInput.value = comp.tag;
+  if (comp.type === 'text_label') {
+    if (tagInput) tagInput.style.display = 'none';
+    if (tagTextarea) {
+      tagTextarea.style.display = 'block';
+      tagTextarea.value = comp.tag || '';
+    }
+    if (tagInputLabel) {
+      tagInputLabel.textContent = 'Contenido del Texto:';
+    }
+    if (tagInputHint) {
+      tagInputHint.textContent = 'Presiona Enter para nueva línea. Usa Ctrl+Enter o el botón Aceptar para guardar.';
+    }
+  } else {
+    if (tagInput) {
+      tagInput.style.display = 'block';
+      tagInput.value = comp.tag;
+    }
+    if (tagTextarea) tagTextarea.style.display = 'none';
+    if (tagInputLabel) {
+      tagInputLabel.textContent = t('modal.tag.name') || 'Nombre / Identificador (Tag):';
+    }
+    if (tagInputHint) {
+      tagInputHint.textContent = t('modal.tag.desc') || 'Los elementos con el mismo nombre se accionan sincronizados (diferencia mayúsculas y minúsculas).';
+    }
+  }
 
-  // Extra options (pilot colors, motor breaker types, emergency latching, timers)
+  // Extra options (pilot colors, text size, motor breaker types, emergency latching, timers)
   if (modalExtraOptions && modalExtraLabel && modalExtraContent) {
     modalExtraContent.innerHTML = '';
-    if (comp.type === 'pilot_light') {
+    if (comp.type === 'text_label') {
+      modalExtraOptions.style.display = 'block';
+      modalExtraLabel.textContent = 'Tamaño de Texto / Fuente:';
+      tempSelectedFontSize = comp.state?.fontSize || 12;
+
+      const sizeGrid = document.createElement('div');
+      sizeGrid.className = 'decade-btn-grid';
+      sizeGrid.style.gridTemplateColumns = 'repeat(6, 1fr)';
+
+      const fontSizes = [10, 12, 14, 16, 20, 24];
+      fontSizes.forEach((sz) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `decade-btn ${tempSelectedFontSize === sz ? 'active' : ''}`;
+        btn.textContent = `${sz}px`;
+        btn.onclick = () => {
+          tempSelectedFontSize = sz;
+          sizeGrid.querySelectorAll('.decade-btn').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+        };
+        sizeGrid.appendChild(btn);
+      });
+      modalExtraContent.appendChild(sizeGrid);
+    } else if (comp.type === 'pilot_light') {
       modalExtraOptions.style.display = 'block';
       modalExtraLabel.textContent = 'Color de Señalización:';
       tempSelectedColor = SymbolRenderer.normalizePilotLightColor(comp.state?.color);
@@ -775,8 +830,13 @@ canvasView.onTagEditRequest = (comp) => {
 
   tagModal.style.display = 'flex';
   setTimeout(() => {
-    tagInput.focus();
-    tagInput.select();
+    if (comp.type === 'text_label' && tagTextarea) {
+      tagTextarea.focus();
+      tagTextarea.select();
+    } else {
+      tagInput.focus();
+      tagInput.select();
+    }
   }, 50);
 };
 
@@ -788,8 +848,14 @@ modalCancel.onclick = () => {
 modalSave.onclick = () => {
   if (editingComponent) {
     canvasView.saveSnapshot();
-    if (tagInput.value.trim()) {
-      editingComponent.tag = tagInput.value.trim().toUpperCase();
+    if (editingComponent.type === 'text_label') {
+      editingComponent.tag = tagTextarea ? tagTextarea.value : editingComponent.tag;
+      editingComponent.state = editingComponent.state || {};
+      editingComponent.state.fontSize = tempSelectedFontSize;
+    } else {
+      if (tagInput.value.trim()) {
+        editingComponent.tag = tagInput.value.trim().toUpperCase();
+      }
     }
     if (editingComponent.type === 'pilot_light') {
       editingComponent.state = editingComponent.state || {};
@@ -859,6 +925,17 @@ tagInput.onkeydown = (e) => {
   if (e.key === 'Enter') modalSave.click();
   if (e.key === 'Escape') modalCancel.click();
 };
+
+if (tagTextarea) {
+  tagTextarea.onkeydown = (e) => {
+    e.stopPropagation();
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+      modalSave.click();
+    } else if (e.key === 'Escape') {
+      modalCancel.click();
+    }
+  };
+}
 
 // Toolbar Buttons: Undo, Redo
 if (btnUndo) {
@@ -970,7 +1047,11 @@ if (btnClear) {
 if (btnPrint) {
   btnPrint.onclick = () => {
     closeAllMenus();
-    window.print();
+    printController.open(
+      canvasView.components,
+      canvasView.wires,
+      canvasView.getActiveJunctionNodes()
+    );
   };
 }
 

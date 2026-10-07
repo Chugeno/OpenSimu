@@ -100,6 +100,8 @@ export interface CircuitComponent {
     library?: string;
     width?: number;
     height?: number;
+    fontSize?: number; // Font size in px for text_label (e.g. 12, 14, 16, 20, 24)
+    textBorder?: boolean; // Whether text_label renders a background card/border
     accentColor?: string;
     timeValue?: number; // Configured delay duration (e.g. 5)
     timeUnit?: 's' | 'min' | 'h'; // Unit of delay

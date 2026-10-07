@@ -596,9 +596,10 @@
             <span id="modal-comp-type" class="badge badge-normal"></span>
           </div>
           <div class="modal-field-group">
-            <label for="tag-input" class="modal-label" data-i18n="modal.tag.name">Nombre / Identificador (Tag):</label>
+            <label id="tag-input-label" for="tag-input" class="modal-label" data-i18n="modal.tag.name">Nombre / Identificador (Tag):</label>
             <input type="text" id="tag-input" class="text-input" autofocus />
-            <p class="modal-hint" data-i18n="modal.tag.desc">Los elementos con el mismo nombre se accionan sincronizados (diferencia mayúsculas y minúsculas).</p>
+            <textarea id="tag-textarea" class="text-input" rows="4" style="display: none; resize: vertical; min-height: 80px; font-family: inherit; text-transform: none;"></textarea>
+            <p id="tag-input-hint" class="modal-hint" data-i18n="modal.tag.desc">Los elementos con el mismo nombre se accionan sincronizados (diferencia mayúsculas y minúsculas).</p>
           </div>
           <div id="modal-extra-options" class="modal-field-group" style="display: none">
             <label id="modal-extra-label" class="modal-label">Opciones del Componente</label>
@@ -756,6 +757,102 @@
           <div class="modal-actions">
             <button id="btn-options-cancel" class="btn btn-secondary" type="button">Cancelar</button>
             <button id="btn-options-save" class="btn btn-primary" type="button">Guardar Opciones</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRINT / PDF PREVIEW & LAYOUT MODAL -->
+      <div id="print-modal" class="modal-backdrop" style="display: none">
+        <div class="modal modal-print-layout">
+          <div class="modal-header">
+            <div class="modal-title-with-icon">
+              <span class="modal-icon">🖨️</span>
+              <div>
+                <h3 id="modal-print-title">Vista de Impresión y Lámina Técnica</h3>
+                <span class="badge badge-normal">Escalado 1:1 sin deformar</span>
+              </div>
+            </div>
+            <button id="btn-print-close" class="modal-close-icon-btn" type="button" onclick="document.getElementById('btn-print-cancel').click()">✕</button>
+          </div>
+
+          <div class="print-layout-body">
+            <!-- Sidebar controls -->
+            <div class="print-controls-sidebar">
+              <div class="print-control-group">
+                <label class="print-control-label" for="print-sheet-preset">Formato de Hoja:</label>
+                <select id="print-sheet-preset" class="option-select">
+                  <option value="A4_H" selected>A4 Horizontal (297 x 210 mm)</option>
+                  <option value="A4_V">A4 Vertical (210 x 297 mm)</option>
+                  <option value="A3_H">A3 Horizontal (420 x 297 mm)</option>
+                  <option value="A3_V">A3 Vertical (297 x 420 mm)</option>
+                  <option value="LETTER_H">Carta Horizontal (279 x 216 mm)</option>
+                  <option value="LETTER_V">Carta Vertical (216 x 279 mm)</option>
+                  <option value="LEGAL_H">Oficio Horizontal (356 x 216 mm)</option>
+                  <option value="LEGAL_V">Oficio Vertical (216 x 356 mm)</option>
+                  <option value="CUSTOM">📐 Personalizado...</option>
+                </select>
+              </div>
+
+              <!-- Custom Dimensions Row -->
+              <div id="print-custom-size-row" class="print-custom-dimensions" style="display: none;">
+                <div class="print-custom-col">
+                  <label class="print-sublabel" for="print-custom-w">Ancho (mm):</label>
+                  <input type="number" id="print-custom-w" class="terminal-input" min="30" max="2000" value="297" />
+                </div>
+                <div class="print-custom-col">
+                  <label class="print-sublabel" for="print-custom-h">Alto (mm):</label>
+                  <input type="number" id="print-custom-h" class="terminal-input" min="30" max="2000" value="210" />
+                </div>
+              </div>
+
+              <div class="print-control-group">
+                <label class="print-control-label" for="print-margin">Margen de Hoja (mm):</label>
+                <input type="number" id="print-margin" class="terminal-input" min="0" max="50" value="10" />
+              </div>
+
+              <div class="print-control-group">
+                <label class="option-item" style="padding: 0;">
+                  <input type="checkbox" id="print-title-block" class="option-checkbox" checked />
+                  <div class="option-text">
+                    <span class="option-name">Cajetín / Rótulo DIN</span>
+                    <span class="option-desc">Incluye recuadro técnico de plano.</span>
+                  </div>
+                </label>
+              </div>
+
+              <div class="print-quick-actions">
+                <button type="button" id="btn-print-fit" class="btn btn-secondary print-action-btn">
+                  <span>📐 Ajustar a la Hoja</span>
+                </button>
+                <button type="button" id="btn-print-center" class="btn btn-secondary print-action-btn">
+                  <span>🎯 Centrar Circuito</span>
+                </button>
+              </div>
+
+              <div class="print-tip-box">
+                <div class="print-tip-title">💡 Consejos de Encuadre:</div>
+                <p>• <strong>Arrastra el centro</strong> para mover el circuito dentro de la lámina.</p>
+                <p>• <strong>Tira de las esquinas</strong> para agrandar o achicar libremente manteniendo la proporción 1:1.</p>
+                <p>• Al imprimir, en el cuadro de diálogo de tu navegador desactiva <em>"Encabezados y pies de página"</em> y pon <em>Márgenes: Ninguno</em>.</p>
+              </div>
+            </div>
+
+            <!-- Interactive Preview Canvas -->
+            <div class="print-preview-viewport">
+              <canvas id="print-preview-canvas"></canvas>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button id="btn-print-cancel" class="btn btn-secondary" type="button">Cancelar</button>
+            <button id="btn-print-exec" class="btn btn-primary" type="button">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              <span>Imprimir / Guardar PDF</span>
+            </button>
           </div>
         </div>
       </div>

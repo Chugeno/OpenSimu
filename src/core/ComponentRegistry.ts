@@ -1216,11 +1216,38 @@ export function getComponentBounds(comp: CircuitComponent): Rect {
     const w = comp.state.width || (comp.type === 'text_label' ? 220 : 90);
     const h = comp.state.height || (comp.type === 'text_label' ? 50 : 90);
     const extraH = comp.type === 'svg_symbol' ? 32 : 0;
+    const totalH = h + extraH;
+
+    const rot = comp.rotation || 0;
+    const mH = Boolean(comp.mirrorH);
+    const mV = Boolean(comp.mirrorV);
+
+    // If there is no rotation or mirror, standard AABB
+    if (rot === 0 && !mH && !mV) {
+      return {
+        x: comp.x,
+        y: comp.y,
+        width: w,
+        height: totalH,
+      };
+    }
+
+    // 4 local corners of the rect [0, 0] to [w, totalH]
+    const p0 = transformLocalPoint({ x: 0, y: 0 }, rot, mH, mV);
+    const p1 = transformLocalPoint({ x: w, y: 0 }, rot, mH, mV);
+    const p2 = transformLocalPoint({ x: w, y: totalH }, rot, mH, mV);
+    const p3 = transformLocalPoint({ x: 0, y: totalH }, rot, mH, mV);
+
+    const minX = Math.min(p0.x, p1.x, p2.x, p3.x);
+    const maxX = Math.max(p0.x, p1.x, p2.x, p3.x);
+    const minY = Math.min(p0.y, p1.y, p2.y, p3.y);
+    const maxY = Math.max(p0.y, p1.y, p2.y, p3.y);
+
     return {
-      x: comp.x,
-      y: comp.y,
-      width: w,
-      height: h + extraH,
+      x: comp.x + minX,
+      y: comp.y + minY,
+      width: maxX - minX,
+      height: maxY - minY,
     };
   }
 

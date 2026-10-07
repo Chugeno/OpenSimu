@@ -1873,14 +1873,38 @@ export class SymbolRenderer {
   }
 
   private static renderTextLabel(ctx: CanvasRenderingContext2D, comp: CircuitComponent) {
-    const title = comp.tag || '';
-    const caption = comp.state.caption || '';
-    const sub = comp.state.subCaption || '';
-    const w = comp.state.width || 240;
-    const h = comp.state.height || 54;
+    const rawText = comp.tag || '';
+    const lines = rawText.split('\n');
+    const fontSize = comp.state.fontSize || 12;
+    const lineHeight = Math.round(fontSize * 1.4);
+    const paddingX = 14;
+    const paddingY = 10;
+
+    // Calculate maximum line width
+    ctx.save();
+    ctx.font = `bold ${fontSize}px sans-serif`;
+    let maxLineWidth = 60;
+    for (const line of lines) {
+      const lineW = ctx.measureText(line).width;
+      if (lineW > maxLineWidth) {
+        maxLineWidth = lineW;
+      }
+    }
+    ctx.restore();
+
+    // Auto-calculate card width and height to fit all lines comfortably
+    const calculatedW = Math.max(80, Math.ceil(maxLineWidth + paddingX * 2));
+    const calculatedH = Math.max(32, Math.ceil(lines.length * lineHeight + paddingY * 2));
+
+    comp.state.width = calculatedW;
+    comp.state.height = calculatedH;
+
+    const w = calculatedW;
+    const h = calculatedH;
     const r = 6;
 
-    // Background card
+    // Background card (solid or subtle card)
+    ctx.save();
     ctx.fillStyle = comp.state.color || '#f8fafc';
     ctx.strokeStyle = '#cbd5e1';
     ctx.lineWidth = 1.2;
@@ -1889,31 +1913,23 @@ export class SymbolRenderer {
     ctx.fill();
     ctx.stroke();
 
-    // Accent strip
+    // Accent strip on left
     ctx.fillStyle = comp.state.accentColor || '#3b82f6';
     ctx.beginPath();
-    ctx.roundRect(0, 0, 5, h, [r, 0, 0, r]);
+    ctx.roundRect(0, 0, 4, h, [r, 0, 0, r]);
     ctx.fill();
 
-    // Title
+    // Render multiline text
     ctx.fillStyle = '#0f172a';
-    ctx.font = 'bold 12px sans-serif';
+    ctx.font = `bold ${fontSize}px sans-serif`;
     ctx.textAlign = 'left';
-    ctx.fillText(title, 12, 18);
+    ctx.textBaseline = 'top';
 
-    // Caption
-    if (caption) {
-      ctx.fillStyle = '#334155';
-      ctx.font = '500 11px sans-serif';
-      ctx.fillText(caption, 12, 33);
+    for (let i = 0; i < lines.length; i++) {
+      const lineY = paddingY + i * lineHeight;
+      ctx.fillText(lines[i], paddingX, lineY);
     }
-
-    // Subtext
-    if (sub) {
-      ctx.fillStyle = '#64748b';
-      ctx.font = '10px sans-serif';
-      ctx.fillText(sub, 12, 46);
-    }
+    ctx.restore();
   }
 
   private static renderSvgSymbol(ctx: CanvasRenderingContext2D, comp: CircuitComponent) {
