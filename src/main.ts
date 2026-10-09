@@ -2013,7 +2013,7 @@ interface AppSettings {
 
 const DEFAULT_SETTINGS: AppSettings = {
   hideGrid: false,
-  showCursorGuide: false,
+  showCursorGuide: true,
   showTitleBlock: false,
   sheetSize: 'A4_horizontal',
   cadesimuEnabled: true,
@@ -2027,6 +2027,7 @@ function loadSettings(): AppSettings {
     return {
       ...DEFAULT_SETTINGS,
       ...parsed,
+      showCursorGuide: parsed.showCursorGuide !== undefined ? parsed.showCursorGuide : true,
       cadesimuEnabled: parsed.cadesimuEnabled !== undefined ? parsed.cadesimuEnabled : !legacyDisabled,
     };
   } catch {
@@ -2135,6 +2136,20 @@ if (optionsModal) {
     if (e.target === optionsModal) {
       closeOptionsModal();
     }
+  };
+}
+
+if (optCursorGuide) {
+  optCursorGuide.onchange = () => {
+    canvasView.showCursorGuide = optCursorGuide.checked;
+    canvasView.render();
+  };
+}
+
+if (optHideGrid) {
+  optHideGrid.onchange = () => {
+    canvasView.showGrid = !optHideGrid.checked;
+    canvasView.render();
   };
 }
 

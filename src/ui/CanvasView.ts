@@ -1512,9 +1512,10 @@ export class CanvasView {
 
       // En modo selección: NO interceptamos el borne de forma exclusiva para bloquear el arrastre.
       // Si toca sobre el componente o cerca de cualquiera de sus bornas, seleccionamos el componente y permitimos arrastrarlo inmediatamente.
-      let comp = this.findComponentAt(world);
+      const touchMargin = isTouch ? 15 / this.grid.zoom : 0;
+      let comp = this.findComponentAt(world, touchMargin);
       if (!comp) {
-        const termHit = this.findTerminalAtScreen({ x: sx, y: sy }, isTouch ? 26 : 14);
+        const termHit = this.findTerminalAtScreen({ x: sx, y: sy }, isTouch ? 28 : 14);
         if (termHit) {
           comp = termHit.terminal.component;
         }
@@ -1601,6 +1602,9 @@ export class CanvasView {
   }
 
   private handlePointerMove(e: PointerEvent) {
+    if (e.pointerType === 'touch') {
+      e.preventDefault();
+    }
     const rect = this.canvas.getBoundingClientRect();
     const sx = e.clientX - rect.left;
     const sy = e.clientY - rect.top;
@@ -1864,9 +1868,11 @@ export class CanvasView {
     } catch {}
     this.activePointers.delete(e.pointerId);
     this.cancelLongPress();
+    if (this.activePointers.size < 2) {
+      this.isPinching = false;
+    }
     if (this.activePointers.size === 0) {
       this.isPanning = false;
-      this.isPinching = false;
       this.isDraggingGroup = false;
       this.isBoxSelecting = false;
       if (e.pointerType === 'touch' && this.selectedComponents.size === 0) {
@@ -2220,15 +2226,15 @@ export class CanvasView {
     }
   }
 
-  private findComponentAt(p: Point): CircuitComponent | null {
+  private findComponentAt(p: Point, margin: number = 0): CircuitComponent | null {
     for (let i = this.components.length - 1; i >= 0; i--) {
       const c = this.components[i];
       const bounds = getComponentBounds(c);
       if (
-        p.x >= bounds.x &&
-        p.x <= bounds.x + bounds.width &&
-        p.y >= bounds.y &&
-        p.y <= bounds.y + bounds.height
+        p.x >= bounds.x - margin &&
+        p.x <= bounds.x + bounds.width + margin &&
+        p.y >= bounds.y - margin &&
+        p.y <= bounds.y + bounds.height + margin
       ) {
         return c;
       }
@@ -2742,8 +2748,8 @@ export class CanvasView {
 
     ctx.save();
     ctx.strokeStyle = isSnappedToTerminal ? '#10b981' : '#38bdf8';
-    ctx.lineWidth = 1;
-    ctx.setLineDash([4, 4]);
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([6, 4]);
 
     // Horizontal full-width guide line
     ctx.beginPath();
@@ -2760,18 +2766,18 @@ export class CanvasView {
     // Mira central en la intersección imantada
     ctx.setLineDash([]);
     ctx.strokeStyle = isSnappedToTerminal ? '#059669' : '#0284c7';
-    ctx.lineWidth = 1.5;
+    ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(gx - 5, gy);
-    ctx.lineTo(gx + 5, gy);
-    ctx.moveTo(gx, gy - 5);
-    ctx.lineTo(gx, gy + 5);
+    ctx.moveTo(gx - 6, gy);
+    ctx.lineTo(gx + 6, gy);
+    ctx.moveTo(gx, gy - 6);
+    ctx.lineTo(gx, gy + 6);
     ctx.stroke();
 
     if (isSnappedToTerminal) {
-      ctx.fillStyle = 'rgba(16, 185, 129, 0.25)';
+      ctx.fillStyle = 'rgba(16, 185, 129, 0.35)';
       ctx.beginPath();
-      ctx.arc(gx, gy, 5.5, 0, Math.PI * 2);
+      ctx.arc(gx, gy, 6.5, 0, Math.PI * 2);
       ctx.fill();
     }
 
