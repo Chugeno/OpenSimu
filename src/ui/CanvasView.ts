@@ -1285,13 +1285,12 @@ export class CanvasView {
   }
 
   private handlePointerEnter(e: PointerEvent) {
-    if (e.pointerType !== 'touch') {
-      this.isPointerInside = true;
-      const rect = this.canvas.getBoundingClientRect();
-      this.currentMouseScreen = { x: e.clientX - rect.left, y: e.clientY - rect.top };
-      if (this.showCursorGuide) {
-        this.requestRender();
-      }
+    this.isPointerInside = true;
+    const rect = this.canvas.getBoundingClientRect();
+    this.currentMouseScreen = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    this.currentMouseWorld = this.grid.screenToWorld(this.currentMouseScreen.x, this.currentMouseScreen.y);
+    if (this.showCursorGuide) {
+      this.requestRender();
     }
   }
 
@@ -1316,6 +1315,9 @@ export class CanvasView {
     const sx = e.clientX - rect.left;
     const sy = e.clientY - rect.top;
     this.activePointers.set(e.pointerId, { x: sx, y: sy });
+    this.isPointerInside = true;
+    this.currentMouseScreen = { x: sx, y: sy };
+    this.currentMouseWorld = this.grid.screenToWorld(sx, sy);
 
     // Multi-touch: 2 o más dedos -> Pinch to Zoom & Pan simultáneo
     if (this.activePointers.size >= 2) {
@@ -1629,10 +1631,8 @@ export class CanvasView {
     const world = this.grid.screenToWorld(sx, sy);
     const snapped = Grid.snapPoint(world);
     this.currentMouseWorld = world;
-    if (e.pointerType !== 'touch') {
-      this.isPointerInside = true;
-      this.currentMouseScreen = { x: sx, y: sy };
-    }
+    this.isPointerInside = true;
+    this.currentMouseScreen = { x: sx, y: sy };
 
     // 2. CAD Box Selection (prioridad inmediata para arrastre con dedo tras pulsación larga o con mouse)
     if (this.isBoxSelecting && !this.isSimulation) {
@@ -1751,6 +1751,13 @@ export class CanvasView {
       this.isPanning = false;
     }
 
+    if (e.pointerType === 'touch' && this.activePointers.size === 0) {
+      if (this.selectedComponents.size === 0) {
+        this.isPointerInside = false;
+        this.currentMouseScreen = null;
+      }
+    }
+
     if (this.isDraggingGroup) {
       this.isDraggingGroup = false;
       let moved = false;
@@ -1778,6 +1785,7 @@ export class CanvasView {
       this.preDragSnapshot = null;
       this.initialCompPositions.clear();
       this.initialWirePositions.clear();
+      this.requestRender();
     }
 
     if (this.isBoxSelecting) {
@@ -1861,6 +1869,10 @@ export class CanvasView {
       this.isPinching = false;
       this.isDraggingGroup = false;
       this.isBoxSelecting = false;
+      if (e.pointerType === 'touch' && this.selectedComponents.size === 0) {
+        this.isPointerInside = false;
+        this.currentMouseScreen = null;
+      }
     }
     this.requestRender();
   }
@@ -2637,27 +2649,69 @@ export class CanvasView {
     }
 
     // 11. Cursor Crosshair Guide (Screen Space)
-    if (this.showCursorGuide && this.isPointerInside && this.currentMouseScreen) {
-      this.renderCursorGuide(ctx, rect.width, rect.height);
+    if (this.showCursorGuide && !this.isPinching) {
+      const hasSelectedComp = this.selectedComponents.size > 0 && !this.isSimulation && (this.activeTool === 'select' || this.isDraggingGroup);
+      if (hasSelectedComp || (this.isPointerInside && this.currentMouseScreen)) {
+        this.renderCursorGuide(ctx, rect.width, rect.height);
+      }
     }
 
     this.notifySelectionChange();
   }
 
   private renderCursorGuide(ctx: CanvasRenderingContext2D, width: number, height: number) {
-    if (!this.currentMouseScreen) return;
+    // Función auxiliar para obtener el borne o punto superior izquierdo de un componente
+    const getTopLeftPoint = (comp: CircuitComponent): Point => {
+      if (comp.terminals && comp.terminals.length > 0) {
+        let bestTerm = comp.terminals[0];
+        for (let i = 1; i < comp.terminals.length; i++) {
+          const t = comp.terminals[i];
+          if (t.relY < bestTerm.relY - 0.1 || (Math.abs(t.relY - bestTerm.relY) <= 0.1 && t.relX < bestTerm.relX)) {
+            bestTerm = t;
+          }
+        }
+        return { x: comp.x + bestTerm.relX, y: comp.y + bestTerm.relY };
+      }
+      return { x: comp.x, y: comp.y };
+    };
 
-    // 1. Obtener la coordenada de referencia imantada
-    // Prioridad 1: Si hay un objetivo de snap activo (ej: borna bajo el cursor al cablear)
-    // Prioridad 2: Borne superior izquierdo de componentes cercanos
-    // Prioridad 3: Cuadrícula de la hoja (Grid.snapPoint)
-    let guideWorld: Point = Grid.snapPoint(this.currentMouseWorld);
+    let guideWorld: Point;
     let isSnappedToTerminal = false;
 
-    if (this.hoveredSnapTarget?.point) {
+    // Prioridad 1: Si hay componentes seleccionados (modo selección o arrastre)
+    if (this.selectedComponents.size > 0 && !this.isSimulation && (this.activeTool === 'select' || this.isDraggingGroup)) {
+      let bestPoint: Point | null = null;
+      let hasTerminal = false;
+
+      for (const comp of this.selectedComponents) {
+        const pt = getTopLeftPoint(comp);
+        const compHasTerms = Boolean(comp.terminals && comp.terminals.length > 0);
+        if (!bestPoint) {
+          bestPoint = pt;
+          hasTerminal = compHasTerms;
+        } else {
+          // Superior (menor Y) y a igual Y, izquierdo (menor X)
+          if (pt.y < bestPoint.y - 0.1 || (Math.abs(pt.y - bestPoint.y) <= 0.1 && pt.x < bestPoint.x)) {
+            bestPoint = pt;
+            hasTerminal = compHasTerms;
+          }
+        }
+      }
+
+      if (bestPoint) {
+        guideWorld = bestPoint;
+        isSnappedToTerminal = hasTerminal;
+      } else {
+        if (!this.currentMouseScreen) return;
+        guideWorld = Grid.snapPoint(this.currentMouseWorld);
+      }
+    } else if (this.hoveredSnapTarget?.point) {
       guideWorld = { ...this.hoveredSnapTarget.point };
       isSnappedToTerminal = Boolean(this.hoveredSnapTarget.terminal);
     } else {
+      if (!this.currentMouseScreen) return;
+      guideWorld = Grid.snapPoint(this.currentMouseWorld);
+
       // Buscar el borne superior izquierdo del componente más cercano dentro del radio de atracción
       const snapRadiusWorld = 20 / this.grid.zoom; // ~20px en pantalla
       let closestDist = snapRadiusWorld;
@@ -2666,22 +2720,12 @@ export class CanvasView {
       for (const comp of this.components) {
         if (!comp.terminals || comp.terminals.length === 0) continue;
 
-        // Encontrar el borne superior izquierdo (menor Y, y a igual Y, menor X)
-        let bestTerm = comp.terminals[0];
-        for (let i = 1; i < comp.terminals.length; i++) {
-          const t = comp.terminals[i];
-          if (t.relY < bestTerm.relY - 0.1 || (Math.abs(t.relY - bestTerm.relY) <= 0.1 && t.relX < bestTerm.relX)) {
-            bestTerm = t;
-          }
-        }
-
-        const tx = comp.x + bestTerm.relX;
-        const ty = comp.y + bestTerm.relY;
-        const dist = Math.hypot(this.currentMouseWorld.x - tx, this.currentMouseWorld.y - ty);
+        const termPt = getTopLeftPoint(comp);
+        const dist = Math.hypot(this.currentMouseWorld.x - termPt.x, this.currentMouseWorld.y - termPt.y);
 
         if (dist < closestDist) {
           closestDist = dist;
-          primaryTermPoint = { x: tx, y: ty };
+          primaryTermPoint = termPt;
         }
       }
 

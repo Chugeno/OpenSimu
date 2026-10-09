@@ -7,8 +7,6 @@ CON QUE SEGUIMOS
 PROTECCIONES
 	Agregar una pequeña linea a modo de división entre los distintos aparatos. Termicas | Guardamotor | Diferencial	
 
-Señalizacion
-	Texto, poder hacer "enter" y agregar renglones
 
 Cables
 
